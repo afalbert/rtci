@@ -1,0 +1,104 @@
+$fa-font-path: '/assets/fonts/font-awesome/';
+@import '~font-awesome/scss/font-awesome';
+// @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,900|Roboto:300,500,700,900);
+
+/*!
+
+ =========================================================
+ * Now-ui-kit - v1.1.0
+ =========================================================
+
+ * Product Page: http://www.creative-tim.com/product/now-ui-kit
+ * Copyright 2017 Creative Tim (http://www.creative-tim.com)
+ * Licensed under MIT (https://github.com/creativetimofficial/now-ui-kit/blob/master/LICENSE.md)
+
+ * Designed by www.invisionapp.com Coded by www.creative-tim.com
+
+ =========================================================
+
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+ */
+
+@import '../assets/sass/now-ui-kit/variables';
+@import '../assets/sass/now-ui-kit/mixins';
+// Plugins CSS
+@import "../assets/sass/now-ui-kit/plugins/plugin-bootstrap-switch";
+@import "../assets/sass/now-ui-kit/plugins/plugin-nouislider";
+@import "../assets/sass/now-ui-kit/plugins/plugin-datepicker";
+// Core CSS
+@import "../assets/sass/now-ui-kit/buttons";
+@import "../assets/sass/now-ui-kit/inputs";
+@import "../assets/sass/now-ui-kit/checkboxes-radio";
+@import "../assets/sass/now-ui-kit/progress";
+@import "../assets/sass/now-ui-kit/badges";
+@import "../assets/sass/now-ui-kit/pagination";
+@import "../assets/sass/now-ui-kit/typography";
+@import "../assets/sass/now-ui-kit/misc";
+@import "../assets/sass/now-ui-kit/pills";
+// // components
+@import "../assets/sass/now-ui-kit/social-buttons";
+@import "../assets/sass/now-ui-kit/tabs";
+@import "../assets/sass/now-ui-kit/navbar";
+@import "../assets/sass/now-ui-kit/dropdown";
+@import "../assets/sass/now-ui-kit/alerts";
+@import "../assets/sass/now-ui-kit/images";
+@import "../assets/sass/now-ui-kit/popups";
+@import "../assets/sass/now-ui-kit/nucleo-outline";
+@import "../assets/sass/now-ui-kit/modals";
+@import "../assets/sass/now-ui-kit/carousel";
+@import "../assets/sass/now-ui-kit/cards";
+@import "../assets/sass/now-ui-kit/footers";
+// example pages and sections
+@import "../assets/sass/now-ui-kit/example-pages";
+@import "../assets/sass/now-ui-kit/sections";
+@import "../assets/sass/now-ui-kit/responsive";
+
+/**
+ * App-wide Styles
+ */
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+.padding2020 {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+
+/* Responsive: Portrait tablets and up */
+
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 730px;
+    }
+}
+
+// Component styles are injected through gulp
+
+/* inject:scss */
+
+@import 'account/dashboard/dashboard';
+
+@import 'account/inventory/inventory';
+
+@import 'account/myaccount/myaccount';
+
+@import 'account/reports/reports';
+
+@import 'admin/admin';
+
+@import 'contact/contact';
+
+@import 'feedback/feedback';
+
+@import 'main/main';
+
+@import '../components/footer/footer';
+
+/* endinject */
