@@ -1,0 +1,119 @@
+<!-- <div class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">rtci</a>
+    </div>
+    <div uib-collapse="$ctrl.isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+      <ul class="nav navbar-nav">
+        <li ng-repeat="item in $ctrl.menu" ui-sref-active="active">
+            <a ui-sref="{{item.state}}">{{item.title}}</a>
+        </li>
+        <li ng-show="$ctrl.isAdmin()" ui-sref-active="active"><a ui-sref="admin">Admin</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Sign up</a></li>
+        <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>
+        <li ng-show="$ctrl.isLoggedIn()"><p class="navbar-text">Hello {{ $ctrl.getCurrentUser().name }}</p> </li>
+        <li ng-show="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a></li>
+        <li ng-show="$ctrl.isLoggedIn()"><a ui-sref="logout">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</div> -->
+
+<nav class="sidebar-collapse navbar navbar-expand-lg bg-primary fixed-top">
+  <div class="container">
+    <div class="dropdown button-dropdown mainMenu" ng-show="$ctrl.isLoggedIn()">
+      <a href="#pablo" class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown">
+        <div>
+          <div>
+             <p>MENU  <span class="button-bar"></span>
+                <span class="button-bar"></span>
+                <span class="button-bar"></span></p>
+           
+          </div>
+         
+        </div>
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-header">RTCI Menu</a>
+        <a class="dropdown-item" ui-sref="inventory">Manage Inventory</a>
+        <a class="dropdown-item" ui-sref="myaccount">Manage Account</a>
+        <a class="dropdown-item" ui-sref="reports">Reports</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" ui-sref="feedback">Submit Feedback</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Help</a>
+      </div>
+    </div>
+    <div class="navbar-translate">
+      <a class="navbar-brand" href="/" rel="tooltip" data-placement="bottom" ng-hide="$ctrl.isLoggedIn()">
+        Regional Transit Capital Inventory
+      </a>
+      <!-- <a class="navbar-brand" href="#" rel="tooltip" data-placement="bottom" ng-show="$ctrl.isLoggedIn()">
+        MENU
+      </a> -->
+      <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-bar bar1"></span>
+        <span class="navbar-toggler-bar bar2"></span>
+        <span class="navbar-toggler-bar bar3"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse justify-content-end" data-nav-image="assets/img/blurred-image-1.jpg">
+      <ul class="navbar-nav">
+        <li class="nav-item" ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active">
+          <a class="nav-link" ui-sref="signup">Sign up</a>
+        </li>
+        <li class="nav-item" ng-show="$ctrl.isLoggedIn()" ui-sref-active="active">
+            <a class="nav-link" ui-sref="main">Home</a>
+          </li>
+        <li class="nav-item" ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active">
+          <a class="nav-link" ui-sref="login">Login</a>
+        </li>
+        <li class="nav-item" ng-show="$ctrl.isLoggedIn()" style="padding-top:2px;">
+          <p class="navbar-text" stle="color:white !important;">Hello {{ $ctrl.getCurrentUser().name }}</p>
+        </li>
+        <li class="nav-item" ng-show="$ctrl.isLoggedIn()" ui-sref-active="active">
+          <a class="nav-link" ui-sref="settings">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </li>
+        <li class="nav-item" ng-show="$ctrl.isLoggedIn()">
+          <a class="nav-link" ui-sref="logout">Logout</a>
+        </li>
+        <li class="nav-item" ng-show="$ctrl.isLoggedIn()">
+          <a class="nav-link" href="/dashboard">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/feedback">Feedback</a>
+        </li>
+        <!-- <li class="nav-item">
+                    <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
+                        <i class="fa fa-twitter"></i>
+                        <p class="d-lg-none d-xl-none">Twitter</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank">
+                        <i class="fa fa-facebook-square"></i>
+                        <p class="d-lg-none d-xl-none">Facebook</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
+                        <i class="fa fa-instagram"></i>
+                        <p class="d-lg-none d-xl-none">Instagram</p>
+                    </a>
+                </li> -->
+      </ul>
+    </div>
+  </div>
+</nav>
