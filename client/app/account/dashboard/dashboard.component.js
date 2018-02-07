@@ -7,8 +7,10 @@ import routes from './dashboard.routes';
 
 export class DashboardComponent {
   /*@ngInject*/
-  constructor() {
+  constructor($http,$state) {
     this.message = 'Hello';
+    this.$http = $http;
+    this.$state = $state;
   }
 
   $onInit(){
@@ -46,6 +48,20 @@ export class DashboardComponent {
         }
 
         createViz(3);
+
+        this.$http.get('/api/users/getAssets/Total')
+        .then(result => {
+            console.log(result);
+            this.assetsTotal = result.data[0].count;
+            console.log(this.assetsTotal);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+  }
+
+  viewInventory(){
+      this.$state.go('inventory');
   }
 }
 

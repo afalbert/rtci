@@ -10,6 +10,7 @@ import uiRouter from 'angular-ui-router';
 
 import 'angular-validation-match';
 import smartTable from 'angular-smart-table';
+// import uiGrid from 'angular-ui-grid';
 
 import {
     routeConfig

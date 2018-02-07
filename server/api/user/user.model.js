@@ -35,9 +35,29 @@ export default function(sequelize, DataTypes) {
         notEmpty: true
       }
     },
+    ContactID: DataTypes.STRING,
+    FirstName: DataTypes.STRING,
+    LastName: DataTypes.STRING,
+    Title: DataTypes.STRING,
+    TRSID: DataTypes.STRING,
+    PhoneBusiness: DataTypes.STRING,
+    PhoneCell: DataTypes.STRING,
+    Source: DataTypes.STRING,
+    ActiveStat: DataTypes.INTEGER,
+    MTCContactDBID: DataTypes.STRING,
+    Username: DataTypes.STRING,
+    CreateDate: DataTypes.DATE,
+    LastLoginDate: DataTypes.DATE,
+    ActivationCode: DataTypes.STRING,
+    AllowLogin: DataTypes.INTEGER,
+    PrimaryContact: DataTypes.INTEGER,
+    ContactNotes: DataTypes.STRING,
+    provider: DataTypes.STRING,
+    // updatedAt: DataTypes.DATE,
+    // createdAt: DataTypes.DATE,
     provider: DataTypes.STRING,
     salt: DataTypes.STRING
-
+   
   }, {
 
     /**

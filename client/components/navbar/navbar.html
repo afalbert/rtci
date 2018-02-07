@@ -79,7 +79,7 @@
           <a class="nav-link" ui-sref="login">Login</a>
         </li>
         <li class="nav-item" ng-show="$ctrl.isLoggedIn()" style="padding-top:2px;">
-          <p class="navbar-text" stle="color:white !important;">Hello {{ $ctrl.getCurrentUser().name }}</p>
+          <p class="navbar-text" stle="color:white !important;">Hello {{ $ctrl.getCurrentUser().FirstName }}</p>
         </li>
         <li class="nav-item" ng-show="$ctrl.isLoggedIn()" ui-sref-active="active">
           <a class="nav-link" ui-sref="settings">

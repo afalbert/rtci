@@ -1,39 +1,278 @@
-<div class="inventory-section container-fluid" style="margin-top:150px;">
-  <h3 class="text-center">Manage Inventory</h3>
+<div class="inventory-section container-fluid" style="margin-top:150px;" st-table="displayedCollection" st-safe-src="rowCollection">
+  <h3 class="text-center">Manage Inventory (TRSID = 9013)</h3>
   <div class="row">
 
     <div class="col-md-3">
-      <h5>Filter Options</h5>
+      <!-- <h5>Filter Options</h5> -->
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-primary">
+         <div class="panel-heading">
+           <h4 class="panel-title text-center">
+             <button class="btn btn-default flatBTN" data-toggle="collapse" data-parent="#accordion" href="#accordionOne">
+               Filter Projects
+             </button>
+           </h4>
+         </div>
+         <div id="accordionOne" class="panel-collapse collapse in">
+           <div class="panel-body">
+             <form id="filterForm">
+               <table class="view-table-search" style="width:70%;margin:auto;">
+                 <tr>
+                   <td colspan="2" class="pad-top-s filterFonts">
+                     Asset UID
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan="2">
+                     <input placeholder="Filter by UID" class="input-sm form-control searchCTRL" type="search" />
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan="2" class="pad-top-s filterFonts">
+                     Mode Code
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan="2">
+
+                     <select class="input-sm form-control searchCTRL" st-input-event="change">
+                       <option value="">All</option>
+                       
+                     </select>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan="2" class="pad-top-s filterFonts">
+                     Asset Description
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan="2">
+                     <input placeholder="Filter by Title" class="input-sm form-control searchCTRL" type="search" />
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan="2" class="pad-top-s filterFonts">
+                     Asset Status
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan="2">
+                     <select class="input-sm form-control searchCTRL" st-input-event="change">
+                       <option value="">All</option>
+                   
+                     </select>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan="2" class="pad-top-s filterFonts">
+                     Asset Type
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan="2">
+                     <input placeholder="Filter by Title" class="input-sm form-control searchCTRL" type="search" />
+                   </td>
+                 </tr>
+
+                 <tr>
+                   <td colspan="2" class="pad-top-s filterFonts">
+                     Physical Address
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan="2">
+                     <input placeholder="Filter by Title" class="input-sm form-control searchCTRL" type="search" />
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan="2" class="pad-top-s filterFonts">
+                     Physical Zipcode
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan="2">
+                     <input placeholder="Filter by Title" class="input-sm form-control searchCTRL" type="search" />
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan="2" class="pad-top-s filterFonts">
+                     Agency Asset UID
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan="2">
+                     <input placeholder="Filter by Title" class="input-sm form-control searchCTRL" type="search" />
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan="2" class="pad-top-s filterFonts">
+                     Manufacturer
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan="2">
+                     <select class="input-sm form-control searchCTRL" st-input-event="change">
+                       <option value="">All</option>
+                     
+                     </select>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan="2" class="pad-top-s filterFonts">
+                     Manufacturer Code
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan="2">
+                     <select class="input-sm form-control searchCTRL" st-input-event="change">
+                       <option value="">All</option>
+                    
+                     </select>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan="2" class="pad-top-s filterFonts">
+                     Fuel Type
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan="2">
+                     <select class="input-sm form-control searchCTRL" st-input-event="change">
+                       <option value="">All</option>
+                   
+                     </select>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan="2" class="pad-top-s filterFonts">
+                     RVID
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan="2">
+                     <input placeholder="Filter by Title" class="input-sm form-control searchCTRL" type="search" />
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan="2" class="pad-top-m filterFonts" style="text-align:center;">
+                     <button st-reset-search ng-hide="viewMode === true || editMode === true || mapMode === true" class="btn btn-primary btn-sm">
+                       <i class="fa fa-refresh"></i> Clear Filters</button>
+                   </td>
+                 </tr>
+               </table>
+             </form>
+           </div>
+         </div>
+       </div>
+
+
+       <div class="panel panel-primary" ng-if="regionalTotalDiscretionary">
+         <!-- accordion 4 -->
+         <div class="panel-heading">
+           <h4 class="panel-title text-center">
+             <!-- title 3 -->
+
+             <button ng-if="regionalTotalDiscretionary" class="btn btn-default flatBTN" data-toggle="collapse" data-parent="#accordion"
+               href="#accordionFour">
+               Project Funding
+             </button>
+           </h4>
+         </div>
+         <div id="accordionFour" class="panel-collapse collapse">
+           <!-- panel body -->
+           <div class="panel-body">
+             <div ng-if="regionalTotalDiscretionary">
+               <div class="pad-bottom-s pad-top-l">
+                 <table>
+                   <tr>
+                     <td>
+                       Total {{ regionalTotalDiscretionary.County }} Discretionary
+                     </td>
+
+                   </tr>
+                   <tr>
+                     <td>{{ regionalTotalDiscretionary.Discretionary_Funding | currency : "$" : 0 }} (M)
+                     </td>
+
+                   </tr>
+                   <tr>
+                     <td>
+                       <hr>
+                     </td>
+                   </tr>
+                   <tr>
+                     <td>
+                       Your Discretionary Request Amount
+                     </td>
+
+                   </tr>
+                   <tr>
+                     <td>{{ agencyTotalDiscretionary | currency : "$" : 0 }} (M)
+                     </td>
+
+                   </tr>
+                 </table>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     
+     </div>
     </div>
     <div class="col-md-9">
-      <table st-table="rowCollection" class="table inventory-table table-striped">
+
+
+      <table class="table table-striped">
         <thead>
           <tr>
-            <th>
-              <label class="checkbox-inline">
-                <input type="checkbox" value="">
-              </label>
-            </th>
-            <th>first name</th>
-            <th>last name</th>
-            <th>birth date</th>
-            <th>balance</th>
-            <th>email</th>
-            <th></th>
+            <th st-sort="AssetUID">AssetUID</th>
+            <th st-sort="ModeCode">ModeCode</th>
+            <th st-sort="AssetDesc">AssetDesc</th>
+            <th st-sort="AssetStatus">AssetStatus</th>
+            <th st-sort="AssetType">AssetType</th>
+            <th st-sort="YRBuilt">YRBuilt</th>
+            <th st-sort="AgencyUsefulLife">AgencyUsefulLife</th>
+            <th st-sort="Quantity">Quantity</th>
+            <th st-sort="UnitCost">UnitCost</th>
+            <th st-sort="AgencySoftCost">AgencySoftCost</th>
+            <th st-sort="AssetPhysAddress">AssetPhysAddress</th>
+            <th st-sort="AssetPhysZIP">AssetPhysZIP</th>
+            <th st-sort="AgencyAssetUID">AgencyAssetUID</th>
+            <th st-sort="AgencyNotes">AgencyNotes</th>
+            <th st-sort="Manufacturer">Manufacturer</th>
+            <th st-sort="ManufacturerCode">ManufacturerCode</th>
+            <th st-sort="ModelNumber">ModelNumber</th>
+            <th st-sort="FuelType">FuelType</th>
+            <th st-sort="CapacitySeated">CapacitySeated</th>
+            <th st-sort="CapacityStanding">CapacityStanding</th>
+            <th>Tools</th>
           </tr>
+
         </thead>
         <tbody>
-          <tr ng-repeat="row in inventoryCtrl.rowCollection">
-            <td>
-              <label class="checkbox-inline">
-                <input type="checkbox" value="">
-              </label>
-            </td>
-            <td>{{row.firstName}}</td>
-            <td>{{row.lastName}}</td>
-            <td>{{row.birthDate}}</td>
-            <td>{{row.balance}}</td>
-            <td>{{row.email}}</td>
+          <tr ng-repeat="row in displayedCollection">
+            <td>{{row.AssetUID | uppercase}}</td>
+            <td>{{row.ModeCode}}</td>
+            <td>{{row.AssetDesc}}</td>
+            <td>{{row.AssetStatus}}</td>
+            <td>{{row.AssetType }}</td>
+            <td>{{row.YRBuilt }}</td>
+            <td>{{row.AgencyUsefulLife }}</td>
+            <td>{{row.Quantity}}</td>
+            <td>{{row.UnitCost | currency}}</td>
+            <td>{{row.AgencySoftCost}}</td>
+            <td>{{row.AssetPhysAddress }}</td>
+            <td>{{row.AssetPhysZIP}}</td>
+            <td>{{row.AgencyAssetUID}}</td>
+            <td>{{row.AgencyNotes}}</td>
+            <td>{{row.Manufacturer }}</td>
+            <td>{{row.ManufacturerCode }}</td>
+            <td>{{row.ModelNumber }}</td>
+            <td>{{row.FuelType | currency}}</td>
+            <td>{{row.CapacitySeated }}</td>
+            <td>{{row.CapacityStanding }}</td>
             <td style="padding-top:0">
               <button class="btn btn-sm btn-primary">
                 <i class="fa fa-edit"></i>
@@ -44,7 +283,18 @@
             </td>
           </tr>
         </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="5" style="text-align: center !important;">
+              <div st-items-by-page="10" st-pagination="" st-template="templates/pagination.custom.html">
+                <pagination></pagination>
+              </div>
+            </td>
+          </tr>
+        </tfoot>
       </table>
+
+
     </div>
   </div>
 </div>

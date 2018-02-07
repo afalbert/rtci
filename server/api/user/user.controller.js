@@ -3,6 +3,11 @@
 import {User} from '../../sqldb';
 import config from '../../config/environment';
 import jwt from 'jsonwebtoken';
+import sqldb from '../../sqldb';
+
+// console.log(sqldb.sequelize);
+
+
 
 function validationError(res, statusCode) {
   statusCode = statusCode || 422;
@@ -29,7 +34,10 @@ export function index(req, res) {
       'name',
       'email',
       'role',
-      'provider'
+      'provider',
+      'FirstName',
+      'LastName',
+      'TRSID'
     ]
   })
     .then(users => {
@@ -87,6 +95,30 @@ export function destroy(req, res) {
     .catch(handleError(res));
 }
 
+export function getTRSIDAssets(req, res){
+  sqldb.sequelize.query("SELECT * FROM [aalbert].[RevenueVehicleInventory] WHERE TRSID ='" + 9013 + "'", { type: sqldb.sequelize.QueryTypes.SELECT})
+  .then(assets => {
+    if(!assets){
+      return res.status(404).end();
+    }
+    // console.log(assets);
+    res.json(assets);
+    // We don't need spread here, since only the results will be returned for select queries
+  })
+  .catch(err => next(err));
+}
+
+export function getAssetsTotalCount(req, res){
+  sqldb.sequelize.query("SELECT COUNT(AssetUID) AS count  FROM rtci_app.MainExportVw  WHERE (TRSID = 9013)", { type: sqldb.sequelize.QueryTypes.SELECT})
+  .then(count => {
+    if(!count){
+      return res.status(404).end();
+    }
+    res.json(count);
+  })
+  .catch(err => next(err));
+}
+
 /**
  * Change a users password
  */
@@ -129,7 +161,10 @@ export function me(req, res, next) {
       'name',
       'email',
       'role',
-      'provider'
+      'provider',
+      'FirstName',
+      'LastName',
+      'TRSID'
     ]
   })
     .then(user => { // don't ever give out the password or salt

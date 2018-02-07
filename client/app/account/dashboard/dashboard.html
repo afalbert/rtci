@@ -8,12 +8,12 @@
                             <i class="fa fa-list-alt"></i>
                         </div>
                         <div class="dash-box-body">
-                            <span class="dash-box-count">8,252</span>
+                            <span class="dash-box-count">{{dashboardCtrl.assetsTotal}}</span>
                             <span class="dash-box-title">Total Assets</span>
                         </div>
 
-                        <div class="dash-box-action">
-                            <button>More Info</button>
+                        <div class="dash-box-action" style="cursor:pointer;">
+                            <button style="cursor:pointer;" ng-click="dashboardCtrl.viewInventory()">More Info</button>
                         </div>
                     </div>
                 </div>
