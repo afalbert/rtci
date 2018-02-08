@@ -7,90 +7,41 @@ import routes from './inventory.routes';
 
 export class InventoryComponent {
   /*@ngInject*/
-  constructor($http,$scope) {
+  constructor($http, $scope) {
     this.message = 'Hello';
-    // this.$http = $http;
-    $scope.test = 'testing';
- 
-    console.log($scope.test);
+  
 
-    var
-    nameList = ['Pierre', 'Pol', 'Jacques', 'Robert', 'Elisa'],
-    familyName = ['Dupont', 'Germain', 'Delcourt', 'bjip', 'Menez'];
+    $http.get('/api/users/getAssets')
+      .then(response => {
+        console.log(response);
+        $scope.rowCollection = response.data;
+        $scope.modeCode = _.uniq(_.map(response.data, 'ModeCode'));
+        $scope.assetStatus = _.uniq(_.map(response.data, 'AssetStatus'));
+        $scope.manufacturer = _.uniq(_.map(response.data, 'Manufacturer'));
+        console.log($scope.Status);
+      })
+      .catch(err => {
+        console.log(err);
+      })
 
-function createRandomItem() {
-    var
-        firstName = nameList[Math.floor(Math.random() * 4)],
-        lastName = familyName[Math.floor(Math.random() * 4)],
-        age = Math.floor(Math.random() * 100),
-        email = firstName + lastName + '@whatever.com',
-        balance = Math.random() * 3000;
-
-    return{
-        firstName: firstName,
-        lastName: lastName,
-        age: age,
-        email: email,
-        balance: balance
-    };
-}
-
-$scope.itemsByPage=15;
-
-// $scope.rowCollection = [];
-// for (var j = 0; j < 200; j++) {
-//     $scope.rowCollection.push(createRandomItem());
-// }
-
-$http.get('/api/users/getAssets')
-.then(response => {
-  console.log(response);
-  $scope.rowCollection = response.data;
-})
-.catch(err => {
-  console.log(err);
-})
-
-    // this.rowCollection = [{
-    //     firstName: 'Laurent',
-    //     lastName: 'Renard',
-    //     birthDate: new Date('1987-05-21'),
-    //     balance: 102,
-    //     email: 'whatever@gmail.com'
-    //   },
-    //   {
-    //     firstName: 'Blandine',
-    //     lastName: 'Faivre',
-    //     birthDate: new Date('1987-04-25'),
-    //     balance: -2323.22,
-    //     email: 'oufblandou@gmail.com'
-    //   },
-    //   {
-    //     firstName: 'Francoise',
-    //     lastName: 'Frere',
-    //     birthDate: new Date('1955-08-27'),
-    //     balance: 42343,
-    //     email: 'raymondef@gmail.com'
-    //   }
-    // ];
 
   }
 
   $onInit() {
 
 
+  }
 
+  editAsset(asset){
+    console.log(asset);
+    this.updateAsset = asset;
+    $('#editRevenueVehiclesModal').modal();
+  }
 
-    
-    
-    // this.$http.get('/api/users/getAssets')
-    //   .then(response => {
-    //     console.log(response);
-    //     this.rowCollection = response.data;
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   })
+  saveAssetUpdates(){
+    console.log(this.updateAsset);
+    this.updateAsset = {};
+    $('#editRevenueVehiclesModal').modal('hide');
   }
 }
 
@@ -101,16 +52,33 @@ export default angular.module('rtciApp.inventory', [uiRouter])
     controller: InventoryComponent,
     controllerAs: 'inventoryCtrl'
   })
-  .directive('pageSelect', function() {
+  .directive('pageSelect', function () {
     return {
       restrict: 'E',
       template: '<input type="text" class="select-page" ng-model="inputPage" ng-change="selectPage(inputPage)">',
-      link: function(scope, element, attrs) {
-          scope.$watch('currentPage', function(c) {
-              scope.inputPage = c;
-          });
+      link: function (scope, element, attrs) {
+        scope.$watch('currentPage', function (c) {
+          scope.inputPage = c;
+        });
       }
-  };
+    };
   })
+  .directive("stResetSearch", function() {
+    return {
+           restrict: 'EA',
+           require: '^stTable',
+           link: function(scope, element, attrs, ctrl) {
+             return element.bind('click', function() {
+               return scope.$apply(function() {
+                 var tableState;
+                 tableState = ctrl.tableState();
+                 tableState.search.predicateObject = {};
+                 tableState.pagination.start = 0;
+                 return ctrl.pipe();
+               });
+             });
+           }
+         };
+})
 
   .name;
