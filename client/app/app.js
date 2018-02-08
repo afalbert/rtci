@@ -53,6 +53,6 @@ angular.module('rtciApp', [ngCookies, ngResource, ngSanitize, uiRouter, _Auth, a
 angular.element(document)
     .ready(() => {
         angular.bootstrap(document, ['rtciApp'], {
-            // strictDi: false
+            strictDi: true
         });
     });

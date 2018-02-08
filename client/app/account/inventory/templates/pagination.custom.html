@@ -1,15 +1,15 @@
-<nav ng-if="pages.length >= 2">
-    <ul class="pagination">
-        <li><a class="btn btn-primary" style="color:white;" ng-click="selectPage(1)">First</a>
+<nav ng-if='pages.length >= 2'>
+    <ul class='pagination'>
+        <li><a class='btn btn-primary' style='color:white;' ng-click='selectPage(1)'>First</a>
         </li>
-        <li><a class="btn btn-primary" style="color:white;" ng-click="selectPage(currentPage - 1)">&lt;</a>
+        <li><a class='btn btn-primary' style='color:white;' ng-click='selectPage(currentPage - 1)'>&lt;</a>
         </li>
-        <li style="margin:10px;">
+        <li style='margin:10px;'>
             <a >
                 <page-select></page-select> of {{numPages}}</a>
         </li>
-        <li><a class="btn btn-primary" style="color:white;" ng-click="selectPage(currentPage + 1)">&gt;</a>
+        <li><a class='btn btn-primary' style='color:white;' ng-click='selectPage(currentPage + 1)'>&gt;</a>
         </li>
-        <li><a class="btn btn-primary" style="color:white;" ng-click="selectPage(numPages)">Last</a></li>
+        <li><a class='btn btn-primary' style='color:white;' ng-click='selectPage(numPages)'>Last</a></li>
     </ul>
 </nav>

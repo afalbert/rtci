@@ -1,229 +1,318 @@
 <div class="inventory-section container-fluid" style="margin-top:100px;" st-table="displayedCollection" st-safe-src="rowCollection">
-  <h3 class="text-center" style="margin-bottom:5px;">Manage Inventory (TRSID = 9013)</h3>
-  <div class="text-right">
-      <button class="btn btn-primary" data-toggle="modal" data-target="#createAssetModal">Create New Asset</button>
-  </div>
-  <div class="row">
-    <div class="col-md-2">
-      <!-- <h5>Filter Options</h5> -->
-      <div class="panel-group" id="accordion">
-        <div class="panel panel-primary">
-         <div class="panel-heading">
-           <h4 class="panel-title text-center">
-             <button class="btn btn-default flatBTN" data-toggle="collapse" data-parent="#accordion" href="#accordionOne">
-               Filter Projects
-             </button>
-           </h4>
-         </div>
-         <div id="accordionOne" class="panel-collapse in">
-           <div class="panel-body">
-             <form id="filterForm">
-               <table class="view-table-search" style="width:90%;margin:auto;">
-                 <tr>
-                   <td colspan="2" class="pad-top-s filterFonts">
-                     Asset ID (Agency)
-                   </td>
-                 </tr>
-                 <tr>
-                   <td colspan="2">
-                     <input  st-search="AgencyAssetUID" placeholder="Filter by UID" class="input-sm form-control searchCTRL" type="search" />
-                   </td>
-                 </tr>
-                 <tr>
-                    <td colspan="2" class="pad-top-s filterFonts">
-                      Asset Description
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="2">
-                      <input st-search="AssetDesc" placeholder="Filter by Title" class="input-sm form-control searchCTRL" type="search" />
-                    </td>
-                  </tr>
-                 <tr>
-                   <td colspan="2" class="pad-top-s filterFonts">
-                     Mode
-                   </td>
-                 </tr>
-                 <tr>
-                   <td colspan="2">
-
-                     <select st-search="ModeCode" class="input-sm form-control searchCTRL" st-input-event="change">
-                       <option value="">All</option>
-                       <option ng-repeat="item in modeCode" ng-value="item">{{item}}</option>
-                     </select>
-                   </td>
-                 </tr>
-                
-                 <tr>
-                   <td colspan="2" class="pad-top-s filterFonts">
-                     Asset Status
-                   </td>
-                 </tr>
-                 <tr>
-                   <td colspan="2">
-                     <select st-search="AssetStatus" class="input-sm form-control searchCTRL" st-input-event="change">
-                       <option value="">All</option>
-                       <option ng-repeat="item in assetStatus" ng-value="item">{{item}}</option>
-                     </select>
-                   </td>
-                 </tr>
-                 <tr>
-                   <td colspan="2" class="pad-top-s filterFonts">
-                     Asset Type
-                   </td>
-                 </tr>
-                 <tr>
-                   <td colspan="2">
-                     <input st-search="AssetType" placeholder="Filter by Title" class="input-sm form-control searchCTRL" type="search" />
-                   </td>
-                 </tr>
-                 <tr>
-                   <td colspan="2" class="pad-top-s filterFonts">
-                     Manufacturer
-                   </td>
-                 </tr>
-                 <tr>
-                   <td colspan="2">
-                     <select st-search="Manufacturer" class="input-sm form-control searchCTRL" st-input-event="change">
-                       <option value="">All</option>
-                       <option ng-repeat="item in manufacturer" ng-value="item">{{item}}</option>
-                     </select>
-                   </td>
-                 </tr>
-               
-              
-               
-                 <tr>
-                   <td colspan="2" class="pad-top-m filterFonts" style="text-align:center;">
-                     <button st-reset-search  class="btn btn-primary btn-sm">
-                       <i class="fa fa-refresh"></i> Clear Filters</button>
-                   </td>
-                 </tr>
-               </table>
-             </form>
+    <h3 class="text-center" style="margin-bottom:5px;">Manage Inventory (TRSID = 9013)</h3>
+    <div class="text-right">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#createAssetModal">Create New Asset</button>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <!-- <h5>Filter Options</h5> -->
+        <div class="panel-group" id="accordion">
+          <div class="panel panel-primary">
+           <div class="panel-heading">
+             <h4 class="panel-title text-center">
+               <button class="btn btn-default flatBTN" data-toggle="collapse" data-parent="#accordion" href="#accordionOne">
+                 Filter Projects
+               </button>
+             </h4>
            </div>
-         </div>
-       </div>
-
-
-       <div class="panel panel-primary" ng-if="regionalTotalDiscretionary">
-         <!-- accordion 4 -->
-         <div class="panel-heading">
-           <h4 class="panel-title text-center">
-             <!-- title 3 -->
-
-             <button ng-if="regionalTotalDiscretionary" class="btn btn-default flatBTN" data-toggle="collapse" data-parent="#accordion"
-               href="#accordionFour">
-               Project Funding
-             </button>
-           </h4>
-         </div>
-         <div id="accordionFour" class="panel-collapse collapse">
-           <!-- panel body -->
-           <div class="panel-body">
-             <div ng-if="regionalTotalDiscretionary">
-               <div class="pad-bottom-s pad-top-l">
-                 <table>
+           <div id="accordionOne" class="panel-collapse in">
+             <div class="panel-body">
+               <form id="filterForm">
+                 <table class="view-table-search" style="width:90%;margin:auto;">
                    <tr>
-                     <td>
-                       Total {{ regionalTotalDiscretionary.County }} Discretionary
-                     </td>
-
-                   </tr>
-                   <tr>
-                     <td>{{ regionalTotalDiscretionary.Discretionary_Funding | currency : "$" : 0 }} (M)
-                     </td>
-
-                   </tr>
-                   <tr>
-                     <td>
-                       <hr>
+                     <td colspan="2" class="pad-top-s filterFonts">
+                       Asset ID (Agency)
                      </td>
                    </tr>
                    <tr>
-                     <td>
-                       Your Discretionary Request Amount
+                     <td colspan="2">
+                       <input  st-search="AgencyAssetUID" placeholder="Filter by UID" class="input-sm form-control searchCTRL" type="search" />
                      </td>
-
                    </tr>
                    <tr>
-                     <td>{{ agencyTotalDiscretionary | currency : "$" : 0 }} (M)
+                      <td colspan="2" class="pad-top-s filterFonts">
+                        Asset Description
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                        <input st-search="AssetDesc" placeholder="Filter by Title" class="input-sm form-control searchCTRL" type="search" />
+                      </td>
+                    </tr>
+                   <tr>
+                     <td colspan="2" class="pad-top-s filterFonts">
+                       Mode
                      </td>
-
+                   </tr>
+                   <tr>
+                     <td colspan="2">
+  
+                       <select st-search="ModeCode" class="input-sm form-control searchCTRL" st-input-event="change">
+                         <option value="">All</option>
+                         <option ng-repeat="item in modeCode" ng-value="item">{{item}}</option>
+                       </select>
+                     </td>
+                   </tr>
+                  
+                   <tr>
+                     <td colspan="2" class="pad-top-s filterFonts">
+                       Asset Status
+                     </td>
+                   </tr>
+                   <tr>
+                     <td colspan="2">
+                       <select st-search="AssetStatus" class="input-sm form-control searchCTRL" st-input-event="change">
+                         <option value="">All</option>
+                         <option ng-repeat="item in assetStatus" ng-value="item">{{item}}</option>
+                       </select>
+                     </td>
+                   </tr>
+                   <tr>
+                     <td colspan="2" class="pad-top-s filterFonts">
+                       Asset Type
+                     </td>
+                   </tr>
+                   <tr>
+                     <td colspan="2">
+                       <input st-search="AssetType" placeholder="Filter by Title" class="input-sm form-control searchCTRL" type="search" />
+                     </td>
+                   </tr>
+                   <tr>
+                     <td colspan="2" class="pad-top-s filterFonts">
+                       Manufacturer
+                     </td>
+                   </tr>
+                   <tr>
+                     <td colspan="2">
+                       <select st-search="Manufacturer" class="input-sm form-control searchCTRL" st-input-event="change">
+                         <option value="">All</option>
+                         <option ng-repeat="item in manufacturer" ng-value="item">{{item}}</option>
+                       </select>
+                     </td>
+                   </tr>
+                 
+                
+                 
+                   <tr>
+                     <td colspan="2" class="pad-top-m filterFonts" style="text-align:center;">
+                       <button st-reset-search  class="btn btn-primary btn-sm">
+                         <i class="fa fa-refresh"></i> Clear Filters</button>
+                     </td>
                    </tr>
                  </table>
+               </form>
+             </div>
+           </div>
+         </div>
+  
+  
+         <div class="panel panel-primary" ng-if="regionalTotalDiscretionary">
+           <!-- accordion 4 -->
+           <div class="panel-heading">
+             <h4 class="panel-title text-center">
+               <!-- title 3 -->
+  
+               <button ng-if="regionalTotalDiscretionary" class="btn btn-default flatBTN" data-toggle="collapse" data-parent="#accordion"
+                 href="#accordionFour">
+                 Project Funding
+               </button>
+             </h4>
+           </div>
+           <div id="accordionFour" class="panel-collapse collapse">
+             <!-- panel body -->
+             <div class="panel-body">
+               <div ng-if="regionalTotalDiscretionary">
+                 <div class="pad-bottom-s pad-top-l">
+                   <table>
+                     <tr>
+                       <td>
+                         Total {{ regionalTotalDiscretionary.County }} Discretionary
+                       </td>
+  
+                     </tr>
+                     <tr>
+                       <td>{{ regionalTotalDiscretionary.Discretionary_Funding | currency : "$" : 0 }} (M)
+                       </td>
+  
+                     </tr>
+                     <tr>
+                       <td>
+                         <hr>
+                       </td>
+                     </tr>
+                     <tr>
+                       <td>
+                         Your Discretionary Request Amount
+                       </td>
+  
+                     </tr>
+                     <tr>
+                       <td>{{ agencyTotalDiscretionary | currency : "$" : 0 }} (M)
+                       </td>
+  
+                     </tr>
+                   </table>
+                 </div>
                </div>
              </div>
            </div>
          </div>
+       
        </div>
-     
-     </div>
-    </div>
-    <div class="col-md-10">
-
-
-      <table class="table table-striped">
-        <thead>
-          <tr>
-              <th st-sort="AgencyAssetUID">ID</th>
-            <th st-sort="ModeCode">ModeCode</th>
-            <th st-sort="AssetDesc">AssetDesc</th>
-            <th st-sort="AssetStatus">AssetStatus</th>
-            <th st-sort="AssetType">AssetType</th>
-            <th st-sort="YRInService">YRInService</th>
-            <th st-sort="Quantity">Quantity</th>
-            <th st-sort="UnitCost">UnitCost</th>
-            <th st-sort="Manufacturer">Manufacturer</th>
-            <th>Tools</th>
-          </tr>
-
-        </thead>
-        <tbody>
-          <tr ng-repeat="row in displayedCollection">
-              <td>{{row.AgencyAssetUID}}</td>
-            <td>{{row.ModeCode}}</td>
-            <td>{{row.AssetDesc}}</td>
-            <td>{{row.AssetStatus}}</td>
-            <td>{{row.AssetType }}</td>
-            <td>{{row.YRInService | date:"yyyy"}}</td>
-            <td>{{row.Quantity}}</td>
-            <td>{{row.UnitCost | currency}}</td>
-            <td>{{row.Manufacturer }}</td>
-            <td style="padding-top:0">
-              <button class="btn btn-sm btn-primary"  data-toggle="modal"  ng-click="inventoryCtrl.editAsset(row)">
-                <i class="fa fa-edit"></i>
-              </button>
-              <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteAssetModal">
-                <i class="fa fa-trash"></i>
-              </button>
-            </td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="5" style="text-align: center !important;">
-              <div st-items-by-page="10" st-pagination="" st-template="templates/pagination.custom.html">
-                <pagination></pagination>
-              </div>
-            </td>
-          </tr>
-        </tfoot>
-      </table>
-
-
+      </div>
+      <div class="col-md-10">
+  
+  
+        <table class="table table-striped">
+          <thead>
+            <tr>
+                <th st-sort="AgencyAssetUID">ID</th>
+              <th st-sort="ModeCode">ModeCode</th>
+              <th st-sort="AssetDesc">AssetDesc</th>
+              <th st-sort="AssetStatus">AssetStatus</th>
+              <th st-sort="AssetType">AssetType</th>
+              <th st-sort="YRInService">YRInService</th>
+              <th st-sort="Quantity">Quantity</th>
+              <th st-sort="UnitCost">UnitCost</th>
+              <th st-sort="Manufacturer">Manufacturer</th>
+              <th>Tools</th>
+            </tr>
+  
+          </thead>
+          <tbody>
+            <tr ng-repeat="row in displayedCollection">
+                <td>{{row.AgencyAssetUID}}</td>
+              <td>{{row.ModeCode}}</td>
+              <td>{{row.AssetDesc}}</td>
+              <td>{{row.AssetStatus}}</td>
+              <td>{{row.AssetType }}</td>
+              <td>{{row.YRInService | date:"yyyy"}}</td>
+              <td>{{row.Quantity}}</td>
+              <td>{{row.UnitCost | currency}}</td>
+              <td>{{row.Manufacturer }}</td>
+              <td style="padding-top:0">
+                <button class="btn btn-sm btn-primary"  data-toggle="modal"  ng-click="inventoryCtrl.editAsset(row)">
+                  <i class="fa fa-edit"></i>
+                </button>
+                <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteAssetModal">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="5" style="text-align: center !important;">
+                <div st-items-by-page="10" st-pagination="" st-template="">
+                  <pagination></pagination>
+                </div>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+  
+  
+      </div>
     </div>
   </div>
-</div>
-
-<!-- MODALS -->
-
-  <!-- Create Asset Modal -->
-  <div class="modal fade" id="createAssetModal" tabindex="-1" role="dialog" aria-labelledby="CreateAssetModalLongTitle" aria-hidden="true">
+  
+  <!-- MODALS -->
+  
+    <!-- Create Asset Modal -->
+    <div class="modal fade" id="createAssetModal" tabindex="-1" role="dialog" aria-labelledby="CreateAssetModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="CreateAssetModalLongTitle">Create New Asset: {{inventoryCtrl.createAsset.AssetUID}}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Asset Description</label>
+                      <input style="color:#00738C;font-weight:bold;" type="text" ng-model="inventoryCtrl.createAsset.AssetDesc" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                      <label for="yrInServiceInput">Year in Service</label>
+                      <input ng-model="inventoryCtrl.createAsset.YRInService" style="color:#00738C;font-weight:bold;" type="text" class="form-control" id="yrInServiceInput" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleSelect1">Mode Code</label>
+                      <select style="color:#00738C;font-weight:bold;" class="form-control" id="modeCodeSelect" ng-model="inventoryCtrl.createAsset.ModeCode">
+                        <option>MB</option>
+                        <option>SY</option>
+                        <option>LR</option>
+                        <option>DR</option>
+                    
+                      </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="assetStatusSelect">Asset Status</label>
+                        <select style="color:#00738C;font-weight:bold;" class="form-control" id="assetStatusSelect" ng-model="inventoryCtrl.createAsset.AssetStatus">
+                          <option>EXT</option>
+                          <option>RET</option>
+                          <option>XFM</option>
+                          <option>CMT</option>
+                          <option>EXP</option>
+                      
+                        </select>
+                      </div>
+                      <div class="form-group">
+                          <label for="yrInServiceInput">Quantity</label>
+                          <input ng-model="inventoryCtrl.createAsset.Quantity" style="color:#00738C;font-weight:bold;" type="text" class="form-control" id="yrInServiceInput" placeholder="Password">
+                        </div>
+                    <div class="form-group">
+                      <label for="exampleTextarea">Notes</label>
+                      <textarea ng-model="inventoryCtrl.createAsset.AgencyNotes" class="form-control" id="exampleTextarea" rows="3"></textarea>
+                    </div>
+                     <!-- <fieldset class="form-group">
+                      <legend>Radio buttons</legend>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                          Option one is this and that&mdash;be sure to include why it's great
+                        </label>
+                      </div>
+                      <div class="form-check">
+                      <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+                          Option two can be something else and selecting it will deselect option one
+                        </label>
+                      </div>
+                      <div class="form-check disabled">
+                      <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+                          Option three is disabled
+                        </label>
+                      </div>
+                    </fieldset> -->
+                    <!-- <div class="form-check">
+                      <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input">
+                        Check me out
+                      </label>
+                    </div> -->
+                    <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+                  </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" ng-click="inventoryCtrl.saveAssetUpdates()">Save Asset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+    <!-- Update Category 1 Modal -->
+    <div class="modal fade" id="editRevenueVehiclesModal" tabindex="-1" role="dialog" aria-labelledby="RevenueVehiclesModalLongTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="CreateAssetModalLongTitle">Create New Asset: {{inventoryCtrl.createAsset.AssetUID}}</h5>
+            <h5 class="modal-title" id="RevenueVehiclesModalLongTitle">Edit Asset: {{inventoryCtrl.updateAsset.AssetUID}}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -232,16 +321,16 @@
               <form>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Asset Description</label>
-                    <input style="color:#00738C;font-weight:bold;" type="text" ng-model="inventoryCtrl.createAsset.AssetDesc" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <input style="color:#00738C;font-weight:bold;" type="text" ng-model="inventoryCtrl.updateAsset.AssetDesc" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                   </div>
                   <div class="form-group">
                     <label for="yrInServiceInput">Year in Service</label>
-                    <input ng-model="inventoryCtrl.createAsset.YRInService" style="color:#00738C;font-weight:bold;" type="text" class="form-control" id="yrInServiceInput" placeholder="Password">
+                    <input ng-model="inventoryCtrl.updateAsset.YRInService" style="color:#00738C;font-weight:bold;" type="text" class="form-control" id="yrInServiceInput" placeholder="Password">
                   </div>
                   <div class="form-group">
                     <label for="exampleSelect1">Mode Code</label>
-                    <select style="color:#00738C;font-weight:bold;" class="form-control" id="modeCodeSelect" ng-model="inventoryCtrl.createAsset.ModeCode">
+                    <select style="color:#00738C;font-weight:bold;" class="form-control" id="modeCodeSelect" ng-model="inventoryCtrl.updateAsset.ModeCode">
                       <option>MB</option>
                       <option>SY</option>
                       <option>LR</option>
@@ -251,7 +340,7 @@
                   </div>
                   <div class="form-group">
                       <label for="assetStatusSelect">Asset Status</label>
-                      <select style="color:#00738C;font-weight:bold;" class="form-control" id="assetStatusSelect" ng-model="inventoryCtrl.createAsset.AssetStatus">
+                      <select style="color:#00738C;font-weight:bold;" class="form-control" id="assetStatusSelect" ng-model="inventoryCtrl.updateAsset.AssetStatus">
                         <option>EXT</option>
                         <option>RET</option>
                         <option>XFM</option>
@@ -262,11 +351,11 @@
                     </div>
                     <div class="form-group">
                         <label for="yrInServiceInput">Quantity</label>
-                        <input ng-model="inventoryCtrl.createAsset.Quantity" style="color:#00738C;font-weight:bold;" type="text" class="form-control" id="yrInServiceInput" placeholder="Password">
+                        <input ng-model="inventoryCtrl.updateAsset.Quantity" style="color:#00738C;font-weight:bold;" type="text" class="form-control" id="yrInServiceInput" placeholder="Password">
                       </div>
                   <div class="form-group">
                     <label for="exampleTextarea">Notes</label>
-                    <textarea ng-model="inventoryCtrl.createAsset.AgencyNotes" class="form-control" id="exampleTextarea" rows="3"></textarea>
+                    <textarea ng-model="inventoryCtrl.updateAsset.AgencyNotes" class="form-control" id="exampleTextarea" rows="3"></textarea>
                   </div>
                    <!-- <fieldset class="form-group">
                     <legend>Radio buttons</legend>
@@ -300,185 +389,96 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" ng-click="inventoryCtrl.saveAssetUpdates()">Save Asset</button>
+            <button type="button" class="btn btn-primary" ng-click="inventoryCtrl.saveAssetUpdates()">Save changes</button>
           </div>
         </div>
       </div>
     </div>
   
-  
-  <!-- Update Category 1 Modal -->
-  <div class="modal fade" id="editRevenueVehiclesModal" tabindex="-1" role="dialog" aria-labelledby="RevenueVehiclesModalLongTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="RevenueVehiclesModalLongTitle">Edit Asset: {{inventoryCtrl.updateAsset.AssetUID}}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <form>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Asset Description</label>
-                  <input style="color:#00738C;font-weight:bold;" type="text" ng-model="inventoryCtrl.updateAsset.AssetDesc" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                </div>
-                <div class="form-group">
-                  <label for="yrInServiceInput">Year in Service</label>
-                  <input ng-model="inventoryCtrl.updateAsset.YRInService" style="color:#00738C;font-weight:bold;" type="text" class="form-control" id="yrInServiceInput" placeholder="Password">
-                </div>
-                <div class="form-group">
-                  <label for="exampleSelect1">Mode Code</label>
-                  <select style="color:#00738C;font-weight:bold;" class="form-control" id="modeCodeSelect" ng-model="inventoryCtrl.updateAsset.ModeCode">
-                    <option>MB</option>
-                    <option>SY</option>
-                    <option>LR</option>
-                    <option>DR</option>
-                
-                  </select>
-                </div>
-                <div class="form-group">
-                    <label for="assetStatusSelect">Asset Status</label>
-                    <select style="color:#00738C;font-weight:bold;" class="form-control" id="assetStatusSelect" ng-model="inventoryCtrl.updateAsset.AssetStatus">
-                      <option>EXT</option>
-                      <option>RET</option>
-                      <option>XFM</option>
-                      <option>CMT</option>
-                      <option>EXP</option>
-                  
-                    </select>
-                  </div>
-                  <div class="form-group">
-                      <label for="yrInServiceInput">Quantity</label>
-                      <input ng-model="inventoryCtrl.updateAsset.Quantity" style="color:#00738C;font-weight:bold;" type="text" class="form-control" id="yrInServiceInput" placeholder="Password">
-                    </div>
-                <div class="form-group">
-                  <label for="exampleTextarea">Notes</label>
-                  <textarea ng-model="inventoryCtrl.updateAsset.AgencyNotes" class="form-control" id="exampleTextarea" rows="3"></textarea>
-                </div>
-                 <!-- <fieldset class="form-group">
-                  <legend>Radio buttons</legend>
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                      Option one is this and that&mdash;be sure to include why it's great
-                    </label>
-                  </div>
-                  <div class="form-check">
-                  <label class="form-check-label">
-                      <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
-                      Option two can be something else and selecting it will deselect option one
-                    </label>
-                  </div>
-                  <div class="form-check disabled">
-                  <label class="form-check-label">
-                      <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
-                      Option three is disabled
-                    </label>
-                  </div>
-                </fieldset> -->
-                <!-- <div class="form-check">
-                  <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input">
-                    Check me out
-                  </label>
-                </div> -->
-                <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-              </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" ng-click="inventoryCtrl.saveAssetUpdates()">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-    
-  <!-- Update Category 1 Modal -->
-  <div class="modal fade" id="editCategory1Modal" tabindex="-1" role="dialog" aria-labelledby="Category1ModalLongTitle" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="Category1ModalLongTitle">Edit Asset</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
       
-  <!-- Update Category 2 Modal -->
-  <div class="modal fade" id="editCategory2Modal" tabindex="-1" role="dialog" aria-labelledby="Category2ModalLongTitle" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="Category2ModalLongTitle">Edit Asset</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-      
-  <!-- Update Category 3 Modal -->
-  <div class="modal fade" id="editCategory3Modal" tabindex="-1" role="dialog" aria-labelledby="Category3ModalLongTitle" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="Category3ModalLongTitle">Edit Asset</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Delete Modal -->
-    <div class="modal fade" id="deleteAssetModal" tabindex="-1" role="dialog" aria-labelledby="deleteAssetLongTitle" aria-hidden="true">
+    <!-- Update Category 1 Modal -->
+    <div class="modal fade" id="editCategory1Modal" tabindex="-1" role="dialog" aria-labelledby="Category1ModalLongTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="deleteAssetLongTitle">Delete Asset</h5>
-             
+              <h5 class="modal-title" id="Category1ModalLongTitle">Edit Asset</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-                Are you sure you want to delete this asset?
+              ...
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-danger">Delete</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
             </div>
           </div>
         </div>
       </div>
+  
+        
+    <!-- Update Category 2 Modal -->
+    <div class="modal fade" id="editCategory2Modal" tabindex="-1" role="dialog" aria-labelledby="Category2ModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="Category2ModalLongTitle">Edit Asset</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+        
+    <!-- Update Category 3 Modal -->
+    <div class="modal fade" id="editCategory3Modal" tabindex="-1" role="dialog" aria-labelledby="Category3ModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="Category3ModalLongTitle">Edit Asset</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Delete Modal -->
+      <div class="modal fade" id="deleteAssetModal" tabindex="-1" role="dialog" aria-labelledby="deleteAssetLongTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="deleteAssetLongTitle">Delete Asset</h5>
+               
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  Are you sure you want to delete this asset?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
