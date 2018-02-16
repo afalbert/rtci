@@ -34,7 +34,7 @@ import util from '../components/util/util.module';
 import './app.scss';
 
 angular.module('rtciApp', [ngCookies, ngResource, ngSanitize, uiRouter, _Auth, account, admin,
-        'validation.match', navbar, footer, main, feedback, contact, dashboard, inventory, myaccount, reports,smartTable, constants, util
+        'validation.match', navbar, footer, main, feedback, contact, dashboard, inventory, myaccount, reports, smartTable, constants, util
     ])
     .config(routeConfig)
     .run(function($rootScope, $location, Auth) {

@@ -1,6 +1,6 @@
 'use strict';
 
-import {User} from '../../sqldb';
+import { User } from '../../sqldb';
 import config from '../../config/environment';
 import jwt from 'jsonwebtoken';
 import sqldb from '../../sqldb';
@@ -10,17 +10,17 @@ import sqldb from '../../sqldb';
 
 
 function validationError(res, statusCode) {
-  statusCode = statusCode || 422;
-  return function(err) {
-    return res.status(statusCode).json(err);
-  };
+    statusCode = statusCode || 422;
+    return function(err) {
+        return res.status(statusCode).json(err);
+    };
 }
 
 function handleError(res, statusCode) {
-  statusCode = statusCode || 500;
-  return function(err) {
-    return res.status(statusCode).send(err);
-  };
+    statusCode = statusCode || 500;
+    return function(err) {
+        return res.status(statusCode).send(err);
+    };
 }
 
 /**
@@ -28,59 +28,59 @@ function handleError(res, statusCode) {
  * restriction: 'admin'
  */
 export function index(req, res) {
-  return User.findAll({
-    attributes: [
-      '_id',
-      'name',
-      'email',
-      'role',
-      'provider',
-      'FirstName',
-      'LastName',
-      'TRSID'
-    ]
-  })
-    .then(users => {
-      res.status(200).json(users);
-    })
-    .catch(handleError(res));
+    return User.findAll({
+            attributes: [
+                '_id',
+                'name',
+                'email',
+                'role',
+                'provider',
+                'FirstName',
+                'LastName',
+                'TRSID'
+            ]
+        })
+        .then(users => {
+            res.status(200).json(users);
+        })
+        .catch(handleError(res));
 }
 
 /**
  * Creates a new user
  */
 export function create(req, res) {
-  var newUser = User.build(req.body);
-  newUser.setDataValue('provider', 'local');
-  newUser.setDataValue('role', 'user');
-  return newUser.save()
-    .then(function(user) {
-      var token = jwt.sign({ _id: user._id }, config.secrets.session, {
-        expiresIn: 60 * 60 * 5
-      });
-      res.json({ token });
-    })
-    .catch(validationError(res));
+    var newUser = User.build(req.body);
+    newUser.setDataValue('provider', 'local');
+    newUser.setDataValue('role', 'user');
+    return newUser.save()
+        .then(function(user) {
+            var token = jwt.sign({ _id: user._id }, config.secrets.session, {
+                expiresIn: 60 * 60 * 5
+            });
+            res.json({ token });
+        })
+        .catch(validationError(res));
 }
 
 /**
  * Get a single user
  */
 export function show(req, res, next) {
-  var userId = req.params.id;
+    var userId = req.params.id;
 
-  return User.find({
-    where: {
-      _id: userId
-    }
-  })
-    .then(user => {
-      if(!user) {
-        return res.status(404).end();
-      }
-      res.json(user.profile);
-    })
-    .catch(err => next(err));
+    return User.find({
+            where: {
+                _id: userId
+            }
+        })
+        .then(user => {
+            if (!user) {
+                return res.status(404).end();
+            }
+            res.json(user.profile);
+        })
+        .catch(err => next(err));
 }
 
 /**
@@ -88,97 +88,138 @@ export function show(req, res, next) {
  * restriction: 'admin'
  */
 export function destroy(req, res) {
-  return User.destroy({ where: { _id: req.params.id } })
-    .then(function() {
-      res.status(204).end();
-    })
-    .catch(handleError(res));
+    return User.destroy({ where: { _id: req.params.id } })
+        .then(function() {
+            res.status(204).end();
+        })
+        .catch(handleError(res));
 }
 
-export function getTRSIDAssets(req, res){
-  sqldb.sequelize.query("SELECT * FROM [aalbert].[RevenueVehicleInventory] WHERE TRSID ='" + 9013 + "'", { type: sqldb.sequelize.QueryTypes.SELECT})
-  .then(assets => {
-    if(!assets){
-      return res.status(404).end();
-    }
-    // console.log(assets);
-    res.json(assets);
-    // We don't need spread here, since only the results will be returned for select queries
-  })
-  .catch(err => next(err));
+export function getTRSIDAssets(req, res) {
+    sqldb.sequelize.query("SELECT * FROM [aalbert].[RevenueVehicleInventory] WHERE TRSID ='" + 9013 + "'", { type: sqldb.sequelize.QueryTypes.SELECT })
+        .then(assets => {
+            if (!assets) {
+                return res.status(404).end();
+            }
+            // console.log(assets);
+            res.json(assets);
+            // We don't need spread here, since only the results will be returned for select queries
+        })
+        .catch(err => next(err));
 }
 
-export function getAssetsTotalCount(req, res){
-  sqldb.sequelize.query("SELECT COUNT(AssetUID) AS count  FROM rtci_app.MainExportVw  WHERE (TRSID = 9013)", { type: sqldb.sequelize.QueryTypes.SELECT})
-  .then(count => {
-    if(!count){
-      return res.status(404).end();
+export function getTRSIDCategoryAssets(req, res) {
+    var category = req.params.category;
+    console.log(category);
+    var query;
+    if (category === 'nonrevenuevehicles') {
+        query = "SELECT * FROM [aalbert].[NonRevenueVehicleInventory] WHERE TRSID ='9013'";
+    } else if (category === 'mandafacilities') {
+        query = "SELECT * FROM [aalbert].[MandAFacilitiesInventory] WHERE TRSID ='9013'";
+    } else if (category === 'passengerfacilities') {
+        query = "SELECT * FROM [aalbert].[PassengerFacilitiesInventory] WHERE TRSID ='9013'";
+    } else if (category === 'revenuevehicles') {
+        query = "SELECT * FROM [aalbert].[RevenueVehicleInventory] WHERE TRSID ='9013'";
     }
-    res.json(count);
-  })
-  .catch(err => next(err));
+
+    console.log(query);
+    sqldb.sequelize.query(query, { type: sqldb.sequelize.QueryTypes.SELECT })
+        .then(assets => {
+            if (!assets) {
+                return res.status(404).end();
+            }
+            // console.log(assets);
+            res.json(assets);
+            // We don't need spread here, since only the results will be returned for select queries
+        })
+        .catch(err => next(err));
+}
+
+export function getAssetsTotalCount(req, res) {
+    sqldb.sequelize.query("SELECT COUNT(AssetUID) AS count  FROM rtci_app.MainExportVw  WHERE (TRSID = 9013)", { type: sqldb.sequelize.QueryTypes.SELECT })
+        .then(count => {
+            if (!count) {
+                return res.status(404).end();
+            }
+            res.json(count);
+        })
+        .catch(err => next(err));
+}
+
+export function getAssetStatusSummary(req, res) {
+    sqldb.sequelize.query("Select * from dbo.AssetStatusSummary_VW", { type: sqldb.sequelize.QueryTypes.SELECT })
+        .then(count => {
+            console.log(count);
+            if (!count) {
+                return res.status(404).end();
+            }
+            res.json(count);
+        })
+        .catch(err => next(err));
 }
 
 /**
  * Change a users password
  */
 export function changePassword(req, res) {
-  var userId = req.user._id;
-  var oldPass = String(req.body.oldPassword);
-  var newPass = String(req.body.newPassword);
+    var userId = req.user._id;
+    var oldPass = String(req.body.oldPassword);
+    var newPass = String(req.body.newPassword);
 
-  return User.find({
-    where: {
-      _id: userId
-    }
-  })
-    .then(user => {
-      if(user.authenticate(oldPass)) {
-        user.password = newPass;
-        return user.save()
-          .then(() => {
-            res.status(204).end();
-          })
-          .catch(validationError(res));
-      } else {
-        return res.status(403).end();
-      }
-    });
+    return User.find({
+            where: {
+                _id: userId
+            }
+        })
+        .then(user => {
+            if (user.authenticate(oldPass)) {
+                user.password = newPass;
+                return user.save()
+                    .then(() => {
+                        res.status(204).end();
+                    })
+                    .catch(validationError(res));
+            } else {
+                return res.status(403).end();
+            }
+        });
 }
 
 /**
  * Get my info
  */
 export function me(req, res, next) {
-  var userId = req.user._id;
+    var userId = req.user._id;
 
-  return User.find({
-    where: {
-      _id: userId
-    },
-    attributes: [
-      '_id',
-      'name',
-      'email',
-      'role',
-      'provider',
-      'FirstName',
-      'LastName',
-      'TRSID'
-    ]
-  })
-    .then(user => { // don't ever give out the password or salt
-      if(!user) {
-        return res.status(401).end();
-      }
-      res.json(user);
-    })
-    .catch(err => next(err));
+    return User.find({
+            where: {
+                _id: userId
+            },
+            attributes: [
+                '_id',
+                'name',
+                'email',
+                'role',
+                'provider',
+                'FirstName',
+                'LastName',
+                'TRSID',
+                'PhoneCell',
+                'PhoneBusiness'
+            ]
+        })
+        .then(user => { // don't ever give out the password or salt
+            if (!user) {
+                return res.status(401).end();
+            }
+            res.json(user);
+        })
+        .catch(err => next(err));
 }
 
 /**
  * Authentication callback
  */
 export function authCallback(req, res) {
-  res.redirect('/');
+    res.redirect('/');
 }

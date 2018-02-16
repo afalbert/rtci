@@ -1,4 +1,4 @@
-<nav ng-if="pages.length >= 5">
+<!-- <nav ng-if="pages.length >= 2">
     <ul class="pagination">
         <li><a class="btn btn-primary" style="color:white;" ng-click="selectPage(1)">First</a>
         </li>
@@ -12,4 +12,4 @@
         </li>
         <li><a class="btn btn-primary" style="color:white;" ng-click="selectPage(numPages)">Last</a></li>
     </ul>
-</nav>
+</nav> -->
