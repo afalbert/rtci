@@ -6,6 +6,7 @@ import ngCookies from 'angular-cookies';
 import ngResource from 'angular-resource';
 import ngSanitize from 'angular-sanitize';
 
+
 import uiRouter from 'angular-ui-router';
 
 import 'angular-validation-match';
@@ -30,6 +31,7 @@ import myaccount from './account/myaccount/myaccount.component';
 import reports from './account/reports/reports.component';
 import constants from './app.constants';
 import util from '../components/util/util.module';
+// import ngMask from './../assets/js/ngMask-min';
 
 import './app.scss';
 

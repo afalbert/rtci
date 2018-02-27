@@ -237,8 +237,8 @@
 <!-- MODALS -->
 
 <!-- Create Asset Modal -->
-<div class="modal  fade" id="createAssetModal" tabindex="-1" role="dialog" aria-labelledby="CreateAssetModalLongTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" id="createAssetModal" tabindex="-1" role="dialog" aria-labelledby="CreateAssetModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="CreateAssetModalLongTitle">Create New Asset: {{inventoryCtrl.createAsset.AssetUID}}</h5>
@@ -252,86 +252,1297 @@
                         <div class="bd-example bd-example-tabs" role="tabpanel">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active modal-tab" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-expanded="true">General</a>
+                                    <a class="nav-link active modal-tab" id="rv-tab" data-toggle="tab" href="#rv" role="tab" aria-controls="home" aria-expanded="true">Revenue Vehicle</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link modal-tab" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-expanded="false">Financial</a>
+                                    <a class="nav-link modal-tab" id="nrv-tab" data-toggle="tab" href="#nrv" role="tab" aria-controls="profile" aria-expanded="false">Non-Revenue Vehicle </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link modal-tab" id="pf-tab" data-toggle="tab" href="#pf" role="tab" aria-controls="profile" aria-expanded="false">Passenger Facility </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link modal-tab" id="ma-tab" data-toggle="tab" href="#ma" role="tab" aria-controls="profile" aria-expanded="false">M&A Facility </a>
                                 </li>
                             </ul>
                             <div class="tab-content" id="myTabContent">
-                                <div role="tabpanel" class="tab-pane fade active show" id="home" aria-labelledby="home-tab" aria-expanded="true">
-                                    <form>
-                                        <h4 style="margin-top:0;">General Information</h4>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail2">Asset Description</label>
-                                            <input style="color:#00738C;font-weight:bold;" type="text" ng-model="inventoryCtrl.createAsset.AssetDesc" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Enter email">
-                                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="yrInServiceInput">Year in Service</label>
-                                            <input ng-model="inventoryCtrl.createAsset.YRInService" style="color:#00738C;font-weight:bold;" type="text" class="form-control" id="yrInServiceInput" placeholder="Password">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleSelect2">Mode Code</label>
-                                            <select style="color:#00738C;font-weight:bold;" class="form-control" id="modeCodeSelect2" ng-model="inventoryCtrl.createAsset.ModeCode">
-                                                    <option>MB</option>
-                                                    <option>SY</option>
-                                                    <option>LR</option>
-                                                    <option>DR</option>
-                                
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="assetStatusSelect2">Asset Status</label>
-                                            <select style="color:#00738C;font-weight:bold;" class="form-control" id="assetStatusSelect2" ng-model="inventoryCtrl.createAsset.AssetStatus">
-                                                    <option>EXT</option>
-                                                    <option>RET</option>
-                                                    <option>XFM</option>
-                                                    <option>CMT</option>
-                                                    <option>EXP</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="yrInServiceInput1">Quantity</label>
-                                            <input ng-model="inventoryCtrl.createAsset.Quantity" style="color:#00738C;font-weight:bold;" type="text" class="form-control" id="yrInServiceInput1" placeholder="Password">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleTextarea2">Notes</label>
-                                            <textarea ng-model="inventoryCtrl.createAsset.AgencyNotes" class="form-control" id="exampleTextarea2" rows="3"></textarea>
-                                        </div>
+                                <div role="tabpanel" class="tab-pane fade active show" id="rv" aria-labelledby="home-tab" aria-expanded="true">
+                                    <form class="form-horizontal" style="width:80%;margin-left:10%;">
+                                        <fieldset>
 
+                                            <!-- Form Name -->
+                                            <legend>Add New Revenue Vehicle</legend>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="rvadd_AgencyAssetUID">Agency Asset ID</label>
+                                                <div class="col-sm-12">
+                                                    <input id="rvadd_AgencyAssetUID" name="rvadd_AgencyAssetUID" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="rvadd_RVID">RVID</label>
+                                                <div class="col-sm-12">
+                                                    <input id="rvadd_RVID" name="rvadd_RVID" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="rvadd_Manufacturer">Manufacturer</label>
+                                                <div class="col-sm-12">
+                                                    <input id="rvadd_Manufacturer" name="rvadd_Manufacturer" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="rvadd_ModelNumber">Model</label>
+                                                <div class="col-sm-12">
+                                                    <input id="rvadd_ModelNumber" name="rvadd_ModelNumber" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="rvadd_AssetDesc">Description</label>
+                                                <div class="col-sm-12">
+                                                    <input id="rvadd_AssetDesc" name="rvadd_AssetDesc" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="rvadd_AgencyDetail">Details</label>
+                                                <div class="col-sm-12">
+                                                    <input id="rvadd_AgencyDetail" name="rvadd_AgencyDetail" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="rvadd_AssetType">Asset Type</label>
+                                                <div class="col-sm-12">
+                                                    <input id="rvadd_AssetType" name="rvadd_AssetType" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Select Basic -->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="rvadd_AssetStatus">Asset Status</label>
+                                                <div class="col-sm-12">
+                                                    <select id="rvadd_AssetStatus" name="rvadd_AssetStatus" class="form-control">
+                                    
+                                          <option value="CMT">Committed</option>
+                                    
+                                          <option value="EXP">Expansion</option>
+                                    
+                                          <option value="EXT">Existing</option>
+                                    
+                                          <option value="OUT">Inactive</option>
+                                    
+                                          <option value="PLN">Long Range Planned</option>
+                                    
+                                          <option value="RES">Reserve</option>
+                                    
+                                          <option value="RET">Retired</option>
+                                    
+                                        </select>
+                                                </div>
+                                            </div>
+
+                                            <!-- Select Basic -->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="rvadd_ModeCode">Mode Code</label>
+                                                <div class="col-sm-12">
+                                                    <select id="rvadd_ModeCode" name="rvadd_ModeCode" class="form-control">
+                                    
+                                          <option value="All">All Modes</option>
+                                    
+                                          <option value="BRT">Bus Rapid Transit</option>
+                                    
+                                          <option value="CC">Cable Car</option>
+                                    
+                                          <option value="CR">Commuter Rail</option>
+                                    
+                                          <option value="DR">Demand Response</option>
+                                    
+                                          <option value="FB">Ferry Boat</option>
+                                    
+                                          <option value="FC">Fare Collection</option>
+                                    
+                                          <option value="HR">Heavy Rail</option>
+                                    
+                                          <option value="JT">Jitney</option>
+                                    
+                                          <option value="LR">Light Rail</option>
+                                    
+                                          <option value="MB">Motor Bus</option>
+                                    
+                                          <option value="MO">Monorail/ATG</option>
+                                    
+                                          <option value="OR">Other</option>
+                                    
+                                          <option value="SY">Systemwide Assets</option>
+                                    
+                                          <option value="TB">Trolleybus</option>
+                                    
+                                          <option value="TR">Aerial Tramway</option>
+                                    
+                                          <option value="VP">Vanpool</option>
+                                    
+                                        </select>
+                                                </div>
+                                            </div>
+
+                                            <!-- Select Basic -->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="rvadd_NTDModeCode">NTD Mode Code</label>
+                                                <div class="col-sm-12">
+                                                    <select id="rvadd_NTDModeCode" name="rvadd_NTDModeCode" class="form-control">
+                                    
+                                          <option value="CB">Commuter Bus</option>
+                                    
+                                          <option value="CC">Cable Car</option>
+                                    
+                                          <option value="CR">Commuter Rail</option>
+                                    
+                                          <option value="DR">Demand Response</option>
+                                    
+                                          <option value="DT">Demand Response (Taxi)</option>
+                                    
+                                          <option value="HR">Heavy Rail</option>
+                                    
+                                          <option value="JT">Jitney</option>
+                                    
+                                          <option value="LR">Light Rail</option>
+                                    
+                                          <option value="MB">Bus</option>
+                                    
+                                          <option value="PB">Publico</option>
+                                    
+                                          <option value="RB">Bus Rapid Transit</option>
+                                    
+                                          <option value="SR">Streetcar Rail</option>
+                                    
+                                          <option value="TB">Trolleybus</option>
+                                    
+                                          <option value="TR">Aerial Tramway</option>
+                                    
+                                          <option value="VP">Vanpool</option>
+                                    
+                                          <option value="YR">Hybrid Rail</option>
+                                    
+                                        </select>
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="rvadd_Quantity">Quantity</label>
+                                                <div class="col-sm-12">
+                                                    <input id="rvadd_Quantity" name="rvadd_Quantity" type="text" placeholder="" class="form-control input-sm">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Select Basic -->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="rvadd_UnitType">Quantity Unit Type</label>
+                                                <div class="col-sm-12">
+                                                    <select id="rvadd_UnitType" name="rvadd_UnitType" class="form-control">
+                                    
+                                          <option value="Entire Building, Structure, or Site">Entire Building, Structure, or Site</option>
+                                    
+                                          <option value="Unit or Vehicle">Unit or Vehicle</option>
+                                    
+                                          <option value="Track Feet">Track Feet</option>
+                                    
+                                          <option value="Linear Feet">Linear Feet</option>
+                                    
+                                          <option value="Set">Set</option>
+                                    
+                                          <option value="Parking Space">Parking Space</option>
+                                    
+                                          <option value="Square Feet">Square Feet</option>
+                                    
+                                        </select>
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="rvadd_UnitCost">Cost Per Unit</label>
+                                                <div class="col-sm-12">
+                                                    <input id="rvadd_UnitCost" name="rvadd_UnitCost" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="rvadd_PercentContingencyFleet">% of Vehicle Fleet Maintained as Contingency</label>
+                                                <div class="col-sm-12">
+                                                    <input id="rvadd_PercentContingencyFleet" name="rvadd_PercentContingencyFleet" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="rvadd_AgencySoftCost">Additional Soft Cost %</label>
+                                                <div class="col-sm-12">
+                                                    <input id="rvadd_AgencySoftCost" name="rvadd_AgencySoftCost" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Select Basic -->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="rvadd_FuelType">Fuel Type</label>
+                                                <div class="col-sm-12">
+                                                    <select id="rvadd_FuelType" name="rvadd_FuelType" class="form-control">
+                                    
+                                          <option value="BD">Biodiesel</option>
+                                    
+                                          <option value="BF">Bunker Fuel</option>
+                                    
+                                          <option value="CN">Compressed Natural Gas</option>
+                                    
+                                          <option value="DF">Diesel</option>
+                                    
+                                          <option value="DU">Dual Fuel (Not Hybrid)</option>
+                                    
+                                          <option value="EB">Internal Battery</option>
+                                    
+                                          <option value="EP">Electric (External)</option>
+                                    
+                                          <option value="ET">Ethanol</option>
+                                    
+                                          <option value="GA">Gasoline</option>
+                                    
+                                          <option value="GR">Grain Additive [INACTIVE CODE]</option>
+                                    
+                                          <option value="HD">Diesel Hybrid</option>
+                                    
+                                          <option value="HG">Gasoline Hybrid</option>
+                                    
+                                          <option value="HY">Hydrogen</option>
+                                    
+                                          <option value="KE">Kerosene</option>
+                                    
+                                          <option value="LN">Liquefied Natural Gas</option>
+                                    
+                                          <option value="LP">Liquefied Petroleum Gas</option>
+                                    
+                                          <option value="MT">Methanol</option>
+                                    
+                                          <option value="OR">Other (Not Listed)</option>
+                                    
+                                        </select>
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="rvadd_CapacitySeated">Seated Passenger Capacity</label>
+                                                <div class="col-sm-12">
+                                                    <input id="rvadd_CapacitySeated" name="rvadd_CapacitySeated" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="rvadd_CapacityStanding">Standing Passenger Capacity</label>
+                                                <div class="col-sm-12">
+                                                    <input id="rvadd_CapacityStanding" name="rvadd_CapacityStanding" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="rvadd_YRBuilt">Year Built</label>
+                                                <div class="col-sm-12">
+                                                    <input id="rvadd_YRBuilt" name="rvadd_YRBuilt" type="text" placeholder="YYYY" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="rvadd_YRInService">Year In Service</label>
+                                                <div class="col-sm-12">
+                                                    <input id="rvadd_YRInService" name="rvadd_YRInService" type="text" placeholder="YYYY" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="rvadd_AgencyUsefulLife">Agency-Specified Useful Life</label>
+                                                <div class="col-sm-12">
+                                                    <input id="rvadd_AgencyUsefulLife" name="rvadd_AgencyUsefulLife" type="text" placeholder="" class="form-control input-md" required="true">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="rvadd_DelayReplaceAge">Delay of Replacement Age (Years)</label>
+                                                <div class="col-sm-12">
+                                                    <input id="rvadd_DelayReplaceAge" name="rvadd_DelayReplaceAge" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="rvadd_LastRenewalYR">Year of Last Renewal</label>
+                                                <div class="col-sm-12">
+                                                    <input id="rvadd_LastRenewalYR" name="rvadd_LastRenewalYR" type="text" placeholder="YYYY" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="rvadd_LastRenewalType">Type of Last Renewal</label>
+                                                <div class="col-sm-12">
+                                                    <input id="rvadd_LastRenewalType" name="rvadd_LastRenewalType" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="rvadd_PriorityStatus">Priority Status</label>
+                                                <div class="col-sm-12">
+                                                    <input id="rvadd_PriorityStatus" name="rvadd_PriorityStatus" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Multiple Checkboxes -->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="rvadd_Checkboxes">Additional Information</label>
+                                                <div class="col-sm-12">
+                                                    <div class="checkbox">
+                                                        <label for="rvadd_Checkboxes-0">
+                                              <input type="checkbox" name="rvadd_Checkboxes" id="rvadd_Checkboxes-0" value="">
+                                              ADA Vehicle
+                                            </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label for="rvadd_Checkboxes-1">
+                                              <input type="checkbox" name="rvadd_Checkboxes" id="rvadd_Checkboxes-1" value="">
+                                              Supports Additional Modes
+                                            </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label for="rvadd_Checkboxes-2">
+                                              <input type="checkbox" name="rvadd_Checkboxes" id="rvadd_Checkboxes-2" value="">
+                                              Subject to Historic Preservation
+                                            </label>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </fieldset>
                                     </form>
                                 </div>
-                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab" aria-expanded="false">
-                                    <form>
-                                        <h4 style="margin-top:0;">Financial Information</h4>
-                                        <div class="form-group">
-                                            <!-- Full Name -->
-                                            <label for="unit_cost" class="control-label">Unit Cost</label>
-                                            <input type="text" class="form-control" id="unit_cost" name="unit_cost">
-                                        </div>
+                                <div class="tab-pane fade" id="nrv" role="tabpanel" aria-labelledby="profile-tab" aria-expanded="false">
+                                    <form class="form-horizontal">
+                                        <fieldset>
 
-                                        <div class="form-group">
-                                            <!-- Full Name -->
-                                            <label for="agency_soft_cost" class="control-label">Agency Soft Cost</label>
-                                            <input type="text" class="form-control" id="agency_soft_cost" name="agency_soft_cost">
-                                        </div>
-                                        <div class="form-group">
-                                            <!-- Full Name -->
-                                            <label for="total_cost" class="control-label">Total Cost</label>
-                                            <input type="text" class="form-control" id="total_cost" name="total_cost">
-                                        </div>
+                                            <!-- Form Name -->
+                                            <legend>Add New Non-Revenue Vehicle</legend>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="nrvadd_AgencyAssetUID">Agency Asset ID</label>
+                                                <div class="col-sm-12">
+                                                    <input id="nrvadd_AgencyAssetUID" name="nrvadd_AgencyAssetUID" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="nrvadd_Manufacturer">Manufacturer</label>
+                                                <div class="col-sm-12">
+                                                    <input id="nrvadd_Manufacturer" name="nrvadd_Manufacturer" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="nrvadd_ModelNumber">Model</label>
+                                                <div class="col-sm-12">
+                                                    <input id="nrvadd_ModelNumber" name="nrvadd_ModelNumber" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="nrvadd_AssetDesc">Description</label>
+                                                <div class="col-sm-12">
+                                                    <input id="nrvadd_AssetDesc" name="nrvadd_AssetDesc" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="nrvadd_AgencyDetail">Details</label>
+                                                <div class="col-sm-12">
+                                                    <input id="nrvadd_AgencyDetail" name="nrvadd_AgencyDetail" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="nrvadd_AssetType">Asset Type</label>
+                                                <div class="col-sm-12">
+                                                    <input id="nrvadd_AssetType" name="nrvadd_AssetType" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Select Basic -->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="nrvadd_AssetStatus">Asset Status</label>
+                                                <div class="col-sm-12">
+                                                    <select id="nrvadd_AssetStatus" name="nrvadd_AssetStatus" class="form-control">
+                                    
+                                          <option value="CMT">Committed</option>
+                                    
+                                          <option value="EXP">Expansion</option>
+                                    
+                                          <option value="EXT">Existing</option>
+                                    
+                                          <option value="OUT">Inactive</option>
+                                    
+                                          <option value="PLN">Long Range Planned</option>
+                                    
+                                          <option value="RES">Reserve</option>
+                                    
+                                          <option value="RET">Retired</option>
+                                    
+                                        </select>
+                                                </div>
+                                            </div>
+
+                                            <!-- Select Basic -->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="nrvadd_ModeCode">Mode Code</label>
+                                                <div class="col-sm-12">
+                                                    <select id="nrvadd_ModeCode" name="nrvadd_ModeCode" class="form-control">
+                                    
+                                          <option value="All">All Modes</option>
+                                    
+                                          <option value="BRT">Bus Rapid Transit</option>
+                                    
+                                          <option value="CC">Cable Car</option>
+                                    
+                                          <option value="CR">Commuter Rail</option>
+                                    
+                                          <option value="DR">Demand Response</option>
+                                    
+                                          <option value="FB">Ferry Boat</option>
+                                    
+                                          <option value="FC">Fare Collection</option>
+                                    
+                                          <option value="HR">Heavy Rail</option>
+                                    
+                                          <option value="JT">Jitney</option>
+                                    
+                                          <option value="LR">Light Rail</option>
+                                    
+                                          <option value="MB">Motor Bus</option>
+                                    
+                                          <option value="MO">Monorail/ATG</option>
+                                    
+                                          <option value="OR">Other</option>
+                                    
+                                          <option value="SY">Systemwide Assets</option>
+                                    
+                                          <option value="TB">Trolleybus</option>
+                                    
+                                          <option value="TR">Aerial Tramway</option>
+                                    
+                                          <option value="VP">Vanpool</option>
+                                    
+                                        </select>
+                                                </div>
+                                            </div>
+
+                                            <!-- Select Basic -->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="nrvadd_NTDModeCode">NTD Mode Code</label>
+                                                <div class="col-sm-12">
+                                                    <select id="nrvadd_NTDModeCode" name="nrvadd_NTDModeCode" class="form-control">
+                                    
+                                          <option value="CB">Commuter Bus</option>
+                                    
+                                          <option value="CC">Cable Car</option>
+                                    
+                                          <option value="CR">Commuter Rail</option>
+                                    
+                                          <option value="DR">Demand Response</option>
+                                    
+                                          <option value="DT">Demand Response (Taxi)</option>
+                                    
+                                          <option value="HR">Heavy Rail</option>
+                                    
+                                          <option value="JT">Jitney</option>
+                                    
+                                          <option value="LR">Light Rail</option>
+                                    
+                                          <option value="MB">Bus</option>
+                                    
+                                          <option value="PB">Publico</option>
+                                    
+                                          <option value="RB">Bus Rapid Transit</option>
+                                    
+                                          <option value="SR">Streetcar Rail</option>
+                                    
+                                          <option value="TB">Trolleybus</option>
+                                    
+                                          <option value="TR">Aerial Tramway</option>
+                                    
+                                          <option value="VP">Vanpool</option>
+                                    
+                                          <option value="YR">Hybrid Rail</option>
+                                    
+                                        </select>
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="nrvadd_Quantity">Quantity</label>
+                                                <div class="col-sm-4">
+                                                    <input id="nrvadd_Quantity" name="nrvadd_Quantity" type="text" placeholder="" class="form-control input-sm">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Select Basic -->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="nrvadd_UnitType">Quantity Unit Type</label>
+                                                <div class="col-sm-12">
+                                                    <select id="nrvadd_UnitType" name="nrvadd_UnitType" class="form-control">
+                                    
+                                          <option value="Entire Building, Structure, or Site">Entire Building, Structure, or Site</option>
+                                    
+                                          <option value="Unit or Vehicle">Unit or Vehicle</option>
+                                    
+                                          <option value="Track Feet">Track Feet</option>
+                                    
+                                          <option value="Linear Feet">Linear Feet</option>
+                                    
+                                          <option value="Set">Set</option>
+                                    
+                                          <option value="Parking Space">Parking Space</option>
+                                    
+                                          <option value="Square Feet">Square Feet</option>
+                                    
+                                        </select>
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="nrvadd_UnitCost">Cost Per Unit</label>
+                                                <div class="col-sm-12">
+                                                    <input id="nrvadd_UnitCost" name="nrvadd_UnitCost" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="nrvadd_AgencySoftCost">Additional Soft Cost %</label>
+                                                <div class="col-sm-12">
+                                                    <input id="nrvadd_AgencySoftCost" name="nrvadd_AgencySoftCost" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Select Basic -->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="nrvadd_FuelType">Fuel Type</label>
+                                                <div class="col-sm-12">
+                                                    <select id="nrvadd_FuelType" name="nrvadd_FuelType" class="form-control">
+                                    
+                                          <option value="BD">Biodiesel</option>
+                                    
+                                          <option value="BF">Bunker Fuel</option>
+                                    
+                                          <option value="CN">Compressed Natural Gas</option>
+                                    
+                                          <option value="DF">Diesel</option>
+                                    
+                                          <option value="DU">Dual Fuel (Not Hybrid)</option>
+                                    
+                                          <option value="EB">Internal Battery</option>
+                                    
+                                          <option value="EP">Electric (External)</option>
+                                    
+                                          <option value="ET">Ethanol</option>
+                                    
+                                          <option value="GA">Gasoline</option>
+                                    
+                                          <option value="GR">Grain Additive [INACTIVE CODE]</option>
+                                    
+                                          <option value="HD">Diesel Hybrid</option>
+                                    
+                                          <option value="HG">Gasoline Hybrid</option>
+                                    
+                                          <option value="HY">Hydrogen</option>
+                                    
+                                          <option value="KE">Kerosene</option>
+                                    
+                                          <option value="LN">Liquefied Natural Gas</option>
+                                    
+                                          <option value="LP">Liquefied Petroleum Gas</option>
+                                    
+                                          <option value="MT">Methanol</option>
+                                    
+                                          <option value="OR">Other (Not Listed)</option>
+                                    
+                                        </select>
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="nrvadd_YRBuilt">Year Built</label>
+                                                <div class="col-sm-12">
+                                                    <input id="nrvadd_YRBuilt" name="nrvadd_YRBuilt" type="text" placeholder="YYYY" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="nrvadd_YRInService">Year In Service</label>
+                                                <div class="col-sm-12">
+                                                    <input id="nrvadd_YRInService" name="nrvadd_YRInService" type="text" placeholder="YYYY" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="nrvadd_AgencyUsefulLife">Agency-Specified Useful Life</label>
+                                                <div class="col-sm-12">
+                                                    <input id="nrvadd_AgencyUsefulLife" name="nrvadd_AgencyUsefulLife" type="text" placeholder="" class="form-control input-md" required="true">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="nrvadd_DelayReplaceAge">Delay of Replacement Age (Years)</label>
+                                                <div class="col-sm-12">
+                                                    <input id="nrvadd_DelayReplaceAge" name="nrvadd_DelayReplaceAge" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="nrvadd_AgencyCapitalResponsibility">Percent Agency Capital Responsibility</label>
+                                                <div class="col-sm-12">
+                                                    <input id="nrvadd_AgencyCapitalResponsibility" name="nrvadd_AgencyCapitalResponsibility" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="nrvadd_LastRenewalYR">Year of Last Renewal</label>
+                                                <div class="col-sm-12">
+                                                    <input id="nrvadd_LastRenewalYR" name="nrvadd_LastRenewalYR" type="text" placeholder="YYYY" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="nrvadd_LastRenewalType">Type of Last Renewal</label>
+                                                <div class="col-sm-12">
+                                                    <input id="nrvadd_LastRenewalType" name="nrvadd_LastRenewalType" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="nrvadd_PriorityStatus">Priority Status</label>
+                                                <div class="col-sm-12">
+                                                    <input id="nrvadd_PriorityStatus" name="nrvadd_PriorityStatus" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                        </fieldset>
                                     </form>
                                 </div>
-                                <div class="tab-pane fade" id="dropdown1" role="tabpanel" aria-labelledby="dropdown1-tab">
-                                    <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard
-                                        locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro
-                                        mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+                                <div class="tab-pane fade" id="pf" role="tabpanel" aria-labelledby="dropdown1-tab">
+                                    <form class="form-horizontal">
+                                        <fieldset>
+
+                                            <!-- Form Name -->
+                                            <legend>Add New Passenger Facility</legend>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="pfadd_AgencyAssetUID">Agency Asset ID</label>
+                                                <div class="col-sm-12">
+                                                    <input id="pfadd_AgencyAssetUID" name="pfadd_AgencyAssetUID" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="pfadd_AssetDesc">Description</label>
+                                                <div class="col-sm-12">
+                                                    <input id="pfadd_AssetDesc" name="pfadd_AssetDesc" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="pfadd_AgencyDetail">Details</label>
+                                                <div class="col-sm-12">
+                                                    <input id="pfadd_AgencyDetail" name="pfadd_AgencyDetail" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="pfadd_AssetType">Asset Type</label>
+                                                <div class="col-sm-12">
+                                                    <input id="pfadd_AssetType" name="pfadd_AssetType" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Select Basic -->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="pfadd_AssetStatus">Asset Status</label>
+                                                <div class="col-sm-12">
+                                                    <select id="pfadd_AssetStatus" name="pfadd_AssetStatus" class="form-control">
+                                    
+                                          <option value="CMT">Committed</option>
+                                    
+                                          <option value="EXP">Expansion</option>
+                                    
+                                          <option value="EXT">Existing</option>
+                                    
+                                          <option value="OUT">Inactive</option>
+                                    
+                                          <option value="PLN">Long Range Planned</option>
+                                    
+                                          <option value="RES">Reserve</option>
+                                    
+                                          <option value="RET">Retired</option>
+                                    
+                                        </select>
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="pfadd_Quantity">Quantity</label>
+                                                <div class="col-sm-4">
+                                                    <input id="pfadd_Quantity" name="pfadd_Quantity" type="text" placeholder="" class="form-control input-sm">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Select Basic -->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="pfadd_UnitType">Quantity Unit Type</label>
+                                                <div class="col-sm-12">
+                                                    <select id="pfadd_UnitType" name="pfadd_UnitType" class="form-control">
+                                    
+                                          <option value="Entire Building, Structure, or Site">Entire Building, Structure, or Site</option>
+                                    
+                                          <option value="Unit or Vehicle">Unit or Vehicle</option>
+                                    
+                                          <option value="Track Feet">Track Feet</option>
+                                    
+                                          <option value="Linear Feet">Linear Feet</option>
+                                    
+                                          <option value="Set">Set</option>
+                                    
+                                          <option value="Parking Space">Parking Space</option>
+                                    
+                                          <option value="Square Feet">Square Feet</option>
+                                    
+                                        </select>
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="pfadd_SquareFootage">Square Footage</label>
+                                                <div class="col-sm-12">
+                                                    <input id="pfadd_SquareFootage" name="pfadd_SquareFootage" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="pfadd_ModeCode">Mode Code</label>
+                                                <div class="col-sm-12">
+                                                    <input id="pfadd_ModeCode" name="pfadd_ModeCode" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="pfadd_NTDModeCode">NTD Mode Code</label>
+                                                <div class="col-sm-12">
+                                                    <input id="pfadd_NTDModeCode" name="pfadd_NTDModeCode" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="pfadd_AssetPhysAddress">Street Address</label>
+                                                <div class="col-sm-12">
+                                                    <input id="pfadd_AssetPhysAddress" name="pfadd_AssetPhysAddress" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="pfadd_AssetPhysCity">City</label>
+                                                <div class="col-sm-12">
+                                                    <input id="pfadd_AssetPhysCity" name="pfadd_AssetPhysCity" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="pfadd_AssetPhysState">State</label>
+                                                <div class="col-sm-12">
+                                                    <input id="pfadd_AssetPhysState" name="pfadd_AssetPhysState" type="text" placeholder="Two letters, e.g. &quot;CA&quot;" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="pfadd_AssetPhysZIP">ZIP Code</label>
+                                                <div class="col-sm-12">
+                                                    <input id="pfadd_AssetPhysZIP" name="pfadd_AssetPhysZIP" type="text" placeholder="e.g. &quot;90210&quot;" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="pfadd_Latitude">Latitude</label>
+                                                <div class="col-sm-12">
+                                                    <input id="pfadd_Latitude" name="pfadd_Latitude" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="pfadd_Longitude">Longitude</label>
+                                                <div class="col-sm-12">
+                                                    <input id="pfadd_Longitude" name="pfadd_Longitude" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="pfadd_UnitCost">Cost Per Unit</label>
+                                                <div class="col-sm-12">
+                                                    <input id="pfadd_UnitCost" name="pfadd_UnitCost" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="pfadd_AgencySoftCost">Additional Soft Cost %</label>
+                                                <div class="col-sm-12">
+                                                    <input id="pfadd_AgencySoftCost" name="pfadd_AgencySoftCost" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="pfadd_YRBuilt">Year Built</label>
+                                                <div class="col-sm-12">
+                                                    <input id="pfadd_YRBuilt" name="pfadd_YRBuilt" type="text" placeholder="YYYY" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="pfadd_AgencyConditionRating">Condition Rating</label>
+                                                <div class="col-sm-12">
+                                                    <input id="pfadd_AgencyConditionRating" name="pfadd_AgencyConditionRating" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="pfadd_DateofLastCondAssessment">Date of Last Condition Assessment</label>
+                                                <div class="col-sm-12">
+                                                    <input id="pfadd_DateofLastCondAssessment" name="pfadd_DateofLastCondAssessment" type="text" placeholder="MM/DD/YYYY" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="pfadd_AgencyCapitalResponsibility">Percent Agency Capital Responsibility</label>
+                                                <div class="col-sm-12">
+                                                    <input id="pfadd_AgencyCapitalResponsibility" name="pfadd_AgencyCapitalResponsibility" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="pfadd_YROfLastRenewal">Year of Last Renewal</label>
+                                                <div class="col-sm-12">
+                                                    <input id="pfadd_YROfLastRenewal" name="pfadd_YROfLastRenewal" type="text" placeholder="YYYY" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="pfadd_LastRenewalType">Type of Last Renewal</label>
+                                                <div class="col-sm-12">
+                                                    <input id="pfadd_LastRenewalType" name="pfadd_LastRenewalType" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="pfadd_PriorityStatus">Priority Status</label>
+                                                <div class="col-sm-12">
+                                                    <input id="pfadd_PriorityStatus" name="pfadd_PriorityStatus" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Multiple Checkboxes -->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="pfadd_HistoricPresrvFlag">Additional Info</label>
+                                                <div class="col-sm-12">
+                                                    <div class="checkbox">
+                                                        <label for="pfadd_HistoricPresrvFlag-0">
+                                              <input type="checkbox" name="pfadd_HistoricPresrvFlag" id="pfadd_HistoricPresrvFlag-0" value="">
+                                              Subject to Historic Preservation
+                                            </label>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </fieldset>
+                                    </form>
                                 </div>
-                                <div class="tab-pane fade" id="dropdown2" role="tabpanel" aria-labelledby="dropdown2-tab">
-                                    <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf
-                                        cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft
-                                        beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+                                <div class="tab-pane fade" id="ma" role="tabpanel" aria-labelledby="dropdown2-tab">
+                                    <form class="form-horizontal">
+                                        <fieldset>
+
+                                            <!-- Form Name -->
+                                            <legend>Add Admin/Maintenance Facility</legend>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="amfadd_AgencyAssetUID">Agency Asset ID</label>
+                                                <div class="col-sm-12">
+                                                    <input id="amfadd_AgencyAssetUID" name="amfadd_AgencyAssetUID" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="amfadd_AssetDesc">Description</label>
+                                                <div class="col-sm-12">
+                                                    <input id="amfadd_AssetDesc" name="amfadd_AssetDesc" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="amfadd_AgencyDetail">Details</label>
+                                                <div class="col-sm-12">
+                                                    <input id="amfadd_AgencyDetail" name="amfadd_AgencyDetail" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="amfadd_AssetType">Asset Type</label>
+                                                <div class="col-sm-12">
+                                                    <input id="amfadd_AssetType" name="amfadd_AssetType" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Select Basic -->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="amfadd_AssetStatus">Asset Status</label>
+                                                <div class="col-sm-12">
+                                                    <select id="amfadd_AssetStatus" name="amfadd_AssetStatus" class="form-control">
+                                    
+                                          <option value="CMT">Committed</option>
+                                    
+                                          <option value="EXP">Expansion</option>
+                                    
+                                          <option value="EXT">Existing</option>
+                                    
+                                          <option value="OUT">Inactive</option>
+                                    
+                                          <option value="PLN">Long Range Planned</option>
+                                    
+                                          <option value="RES">Reserve</option>
+                                    
+                                          <option value="RET">Retired</option>
+                                    
+                                        </select>
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="amfadd_Quantity">Quantity</label>
+                                                <div class="col-sm-12">
+                                                    <input id="amfadd_Quantity" name="amfadd_Quantity" type="text" placeholder="" class="form-control input-sm">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Select Basic -->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="amfadd_UnitType">Quantity Unit Type</label>
+                                                <div class="col-sm-12">
+                                                    <select id="amfadd_UnitType" name="amfadd_UnitType" class="form-control">
+                                    
+                                          <option value="Entire Building, Structure, or Site">Entire Building, Structure, or Site</option>
+                                    
+                                          <option value="Unit or Vehicle">Unit or Vehicle</option>
+                                    
+                                          <option value="Track Feet">Track Feet</option>
+                                    
+                                          <option value="Linear Feet">Linear Feet</option>
+                                    
+                                          <option value="Set">Set</option>
+                                    
+                                          <option value="Parking Space">Parking Space</option>
+                                    
+                                          <option value="Square Feet">Square Feet</option>
+                                    
+                                        </select>
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="amfadd_SquareFootage">Square Footage</label>
+                                                <div class="col-sm-12">
+                                                    <input id="amfadd_SquareFootage" name="amfadd_SquareFootage" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="amfadd_AssetPhysAddress">Street Address</label>
+                                                <div class="col-sm-12">
+                                                    <input id="amfadd_AssetPhysAddress" name="amfadd_AssetPhysAddress" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="amfadd_AssetPhysCity">City</label>
+                                                <div class="col-sm-12">
+                                                    <input id="amfadd_AssetPhysCity" name="amfadd_AssetPhysCity" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="amfadd_AssetPhysState">State</label>
+                                                <div class="col-sm-12">
+                                                    <input id="amfadd_AssetPhysState" name="amfadd_AssetPhysState" type="text" placeholder="Two letters, e.g. &quot;CA&quot;" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="amfadd_AssetPhysZIP">ZIP Code</label>
+                                                <div class="col-sm-12">
+                                                    <input id="amfadd_AssetPhysZIP" name="amfadd_AssetPhysZIP" type="text" placeholder="e.g. &quot;90210&quot;" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="amfadd_Latitude">Latitude</label>
+                                                <div class="col-sm-12">
+                                                    <input id="amfadd_Latitude" name="amfadd_Latitude" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="amfadd_Longitude">Longitude</label>
+                                                <div class="col-sm-12">
+                                                    <input id="amfadd_Longitude" name="amfadd_Longitude" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="amfadd_UnitCost">Cost Per Unit</label>
+                                                <div class="col-sm-12">
+                                                    <input id="amfadd_UnitCost" name="amfadd_UnitCost" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="amfadd_AgencySoftCost">Additional Soft Cost %</label>
+                                                <div class="col-sm-12">
+                                                    <input id="amfadd_AgencySoftCost" name="amfadd_AgencySoftCost" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="amfadd_YRBuilt">Year Built</label>
+                                                <div class="col-sm-12">
+                                                    <input id="amfadd_YRBuilt" name="amfadd_YRBuilt" type="text" placeholder="YYYY" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="amfadd_AgencyConditionRating">Condition Rating</label>
+                                                <div class="col-sm-12">
+                                                    <input id="amfadd_AgencyConditionRating" name="amfadd_AgencyConditionRating" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="amfadd_DateofLastCondAssessment">Date of Last Condition Assessment</label>
+                                                <div class="col-sm-12">
+                                                    <input id="amfadd_DateofLastCondAssessment" name="amfadd_DateofLastCondAssessment" type="text" placeholder="MM/DD/YYYY" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="amfadd_AgencyCapitalResponsibility">Percent Agency Capital Responsibility</label>
+                                                <div class="col-sm-12">
+                                                    <input id="amfadd_AgencyCapitalResponsibility" name="amfadd_AgencyCapitalResponsibility" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="amfadd_YROfLastRenewal">Year of Last Renewal</label>
+                                                <div class="col-sm-12">
+                                                    <input id="amfadd_YROfLastRenewal" name="amfadd_YROfLastRenewal" type="text" placeholder="YYYY" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="amfadd_LastRenewalType">Type of Last Renewal</label>
+                                                <div class="col-sm-12">
+                                                    <input id="amfadd_LastRenewalType" name="amfadd_LastRenewalType" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="amfadd_PriorityStatus">Priority Status</label>
+                                                <div class="col-sm-12">
+                                                    <input id="amfadd_PriorityStatus" name="amfadd_PriorityStatus" type="text" placeholder="" class="form-control input-md">
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Multiple Checkboxes -->
+                                            <div class="form-group">
+                                                <label class="col-sm-12 control-label" for="amfadd_HistoricPresrvFlag">Additional Info</label>
+                                                <div class="col-sm-12">
+                                                    <div class="checkbox">
+                                                        <label for="amfadd_HistoricPresrvFlag-0">
+                                              <input type="checkbox" name="amfadd_HistoricPresrvFlag" id="amfadd_HistoricPresrvFlag-0" value="">
+                                              Subject to Historic Preservation
+                                            </label>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </fieldset>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -347,107 +1558,1073 @@
 </div>
 
 
-<!-- Update Category 1 Modal -->
+<!-- Update Revenue Vehicles Modal -->
 <div class="modal fade" id="editRevenueVehiclesModal" tabindex="-1" role="dialog" aria-labelledby="RevenueVehiclesModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="RevenueVehiclesModalLongTitle">Edit Asset: {{inventoryCtrl.updateAsset.AssetUID}}</h5>
+                <h5 class="modal-title" id="RevenueVehiclesModalLongTitle">Edit Asset: {{inventoryCtrl.updateRevenueAsset.AssetUID}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
             </div>
             <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Asset Description</label>
-                        <input style="color:#00738C;font-weight:bold;" type="text" ng-model="inventoryCtrl.updateAsset.AssetDesc" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                        <small id="emailHelp1" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="yrInServiceInput3">Year in Service</label>
-                        <input ng-model="inventoryCtrl.updateAsset.YRInService" style="color:#00738C;font-weight:bold;" type="text" class="form-control" id="yrInServiceInput3" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleSelect1">Mode Code</label>
-                        <select style="color:#00738C;font-weight:bold;" class="form-control" id="modeCodeSelect" ng-model="inventoryCtrl.updateAsset.ModeCode">
-                      <option>MB</option>
-                      <option>SY</option>
-                      <option>LR</option>
-                      <option>DR</option>
-                  
-                    </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="assetStatusSelect">Asset Status</label>
-                        <select style="color:#00738C;font-weight:bold;" class="form-control" id="assetStatusSelect" ng-model="inventoryCtrl.updateAsset.AssetStatus">
-                        <option>EXT</option>
-                        <option>RET</option>
-                        <option>XFM</option>
-                        <option>CMT</option>
-                        <option>EXP</option>
+                <form class="form-horizontal inventory-form">
+                    <fieldset>
+
+                        <!-- Form Name -->
+                        <legend>Edit Revenue Vehicle</legend>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="rvedit_AgencyAssetUID">Agency Asset ID</label>
+                            <div class="col-sm-12">
+                                <input id="rvedit_AgencyAssetUID" name="rvedit_AgencyAssetUID" ng-model="inventoryCtrl.updateRevenueAsset.AssetUID" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="rvedit_RVID">RVID</label>
+                            <div class="col-sm-12">
+                                <input id="rvedit_RVID" name="rvedit_RVID" type="text" placeholder="" ng-model="inventoryCtrl.updateRevenueAsset.RVID" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="rvedit_Manufacturer">Manufacturer</label>
+                            <div class="col-sm-12">
+                                <input id="rvedit_Manufacturer" name="rvedit_Manufacturer" ng-model="inventoryCtrl.updateRevenueAsset.Manufacturer" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="rvedit_ModelNumber">Model</label>
+                            <div class="col-sm-12">
+                                <input id="rvedit_ModelNumber" name="rvedit_ModelNumber" ng-model="inventoryCtrl.updateRevenueAsset.ModelNumber" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="rvedit_AssetDesc">Description</label>
+                            <div class="col-sm-12">
+                                <input id="rvedit_AssetDesc" name="rvedit_AssetDesc" ng-model="inventoryCtrl.updateRevenueAsset.AssetDesc" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="rvedit_AgencyDetail">Details</label>
+                            <div class="col-sm-12">
+                                <input id="rvedit_AgencyDetail" name="rvedit_AgencyDetail" ng-model="inventoryCtrl.updateRevenueAsset.AgencyDetail" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="rvedit_AssetType">Asset Type</label>
+                            <div class="col-sm-12">
+                                <input id="rvedit_AssetType" name="rvedit_AssetType" ng-model="inventoryCtrl.updateRevenueAsset.AssetType" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Select Basic -->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="rvedit_AssetStatus">Asset Status</label>
+                            <div class="col-sm-12">
+                                <select id="rvedit_AssetStatus" name="rvedit_AssetStatus" ng-model="inventoryCtrl.updateRevenueAsset.AssetStatus" class="form-control">
                     
-                      </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="yrInServiceInput4">Quantity</label>
-                        <input ng-model="inventoryCtrl.updateAsset.Quantity" style="color:#00738C;font-weight:bold;" type="text" class="form-control" id="yrInServiceInput4" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleTextarea">Notes</label>
-                        <textarea ng-model="inventoryCtrl.updateAsset.AgencyNotes" class="form-control" id="exampleTextarea" rows="3"></textarea>
-                    </div>
-                    <!-- <fieldset class="form-group">
-                    <legend>Radio buttons</legend>
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                        Option one is this and that&mdash;be sure to include why it's great
-                      </label>
-                    </div>
-                    <div class="form-check">
-                    <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
-                        Option two can be something else and selecting it will deselect option one
-                      </label>
-                    </div>
-                    <div class="form-check disabled">
-                    <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
-                        Option three is disabled
-                      </label>
-                    </div>
-                  </fieldset> -->
-                    <!-- <div class="form-check">
-                    <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input">
-                      Check me out
-                    </label>
-                  </div> -->
-                    <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+                          <option value="CMT">Committed</option>
+                    
+                          <option value="EXP">Expansion</option>
+                    
+                          <option value="EXT">Existing</option>
+                    
+                          <option value="OUT">Inactive</option>
+                    
+                          <option value="PLN">Long Range Planned</option>
+                    
+                          <option value="RES">Reserve</option>
+                    
+                          <option value="RET">Retired</option>
+                    
+                        </select>
+                            </div>
+                        </div>
+
+                        <!-- Select Basic -->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="rvedit_ModeCode">Mode Code</label>
+                            <div class="col-sm-12">
+                                <select id="rvedit_ModeCode" name="rvedit_ModeCode" ng-model="inventoryCtrl.updateRevenueAsset.ModeCode" class="form-control">
+                    
+                          <option value="All">All Modes</option>
+                    
+                          <option value="BRT">Bus Rapid Transit</option>
+                    
+                          <option value="CC">Cable Car</option>
+                    
+                          <option value="CR">Commuter Rail</option>
+                    
+                          <option value="DR">Demand Response</option>
+                    
+                          <option value="FB">Ferry Boat</option>
+                    
+                          <option value="FC">Fare Collection</option>
+                    
+                          <option value="HR">Heavy Rail</option>
+                    
+                          <option value="JT">Jitney</option>
+                    
+                          <option value="LR">Light Rail</option>
+                    
+                          <option value="MB">Motor Bus</option>
+                    
+                          <option value="MO">Monorail/ATG</option>
+                    
+                          <option value="OR">Other</option>
+                    
+                          <option value="SY">Systemwide Assets</option>
+                    
+                          <option value="TB">Trolleybus</option>
+                    
+                          <option value="TR">Aerial Tramway</option>
+                    
+                          <option value="VP">Vanpool</option>
+                    
+                        </select>
+                            </div>
+                        </div>
+
+                        <!-- Select Basic -->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="rvedit_NTDModeCode">NTD Mode Code</label>
+                            <div class="col-sm-12">
+                                <select id="rvedit_NTDModeCode" name="rvedit_NTDModeCode" ng-model="inventoryCtrl.updateRevenueAsset.NTDModeCode" class="form-control">
+                    
+                          <option value="CB">Commuter Bus</option>
+                    
+                          <option value="CC">Cable Car</option>
+                    
+                          <option value="CR">Commuter Rail</option>
+                    
+                          <option value="DR">Demand Response</option>
+                    
+                          <option value="DT">Demand Response (Taxi)</option>
+                    
+                          <option value="HR">Heavy Rail</option>
+                    
+                          <option value="JT">Jitney</option>
+                    
+                          <option value="LR">Light Rail</option>
+                    
+                          <option value="MB">Bus</option>
+                    
+                          <option value="PB">Publico</option>
+                    
+                          <option value="RB">Bus Rapid Transit</option>
+                    
+                          <option value="SR">Streetcar Rail</option>
+                    
+                          <option value="TB">Trolleybus</option>
+                    
+                          <option value="TR">Aerial Tramway</option>
+                    
+                          <option value="VP">Vanpool</option>
+                    
+                          <option value="YR">Hybrid Rail</option>
+                    
+                        </select>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="rvedit_Quantity">Quantity</label>
+                            <div class="col-sm-12">
+                                <input id="rvedit_Quantity" name="rvedit_Quantity" ng-model="inventoryCtrl.updateRevenueAsset.Quantity" type="text" placeholder="" class="form-control input-sm">
+
+                            </div>
+                        </div>
+
+                        <!-- Select Basic -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="rvedit_UnitType">Quantity Unit Type</label>
+                            <div class="col-sm-12">
+                                <select id="rvedit_UnitType" name="rvedit_UnitType" ng-model="inventoryCtrl.updateRevenueAsset.UnitType" class="form-control">
+                    
+                          <option value="Entire Building, Structure, or Site">Entire Building, Structure, or Site</option>
+                    
+                          <option value="Unit or Vehicle">Unit or Vehicle</option>
+                    
+                          <option value="Track Feet">Track Feet</option>
+                    
+                          <option value="Linear Feet">Linear Feet</option>
+                    
+                          <option value="Set">Set</option>
+                    
+                          <option value="Parking Space">Parking Space</option>
+                    
+                          <option value="Square Feet">Square Feet</option>
+                    
+                        </select>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="rvedit_UnitCost">Cost Per Unit</label>
+                            <div class="col-sm-12">
+                                <input id="rvedit_UnitCost" name="rvedit_UnitCost" ng-model="inventoryCtrl.updateRevenueAsset.UnitCost" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="rvedit_PercentContingencyFleet">% of Vehicle Fleet Maintained as Contingency</label>
+                            <div class="col-sm-12">
+                                <input id="rvedit_PercentContingencyFleet" name="rvedit_PercentContingencyFleet" ng-model="inventoryCtrl.updateRevenueAsset.PercentContingencyFleet" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="rvedit_AgencySoftCost">Additional Soft Cost %</label>
+                            <div class="col-sm-12">
+                                <input id="rvedit_AgencySoftCost" name="rvedit_AgencySoftCost" ng-model="inventoryCtrl.updateRevenueAsset.AgencySoftCost" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Select Basic -->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="rvedit_FuelType">Fuel Type</label>
+                            <div class="col-sm-12">
+                                <select id="rvedit_FuelType" name="rvedit_FuelType" ng-model="inventoryCtrl.updateRevenueAsset.FuelType" class="form-control">
+                    
+                          <option value="BD">Biodiesel</option>
+                    
+                          <option value="BF">Bunker Fuel</option>
+                    
+                          <option value="CN">Compressed Natural Gas</option>
+                    
+                          <option value="DF">Diesel</option>
+                    
+                          <option value="DU">Dual Fuel (Not Hybrid)</option>
+                    
+                          <option value="EB">Internal Battery</option>
+                    
+                          <option value="EP">Electric (External)</option>
+                    
+                          <option value="ET">Ethanol</option>
+                    
+                          <option value="GA">Gasoline</option>
+                    
+                          <option value="GR">Grain Additive [INACTIVE CODE]</option>
+                    
+                          <option value="HD">Diesel Hybrid</option>
+                    
+                          <option value="HG">Gasoline Hybrid</option>
+                    
+                          <option value="HY">Hydrogen</option>
+                    
+                          <option value="KE">Kerosene</option>
+                    
+                          <option value="LN">Liquefied Natural Gas</option>
+                    
+                          <option value="LP">Liquefied Petroleum Gas</option>
+                    
+                          <option value="MT">Methanol</option>
+                    
+                          <option value="OR">Other (Not Listed)</option>
+                    
+                        </select>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="rvedit_CapacitySeated">Seated Passenger Capacity</label>
+                            <div class="col-sm-12">
+                                <input id="rvedit_CapacitySeated" name="rvedit_CapacitySeated" ng-model="inventoryCtrl.updateRevenueAsset.CapacitySeated" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="rvedit_CapacityStanding">Standing Passenger Capacity</label>
+                            <div class="col-sm-12">
+                                <input id="rvedit_CapacityStanding" name="rvedit_CapacityStanding" ng-model="inventoryCtrl.updateRevenueAsset.CapacityStanding" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="rvedit_YRBuilt">Year Built</label>
+                            <div class="col-sm-12">
+                                <input id="rvedit_YRBuilt" name="rvedit_YRBuilt" type="text" ng-model="inventoryCtrl.updateRevenueAsset.YRBuilt" placeholder="YYYY" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="rvedit_YRInService">Year In Service</label>
+                            <div class="col-sm-12">
+                                <input id="rvedit_YRInService" name="rvedit_YRInService" ng-model="inventoryCtrl.updateRevenueAsset.YRInService" type="text" placeholder="YYYY" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="rvedit_AgencyUsefulLife">Agency-Specified Useful Life</label>
+                            <div class="col-sm-12">
+                                <input id="rvedit_AgencyUsefulLife" name="rvedit_AgencyUsefulLife" ng-model="inventoryCtrl.updateRevenueAsset.AgencyUsefulLife" type="text" placeholder="" class="form-control input-md" required="true">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="rvedit_DelayReplaceAge">Delay of Replacement Age (Years)</label>
+                            <div class="col-sm-12">
+                                <input id="rvedit_DelayReplaceAge" name="rvedit_DelayReplaceAge" ng-model="inventoryCtrl.updateRevenueAsset.DelayReplaceAge" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="rvedit_LastRenewalYR">Year of Last Renewal</label>
+                            <div class="col-sm-12">
+                                <input id="rvedit_LastRenewalYR" name="rvedit_LastRenewalYR" ng-model="inventoryCtrl.updateRevenueAsset.LastRenewalYR" type="text" placeholder="YYYY" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="rvedit_LastRenewalType">Type of Last Renewal</label>
+                            <div class="col-sm-12">
+                                <input id="rvedit_LastRenewalType" name="rvedit_LastRenewalType" ng-model="inventoryCtrl.updateRevenueAsset.LastRenewalType" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="rvedit_PriorityStatus">Priority Status</label>
+                            <div class="col-sm-12">
+                                <input id="rvedit_PriorityStatus" name="rvedit_PriorityStatus" ng-model="inventoryCtrl.updateRevenueAsset.PriorityStatus" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Multiple Checkboxes -->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="rvedit_Checkboxes">Additional Information</label>
+                            <div class="col-sm-12">
+                                <div class="checkbox">
+                                    <label for="rvedit_Checkboxes-0">
+                              <input type="checkbox" name="rvedit_Checkboxes" id="rvedit_Checkboxes-0" value="1">
+                              ADA Vehicle
+                            </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label for="rvedit_Checkboxes-1">
+                              <input type="checkbox" name="rvedit_Checkboxes" id="rvedit_Checkboxes-1" value="2">
+                              Supports Additional Modes
+                            </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label for="rvedit_Checkboxes-2">
+                              <input type="checkbox" name="rvedit_Checkboxes" id="rvedit_Checkboxes-2" value="3">
+                              Subject to Historic Preservation
+                            </label>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="inventoryCtrl.saveAssetUpdates('rv')"><i class="fa fa-spinner fa-spin  fa-fw" ng-if="inventoryCtrl.savingAssetSpinner"></i>Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Update Non Revenue Vehicles Modal -->
+<div class="modal fade" id="editnonRevenueVehiclesModal" tabindex="-1" role="dialog" aria-labelledby="nonRevenueVehiclesModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="nonRevenueVehiclesModalLongTitle">Edit Asset</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal inventory-form">
+                    <fieldset>
+
+                        <!-- Form Name -->
+                        <legend>Edit Non-Revenue Vehicle</legend>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="nrvedit_AgencyAssetUID">Agency Asset ID</label>
+                            <div class="col-sm-12">
+                                <input id="nrvedit_AgencyAssetUID" ng-model="inventoryCtrl.updateNonRevenueAsset.AgencyAssetUID" name="nrvedit_AgencyAssetUID" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="nrvedit_Manufacturer">Manufacturer</label>
+                            <div class="col-sm-12">
+                                <input id="nrvedit_Manufacturer" ng-model="inventoryCtrl.updateNonRevenueAsset.Manufacturer" name="nrvedit_Manufacturer" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="nrvedit_ModelNumber">Model</label>
+                            <div class="col-sm-12">
+                                <input id="nrvedit_ModelNumber" ng-model="inventoryCtrl.updateNonRevenueAsset.ModelNumber" name="nrvedit_ModelNumber" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="nrvedit_AssetDesc">Description</label>
+                            <div class="col-sm-12">
+                                <input id="nrvedit_AssetDesc" ng-model="inventoryCtrl.updateNonRevenueAsset.AssetDesc" name="nrvedit_AssetDesc" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="nrvedit_AgencyDetail">Details</label>
+                            <div class="col-sm-12">
+                                <input id="nrvedit_AgencyDetail" ng-model="inventoryCtrl.updateNonRevenueAsset.AgencyDetail" name="nrvedit_AgencyDetail" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="nrvedit_AssetType">Asset Type</label>
+                            <div class="col-sm-12">
+                                <input id="nrvedit_AssetType" ng-model="inventoryCtrl.updateNonRevenueAsset.AssetType" name="nrvedit_AssetType" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Select Basic -->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="nrvedit_AssetStatus">Asset Status</label>
+                            <div class="col-sm-12">
+                                <select id="nrvedit_AssetStatus" ng-model="inventoryCtrl.updateNonRevenueAsset.AssetStatus" name="nrvedit_AssetStatus" class="form-control">
+                
+                      <option value="CMT">Committed</option>
+                
+                      <option value="EXP">Expansion</option>
+                
+                      <option value="EXT">Existing</option>
+                
+                      <option value="OUT">Inactive</option>
+                
+                      <option value="PLN">Long Range Planned</option>
+                
+                      <option value="RES">Reserve</option>
+                
+                      <option value="RET">Retired</option>
+                
+                    </select>
+                            </div>
+                        </div>
+
+                        <!-- Select Basic -->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="nrvedit_ModeCode">Mode Code</label>
+                            <div class="col-sm-12">
+                                <select id="nrvedit_ModeCode" ng-model="inventoryCtrl.updateNonRevenueAsset.ModeCode" name="nrvedit_ModeCode" class="form-control">
+                
+                      <option value="All">All Modes</option>
+                
+                      <option value="BRT">Bus Rapid Transit</option>
+                
+                      <option value="CC">Cable Car</option>
+                
+                      <option value="CR">Commuter Rail</option>
+                
+                      <option value="DR">Demand Response</option>
+                
+                      <option value="FB">Ferry Boat</option>
+                
+                      <option value="FC">Fare Collection</option>
+                
+                      <option value="HR">Heavy Rail</option>
+                
+                      <option value="JT">Jitney</option>
+                
+                      <option value="LR">Light Rail</option>
+                
+                      <option value="MB">Motor Bus</option>
+                
+                      <option value="MO">Monorail/ATG</option>
+                
+                      <option value="OR">Other</option>
+                
+                      <option value="SY">Systemwide Assets</option>
+                
+                      <option value="TB">Trolleybus</option>
+                
+                      <option value="TR">Aerial Tramway</option>
+                
+                      <option value="VP">Vanpool</option>
+                
+                    </select>
+                            </div>
+                        </div>
+
+                        <!-- Select Basic -->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="nrvedit_NTDModeCode">NTD Mode Code</label>
+                            <div class="col-sm-12">
+                                <select id="nrvedit_NTDModeCode" ng-model="inventoryCtrl.updateNonRevenueAsset.NTDModeCode" name="nrvedit_NTDModeCode" class="form-control">
+                
+                      <option value="CB">Commuter Bus</option>
+                
+                      <option value="CC">Cable Car</option>
+                
+                      <option value="CR">Commuter Rail</option>
+                
+                      <option value="DR">Demand Response</option>
+                
+                      <option value="DT">Demand Response (Taxi)</option>
+                
+                      <option value="HR">Heavy Rail</option>
+                
+                      <option value="JT">Jitney</option>
+                
+                      <option value="LR">Light Rail</option>
+                
+                      <option value="MB">Bus</option>
+                
+                      <option value="PB">Publico</option>
+                
+                      <option value="RB">Bus Rapid Transit</option>
+                
+                      <option value="SR">Streetcar Rail</option>
+                
+                      <option value="TB">Trolleybus</option>
+                
+                      <option value="TR">Aerial Tramway</option>
+                
+                      <option value="VP">Vanpool</option>
+                
+                      <option value="YR">Hybrid Rail</option>
+                
+                    </select>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="nrvedit_Quantity">Quantity</label>
+                            <div class="col-sm-12">
+                                <input id="nrvedit_Quantity" ng-model="inventoryCtrl.updateNonRevenueAsset.Quantity" name="nrvedit_Quantity" type="text" placeholder="" class="form-control input-sm">
+
+                            </div>
+                        </div>
+
+                        <!-- Select Basic -->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="nrvedit_UnitType">Quantity Unit Type</label>
+                            <div class="col-sm-12">
+                                <select id="nrvedit_UnitType" ng-model="inventoryCtrl.updateNonRevenueAsset.UnitType" name="nrvedit_UnitType" class="form-control">
+                
+                      <option value="Entire Building, Structure, or Site">Entire Building, Structure, or Site</option>
+                
+                      <option value="Unit or Vehicle">Unit or Vehicle</option>
+                
+                      <option value="Track Feet">Track Feet</option>
+                
+                      <option value="Linear Feet">Linear Feet</option>
+                
+                      <option value="Set">Set</option>
+                
+                      <option value="Parking Space">Parking Space</option>
+                
+                      <option value="Square Feet">Square Feet</option>
+                
+                    </select>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="nrvedit_UnitCost">Cost Per Unit</label>
+                            <div class="col-sm-12">
+                                <input id="nrvedit_UnitCost" ng-model="inventoryCtrl.updateNonRevenueAsset.UnitCost" name="nrvedit_UnitCost" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="nrvedit_AgencySoftCost">Additional Soft Cost %</label>
+                            <div class="col-sm-12">
+                                <input id="nrvedit_AgencySoftCost" ng-model="inventoryCtrl.updateNonRevenueAsset.AgencySoftCost" name="nrvedit_AgencySoftCost" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Select Basic -->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="nrvedit_FuelType">Fuel Type</label>
+                            <div class="col-sm-12">
+                                <select id="nrvedit_FuelType" ng-model="inventoryCtrl.updateNonRevenueAsset.FuelType" name="nrvedit_FuelType" class="form-control">
+                
+                      <option value="BD">Biodiesel</option>
+                
+                      <option value="BF">Bunker Fuel</option>
+                
+                      <option value="CN">Compressed Natural Gas</option>
+                
+                      <option value="DF">Diesel</option>
+                
+                      <option value="DU">Dual Fuel (Not Hybrid)</option>
+                
+                      <option value="EB">Internal Battery</option>
+                
+                      <option value="EP">Electric (External)</option>
+                
+                      <option value="ET">Ethanol</option>
+                
+                      <option value="GA">Gasoline</option>
+                
+                      <option value="GR">Grain Additive [INACTIVE CODE]</option>
+                
+                      <option value="HD">Diesel Hybrid</option>
+                
+                      <option value="HG">Gasoline Hybrid</option>
+                
+                      <option value="HY">Hydrogen</option>
+                
+                      <option value="KE">Kerosene</option>
+                
+                      <option value="LN">Liquefied Natural Gas</option>
+                
+                      <option value="LP">Liquefied Petroleum Gas</option>
+                
+                      <option value="MT">Methanol</option>
+                
+                      <option value="OR">Other (Not Listed)</option>
+                
+                    </select>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="nrvedit_YRBuilt">Year Built</label>
+                            <div class="col-sm-12">
+                                <input id="nrvedit_YRBuilt" ng-model="inventoryCtrl.updateNonRevenueAsset.YRBuilt" name="nrvedit_YRBuilt" type="text" placeholder="YYYY" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="nrvedit_YRInService">Year In Service</label>
+                            <div class="col-sm-12">
+                                <input id="nrvedit_YRInService" ng-model="inventoryCtrl.updateNonRevenueAsset.YRInService" name="nrvedit_YRInService" type="text" placeholder="YYYY" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="nrvedit_AgencyUsefulLife">Agency-Specified Useful Life</label>
+                            <div class="col-sm-12">
+                                <input id="nrvedit_AgencyUsefulLife" ng-model="inventoryCtrl.updateNonRevenueAsset.AgencyUsefulLife" name="nrvedit_AgencyUsefulLife" type="text" placeholder="" class="form-control input-md" required="true">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="nrvedit_DelayReplaceAge">Delay of Replacement Age (Years)</label>
+                            <div class="col-sm-12">
+                                <input id="nrvedit_DelayReplaceAge" ng-model="inventoryCtrl.updateNonRevenueAsset.DelayReplaceAge" name="nrvedit_DelayReplaceAge" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="nrvedit_AgencyCapitalResponsibility">Percent Agency Capital Responsibility</label>
+                            <div class="col-sm-12">
+                                <input id="nrvedit_AgencyCapitalResponsibility" ng-model="inventoryCtrl.updateNonRevenueAsset.AgencyCapitalResponsibility" name="nrvedit_AgencyCapitalResponsibility" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="nrvedit_LastRenewalYR">Year of Last Renewal</label>
+                            <div class="col-sm-12">
+                                <input id="nrvedit_LastRenewalYR" ng-model="inventoryCtrl.updateNonRevenueAsset.LastRenewalYR" name="nrvedit_LastRenewalYR" type="text" placeholder="YYYY" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="nrvedit_LastRenewalType">Type of Last Renewal</label>
+                            <div class="col-sm-12">
+                                <input id="nrvedit_LastRenewalType" ng-model="inventoryCtrl.updateNonRevenueAsset.LastRenewalType" name="nrvedit_LastRenewalType" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="nrvedit_PriorityStatus">Priority Status</label>
+                            <div class="col-sm-12">
+                                <input id="nrvedit_PriorityStatus" ng-model="inventoryCtrl.updateNonRevenueAsset.PriorityStatus" name="nrvedit_PriorityStatus" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                    </fieldset>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" ng-click="inventoryCtrl.saveAssetUpdates()">Save changes</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
 </div>
 
 
-<!-- Update Category 1 Modal -->
-<div class="modal fade" id="editCategory1Modal" tabindex="-1" role="dialog" aria-labelledby="Category1ModalLongTitle" aria-hidden="true">
+<!-- Update Passenger Facilities Modal -->
+<div class="modal fade" id="editpassengerFacilitiesModal" tabindex="-1" role="dialog" aria-labelledby="passengerFacilitiesModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="Category1ModalLongTitle">Edit Asset</h5>
+                <h5 class="modal-title" id="passengerFacilitiesModalLongTitle">Edit Asset</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-                ...
+                <form class="form-horizontal inventory-form">
+                    <fieldset>
+
+                        <!-- Form Name -->
+                        <legend>Edit Passenger Facilities</legend>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="pfedit_AgencyAssetUID">Agency Asset ID</label>
+                            <div class="col-sm-12">
+                                <input id="pfedit_AgencyAssetUID" ng-model="inventoryCtrl.updatePassengerAsset.AgencyAssetUID" name="pfedit_AgencyAssetUID" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="pfedit_AssetDesc">Description</label>
+                            <div class="col-sm-12">
+                                <input id="pfedit_AssetDesc" ng-model="inventoryCtrl.updatePassengerAsset.AssetDesc" name="pfedit_AssetDesc" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="pfedit_AgencyDetail">Details</label>
+                            <div class="col-sm-12">
+                                <input id="pfedit_AgencyDetail" ng-model="inventoryCtrl.updatePassengerAsset.AgencyDetail" name="pfedit_AgencyDetail" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="pfedit_AssetType">Asset Type</label>
+                            <div class="col-sm-12">
+                                <input id="pfedit_AssetType" ng-model="inventoryCtrl.updatePassengerAsset.AssetType" name="pfedit_AssetType" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Select Basic -->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="pfedit_AssetStatus">Asset Status</label>
+                            <div class="col-sm-12">
+                                <select id="pfedit_AssetStatus" ng-model="inventoryCtrl.updatePassengerAsset.AssetStatus" name="pfedit_AssetStatus" class="form-control">
+                    
+                          <option value="CMT">Committed</option>
+                    
+                          <option value="EXP">Expansion</option>
+                    
+                          <option value="EXT">Existing</option>
+                    
+                          <option value="OUT">Inactive</option>
+                    
+                          <option value="PLN">Long Range Planned</option>
+                    
+                          <option value="RES">Reserve</option>
+                    
+                          <option value="RET">Retired</option>
+                    
+                        </select>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="pfedit_Quantity">Quantity</label>
+                            <div class="col-sm-12">
+                                <input id="pfedit_Quantity" ng-model="inventoryCtrl.updatePassengerAsset.Quantity" name="pfedit_Quantity" type="text" placeholder="" class="form-control input-sm">
+
+                            </div>
+                        </div>
+
+                        <!-- Select Basic -->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="pfedit_UnitType">Quantity Unit Type</label>
+                            <div class="col-sm-12">
+                                <select id="pfedit_UnitType" ng-model="inventoryCtrl.updatePassengerAsset.UnitType" name="pfedit_UnitType" class="form-control">
+                    
+                          <option value="Entire Building, Structure, or Site">Entire Building, Structure, or Site</option>
+                    
+                          <option value="Unit or Vehicle">Unit or Vehicle</option>
+                    
+                          <option value="Track Feet">Track Feet</option>
+                    
+                          <option value="Linear Feet">Linear Feet</option>
+                    
+                          <option value="Set">Set</option>
+                    
+                          <option value="Parking Space">Parking Space</option>
+                    
+                          <option value="Square Feet">Square Feet</option>
+                    
+                        </select>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="pfedit_SquareFootage">Square Footage</label>
+                            <div class="col-sm-12">
+                                <input id="pfedit_SquareFootage" ng-model="inventoryCtrl.updatePassengerAsset.SquareFootage" name="pfedit_SquareFootage" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="pfedit_ModeCode">Mode Code</label>
+                            <div class="col-sm-12">
+                                <input id="pfedit_ModeCode" ng-model="inventoryCtrl.updatePassengerAsset.ModeCode" name="pfedit_ModeCode" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="pfedit_NTDModeCode">NTD Mode Code</label>
+                            <div class="col-sm-12">
+                                <input id="pfedit_NTDModeCode" ng-model="inventoryCtrl.updatePassengerAsset.NTDModeCode" name="pfedit_NTDModeCode" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="pfedit_AssetPhysAddress">Street Address</label>
+                            <div class="col-sm-12">
+                                <input id="pfedit_AssetPhysAddress" ng-model="inventoryCtrl.updatePassengerAsset.AssetPhysAddress" name="pfedit_AssetPhysAddress" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="pfedit_AssetPhysCity">City</label>
+                            <div class="col-sm-12">
+                                <input id="pfedit_AssetPhysCity" ng-model="inventoryCtrl.updatePassengerAsset.AssetPhysCity" name="pfedit_AssetPhysCity" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="pfedit_AssetPhysState">State</label>
+                            <div class="col-sm-12">
+                                <input id="pfedit_AssetPhysState" ng-model="inventoryCtrl.updatePassengerAsset.AssetPhysState" name="pfedit_AssetPhysState" type="text" placeholder="Two letters, e.g. &quot;CA&quot;" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="pfedit_AssetPhysZIP">ZIP Code</label>
+                            <div class="col-sm-12">
+                                <input id="pfedit_AssetPhysZIP" ng-model="inventoryCtrl.updatePassengerAsset.AssetPhysZIP" name="pfedit_AssetPhysZIP" type="text" placeholder="e.g. &quot;90210&quot;" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="pfedit_Latitude">Latitude</label>
+                            <div class="col-sm-12">
+                                <input id="pfedit_Latitude" ng-model="inventoryCtrl.updatePassengerAsset.Latitude" name="pfedit_Latitude" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="pfedit_Longitude">Longitude</label>
+                            <div class="col-sm-12">
+                                <input id="pfedit_Longitude" ng-model="inventoryCtrl.updatePassengerAsset.Longitude" name="pfedit_Longitude" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="pfedit_UnitCost">Cost Per Unit</label>
+                            <div class="col-sm-12">
+                                <input id="pfedit_UnitCost" ng-model="inventoryCtrl.updatePassengerAsset.UnitCost" name="pfedit_UnitCost" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="pfedit_AgencySoftCost">Additional Soft Cost %</label>
+                            <div class="col-sm-12">
+                                <input id="pfedit_AgencySoftCost" ng-model="inventoryCtrl.updatePassengerAsset.AgencySoftCost" name="pfedit_AgencySoftCost" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="pfedit_YRBuilt">Year Built</label>
+                            <div class="col-sm-12">
+                                <input id="pfedit_YRBuilt" ng-model="inventoryCtrl.updatePassengerAsset.YRBuilt" name="pfedit_YRBuilt" type="text" placeholder="YYYY" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="pfedit_AgencyConditionRating">Condition Rating</label>
+                            <div class="col-sm-12">
+                                <input id="pfedit_AgencyConditionRating" ng-model="inventoryCtrl.updatePassengerAsset.AgencyConditionRating" name="pfedit_AgencyConditionRating" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="pfedit_DateofLastCondAssessment">Date of Last Condition Assessment</label>
+                            <div class="col-sm-12">
+                                <input id="pfedit_DateofLastCondAssessment" ng-model="inventoryCtrl.updatePassengerAsset.DateofLastCondAssessment" name="pfedit_DateofLastCondAssessment" type="text" placeholder="MM/DD/YYYY" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="pfedit_AgencyCapitalResponsibility">Percent Agency Capital Responsibility</label>
+                            <div class="col-sm-12">
+                                <input id="pfedit_AgencyCapitalResponsibility" ng-model="inventoryCtrl.updatePassengerAsset.AgencyCapitalResponsibility" name="pfedit_AgencyCapitalResponsibility" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="pfedit_YROfLastRenewal">Year of Last Renewal</label>
+                            <div class="col-sm-12">
+                                <input id="pfedit_YROfLastRenewal" ng-model="inventoryCtrl.updatePassengerAsset.YROfLastRenewal" name="pfedit_YROfLastRenewal" type="text" placeholder="YYYY" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="pfedit_LastRenewalType">Type of Last Renewal</label>
+                            <div class="col-sm-12">
+                                <input id="pfedit_LastRenewalType" ng-model="inventoryCtrl.updatePassengerAsset.LastRenewalType" name="pfedit_LastRenewalType" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="pfedit_PriorityStatus">Priority Status</label>
+                            <div class="col-sm-12">
+                                <input id="pfedit_PriorityStatus" ng-model="inventoryCtrl.updatePassengerAsset.PriorityStatus" name="pfedit_PriorityStatus" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Multiple Checkboxes -->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="pfedit_HistoricPresrvFlag">Additional Info</label>
+                            <div class="col-sm-12">
+                                <div class="checkbox">
+                                    <label for="pfedit_HistoricPresrvFlag-0">
+                              <input type="checkbox"  name="pfedit_HistoricPresrvFlag" id="pfedit_HistoricPresrvFlag-0" value="">
+                              Subject to Historic Preservation
+                            </label>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -458,40 +2635,276 @@
 </div>
 
 
-<!-- Update Category 2 Modal -->
-<div class="modal fade" id="editCategory2Modal" tabindex="-1" role="dialog" aria-labelledby="Category2ModalLongTitle" aria-hidden="true">
+<!-- Update Admin and Maintenance Modal -->
+<div class="modal fade" id="editadminAndMaintenanceModal" tabindex="-1" role="dialog" aria-labelledby="adminAndMaintenanceModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="Category2ModalLongTitle">Edit Asset</h5>
+                <h5 class="modal-title" id="adminAndMaintenanceModalLongTitle">Edit Asset</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
+                <form class="form-horizontal inventory-form">
+                    <fieldset>
 
+                        <!-- Form Name -->
+                        <legend>Edit Admin/Maintenance Facility</legend>
 
-<!-- Update Category 3 Modal -->
-<div class="modal fade" id="editCategory3Modal" tabindex="-1" role="dialog" aria-labelledby="Category3ModalLongTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="Category3ModalLongTitle">Edit Asset</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                ...
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="amfedit_AgencyAssetUID">Agency Asset ID</label>
+                            <div class="col-sm-12">
+                                <input id="amfedit_AgencyAssetUID" ng-model="inventoryCtrl.updateMAAsset.AgencyAssetUID" name="amfedit_AgencyAssetUID" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="amfedit_AssetDesc">Description</label>
+                            <div class="col-sm-12">
+                                <input id="amfedit_AssetDesc" ng-model="inventoryCtrl.updateMAAsset.AssetDesc" name="amfedit_AssetDesc" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="amfedit_AgencyDetail">Details</label>
+                            <div class="col-sm-12">
+                                <input id="amfedit_AgencyDetail" ng-model="inventoryCtrl.updateMAAsset.AgencyDetail" name="amfedit_AgencyDetail" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="amfedit_AssetType">Asset Type</label>
+                            <div class="col-sm-12">
+                                <input id="amfedit_AssetType" ng-model="inventoryCtrl.updateMAAsset.AssetType" name="amfedit_AssetType" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Select Basic -->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="amfedit_AssetStatus">Asset Status</label>
+                            <div class="col-sm-12">
+                                <select id="amfedit_AssetStatus" ng-model="inventoryCtrl.updateMAAsset.AssetStatus" name="amfedit_AssetStatus" class="form-control">
+                
+                      <option value="CMT">Committed</option>
+                
+                      <option value="EXP">Expansion</option>
+                
+                      <option value="EXT">Existing</option>
+                
+                      <option value="OUT">Inactive</option>
+                
+                      <option value="PLN">Long Range Planned</option>
+                
+                      <option value="RES">Reserve</option>
+                
+                      <option value="RET">Retired</option>
+                
+                    </select>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="amfedit_Quantity">Quantity</label>
+                            <div class="col-sm-12">
+                                <input id="amfedit_Quantity" ng-model="inventoryCtrl.updateMAAsset.Quantity" name="amfedit_Quantity" type="text" placeholder="" class="form-control input-sm">
+
+                            </div>
+                        </div>
+
+                        <!-- Select Basic -->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="amfedit_UnitType">Quantity Unit Type</label>
+                            <div class="col-sm-12">
+                                <select id="amfedit_UnitType" ng-model="inventoryCtrl.updateMAAsset.UnitType" name="amfedit_UnitType" class="form-control">
+                
+                      <option value="Entire Building, Structure, or Site">Entire Building, Structure, or Site</option>
+                
+                      <option value="Unit or Vehicle">Unit or Vehicle</option>
+                
+                      <option value="Track Feet">Track Feet</option>
+                
+                      <option value="Linear Feet">Linear Feet</option>
+                
+                      <option value="Set">Set</option>
+                
+                      <option value="Parking Space">Parking Space</option>
+                
+                      <option value="Square Feet">Square Feet</option>
+                
+                    </select>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="amfedit_SquareFootage">Square Footage</label>
+                            <div class="col-sm-12">
+                                <input id="amfedit_SquareFootage" ng-model="inventoryCtrl.updateMAAsset.SquareFootage" name="amfedit_SquareFootage" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="amfedit_AssetPhysAddress">Street Address</label>
+                            <div class="col-sm-12">
+                                <input id="amfedit_AssetPhysAddress" ng-model="inventoryCtrl.updateMAAsset.AssetPhysAddress" name="amfedit_AssetPhysAddress" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="amfedit_AssetPhysCity">City</label>
+                            <div class="col-sm-12">
+                                <input id="amfedit_AssetPhysCity" ng-model="inventoryCtrl.updateMAAsset.AssetPhysCity" name="amfedit_AssetPhysCity" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="amfedit_AssetPhysState">State</label>
+                            <div class="col-sm-12">
+                                <input id="amfedit_AssetPhysState" ng-model="inventoryCtrl.updateMAAsset.AssetPhysState" name="amfedit_AssetPhysState" type="text" placeholder="Two letters, e.g. &quot;CA&quot;" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="amfedit_AssetPhysZIP">ZIP Code</label>
+                            <div class="col-sm-12">
+                                <input id="amfedit_AssetPhysZIP" ng-model="inventoryCtrl.updateMAAsset.AssetPhysZIP" name="amfedit_AssetPhysZIP" type="text" placeholder="e.g. &quot;90210&quot;" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="amfedit_Latitude">Latitude</label>
+                            <div class="col-sm-12">
+                                <input id="amfedit_Latitude" ng-model="inventoryCtrl.updateMAAsset.Latitude" name="amfedit_Latitude" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="amfedit_Longitude">Longitude</label>
+                            <div class="col-sm-12">
+                                <input id="amfedit_Longitude" ng-model="inventoryCtrl.updateMAAsset.Longitude" name="amfedit_Longitude" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="amfedit_UnitCost">Cost Per Unit</label>
+                            <div class="col-sm-12">
+                                <input id="amfedit_UnitCost" ng-model="inventoryCtrl.updateMAAsset.UnitCost" name="amfedit_UnitCost" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="amfedit_AgencySoftCost">Additional Soft Cost %</label>
+                            <div class="col-sm-12">
+                                <input id="amfedit_AgencySoftCost" ng-model="inventoryCtrl.updateMAAsset.AgencySoftCost" name="amfedit_AgencySoftCost" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="amfedit_YRBuilt">Year Built</label>
+                            <div class="col-sm-12">
+                                <input id="amfedit_YRBuilt" ng-model="inventoryCtrl.updateMAAsset.YRBuilt" name="amfedit_YRBuilt" type="text" placeholder="YYYY" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="amfedit_AgencyConditionRating">Condition Rating</label>
+                            <div class="col-sm-12">
+                                <input id="amfedit_AgencyConditionRating" ng-model="inventoryCtrl.updateMAAsset.AgencyConditionRating" name="amfedit_AgencyConditionRating" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="amfedit_DateofLastCondAssessment">Date of Last Condition Assessment</label>
+                            <div class="col-sm-12">
+                                <input id="amfedit_DateofLastCondAssessment" ng-model="inventoryCtrl.updateMAAsset.DateofLastCondAssessment" name="amfedit_DateofLastCondAssessment" type="text" placeholder="MM/DD/YYYY" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="amfedit_AgencyCapitalResponsibility">Percent Agency Capital Responsibility</label>
+                            <div class="col-sm-12">
+                                <input id="amfedit_AgencyCapitalResponsibility" ng-model="inventoryCtrl.updateMAAsset.AgencyCapitalResponsibility" name="amfedit_AgencyCapitalResponsibility" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="amfedit_YROfLastRenewal">Year of Last Renewal</label>
+                            <div class="col-sm-12">
+                                <input id="amfedit_YROfLastRenewal" ng-model="inventoryCtrl.updateMAAsset.YROfLastRenewal" name="amfedit_YROfLastRenewal" type="text" placeholder="YYYY" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="amfedit_LastRenewalType">Type of Last Renewal</label>
+                            <div class="col-sm-12">
+                                <input id="amfedit_LastRenewalType" ng-model="inventoryCtrl.updateMAAsset.LastRenewalType" name="amfedit_LastRenewalType" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="amfedit_PriorityStatus">Priority Status</label>
+                            <div class="col-sm-12">
+                                <input id="amfedit_PriorityStatus" ng-model="inventoryCtrl.updateMAAsset.PriorityStatus" name="amfedit_PriorityStatus" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Multiple Checkboxes -->
+                        <div class="form-group">
+                            <label class="col-sm-12 control-label" for="amfedit_HistoricPresrvFlag">Additional Info</label>
+                            <div class="col-sm-12">
+                                <div class="checkbox">
+                                    <label for="amfedit_HistoricPresrvFlag-0">
+                          <input type="checkbox"  name="amfedit_HistoricPresrvFlag" id="amfedit_HistoricPresrvFlag-0" value="">
+                          Subject to Historic Preservation
+                        </label>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

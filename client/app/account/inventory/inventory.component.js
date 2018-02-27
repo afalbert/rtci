@@ -9,23 +9,30 @@ export class InventoryComponent {
     /*@ngInject*/
     constructor($http, $scope) {
         this.message = 'Hello';
+        this.$http = $http;
 
 
-        $http.get('/api/users/getAssets')
-            .then(response => {
-                console.log(response);
-                $scope.rowCollection = response.data;
-                $scope.modeCode = _.uniq(_.map(response.data, 'ModeCode'));
-                $scope.assetStatus = _.uniq(_.map(response.data, 'AssetStatus'));
-                $scope.manufacturer = _.uniq(_.map(response.data, 'Manufacturer'));
-                console.log($scope.Status);
-            })
-            .catch(err => {
-                console.log(err);
-            })
 
+
+        $scope.getAssets = function() {
+            $http.get('/api/users/getAssets')
+                .then(response => {
+                    console.log(response);
+                    $scope.rowCollection = response.data;
+                    $scope.modeCode = _.uniq(_.map(response.data, 'ModeCode'));
+                    $scope.assetStatus = _.uniq(_.map(response.data, 'AssetStatus'));
+                    $scope.manufacturer = _.uniq(_.map(response.data, 'Manufacturer'));
+                    console.log($scope.Status);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        }
+
+        $scope.getAssets();
         $scope.updateTable = function(category) {
             $scope.rowCollection = null;
+            $scope.category = category;
             console.log(category);
             if (category === 'passengerfacilities') {
                 $scope.type = ': Passenger Facilites';
@@ -51,7 +58,7 @@ export class InventoryComponent {
                     console.log(err);
                 })
         };
-
+        this.$scope = $scope;
     }
 
     $onInit() {
@@ -62,13 +69,48 @@ export class InventoryComponent {
     editAsset(asset) {
         console.log(asset);
         this.updateAsset = asset;
-        $('#editRevenueVehiclesModal').modal();
+        console.log(this.$scope);
+        if (!this.$scope.category) {
+            this.updateRevenueAsset = asset;
+            $('#editRevenueVehiclesModal').modal();
+        } else if (this.$scope.category && this.$scope.category === 'passengerfacilities') {
+            this.updatePassengerAsset = asset;
+            $('#editpassengerFacilitiesModal').modal();
+        } else if (this.$scope.category && this.$scope.category === 'mandafacilities') {
+            this.updateMAAsset = asset;
+            $('#editadminAndMaintenanceModal').modal();
+        } else if (this.$scope.category && this.$scope.category === 'revenuevehicles') {
+            this.updateRevenueAsset = asset;
+            $('#editRevenueVehiclesModal').modal();
+        } else if (this.$scope.category && this.$scope.category === 'nonrevenuevehicles') {
+            this.updateNonRevenueAsset = asset;
+            $('#editnonRevenueVehiclesModal').modal();
+        }
+
     }
 
-    saveAssetUpdates() {
+
+
+    saveAssetUpdates(category) {
+        console.log(this.$scope);
+        this.savingAssetSpinner = true;
         console.log(this.updateAsset);
-        this.updateAsset = {};
-        $('#editRevenueVehiclesModal').modal('hide');
+        this.updateAsset.category = category;
+        // this.updateAsset = {};
+
+        this.$http.put('/api/users/' + this.updateAsset.AssetUID + '/asset', this.updateAsset)
+            .then(response => {
+                console.log(response);
+                if (response.data.returnValue === 0) {
+                    this.$scope.getAssets();
+
+                    $('#editRevenueVehiclesModal').modal('hide');
+                    this.savingAssetSpinner = false;
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            });
     }
 }
 

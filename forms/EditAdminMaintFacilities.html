@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>
+        test
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+</head>
+
+<body>
+    <form class="form-horizontal">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>Edit Admin/Maintenance Facility</legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-sm-12 control-label" for="amfedit_AgencyAssetUID">Agency Asset ID</label>
+                <div class="col-sm-12">
+                    <input id="amfedit_AgencyAssetUID" name="amfedit_AgencyAssetUID" type="text" placeholder="" class="form-control input-md" data-validation-help="&nbsp;&nbsp;Please give us some more information">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-sm-12 control-label" for="amfedit_AssetDesc">Description</label>
+                <div class="col-sm-12">
+                    <input id="amfedit_AssetDesc" name="amfedit_AssetDesc" type="text" placeholder="" class="form-control input-md" data-suggestions="White, Green, Blue, Black, Brown">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-sm-12 control-label" for="amfedit_AgencyDetail">Details</label>
+                <div class="col-sm-12">
+                    <input id="amfedit_AgencyDetail" name="amfedit_AgencyDetail" type="text" placeholder="" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-sm-12 control-label" for="amfedit_AssetType">Asset Type</label>
+                <div class="col-sm-12">
+                    <input id="amfedit_AssetType" name="amfedit_AssetType" type="text" placeholder="" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Select Basic -->
+            <div class="form-group">
+                <label class="col-sm-12 control-label" for="amfedit_AssetStatus">Asset Status</label>
+                <div class="col-sm-12">
+                    <select id="amfedit_AssetStatus" name="amfedit_AssetStatus" class="form-control">
+
+<option value="CMT">Committed</option>
+
+<option value="EXP">Expansion</option>
+
+<option value="EXT">Existing</option>
+
+<option value="OUT">Inactive</option>
+
+<option value="PLN">Long Range Planned</option>
+
+<option value="RES">Reserve</option>
+
+<option value="RET">Retired</option>
+
+</select>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-sm-12 control-label" for="amfedit_Quantity">Quantity</label>
+                <div class="col-sm-12">
+                    <input id="amfedit_Quantity" name="amfedit_Quantity" type="text" placeholder="" class="form-control input-sm" data-validation="number">
+
+                </div>
+            </div>
+
+            <!-- Select Basic -->
+            <div class="form-group">
+                <label class="col-sm-12 control-label" for="amfedit_UnitType">Quantity Unit Type</label>
+                <div class="col-sm-12">
+                    <select id="amfedit_UnitType" name="amfedit_UnitType" class="form-control">
+
+<option value="Entire Building, Structure, or Site">Entire Building, Structure, or Site</option>
+
+<option value="Unit or Vehicle">Unit or Vehicle</option>
+
+<option value="Track Feet">Track Feet</option>
+
+<option value="Linear Feet">Linear Feet</option>
+
+<option value="Set">Set</option>
+
+<option value="Parking Space">Parking Space</option>
+
+<option value="Square Feet">Square Feet</option>
+
+</select>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-sm-12 control-label" for="amfedit_SquareFootage">Square Footage</label>
+                <div class="col-sm-12">
+                    <input id="amfedit_SquareFootage" name="amfedit_SquareFootage" type="text" placeholder="" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-sm-12 control-label" for="amfedit_AssetPhysAddress">Street Address</label>
+                <div class="col-sm-12">
+                    <input id="amfedit_AssetPhysAddress" name="amfedit_AssetPhysAddress" type="text" placeholder="" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-sm-12 control-label" for="amfedit_AssetPhysCity">City</label>
+                <div class="col-sm-12">
+                    <input id="amfedit_AssetPhysCity" name="amfedit_AssetPhysCity" type="text" placeholder="" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-sm-12 control-label" for="amfedit_AssetPhysState">State</label>
+                <div class="col-sm-12">
+                    <input id="amfedit_AssetPhysState" name="amfedit_AssetPhysState" type="text" placeholder="Two letters, e.g. &quot;CA&quot;" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-sm-12 control-label" for="amfedit_AssetPhysZIP">ZIP Code</label>
+                <div class="col-sm-12">
+                    <input id="amfedit_AssetPhysZIP" name="amfedit_AssetPhysZIP" type="text" placeholder="e.g. &quot;90210&quot;" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-sm-12 control-label" for="amfedit_Latitude">Latitude</label>
+                <div class="col-sm-12">
+                    <input id="amfedit_Latitude" name="amfedit_Latitude" type="text" placeholder="" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-sm-12 control-label" for="amfedit_Longitude">Longitude</label>
+                <div class="col-sm-12">
+                    <input id="amfedit_Longitude" name="amfedit_Longitude" type="text" placeholder="" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-sm-12 control-label" for="amfedit_UnitCost">Cost Per Unit</label>
+                <div class="col-sm-12">
+                    <input id="amfedit_UnitCost" name="amfedit_UnitCost" type="text" placeholder="" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-sm-12 control-label" for="amfedit_AgencySoftCost">Additional Soft Cost %</label>
+                <div class="col-sm-12">
+                    <input id="amfedit_AgencySoftCost" name="amfedit_AgencySoftCost" type="text" placeholder="" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-sm-12 control-label" for="amfedit_YRBuilt">Year Built</label>
+                <div class="col-sm-12">
+                    <input id="amfedit_YRBuilt" name="amfedit_YRBuilt" type="text" placeholder="YYYY" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-sm-12 control-label" for="amfedit_AgencyConditionRating">Condition Rating</label>
+                <div class="col-sm-12">
+                    <input id="amfedit_AgencyConditionRating" name="amfedit_AgencyConditionRating" type="text" placeholder="" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-sm-12 control-label" for="amfedit_DateofLastCondAssessment">Date of Last Condition Assessment</label>
+                <div class="col-sm-12">
+                    <input id="amfedit_DateofLastCondAssessment" name="amfedit_DateofLastCondAssessment" type="text" placeholder="MM/DD/YYYY" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-sm-12 control-label" for="amfedit_AgencyCapitalResponsibility">Percent Agency Capital Responsibility</label>
+                <div class="col-sm-12">
+                    <input id="amfedit_AgencyCapitalResponsibility" name="amfedit_AgencyCapitalResponsibility" type="text" placeholder="" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-sm-12 control-label" for="amfedit_YROfLastRenewal">Year of Last Renewal</label>
+                <div class="col-sm-12">
+                    <input id="amfedit_YROfLastRenewal" name="amfedit_YROfLastRenewal" type="text" placeholder="YYYY" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-sm-12 control-label" for="amfedit_LastRenewalType">Type of Last Renewal</label>
+                <div class="col-sm-12">
+                    <input id="amfedit_LastRenewalType" name="amfedit_LastRenewalType" type="text" placeholder="" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-sm-12 control-label" for="amfedit_PriorityStatus">Priority Status</label>
+                <div class="col-sm-12">
+                    <input id="amfedit_PriorityStatus" name="amfedit_PriorityStatus" type="text" placeholder="" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Multiple Checkboxes -->
+            <div class="form-group">
+                <label class="col-sm-12 control-label" for="amfedit_HistoricPresrvFlag">Additional Info</label>
+                <div class="col-sm-12">
+                    <div class="checkbox">
+                        <label for="amfedit_HistoricPresrvFlag-0">
+<input type="checkbox" name="amfedit_HistoricPresrvFlag" id="amfedit_HistoricPresrvFlag-0" value="">
+Subject to Historic Preservation
+</label>
+                    </div>
+
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+    <script>
+        $.validate({
+            lang: 'en'
+        });
+    </script>
+
+</body>
+
+</html>

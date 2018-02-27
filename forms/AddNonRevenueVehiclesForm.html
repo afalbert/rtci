@@ -1,0 +1,341 @@
+<form class="form-horizontal">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>Add Non-Revenue Vehicle</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="nrvadd_AgencyAssetUID">Agency Asset ID</label>
+            <div class="col-sm-12">
+                <input id="nrvadd_AgencyAssetUID" name="nrvadd_AgencyAssetUID" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="nrvadd_Manufacturer">Manufacturer</label>
+            <div class="col-sm-12">
+                <input id="nrvadd_Manufacturer" name="nrvadd_Manufacturer" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="nrvadd_ModelNumber">Model</label>
+            <div class="col-sm-12">
+                <input id="nrvadd_ModelNumber" name="nrvadd_ModelNumber" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="nrvadd_AssetDesc">Description</label>
+            <div class="col-sm-12">
+                <input id="nrvadd_AssetDesc" name="nrvadd_AssetDesc" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="nrvadd_AgencyDetail">Details</label>
+            <div class="col-sm-12">
+                <input id="nrvadd_AgencyDetail" name="nrvadd_AgencyDetail" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="nrvadd_AssetType">Asset Type</label>
+            <div class="col-sm-12">
+                <input id="nrvadd_AssetType" name="nrvadd_AssetType" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Select Basic -->
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="nrvadd_AssetStatus">Asset Status</label>
+            <div class="col-sm-12">
+                <select id="nrvadd_AssetStatus" name="nrvadd_AssetStatus" class="form-control">
+
+      <option value="CMT">Committed</option>
+
+      <option value="EXP">Expansion</option>
+
+      <option value="EXT">Existing</option>
+
+      <option value="OUT">Inactive</option>
+
+      <option value="PLN">Long Range Planned</option>
+
+      <option value="RES">Reserve</option>
+
+      <option value="RET">Retired</option>
+
+    </select>
+            </div>
+        </div>
+
+        <!-- Select Basic -->
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="nrvadd_ModeCode">Mode Code</label>
+            <div class="col-sm-12">
+                <select id="nrvadd_ModeCode" name="nrvadd_ModeCode" class="form-control">
+
+      <option value="All">All Modes</option>
+
+      <option value="BRT">Bus Rapid Transit</option>
+
+      <option value="CC">Cable Car</option>
+
+      <option value="CR">Commuter Rail</option>
+
+      <option value="DR">Demand Response</option>
+
+      <option value="FB">Ferry Boat</option>
+
+      <option value="FC">Fare Collection</option>
+
+      <option value="HR">Heavy Rail</option>
+
+      <option value="JT">Jitney</option>
+
+      <option value="LR">Light Rail</option>
+
+      <option value="MB">Motor Bus</option>
+
+      <option value="MO">Monorail/ATG</option>
+
+      <option value="OR">Other</option>
+
+      <option value="SY">Systemwide Assets</option>
+
+      <option value="TB">Trolleybus</option>
+
+      <option value="TR">Aerial Tramway</option>
+
+      <option value="VP">Vanpool</option>
+
+    </select>
+            </div>
+        </div>
+
+        <!-- Select Basic -->
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="nrvadd_NTDModeCode">NTD Mode Code</label>
+            <div class="col-sm-12">
+                <select id="nrvadd_NTDModeCode" name="nrvadd_NTDModeCode" class="form-control">
+
+      <option value="CB">Commuter Bus</option>
+
+      <option value="CC">Cable Car</option>
+
+      <option value="CR">Commuter Rail</option>
+
+      <option value="DR">Demand Response</option>
+
+      <option value="DT">Demand Response (Taxi)</option>
+
+      <option value="HR">Heavy Rail</option>
+
+      <option value="JT">Jitney</option>
+
+      <option value="LR">Light Rail</option>
+
+      <option value="MB">Bus</option>
+
+      <option value="PB">Publico</option>
+
+      <option value="RB">Bus Rapid Transit</option>
+
+      <option value="SR">Streetcar Rail</option>
+
+      <option value="TB">Trolleybus</option>
+
+      <option value="TR">Aerial Tramway</option>
+
+      <option value="VP">Vanpool</option>
+
+      <option value="YR">Hybrid Rail</option>
+
+    </select>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="nrvadd_Quantity">Quantity</label>
+            <div class="col-sm-4">
+                <input id="nrvadd_Quantity" name="nrvadd_Quantity" type="text" placeholder="" class="form-control input-sm">
+
+            </div>
+        </div>
+
+        <!-- Select Basic -->
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="nrvadd_UnitType">Quantity Unit Type</label>
+            <div class="col-sm-12">
+                <select id="nrvadd_UnitType" name="nrvadd_UnitType" class="form-control">
+
+      <option value="Entire Building, Structure, or Site">Entire Building, Structure, or Site</option>
+
+      <option value="Unit or Vehicle">Unit or Vehicle</option>
+
+      <option value="Track Feet">Track Feet</option>
+
+      <option value="Linear Feet">Linear Feet</option>
+
+      <option value="Set">Set</option>
+
+      <option value="Parking Space">Parking Space</option>
+
+      <option value="Square Feet">Square Feet</option>
+
+    </select>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="nrvadd_UnitCost">Cost Per Unit</label>
+            <div class="col-sm-12">
+                <input id="nrvadd_UnitCost" name="nrvadd_UnitCost" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="nrvadd_AgencySoftCost">Additional Soft Cost %</label>
+            <div class="col-sm-12">
+                <input id="nrvadd_AgencySoftCost" name="nrvadd_AgencySoftCost" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Select Basic -->
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="nrvadd_FuelType">Fuel Type</label>
+            <div class="col-sm-12">
+                <select id="nrvadd_FuelType" name="nrvadd_FuelType" class="form-control">
+
+      <option value="BD">Biodiesel</option>
+
+      <option value="BF">Bunker Fuel</option>
+
+      <option value="CN">Compressed Natural Gas</option>
+
+      <option value="DF">Diesel</option>
+
+      <option value="DU">Dual Fuel (Not Hybrid)</option>
+
+      <option value="EB">Internal Battery</option>
+
+      <option value="EP">Electric (External)</option>
+
+      <option value="ET">Ethanol</option>
+
+      <option value="GA">Gasoline</option>
+
+      <option value="GR">Grain Additive [INACTIVE CODE]</option>
+
+      <option value="HD">Diesel Hybrid</option>
+
+      <option value="HG">Gasoline Hybrid</option>
+
+      <option value="HY">Hydrogen</option>
+
+      <option value="KE">Kerosene</option>
+
+      <option value="LN">Liquefied Natural Gas</option>
+
+      <option value="LP">Liquefied Petroleum Gas</option>
+
+      <option value="MT">Methanol</option>
+
+      <option value="OR">Other (Not Listed)</option>
+
+    </select>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="nrvadd_YRBuilt">Year Built</label>
+            <div class="col-sm-12">
+                <input id="nrvadd_YRBuilt" name="nrvadd_YRBuilt" type="text" placeholder="YYYY" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="nrvadd_YRInService">Year In Service</label>
+            <div class="col-sm-12">
+                <input id="nrvadd_YRInService" name="nrvadd_YRInService" type="text" placeholder="YYYY" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="nrvadd_AgencyUsefulLife">Agency-Specified Useful Life</label>
+            <div class="col-sm-12">
+                <input id="nrvadd_AgencyUsefulLife" name="nrvadd_AgencyUsefulLife" type="text" placeholder="" class="form-control input-md" required="true">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="nrvadd_DelayReplaceAge">Delay of Replacement Age (Years)</label>
+            <div class="col-sm-12">
+                <input id="nrvadd_DelayReplaceAge" name="nrvadd_DelayReplaceAge" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="nrvadd_AgencyCapitalResponsibility">Percent Agency Capital Responsibility</label>
+            <div class="col-sm-12">
+                <input id="nrvadd_AgencyCapitalResponsibility" name="nrvadd_AgencyCapitalResponsibility" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="nrvadd_LastRenewalYR">Year of Last Renewal</label>
+            <div class="col-sm-12">
+                <input id="nrvadd_LastRenewalYR" name="nrvadd_LastRenewalYR" type="text" placeholder="YYYY" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="nrvadd_LastRenewalType">Type of Last Renewal</label>
+            <div class="col-sm-12">
+                <input id="nrvadd_LastRenewalType" name="nrvadd_LastRenewalType" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="nrvadd_PriorityStatus">Priority Status</label>
+            <div class="col-sm-12">
+                <input id="nrvadd_PriorityStatus" name="nrvadd_PriorityStatus" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+    </fieldset>
+</form>

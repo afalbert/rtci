@@ -13,7 +13,9 @@ router.get('/getAssets', auth.isAuthenticated(), controller.getTRSIDAssets);
 router.get('/getAssets/Total', auth.isAuthenticated(), controller.getAssetsTotalCount);
 router.delete('/:id', auth.hasRole('admin'), controller.destroy);
 router.get('/me', auth.isAuthenticated(), controller.me);
+router.put('/:id/asset', auth.isAuthenticated(), controller.updateAsset);
 router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
+router.put('/:id/account', auth.isAuthenticated(), controller.changeAccountInfo);
 router.get('/:id', auth.isAuthenticated(), controller.show);
 router.post('/', controller.create);
 

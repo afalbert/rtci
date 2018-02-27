@@ -15,6 +15,12 @@
                         <div role="tabpanel" class="tab-pane fade active show" id="home" aria-labelledby="home-tab" aria-expanded="true">
                             <form>
                                 <h3>Update Account Information</h3>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert" ng-if="myaccountCtrl.accountSuccess">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <strong>Success!</strong> Your account has been updated.
+                                </div>
                                 <div class="form-group">
                                     <!-- First Name -->
                                     <label for="first_name_id" class="control-label">First Name</label>
@@ -35,7 +41,7 @@
                                 <div class="form-group">
                                     <!-- Street 1 -->
                                     <label for="street1_id" class="control-label">Phone (Business)</label>
-                                    <input ng-model="myaccountCtrl.user.PhoneBusiness" type="text" class="form-control" id="street1_id" name="street1" placeholder="Street address, P.O. box, company name, c/o">
+                                    <input ng-model="myaccountCtrl.user.PhoneBusiness" ng-mask="(999)999-9999" type="text" class="form-control" id="street1_id" name="street1" placeholder="Street address, P.O. box, company name, c/o">
                                 </div>
 
                                 <div class="form-group">
@@ -56,7 +62,7 @@
 
                                 <div class="form-group">
                                     <!-- Submit Button -->
-                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    <button type="submit" class="btn btn-primary" ng-click="myaccountCtrl.updateUser()">Save Changes</button>
                                 </div>
 
                             </form>
@@ -64,20 +70,26 @@
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab" aria-expanded="false">
                             <form>
                                 <h3>Update Password</h3>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert" ng-if="myaccountCtrl.pwdSuccess">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <strong>Success!</strong> Your password has been changed.
+                                </div>
                                 <div class="form-group">
                                     <!-- Full Name -->
-                                    <label for="new_password" class="control-label">New Password</label>
-                                    <input type="password" class="form-control" id="new_password" name="new_password">
+                                    <label for="old_password" class="control-label">Enter Old Password</label>
+                                    <input type="password" class="form-control" id="old_password" name="old_password" ng-model="myaccountCtrl.pwd.old">
                                 </div>
 
                                 <div class="form-group">
                                     <!-- Full Name -->
-                                    <label for="confirm_new_password" class="control-label">Confirm New Password</label>
-                                    <input type="password" class="form-control" id="confirm_new_password" name="confirm_new_password">
+                                    <label for="confirm_new_password" class="control-label">Create New Password</label>
+                                    <input type="password" class="form-control" id="confirm_new_password" name="confirm_new_password" ng-model="myaccountCtrl.pwd.new">
                                 </div>
                                 <div class="form-group">
                                     <!-- Submit Button -->
-                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    <button type="submit" class="btn btn-primary" ng-click="myaccountCtrl.updateUserPwd()">Save Changes</button>
                                 </div>
 
 
