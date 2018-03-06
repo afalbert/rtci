@@ -11,6 +11,7 @@ import sqldb from '../../sqldb';
 
 var sql = require("mssql");
 console.log(config.mssql.config);
+console.log(process.env.SQL_USER);
 
 
 
@@ -354,6 +355,55 @@ export function updateAsset(req, res) {
 
 
 }
+
+/**
+ * Visualizations for Dashboard
+ */
+export function getPAOUL(req, res) {
+    sqldb.sequelize.query("SELECT * FROM [aalbert].[PAOUL] WHERE TRSID = " + 9013, {
+            type: sqldb.sequelize.QueryTypes.SELECT
+        })
+        .then(assets => {
+            if (!assets) {
+                return res.status(404).end();
+            }
+            // console.log(assets);
+            res.json(assets);
+            // We don't need spread here, since only the results will be returned for select queries
+        })
+        .catch(err => next(err));
+}
+
+export function getAssetCategories(req, res) {
+    sqldb.sequelize.query("SELECT * FROM [aalbert].[AssetCategories] WHERE TRSID = " + 9013, {
+            type: sqldb.sequelize.QueryTypes.SELECT
+        })
+        .then(assets => {
+            if (!assets) {
+                return res.status(404).end();
+            }
+            // console.log(assets);
+            res.json(assets);
+            // We don't need spread here, since only the results will be returned for select queries
+        })
+        .catch(err => next(err));
+}
+
+export function totalAssets(req, res) {
+    sqldb.sequelize.query("SELECT * FROM [aalbert].[NumRevenueVehicles] WHERE TRSID = " + 9013, {
+            type: sqldb.sequelize.QueryTypes.SELECT
+        })
+        .then(assets => {
+            if (!assets) {
+                return res.status(404).end();
+            }
+            // console.log(assets);
+            res.json(assets);
+            // We don't need spread here, since only the results will be returned for select queries
+        })
+        .catch(err => next(err));
+}
+
 /**
  * Get my info
  */

@@ -6,147 +6,179 @@ const uiRouter = require('angular-ui-router');
 import routes from './dashboard.routes';
 
 export class DashboardComponent {
-    /*@ngInject*/
-    constructor($http, $state) {
-        this.message = 'Hello';
-        this.$http = $http;
-        this.$state = $state;
+  /*@ngInject*/
+  constructor($http, $state) {
+    this.message = 'Hello';
+    this.$http = $http;
+    this.$state = $state;
+  }
+
+  $onInit() {
+    var paoul = [];
+    var assetCategories = [];
+
+    this.$http.get('/api/users/dashboard/totalAssets')
+    .then(response => {
+      console.log(response.data);
+      this.assetsTotal = response.data[0].numvehicles;
+    })
+    .catch(err => {
+      console.log(err);
+    })
+
+    this.$http.get('/api/users/dashboard/paoul')
+      .then(response => {
+        // console.log(response);
+        paoul = response.data;
+        paoulChart(paoul);
+
+      })
+      .catch(err => {
+        console.log(err);
+      })
+
+    this.$http.get('/api/users/dashboard/assetCategories')
+      .then(response => {
+        assetCategories = response.data;
+        // console.log(assetCategories);
+        assetCategoriesChart(assetCategories);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+
+    this.$http.get('/api/users/getAssets/assetSummary')
+      .then(result => {
+        // console.log(result);
+        this.assetsSummary = result.data;
+        // console.log(this.assetsSummary);
+
+        var test = _.map(this.assetsSummary, 'ModeCode');
+        // loadHighCharts(test);
+        // console.log(test);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+
+
+    // High Charts
+
+    function paoulChart(data) {
+      var categories = [];
+      var aboveUsefulLife = [];
+      var withinUsefulLife = [];
+
+      console.log(data);
+
+      for (let index = 0; index < data.length; index++) {
+        categories.push(data[index].AssetElementDesc);
+        
+        aboveUsefulLife.push(data[index].Quantity - data[index].QuantityAboveULB);
+        withinUsefulLife.push(data[index].QuantityAboveULB);
+
+      }
+      console.log(categories);
+      Highcharts.chart('container', {
+        chart: {
+          type: 'column'
+        },
+        title: {
+          text: ''
+        },
+        colors: ['#db2929', '#00738C', '#307189', '#910000', '#1aadce',
+          '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a'
+        ],
+        xAxis: {
+          categories: categories
+        },
+        yAxis: {
+          min: 0,
+          title: {
+            text: 'Total Percentage (%)'
+          }
+        },
+        tooltip: {
+          pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
+          shared: true
+        },
+        plotOptions: {
+          column: {
+            stacking: 'percent'
+          }
+        },
+        series: [{
+          name: 'Above Useful Life',
+          data: withinUsefulLife
+        }, {
+          name: 'Within Useful Life',
+          data: aboveUsefulLife
+        }]
+      });
     }
 
-    $onInit() {
-
-        this.$http.get('/api/users/getAssets/assetSummary')
-            .then(result => {
-                console.log(result);
-                this.assetsSummary = result.data;
-                console.log(this.assetsSummary);
-
-                var test = _.map(this.assetsSummary, 'ModeCode');
-                // loadHighCharts(test);
-                console.log(test);
-            })
-            .catch(err => {
-                console.log(err);
-            })
+    // Pie Chart
 
 
-        // High Charts
+    function assetCategoriesChart(data) {
+      var assetCategoryData = [];
+      console.log(data);
 
-        Highcharts.chart('container', {
-            chart: {
-              type: 'column'
-            },
-            title: {
-              text: 'Percent of Revenue Vehicles Above Useful Life'
-            },
-            colors: ['#db2929', '#00738C', '#307189', '#910000', '#1aadce',
-              '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a'
-            ],
-            xAxis: {
-              categories: ['Light Rail/Trolley/Cable Car', 'Ferry', 'Bus', 'Heavy Rail', 'Cutaway/Van/Paratransit']
-            },
-            yAxis: {
-              min: 0,
-              title: {
-                text: 'Total Percentage (%)'
+      for (let index = 0; index < data.length; index++) {
+        assetCategoryData.push({
+          name: data[index].AssetElementDesc,
+          y: data[index].Quantity
+        })
+
+      }
+
+      // Make monochrome colors
+    
+
+      // Build the chart
+      Highcharts.chart('pieChartContainer', {
+        chart: {
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          plotShadow: false,
+          type: 'pie'
+        },
+        exporting: {
+          enabled: false
+ },
+        title: {
+          text: ''
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+          pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            colors: ['#00738C', '#FF6347','#5993E5', '#DDDF00',  '#FFF263', '#FF9655', '#FFF263',      '#6AF9C4'],
+            dataLabels: {
+              enabled: true,
+              format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
+              // distance: -50,
+              filter: {
+                property: 'total',
+                operator: '>',
+                value: 4
               }
-            },
-            tooltip: {
-              pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
-              shared: true
-            },
-            plotOptions: {
-              column: {
-                stacking: 'percent'
-              }
-            },
-            series: [{
-              name: 'Above Useful Life',
-              data: [2, 2, 3, 2, 1]
-            }, {
-              name: 'Within Useful Life',
-              data: [5, 3, 4, 7, 2]
-            }]
-          });
-      
-          // Pie Chart
-      
-      
-          // Make monochrome colors
-          var pieColors = (function () {
-            var colors = [],
-              base = '#00738C',
-              i;
-      
-            for (i = 0; i < 10; i += 1) {
-              // Start out with a darkened base color (negative brighten), and end
-              // up with a much brighter color
-              colors.push(Highcharts.Color(base).brighten((i - 3) / 12).get());
             }
-            return colors;
-          }());
-      
-          // Build the chart
-          Highcharts.chart('pieChartContainer', {
-            chart: {
-              plotBackgroundColor: null,
-              plotBorderWidth: null,
-              plotShadow: false,
-              type: 'pie'
-            },
-            title: {
-              text: 'Breakdown of Revenue Vehicles by Mode'
-            },
-            tooltip: {
-              pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
-            plotOptions: {
-              pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                colors: pieColors,
-                dataLabels: {
-                  enabled: true,
-                  format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
-                  // distance: -50,
-                  filter: {
-                    property: 'total',
-                    operator: '>',
-                    value: 4
-                  }
-                }
-                // showInLegend: true
-              }
-            },
-            series: [{
-              name: 'Brands',
-              data: [{
-                  name: 'Bus',
-                  y: 5963
-                },
-                {
-                  name: 'Cutaway/Van/Paratransit',
-                  y: 1374
-                },
-                {
-                  name: 'Ferry',
-                  y: 101
-                },
-                {
-                  name: 'Heavy Rail',
-                  y: 1110
-                },
-                {
-                  name: 'Light Rail/Trolley/Cable Car',
-                  y: 604
-                }
-      
-              ]
-            }]
-          });
-      
-          //Electric Vehicles
-      
+            // showInLegend: true
+          }
+        },
+        series: [{
+          name: 'Asset Categories',
+          data: assetCategoryData
+        }]
+      });
+    }
+
+    //Electric Vehicles
+
     //   Highcharts.chart('electricVehiclesContainer', {
     //       chart: {
     //           type: 'bar'
@@ -187,67 +219,67 @@ export class DashboardComponent {
     //           data: [90, 90, 90, 90, 90,90, 90, 90, 90, 90,90, 90, 90, 90, 90,90, 90, 90, 90, 90]
     //       }]
     //   });
-      
-        // End High Charts
 
-        // var vizList = ["http://public.tableau.com/views/RegionalSampleWorkbook/Flights",
-        //     "http://public.tableau.com/views/RegionalSampleWorkbook/Obesity",
-        //     "http://public.tableau.com/views/RegionalSampleWorkbook/College",
-        //     "http://public.tableau.com/views/RegionalSampleWorkbook/Stocks",
-        //     "http://public.tableau.com/views/RegionalSampleWorkbook/Storms"
-        // ];
+    // End High Charts
 
-        // var viz,
-        //     vizLen = vizList.length,
-        //     vizCount = 0;
+    // var vizList = ["http://public.tableau.com/views/RegionalSampleWorkbook/Flights",
+    //     "http://public.tableau.com/views/RegionalSampleWorkbook/Obesity",
+    //     "http://public.tableau.com/views/RegionalSampleWorkbook/College",
+    //     "http://public.tableau.com/views/RegionalSampleWorkbook/Stocks",
+    //     "http://public.tableau.com/views/RegionalSampleWorkbook/Storms"
+    // ];
 
-        // function createViz(vizPlusMinus) {
-        //     var vizDiv = document.getElementById("vizContainer"),
-        //         options = {
-        //             hideTabs: true
-        //         };
+    // var viz,
+    //     vizLen = vizList.length,
+    //     vizCount = 0;
 
-        //     vizCount = vizCount + vizPlusMinus;
+    // function createViz(vizPlusMinus) {
+    //     var vizDiv = document.getElementById("vizContainer"),
+    //         options = {
+    //             hideTabs: true
+    //         };
 
-        //     if (vizCount >= vizLen) {
-        //         // Keep the vizCount in the bounds of the array index.
-        //         vizCount = 0;
-        //     } else if (vizCount < 0) {
-        //         vizCount = vizLen - 1;
-        //     }
+    //     vizCount = vizCount + vizPlusMinus;
 
-        //     if (viz) { // If a viz object exists, delete it.
-        //         viz.dispose();
-        //     }
+    //     if (vizCount >= vizLen) {
+    //         // Keep the vizCount in the bounds of the array index.
+    //         vizCount = 0;
+    //     } else if (vizCount < 0) {
+    //         vizCount = vizLen - 1;
+    //     }
 
-        //     var vizURL = vizList[vizCount];
-        //     viz = new tableau.Viz(vizDiv, vizURL, options);
-        // }
+    //     if (viz) { // If a viz object exists, delete it.
+    //         viz.dispose();
+    //     }
 
-        // createViz(3);
+    //     var vizURL = vizList[vizCount];
+    //     viz = new tableau.Viz(vizDiv, vizURL, options);
+    // }
 
-        // this.$http.get('/api/users/getAssets/Total')
-        //     .then(result => {
-        //         console.log(result);
-        //         this.assetsTotal = result.data[0].count;
-        //         console.log(this.assetsTotal);
-        //     })
-        //     .catch(err => {
-        //         console.log(err);
-        //     })
-        this.assetsTotal = 6283;
-    }
+    // createViz(3);
 
-    viewInventory() {
-        this.$state.go('inventory');
-    }
+    // this.$http.get('/api/users/getAssets/Total')
+    //     .then(result => {
+    //         console.log(result);
+    //         this.assetsTotal = result.data[0].count;
+    //         console.log(this.assetsTotal);
+    //     })
+    //     .catch(err => {
+    //         console.log(err);
+    //     })
+    // this.assetsTotal = 6283;
+  }
+
+  viewInventory() {
+    this.$state.go('inventory');
+  }
 }
 
 export default angular.module('rtciApp.dashboard', [uiRouter])
-    .config(routes)
-    .component('dashboard', {
-        template: require('./dashboard.html'),
-        controller: DashboardComponent,
-        controllerAs: 'dashboardCtrl'
-    })
-    .name;
+  .config(routes)
+  .component('dashboard', {
+    template: require('./dashboard.html'),
+    controller: DashboardComponent,
+    controllerAs: 'dashboardCtrl'
+  })
+  .name;

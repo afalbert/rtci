@@ -9,7 +9,7 @@
                         </div>
                         <div class="dash-box-body">
                             <span class="dash-box-count">{{dashboardCtrl.assetsTotal}}</span>
-                            <span class="dash-box-title">Total Assets</span>
+                            <span class="dash-box-title">Total Revenue Vehicles</span>
                         </div>
 
                         <div class="dash-box-action" style="cursor:pointer;">
@@ -18,13 +18,13 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="dash-box dash-box-color-3">
+                    <div class="dash-box dash-box-color-2">
                         <div class="dash-box-icon">
                             <i class="fa fa-list-ol"></i>
                         </div>
                         <div class="dash-box-body">
                             <span class="dash-box-count">100</span>
-                            <span class="dash-box-title">Assets Nearing Useful Life</span>
+                            <span class="dash-box-title">Assets Above Useful Life</span>
                         </div>
 
                         <div class="dash-box-action">
@@ -38,8 +38,8 @@
                             <i class="fa fa-calendar-o"></i>
                         </div>
                         <div class="dash-box-body">
-                            <span class="dash-box-count">January 2nd, 2017</span>
-                            <span class="dash-box-title">Data Last Edited</span>
+                            <span class="dash-box-count">Target Setting</span>
+                            <span class="dash-box-title">Performance Measures</span>
                         </div>
 
                         <div class="dash-box-action">
@@ -48,16 +48,26 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="text-align:center !important;margin-left:25%;">
+                <h2 style="text-align:center !important;">VTA Data Summaries</h2>
+            </div>
+            <div class="row" style="text-align:center;margin-top:40px;border-bottom:1px solid lightgray;">
+                <h3>Percent of Revenue Vehicles Above Useful Life</h3>
                 <div id="container" style="min-width: 310px; width:100%; height: 400px; margin: 0 auto"></div>
           
          
             </div>
 
-            <div class="row">
-
+            <div class="row" style="margin-top:40px;">
+                    <h3 style="margin-bottom:-60px;z-index:1000;">Breakdown of Vehicles by Mode</h3>
                 <div class="col-md-12">
                     <div id="pieChartContainer" style="min-width: 310px;width:100%; height: 600px; max-height:600px; max-width: 600px; margin: 0 auto"></div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:40px;">
+                    <h3 style="margin-bottom:-60px;z-index:1000;">Breakdown of Assets by Replacement Cost</h3>
+                <div class="col-md-12">
+                    <div id="pieChart2Container" style="min-width: 310px;width:100%; height: 600px; max-height:600px; max-width: 600px; margin: 0 auto"></div>
                 </div>
             </div>
             <!-- <div class="row">

@@ -21,7 +21,7 @@ export class MainController {
         type: 'column'
       },
       title: {
-        text: 'Percent of Revenue Vehicles Above Useful Life'
+        text: ''
       },
       colors: ['#db2929', '#00738C', '#307189', '#910000', '#1aadce',
         '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a'
@@ -46,10 +46,10 @@ export class MainController {
       },
       series: [{
         name: 'Above Useful Life',
-        data: [2, 2, 3, 2, 1]
+        data: [11.75, 31.68, 41.07, 61.44, 62.99]
       }, {
         name: 'Within Useful Life',
-        data: [5, 3, 4, 7, 2]
+        data: [88.25,68.32, 58.93, 38.56, 37.01]
       }]
     });
 
@@ -57,18 +57,18 @@ export class MainController {
 
 
     // Make monochrome colors
-    var pieColors = (function () {
-      var colors = [],
-        base = '#00738C',
-        i;
+    // var pieColors = (function () {
+    //   var colors = [],
+    //     base = '#00738C',
+    //     i;
 
-      for (i = 0; i < 10; i += 1) {
-        // Start out with a darkened base color (negative brighten), and end
-        // up with a much brighter color
-        colors.push(Highcharts.Color(base).brighten((i - 3) / 12).get());
-      }
-      return colors;
-    }());
+    //   for (i = 0; i < 10; i += 1) {
+    //     // Start out with a darkened base color (negative brighten), and end
+    //     // up with a much brighter color
+    //     colors.push(Highcharts.Color(base).brighten((i - 3) / 12).get());
+    //   }
+    //   return colors;
+    // }());
 
     // Build the chart
     Highcharts.chart('pieChartContainer', {
@@ -79,8 +79,11 @@ export class MainController {
         type: 'pie'
       },
       title: {
-        text: 'Breakdown of Regional Revenue Vehicles by Mode'
+        text: ''
       },
+      exporting: {
+        enabled: false
+},
       tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
       },
@@ -88,7 +91,7 @@ export class MainController {
         pie: {
           allowPointSelect: true,
           cursor: 'pointer',
-          colors: pieColors,
+          colors: ['#00738C', '#FF6347','#24CBE5', '#DDDF00',  '#FFF263', '#FF9655', '#FFF263',      '#6AF9C4'],
           dataLabels: {
             enabled: true,
             format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
@@ -131,87 +134,86 @@ export class MainController {
 
     //Electric Vehicles
 
-Highcharts.chart('electricVehiclesContainer', {
-    chart: {
+    Highcharts.chart('electricVehiclesContainer', {
+      chart: {
         type: 'bar'
-    },
-    title: {
-        text: 'Fleet Breakdown by Fuel Type'
-    },
-    colors: ['#7CFC00', '#629632', '#00738C', '#910000', '#1aadce',
-    '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a'
-],
-    xAxis: {
-        categories: ['AC Transit', 'CCCTA', 'Delta Breeze', 'Dixon Readi-Ride', 'ECCTA','FAST','Golden Gate Transit','LAVTA','Marin Transit','NVTA','Petaluma Transit','SamTrans','Santa Rosa Transit','SCT','SF Muni','Solano County Transit','UCT','Vacaville','VTA','WestCAT']
-    },
-    yAxis: {
+      },
+      title: {
+        text: ''
+      },
+      exporting: {
+        enabled: false
+},
+      colors: ['#7CFC00', '#629632', '#4682B4', '#910000', '#1aadce',
+        '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a'
+      ],
+      xAxis: {
+        categories: ['AC Transit', 'CCCTA', 'Delta Breeze', 'Dixon Readi-Ride', 'ECCTA', 'FAST', 'Golden Gate Transit', 'LAVTA', 'Marin Transit', 'NVTA', 'Petaluma Transit', 'SamTrans', 'Santa Rosa Transit', 'SCT', 'SF Muni', 'Solano County Transit', 'UCT', 'Vacaville', 'VTA', 'WestCAT']
+      },
+      yAxis: {
         min: 0,
-        max:100,
+        max: 100,
         title: {
-            text: 'Fuel Type Percent of Total'
+          text: 'Fuel Type Percent of Total'
         }
-    },
-    legend: {
+      },
+      legend: {
         reversed: true
-    },
-    plotOptions: {
+      },
+      plotOptions: {
         series: {
-            stacking: 'normal',
-            pointWidth:25
+          stacking: 'normal',
+          pointWidth: 25
         }
-    },
-    series: [ {
+      },
+      series: [{
         name: 'Zero Emissions',
-        data: [5, 5, 5, 5, 5,5, 5, 5, 5, 5,5, 5, 5, 5, 5,5, 5, 5, 5, 5]
-    },{
+        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 7.08, 0, 0, 0, 0, 21.94, 0, 0, 0, 0, 0]
+      }, {
         name: 'Hybrid',
-        data: [5, 5, 5, 5, 5,5, 5, 5, 5, 5,5, 5, 5, 5, 5,5, 5, 5, 5, 5]
-    },{
+        data: [1.33, 2.07, 0, 0, 0, 5.93, 2.39, 29.84, 15.23, 0, 13.04, 3.66, 19.30, 0, 49.92, 9.5, 0, 0, 0, 0]
+      }, {
         name: 'Diesel/Combustion Fuel',
-        data: [90, 90, 90, 90, 90,90, 90, 90, 90, 90,90, 90, 90, 90, 90,90, 90, 90, 90, 90]
-    }]
-});
+        data: [98.6, 97.93, 100, 100, 100, 94.07, 97.61, 70.16, 84.77, 92.92, 86.96, 96.34, 80.70, 100, 28.14, 90.05, 100, 100, 100, 100]
+      }]
+    });
 
-    this.$http.get('/api/things')
-      .then(response => {
-        this.awesomeThings = response.data;
-      });
+
 
     // Load Tableau
-    var vizList = ["http://public.tableau.com/views/RegionalSampleWorkbook/Flights",
-      "http://public.tableau.com/views/RegionalSampleWorkbook/Obesity",
-      "http://public.tableau.com/views/RegionalSampleWorkbook/College",
-      "http://public.tableau.com/views/RegionalSampleWorkbook/Stocks",
-      "http://public.tableau.com/views/RegionalSampleWorkbook/Storms"
-    ];
+    function initViz1() {
+      var containerDiv = document.getElementById("viz1"),
+      url = "https://public.tableau.com/views/RTCIDraft/Dashboard1?:embed=y&:display_count=yes&publish=yes";
+          
+      var viz = new tableau.Viz(containerDiv, url); 
+  }
 
-    var viz,
-      vizLen = vizList.length,
-      vizCount = 0;
+  function initViz2() {
+    var containerDiv = document.getElementById("viz2"),
+    url = "https://public.tableau.com/views/RTCIDraft/Dashboard2?:embed=y&:display_count=yes&publish=yes";
+        
+    var viz = new tableau.Viz(containerDiv, url); 
+}
 
-    function createViz(vizPlusMinus) {
-      var vizDiv = document.getElementById("vizContainer"),
-        options = {
-          hideTabs: true
-        };
+function initViz3() {
+  var containerDiv = document.getElementById("viz3"),
+  url = "https://public.tableau.com/views/RTCIDraft/Sheet6?:embed=y&:display_count=yes&publish=yes";
+      
+  var viz = new tableau.Viz(containerDiv, url); 
+}
 
-      vizCount = vizCount + vizPlusMinus;
+function initViz4() {
+  var containerDiv = document.getElementById("viz4"),
+  url = "https://public.tableau.com/shared/XM5JWMWZD?:display_count=yes";
+      
+  var viz = new tableau.Viz(containerDiv, url); 
+}
 
-      if (vizCount >= vizLen) {
-        // Keep the vizCount in the bounds of the array index.
-        vizCount = 0;
-      } else if (vizCount < 0) {
-        vizCount = vizLen - 1;
-      }
+  // initViz1();
+  // initViz2();
+  // initViz3();
+  initViz4();
 
-      if (viz) { // If a viz object exists, delete it.
-        viz.dispose();
-      }
-
-      var vizURL = vizList[vizCount];
-      viz = new tableau.Viz(vizDiv, vizURL, options);
-    }
-    // createViz(3);
   }
 
   addThing() {
