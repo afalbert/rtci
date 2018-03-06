@@ -83,6 +83,8 @@ $fa-font-path: '/assets/fonts/font-awesome';
 
 /* inject:scss */
 
+@import 'about/about';
+
 @import 'account/dashboard/dashboard';
 
 @import 'account/inventory/inventory';

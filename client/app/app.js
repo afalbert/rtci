@@ -24,6 +24,7 @@ import navbar from '../components/navbar/navbar.component';
 import footer from '../components/footer/footer.component';
 import main from './main/main.component';
 import feedback from './feedback/feedback.component';
+import about from './about/about.component';
 import contact from './contact/contact.component';
 import dashboard from './account/dashboard/dashboard.component';
 import inventory from './account/inventory/inventory.component';
@@ -36,7 +37,7 @@ import util from '../components/util/util.module';
 import './app.scss';
 
 angular.module('rtciApp', [ngCookies, ngResource, ngSanitize, uiRouter, _Auth, account, admin,
-        'validation.match', navbar, footer, main, feedback, contact, dashboard, inventory, myaccount, reports, smartTable, constants, util
+        'validation.match', navbar, footer, main, feedback,about, contact, dashboard, inventory, myaccount, reports, smartTable, constants, util
     ])
     .config(routeConfig)
     .run(function($rootScope, $location, Auth) {

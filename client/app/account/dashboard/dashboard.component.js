@@ -16,15 +16,16 @@ export class DashboardComponent {
   $onInit() {
     var paoul = [];
     var assetCategories = [];
+    var assetReplacementCost = [];
 
     this.$http.get('/api/users/dashboard/totalAssets')
-    .then(response => {
-      console.log(response.data);
-      this.assetsTotal = response.data[0].numvehicles;
-    })
-    .catch(err => {
-      console.log(err);
-    })
+      .then(response => {
+        console.log(response.data);
+        this.assetsTotal = response.data[0].numvehicles;
+      })
+      .catch(err => {
+        console.log(err);
+      })
 
     this.$http.get('/api/users/dashboard/paoul')
       .then(response => {
@@ -42,6 +43,16 @@ export class DashboardComponent {
         assetCategories = response.data;
         // console.log(assetCategories);
         assetCategoriesChart(assetCategories);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+
+      this.$http.get('/api/users/dashboard/assetReplacementCost')
+      .then(response => {
+        assetReplacementCost = response.data;
+        console.log(assetReplacementCost);
+        replacementCostChart(assetReplacementCost);
       })
       .catch(err => {
         console.log(err);
@@ -73,7 +84,7 @@ export class DashboardComponent {
 
       for (let index = 0; index < data.length; index++) {
         categories.push(data[index].AssetElementDesc);
-        
+
         aboveUsefulLife.push(data[index].Quantity - data[index].QuantityAboveULB);
         withinUsefulLife.push(data[index].QuantityAboveULB);
 
@@ -133,7 +144,7 @@ export class DashboardComponent {
       }
 
       // Make monochrome colors
-    
+
 
       // Build the chart
       Highcharts.chart('pieChartContainer', {
@@ -145,7 +156,7 @@ export class DashboardComponent {
         },
         exporting: {
           enabled: false
- },
+        },
         title: {
           text: ''
         },
@@ -156,7 +167,7 @@ export class DashboardComponent {
           pie: {
             allowPointSelect: true,
             cursor: 'pointer',
-            colors: ['#00738C', '#FF6347','#5993E5', '#DDDF00',  '#FFF263', '#FF9655', '#FFF263',      '#6AF9C4'],
+            colors: ['#00738C', '#FF6347', '#5993E5', '#DDDF00', '#FFF263', '#FF9655', '#FFF263', '#6AF9C4'],
             dataLabels: {
               enabled: true,
               format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
@@ -173,6 +184,63 @@ export class DashboardComponent {
         series: [{
           name: 'Asset Categories',
           data: assetCategoryData
+        }]
+      });
+    }
+
+    function replacementCostChart(data) {
+      var replacementCost = [];
+      console.log('replacement cost', data);
+
+      for (let index = 0; index < data.length; index++) {
+        replacementCost.push({
+          name: data[index].AssetElementDesc,
+          y: data[index].TotalCost
+        })
+
+      }
+
+      // Make monochrome colors
+
+
+      // Build the chart
+      Highcharts.chart('pieChart2Container', {
+        chart: {
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          plotShadow: false,
+          type: 'pie'
+        },
+        exporting: {
+          enabled: false
+        },
+        title: {
+          text: ''
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+          pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            colors: ['#00738C', '#FF6347', '#5993E5', '#DDDF00', '#FFF263', '#FF9655', '#FFF263', '#6AF9C4'],
+            dataLabels: {
+              enabled: true,
+              format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
+              // distance: -50,
+              filter: {
+                property: 'total',
+                operator: '>',
+                value: 4
+              }
+            }
+            // showInLegend: true
+          }
+        },
+        series: [{
+          name: 'Asset Categories',
+          data: replacementCost
         }]
       });
     }
@@ -283,3 +351,4 @@ export default angular.module('rtciApp.dashboard', [uiRouter])
     controllerAs: 'dashboardCtrl'
   })
   .name;
+

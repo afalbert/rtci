@@ -404,6 +404,21 @@ export function totalAssets(req, res) {
         .catch(err => next(err));
 }
 
+export function getAssetReplacementCost(req, res) {
+    sqldb.sequelize.query("SELECT * FROM [aalbert].[AssetCost] WHERE TRSID = " + 9013, {
+            type: sqldb.sequelize.QueryTypes.SELECT
+        })
+        .then(assets => {
+            if (!assets) {
+                return res.status(404).end();
+            }
+            // console.log(assets);
+            res.json(assets);
+            // We don't need spread here, since only the results will be returned for select queries
+        })
+        .catch(err => next(err));
+}
+
 /**
  * Get my info
  */
