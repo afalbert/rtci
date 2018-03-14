@@ -7,6 +7,7 @@ import * as auth from '../../auth/auth.service';
 var router = new Router();
 
 router.get('/', auth.hasRole('admin'), controller.index);
+router.get('/targets/paoul', auth.isAuthenticated(), controller.getTargetSettingPAOUL);
 router.get('/dashboard/paoul', auth.isAuthenticated(), controller.getPAOUL);
 router.get('/dashboard/assetReplacementCost', auth.isAuthenticated(), controller.getAssetReplacementCost);
 router.get('/dashboard/assetCategories', auth.isAuthenticated(), controller.getAssetCategories);

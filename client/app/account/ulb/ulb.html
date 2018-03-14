@@ -1,10 +1,9 @@
 <div class="inventory-section container-fluid" style="margin-top:100px;" st-table="displayedCollection" st-safe-src="rowCollection">
-  <h3 class="text-center" style="margin-bottom:5px;">Manage Inventory {{type}}</h3>
+  <h3 class="text-center" style="margin-bottom:30px;">Manage Inventory: {{type}}</h3>
 
-  <div class="text-right">
-        <button class="btn btn-warning" data-toggle="modal" style="color:black;" data-target="#createAssetModal" ng-show="numOfBulkAssets > 1">Edit Assets ({{numOfBulkAssets}}) </button>
-    <button class="btn btn-primary" data-toggle="modal" data-target="#createAssetModal">Create New Asset</button>
-  </div>
+  <!-- <div class="text-right">
+            <button class="btn btn-primary" data-toggle="modal" data-target="#createAssetModal">Create New Asset</button>
+        </div> -->
   <div class="row">
 
     <div class="col-md-2">
@@ -163,7 +162,7 @@
 
       </div>
     </div>
-    <div class="col-md-10 text-left" ng-if="!rowCollection">
+    <div class="col-md-8 text-left" ng-if="!rowCollection">
 
       <div class="circle" style="margin-top:100px;">
         <div class="borderCircle"></div>
@@ -175,20 +174,12 @@
         <div class="outerCirlce"></div>
       </div>
     </div>
-    <div class="col-md-10" ng-if="rowCollection">
+    <div class="col-md-8" ng-if="rowCollection">
 
-      <div class="text-left">
-        <button class="btn btn-default" ng-click="updateTable('revenuevehicles')">Revenue Vehicles</button>
-        <button class="btn btn-default" ng-click="updateTable('nonrevenuevehicles')">Non-Revenue Vehicles</button>
-        <button class="btn btn-default" ng-click="updateTable('passengerfacilities')">Passenger Facilities</button>
-        <button class="btn btn-default" ng-click="updateTable('mandafacilities')">M&A Facilities</button>
-      </div>
+     
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>
-              <input class="form-check-input" style="margin-left:0 !important" type="checkbox" id="inlineCheckbox1" value="option1">
-            </th>
             <th st-sort="AgencyAssetUID">ID</th>
             <th st-sort="ModeCode">ModeCode</th>
             <th st-sort="AssetDesc">AssetDesc</th>
@@ -196,17 +187,14 @@
             <th st-sort="AssetType">AssetType</th>
             <th st-sort="YRInService">YRInService</th>
             <th st-sort="Quantity">Quantity</th>
-            <th st-sort="UnitCost">UnitCost</th>
-            <th st-sort="Manufacturer">Manufacturer</th>
+            <!-- <th st-sort="UnitCost">UnitCost</th> -->
+            <!-- <th st-sort="Manufacturer">Manufacturer</th> -->
             <th>Tools</th>
           </tr>
 
         </thead>
         <tbody>
           <tr ng-repeat="row in displayedCollection">
-            <td>
-              <input class="form-check-input" style="margin-left:0 !important" type="checkbox" value="option1" ng-click="updateBulkIds(this,row.AssetUID)">
-            </td>
             <td>{{row.AgencyAssetUID}}</td>
             <td>{{row.ModeCode}}</td>
             <td>{{row.AssetDesc}}</td>
@@ -214,8 +202,8 @@
             <td>{{row.AssetType }}</td>
             <td>{{row.YRInService | date:"yyyy"}}</td>
             <td>{{row.Quantity}}</td>
-            <td>{{row.UnitCost | currency}}</td>
-            <td>{{row.Manufacturer }}</td>
+            <!-- <td>{{row.UnitCost | currency}}</td> -->
+            <!-- <td>{{row.Manufacturer }}</td> -->
             <td style="padding-top:0">
               <button class="btn btn-sm btn-primary" data-toggle="modal" ng-click="inventoryCtrl.editAsset(row)">
                 <i class="fa fa-edit"></i>
@@ -238,6 +226,23 @@
       </table>
 
 
+    </div>
+    <div class="col-md-2">
+      <div id="showInfo" class="alert alert-danger fade show" role="alert" style="margin-top:45px;">
+
+        <h4 class="alert-heading" style="margin-top:0;">Above Useful Life</h4>
+        <h1>23%</h1>
+        <!-- <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p> -->
+      </div>
+      <div class="text-center">
+            <div class="form-group">
+                  <h4 class="text-left"> Update Target</h4>
+                    <div class="input-group ">
+                        <input id="uploadname" type="text" style="margin-top:5px;width:50%;padding:0px !important;height:38.2px !important;">
+                        <button class="btn btn-primary">Save </button>
+                    </div>
+                </div>
+      </div>
     </div>
   </div>
 </div>

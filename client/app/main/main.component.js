@@ -204,7 +204,7 @@ function initViz3() {
 
 function initViz4() {
   var containerDiv = document.getElementById("viz4"),
-  url = "https://public.tableau.com/shared/XM5JWMWZD?:display_count=yes";
+  url = "https://public.tableau.com/views/RTCIDraft/Dashboard4?:embed=y&:display_count=yes&publish=yes";
       
   var viz = new tableau.Viz(containerDiv, url); 
 }
