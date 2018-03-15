@@ -1,5 +1,5 @@
 <div class="inventory-section container-fluid" style="margin-top:100px;" st-table="displayedCollection" st-safe-src="rowCollection">
-  <h3 class="text-center" style="margin-bottom:30px;">Manage Inventory: {{type}}</h3>
+  <h3 class="text-center" style="margin-bottom:30px;">Edit ULB: {{type}}</h3>
 
   <!-- <div class="text-right">
             <button class="btn btn-primary" data-toggle="modal" data-target="#createAssetModal">Create New Asset</button>
@@ -208,9 +208,7 @@
               <button class="btn btn-sm btn-primary" data-toggle="modal" ng-click="inventoryCtrl.editAsset(row)">
                 <i class="fa fa-edit"></i>
               </button>
-              <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteAssetModal">
-                <i class="fa fa-trash"></i>
-              </button>
+           
             </td>
           </tr>
         </tbody>
@@ -230,13 +228,13 @@
     <div class="col-md-2">
       <div id="showInfo" class="alert alert-danger fade show" role="alert" style="margin-top:45px;">
 
-        <h4 class="alert-heading" style="margin-top:0;">Above Useful Life</h4>
+        <h4 class="alert-heading" style="margin-top:0;">Performance Measure</h4>
         <h1>23%</h1>
         <!-- <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p> -->
       </div>
       <div class="text-center">
             <div class="form-group">
-                  <h4 class="text-left"> Update Target</h4>
+                  <h4 class="text-left"> Target</h4>
                     <div class="input-group ">
                         <input id="uploadname" type="text" style="margin-top:5px;width:50%;padding:0px !important;height:38.2px !important;">
                         <button class="btn btn-primary">Save </button>

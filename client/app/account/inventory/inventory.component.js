@@ -12,6 +12,8 @@ export class InventoryComponent {
     this.$http = $http;
 
     $scope.bulkIds = [];
+    $scope.assets = [];
+    $scope.numOfBulkAssets = 0;
 
 
 
@@ -61,16 +63,64 @@ export class InventoryComponent {
         })
     };
 
-    $scope.updateBulkIds = function (checkbox, id) {
+    $scope.selectAll = function(){
+        $scope.bulkIds = [];
+        console.log($scope);
+        $scope.displayedCollection.forEach(element => {
+            var asset = element;
+           $scope.bulkIds.push(asset.AssetUID);
+           asset.isChecked = true;
+           asset.isSelected = true;
+           
+            // $scope.bulkIds.forEach(element => {
+            //     var assetid = element;
+            //     if(assetid === asset.AssetUID){
+            //      //    console.log(asset.AssetUID);
+            //         asset.isSelected = false;
+            //         asset.isChecked = false;
+            //         $scope.numOfBulkAssets = 0;
+            //         $scope.bulkIds.splice($scope.bulkIds.indexOf(assetid),1);
+            //     }
+            // });
+ 
+         //    $scope.bulkIds = [];
+            
+        });
+
+        $scope.numOfBulkAssets = $scope.bulkIds.length;
+    }
+   $scope.unselectAllAssets = function(){
+       $scope.rowCollection.forEach(element => {
+           var asset = element;
+           $scope.bulkIds.forEach(element => {
+               var assetid = element;
+               if(assetid === asset.AssetUID){
+                //    console.log(asset.AssetUID);
+                   asset.isSelected = false;
+                   asset.isChecked = false;
+                   $scope.numOfBulkAssets = 0;
+                   $scope.bulkIds.splice($scope.bulkIds.indexOf(assetid),1);
+               }
+           });
+
+        //    $scope.bulkIds = [];
+           
+       });
+   }
+    $scope.updateBulkIds = function (asset) {
       // console.log(this);
       // console.log(id);
-      var exists = $scope.bulkIds.indexOf(id);
+      console.log(asset.isChecked);
+      var exists = $scope.bulkIds.indexOf(asset.AssetUID);
       if (exists > -1) {
         console.log('exists');
         $scope.bulkIds.splice(exists, 1);
+        asset.isSelected = false;
+        // asset.isChecked = false;
       } else {
         console.log('doesnt exist');
-        $scope.bulkIds.push(id);
+        $scope.bulkIds.push(asset.AssetUID);
+        asset.isSelected = true;
       }
 
       console.log($scope.bulkIds);

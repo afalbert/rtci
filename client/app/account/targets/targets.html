@@ -125,9 +125,11 @@
             <tr ng-repeat="row in displayedCollection">
               <td>{{row.AssetElementDesc}}</td>
               <td>{{row.NumAssets}}</td>
-              <td>{{row.ULB}}&nbsp; <a ng-href="/ulb?category={{row.AssetElementDesc}}" ng-click="loadULBAssets()">
-                    <i class="fa fa-pencil"></i>
-                  </a></td>
+              <td>{{row.ULB}}&nbsp;
+                <a ng-href="/ulb?category={{row.AssetElementDesc}}" ng-click="loadULBAssets()">
+                  <i class="fa fa-pencil"></i>
+                </a>
+              </td>
               <td>{{row.PAOUL}}% &nbsp;
 
                 <a href="#" ng-click="showInfo()">
@@ -158,15 +160,18 @@
 
 
       </div>
-      <div class="col-md-2">
+      <div class="col-md-2" style="font-weight:bold;">
         <div id="showInfo" class="alert alert-primary fade show" role="alert" ng-show="showInfoWindow">
           <button type="button" class="closeInfoWindow" aria-label="Close" ng-click="hideInfo()">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h4 class="alert-heading">Performance Measure</h4>
-          <p>This measure is calculated by aggregating ...This example text is going to run a bit longer so
-            that you can see how spacing within an alert works with this kind of content.</p>
-          <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+          <h4 class="alert-heading" style="font-weight:bold;">Performance Measure</h4>
+          <p>This represents the percentage of assets in this asset class that are beyond their useful life benchmark (ULB).
+            It is calculated automatically from your asset inventory records.
+
+          </p>
+          <p class="mb-0">To edit the useful life of your assets, click the edit button next to the ULB for this asset class, or visit the
+            "Manage Inventory" page.</p>
         </div>
       </div>
     </div>
