@@ -202,6 +202,7 @@ export class MainController {
             var viz = new tableau.Viz(containerDiv, url);
         }
 
+
         function initViz4() {
             var containerDiv = document.getElementById("viz4"),
                 url = "https://public.tableau.com/views/RTCIDraft/Dashboard4?:embed=y&:display_count=yes&publish=yes";

@@ -1,0 +1,179 @@
+<div class="inventory-section container-fluid" style="margin-top:100px;" st-table="displayedCollection" st-safe-src="rowCollection">
+  <h3 class="text-center" style="margin-bottom:5px;">Target Setting</h3>
+
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2">
+        <!-- <h5>Filter Options</h5> -->
+        <div class="panel-group" id="accordion">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <!-- <h4 class="panel-title text-center">
+                <button class="btn btn-default flatBTN" data-toggle="collapse" data-parent="#accordion" href="#accordionOne">
+                  Filter Assets
+                </button>
+              </h4> -->
+            </div>
+            <div id="accordionOne" class="panel-collapse in">
+              <div class="panel-body" style="margin-top:30px;">
+                <form id="filterForm">
+                  <table class="view-table-search" style="width:90%;margin:auto;">
+
+
+                    <tr>
+                      <td colspan="2" class="pad-top-s filterFonts">
+                        Filter Category
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+
+                        <select st-search="ModeCode" class="input-sm form-control searchCTRL" st-input-event="change">
+                          <option value="">All</option>
+                          <option ng-repeat="item in modeCode" ng-value="item">{{item}}</option>
+                        </select>
+                      </td>
+                    </tr>
+
+
+
+                    <!-- <tr>
+                      <td colspan="2" class="pad-top-m filterFonts" style="text-align:center;">
+                        <button st-reset-search class="btn btn-primary btn-sm">
+                          <i class="fa fa-refresh"></i> Clear Filters</button>
+                      </td>
+                    </tr> -->
+                  </table>
+                </form>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="panel panel-primary" ng-if="regionalTotalDiscretionary">
+            <!-- accordion 4 -->
+            <div class="panel-heading">
+              <h4 class="panel-title text-center">
+                <!-- title 3 -->
+
+                <button ng-if="regionalTotalDiscretionary" class="btn btn-default flatBTN" data-toggle="collapse" data-parent="#accordion"
+                  href="#accordionFour">
+                  Project Funding
+                </button>
+              </h4>
+            </div>
+            <div id="accordionFour" class="panel-collapse collapse">
+              <!-- panel body -->
+              <div class="panel-body">
+                <div ng-if="regionalTotalDiscretionary">
+                  <div class="pad-bottom-s pad-top-l">
+                    <table>
+                      <tr>
+                        <td>
+                          Total {{ regionalTotalDiscretionary.County }} Discretionary
+                        </td>
+
+                      </tr>
+                      <tr>
+                        <td>{{ regionalTotalDiscretionary.Discretionary_Funding | currency : "$" : 0 }} (M)
+                        </td>
+
+                      </tr>
+                      <tr>
+                        <td>
+                          <hr>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          Your Discretionary Request Amount
+                        </td>
+
+                      </tr>
+                      <tr>
+                        <td>{{ agencyTotalDiscretionary | currency : "$" : 0 }} (M)
+                        </td>
+
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-md-8">
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th st-sort="AgencyAssetUID">Class</th>
+              <th st-sort="ModeCode">Quantity</th>
+              <th st-sort="AssetDesc">ULB</th>
+              <th st-sort="AssetStatus">Performance Measure</th>
+              <th st-sort="AssetType">Target</th>
+              <th st-sort="AssetType"></th>
+
+              <th></th>
+            </tr>
+
+          </thead>
+          <tbody>
+            <tr ng-repeat="row in displayedCollection">
+              <td>{{row.AssetElementDesc}}</td>
+              <td>{{row.NumAssets}}</td>
+              <td>{{row.ULB}}&nbsp;
+                <a ng-href="/ulb?category={{row.AssetElementDesc}}" ng-click="loadULBAssets()">
+                  <i class="fa fa-pencil"></i>
+                </a>
+              </td>
+              <td>{{row.PAOUL}}% &nbsp;
+
+                <a href="#" ng-click="showInfo()">
+                  <i class="fa fa-info-circle"></i>
+                </a>
+              </td>
+              <td>
+                <input type="text" ng-model="row.target" style="width:60px;">
+              </td>
+              <td style="padding-top:8px">
+                <button class="btn btn-sm btn-primary" ng-click="saveTarget(row)">
+                  <i class="fa fa-save"></i>
+                </button>
+
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="5" style="text-align: center !important;">
+                <div st-items-by-page="10" st-pagination="">
+                  <pagination></pagination>
+                </div>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+
+
+      </div>
+      <div class="col-md-2" style="font-weight:bold;">
+        <div id="showInfo" class="alert alert-primary fade show" role="alert" ng-show="showInfoWindow">
+          <button type="button" class="closeInfoWindow" aria-label="Close" ng-click="hideInfo()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="alert-heading" style="font-weight:bold;">Performance Measure</h4>
+          <p>This represents the percentage of assets in this asset class that are beyond their useful life benchmark (ULB).
+            It is calculated automatically from your asset inventory records.
+
+          </p>
+          <p class="mb-0">To edit the useful life of your assets, click the edit button next to the ULB for this asset class, or visit the
+            "Manage Inventory" page.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

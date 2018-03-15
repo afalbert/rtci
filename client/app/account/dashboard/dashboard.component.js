@@ -341,6 +341,10 @@ export class DashboardComponent {
   viewInventory() {
     this.$state.go('inventory');
   }
+
+  viewTargets() {
+    this.$state.go('targets');
+  }
 }
 
 export default angular.module('rtciApp.dashboard', [uiRouter])

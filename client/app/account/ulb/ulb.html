@@ -1,12 +1,9 @@
 <div class="inventory-section container-fluid" style="margin-top:100px;" st-table="displayedCollection" st-safe-src="rowCollection">
-  <h3 class="text-center" style="margin-bottom:5px;">Manage Inventory {{type}}</h3>
+  <h3 class="text-center" style="margin-bottom:30px;">Edit ULB: {{type}}</h3>
 
-  <div class="text-right">
-    <button class="btn btn-warning" style="color:black;" data-toggle="modal" data-target="#bulkEditRevenueVehiclesModal" ng-show="numOfBulkAssets > 1">  <i class="fa fa-edit"></i> &nbsp;Edit Assets ({{numOfBulkAssets}}) </button>
-    <button class="btn btn-danger" data-toggle="modal" data-target="#deleteBulkAssetModal" ng-show="numOfBulkAssets > 1"> <i class="fa fa-trash"></i>&nbsp;Delete Assets ({{numOfBulkAssets}}) </button>
-    <button class="btn btn-primary" data-toggle="modal" data-target="#createAssetModal">Create New Asset</button>
-   
-  </div>
+  <!-- <div class="text-right">
+            <button class="btn btn-primary" data-toggle="modal" data-target="#createAssetModal">Create New Asset</button>
+        </div> -->
   <div class="row">
 
     <div class="col-md-2">
@@ -165,7 +162,7 @@
 
       </div>
     </div>
-    <div class="col-md-10 text-left" ng-if="!rowCollection">
+    <div class="col-md-8 text-left" ng-if="!rowCollection">
 
       <div class="circle" style="margin-top:100px;">
         <div class="borderCircle"></div>
@@ -177,23 +174,12 @@
         <div class="outerCirlce"></div>
       </div>
     </div>
-    <div class="col-md-10" ng-if="rowCollection">
+    <div class="col-md-8" ng-if="rowCollection">
 
-      <div class="text-left">
-        <button class="btn btn-default" ng-click="updateTable('revenuevehicles')">Revenue Vehicles</button>
-        <button class="btn btn-default" ng-click="updateTable('nonrevenuevehicles')">Non-Revenue Vehicles</button>
-        <button class="btn btn-default" ng-click="updateTable('passengerfacilities')">Passenger Facilities</button>
-        <button class="btn btn-default" ng-click="updateTable('mandafacilities')">M&A Facilities</button>
-      </div>
+     
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>
-              <button class="btn btn-primary" style="margin-bottom:0;" ng-show="numOfBulkAssets > 1" ng-click="unselectAllAssets()">Unselect All</button>
-              <button class="btn btn-primary" style="margin-bottom:0;" ng-show="numOfBulkAssets < 1" ng-click="selectAll()">Select All</button>
-              <!-- <input type="checkbox" ng-model="assets.checkbox" ng-change="selectBulkAssets(assets.checkbox)"> -->
-
-            </th>
             <th st-sort="AgencyAssetUID">ID</th>
             <th st-sort="ModeCode">ModeCode</th>
             <th st-sort="AssetDesc">AssetDesc</th>
@@ -201,18 +187,14 @@
             <th st-sort="AssetType">AssetType</th>
             <th st-sort="YRInService">YRInService</th>
             <th st-sort="Quantity">Quantity</th>
-            <th st-sort="UnitCost">UnitCost</th>
+            <!-- <th st-sort="UnitCost">UnitCost</th> -->
             <!-- <th st-sort="Manufacturer">Manufacturer</th> -->
             <th>Tools</th>
           </tr>
 
         </thead>
         <tbody>
-          <tr ng-repeat="row in displayedCollection" ng-class="row.isSelected ? 'st-selected' : ''">
-            <td>
-              <input class="form-check-input" ng-model="row.isChecked" style="margin-left:0 !important" type="checkbox" value="option1"
-                ng-click="updateBulkIds(row)">
-            </td>
+          <tr ng-repeat="row in displayedCollection">
             <td>{{row.AgencyAssetUID}}</td>
             <td>{{row.ModeCode}}</td>
             <td>{{row.AssetDesc}}</td>
@@ -220,15 +202,13 @@
             <td>{{row.AssetType }}</td>
             <td>{{row.YRInService | date:"yyyy"}}</td>
             <td>{{row.Quantity}}</td>
-            <td>{{row.UnitCost | currency}}</td>
+            <!-- <td>{{row.UnitCost | currency}}</td> -->
             <!-- <td>{{row.Manufacturer }}</td> -->
             <td style="padding-top:0">
-              <button class="btn btn-sm btn-primary" data-toggle="modal" ng-click="inventoryCtrl.editAsset(row)" ng-show="!row.isSelected">
+              <button class="btn btn-sm btn-primary" data-toggle="modal" ng-click="inventoryCtrl.editAsset(row)">
                 <i class="fa fa-edit"></i>
               </button>
-              <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteAssetModal" ng-show="!row.isSelected">
-                <i class="fa fa-trash"></i>
-              </button>
+           
             </td>
           </tr>
         </tbody>
@@ -245,6 +225,23 @@
 
 
     </div>
+    <div class="col-md-2">
+      <div id="showInfo" class="alert alert-danger fade show" role="alert" style="margin-top:45px;">
+
+        <h4 class="alert-heading" style="margin-top:0;">Performance Measure</h4>
+        <h1>23%</h1>
+        <!-- <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p> -->
+      </div>
+      <div class="text-center">
+            <div class="form-group">
+                  <h4 class="text-left"> Target</h4>
+                    <div class="input-group ">
+                        <input id="uploadname" type="text" style="margin-top:5px;width:50%;padding:0px !important;height:38.2px !important;">
+                        <button class="btn btn-primary">Save </button>
+                    </div>
+                </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -252,7 +249,7 @@
 
 <!-- Create Asset Modal -->
 <div class="modal fade" id="createAssetModal" tabindex="-1" role="dialog" aria-labelledby="CreateAssetModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="CreateAssetModalLongTitle">Create New Asset: {{inventoryCtrl.createAsset.AssetUID}}</h5>
@@ -260,8 +257,8 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" style="padding-left:0;padding-right:0;">
-        <div class="container-fluid">
+      <div class="modal-body">
+        <div class="container">
           <div class="col-md-12">
             <div class="bd-example bd-example-tabs" role="tabpanel">
               <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -280,7 +277,7 @@
               </ul>
               <div class="tab-content" id="myTabContent">
                 <div role="tabpanel" class="tab-pane fade active show" id="rv" aria-labelledby="home-tab" aria-expanded="true">
-                  <form class="form-horizontal">
+                  <form class="form-horizontal" style="width:80%;margin-left:10%;">
                     <fieldset>
 
                       <!-- Form Name -->
@@ -2003,295 +2000,6 @@
   </div>
 </div>
 
-<!-- Bulk Update Revenue Vehicles Modal -->
-<div class="modal fade" id="bulkEditRevenueVehiclesModal" tabindex="-1" role="dialog" aria-labelledby="BulkRevenueVehiclesModalLongTitle"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="BulkRevenueVehiclesModalLongTitle">Edit Multiple Assets: ({{numOfBulkAssets}})</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form class="form-horizontal">
-          <fieldset>
-
-            <!-- Form Name -->
-            <!-- <legend>Bulk Edit Revenue Vehicle</legend> -->
-
-            <!-- Select Basic -->
-            <div class="form-group">
-              <label class="col-md-12 control-label" for="brvedit_AssetStatus">Asset Status</label>
-              <div class="col-md-12">
-                <select id="brvedit_AssetStatus" name="brvedit_AssetStatus" class="form-control">
-
-                  <option value="CMT">Committed</option>
-
-                  <option value="EXP">Expansion</option>
-
-                  <option value="EXT">Existing</option>
-
-                  <option value="OUT">Inactive</option>
-
-                  <option value="PLN">Long Range Planned</option>
-
-                  <option value="RES">Reserve</option>
-
-                  <option value="RET">Retired</option>
-
-                </select>
-              </div>
-            </div>
-
-            <!-- Select Basic -->
-            <div class="form-group">
-              <label class="col-md-12 control-label" for="brvedit_ModeCode">Mode Code</label>
-              <div class="col-md-12">
-                <select id="brvedit_ModeCode" name="brvedit_ModeCode" class="form-control">
-
-                  <option value="All">All Modes</option>
-
-                  <option value="BRT">Bus Rapid Transit</option>
-
-                  <option value="CC">Cable Car</option>
-
-                  <option value="CR">Commuter Rail</option>
-
-                  <option value="DR">Demand Response</option>
-
-                  <option value="FB">Ferry Boat</option>
-
-                  <option value="FC">Fare Collection</option>
-
-                  <option value="HR">Heavy Rail</option>
-
-                  <option value="JT">Jitney</option>
-
-                  <option value="LR">Light Rail</option>
-
-                  <option value="MB">Motor Bus</option>
-
-                  <option value="MO">Monorail/ATG</option>
-
-                  <option value="OR">Other</option>
-
-                  <option value="SY">Systemwide Assets</option>
-
-                  <option value="TB">Trolleybus</option>
-
-                  <option value="TR">Aerial Tramway</option>
-
-                  <option value="VP">Vanpool</option>
-
-                </select>
-              </div>
-            </div>
-
-            <!-- Select Basic -->
-            <div class="form-group">
-              <label class="col-md-12 control-label" for="brvedit_NTDModeCode">NTD Mode Code</label>
-              <div class="col-md-12">
-                <select id="brvedit_NTDModeCode" name="brvedit_NTDModeCode" class="form-control">
-
-                  <option value="CB">Commuter Bus</option>
-
-                  <option value="CC">Cable Car</option>
-
-                  <option value="CR">Commuter Rail</option>
-
-                  <option value="DR">Demand Response</option>
-
-                  <option value="DT">Demand Response (Taxi)</option>
-
-                  <option value="HR">Heavy Rail</option>
-
-                  <option value="JT">Jitney</option>
-
-                  <option value="LR">Light Rail</option>
-
-                  <option value="MB">Bus</option>
-
-                  <option value="PB">Publico</option>
-
-                  <option value="RB">Bus Rapid Transit</option>
-
-                  <option value="SR">Streetcar Rail</option>
-
-                  <option value="TB">Trolleybus</option>
-
-                  <option value="TR">Aerial Tramway</option>
-
-                  <option value="VP">Vanpool</option>
-
-                  <option value="YR">Hybrid Rail</option>
-
-                </select>
-              </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-12 control-label" for="brvedit_Quantity">Quantity</label>
-              <div class="col-md-12">
-                <input id="brvedit_Quantity" name="brvedit_Quantity" type="text" placeholder="" class="form-control input-sm">
-
-              </div>
-            </div>
-
-            <!-- Select Basic -->
-            <div class="form-group">
-              <label class="col-md-12 control-label" for="brvedit_UnitType">Quantity Unit Type</label>
-              <div class="col-md-12">
-                <select id="brvedit_UnitType" name="brvedit_UnitType" class="form-control">
-
-                  <option value="Entire Building, Structure, or Site">Entire Building, Structure, or Site</option>
-
-                  <option value="Unit or Vehicle">Unit or Vehicle</option>
-
-                  <option value="Track Feet">Track Feet</option>
-
-                  <option value="Linear Feet">Linear Feet</option>
-
-                  <option value="Set">Set</option>
-
-                  <option value="Parking Space">Parking Space</option>
-
-                  <option value="Square Feet">Square Feet</option>
-
-                </select>
-              </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-12 control-label" for="brvedit_UnitCost">Cost Per Unit</label>
-              <div class="col-md-12">
-                <input id="brvedit_UnitCost" name="brvedit_UnitCost" type="text" placeholder="" class="form-control input-md">
-
-              </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-12 control-label" for="brvedit_PercentContingencyFleet">% of Vehicle Fleet Maintained as Contingency</label>
-              <div class="col-md-12">
-                <input id="brvedit_PercentContingencyFleet" name="brvedit_PercentContingencyFleet" type="text" placeholder="" class="form-control input-md">
-
-              </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-12 control-label" for="brvedit_AgencySoftCost">Additional Soft Cost %</label>
-              <div class="col-md-12">
-                <input id="brvedit_AgencySoftCost" name="brvedit_AgencySoftCost" type="text" placeholder="" class="form-control input-md">
-
-              </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-12 control-label" for="brvedit_CapacitySeated">Seated Passenger Capacity</label>
-              <div class="col-md-12">
-                <input id="brvedit_CapacitySeated" name="brvedit_CapacitySeated" type="text" placeholder="" class="form-control input-md">
-
-              </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-12 control-label" for="brvedit_CapacityStanding">Standing Passenger Capacity</label>
-              <div class="col-md-12">
-                <input id="brvedit_CapacityStanding" name="brvedit_CapacityStanding" type="text" placeholder="" class="form-control input-md">
-
-              </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-12 control-label" for="brvedit_AgencyUsefulLife">Agency-Specified Useful Life</label>
-              <div class="col-md-12">
-                <input id="brvedit_AgencyUsefulLife" name="brvedit_AgencyUsefulLife" type="text" placeholder="" class="form-control input-md"
-                  required="true">
-
-              </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-12 control-label" for="brvedit_DelayReplaceAge">Delay of Replacement Age (Years)</label>
-              <div class="col-md-12">
-                <input id="brvedit_DelayReplaceAge" name="brvedit_DelayReplaceAge" type="text" placeholder="" class="form-control input-md">
-
-              </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-12 control-label" for="brvedit_LastRenewalYR">Year of Last Renewal</label>
-              <div class="col-md-12">
-                <input id="brvedit_LastRenewalYR" name="brvedit_LastRenewalYR" type="text" placeholder="YYYY" class="form-control input-md">
-
-              </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-12 control-label" for="brvedit_LastRenewalType">Type of Last Renewal</label>
-              <div class="col-md-12">
-                <input id="brvedit_LastRenewalType" name="brvedit_LastRenewalType" type="text" placeholder="" class="form-control input-md">
-
-              </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-12 control-label" for="brvedit_PriorityStatus">Priority Status</label>
-              <div class="col-md-12">
-                <input id="brvedit_PriorityStatus" name="brvedit_PriorityStatus" type="text" placeholder="" class="form-control input-md">
-
-              </div>
-            </div>
-
-            <!-- Multiple Checkboxes -->
-            <div class="form-group">
-              <label class="col-md-12 control-label" for="brvedit_Checkboxes">Additional Information</label>
-              <div class="col-md-4">
-                <div class="checkbox">
-                  <label for="brvedit_Checkboxes-0">
-                    <input type="checkbox" name="brvedit_Checkboxes" id="brvedit_Checkboxes-0" value=""> ADA Vehicle
-                  </label>
-                </div>
-                <div class="checkbox">
-                  <label for="brvedit_Checkboxes-1">
-                    <input type="checkbox" name="brvedit_Checkboxes" id="brvedit_Checkboxes-1" value=""> Supports Additional Modes
-                  </label>
-                </div>
-                <div class="checkbox">
-                  <label for="brvedit_Checkboxes-2">
-                    <input type="checkbox" name="brvedit_Checkboxes" id="brvedit_Checkboxes-2" value=""> Subject to Historic Preservation
-                  </label>
-                </div>
-
-              </div>
-            </div>
-
-          </fieldset>
-        </form>
-
-
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" ng-click="inventoryCtrl.saveAssetUpdates('rv')">
-          <i class="fa fa-spinner fa-spin  fa-fw" ng-if="inventoryCtrl.savingAssetSpinner"></i>Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- Update Non Revenue Vehicles Modal -->
 <div class="modal fade" id="editnonRevenueVehiclesModal" tabindex="-1" role="dialog" aria-labelledby="nonRevenueVehiclesModalLongTitle"
@@ -3316,25 +3024,3 @@
     </div>
   </div>
 </div>
-
-<!-- Bulk Delete Modal -->
-<div class="modal fade" id="deleteBulkAssetModal" tabindex="-1" role="dialog" aria-labelledby="deleteBulkAssetLongTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="deleteBulkAssetLongTitle">Delete Asset</h5>
-      
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              Are you sure you want to delete {{numOfBulkAssets}} assets?
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-danger">Delete</button>
-            </div>
-          </div>
-        </div>
-      </div>
