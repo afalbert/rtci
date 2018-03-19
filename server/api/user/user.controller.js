@@ -127,7 +127,9 @@ export function destroy(req, res) {
 }
 
 export function getTRSIDAssets(req, res) {
-  sqldb.sequelize.query("SELECT * FROM [aalbert].[RevenueVehicleInventory] WHERE TRSID ='" + 9013 + "'", {
+   var trsid = req.user.dataValues.TRSID;
+  
+  sqldb.sequelize.query("SELECT * FROM [aalbert].[RevenueVehicleInventory] WHERE TRSID = " + trsid, {
       type: sqldb.sequelize.QueryTypes.SELECT
     })
     .then(assets => {
@@ -143,16 +145,18 @@ export function getTRSIDAssets(req, res) {
 
 export function getTRSIDCategoryAssets(req, res) {
   var category = req.params.category;
+   var trsid = req.user.dataValues.TRSID;
+  
   console.log(category);
   var query;
   if (category === 'nonrevenuevehicles') {
-    query = "SELECT * FROM [aalbert].[NonRevenueVehicleInventory] WHERE TRSID ='9013'";
+    query = "SELECT * FROM [aalbert].[NonRevenueVehicleInventory] WHERE TRSID = " + trsid;
   } else if (category === 'mandafacilities') {
-    query = "SELECT * FROM [aalbert].[MandAFacilitiesInventory] WHERE TRSID ='9013'";
+    query = "SELECT * FROM [aalbert].[MandAFacilitiesInventory] WHERE TRSID = " + trsid;
   } else if (category === 'passengerfacilities') {
-    query = "SELECT * FROM [aalbert].[PassengerFacilitiesInventory] WHERE TRSID ='9013'";
+    query = "SELECT * FROM [aalbert].[PassengerFacilitiesInventory] WHERE TRSID = " + trsid;
   } else if (category === 'revenuevehicles') {
-    query = "SELECT * FROM [aalbert].[RevenueVehicleInventory] WHERE TRSID ='9013'";
+    query = "SELECT * FROM [aalbert].[RevenueVehicleInventory] WHERE TRSID = " + trsid;
   }
 
   console.log(query);
@@ -171,7 +175,9 @@ export function getTRSIDCategoryAssets(req, res) {
 }
 
 export function getAssetsTotalCount(req, res) {
-  sqldb.sequelize.query("SELECT COUNT(AssetUID) AS count  FROM rtci_app.MainExportVw  WHERE (TRSID = 9013)", {
+   var trsid = req.user.dataValues.TRSID;
+  
+  sqldb.sequelize.query("SELECT COUNT(AssetUID) AS count  FROM rtci_app.MainExportVw  WHERE (TRSID = " + trsid + ")", {
       type: sqldb.sequelize.QueryTypes.SELECT
     })
     .then(count => {
@@ -360,7 +366,10 @@ export function updateAsset(req, res) {
  * Visualizations for Dashboard
  */
 export function getPAOUL(req, res) {
-  sqldb.sequelize.query("SELECT * FROM [aalbert].[PAOUL] WHERE TRSID = " + 9013, {
+  // console.log(req.user);
+  var trsid = req.user.dataValues.TRSID;
+  
+  sqldb.sequelize.query("SELECT * FROM [aalbert].[PAOUL] WHERE TRSID = " + trsid, {
       type: sqldb.sequelize.QueryTypes.SELECT
     })
     .then(assets => {
@@ -375,7 +384,9 @@ export function getPAOUL(req, res) {
 }
 
 export function getAssetCategories(req, res) {
-  sqldb.sequelize.query("SELECT * FROM [aalbert].[AssetCategories] WHERE TRSID = " + 9013, {
+   var trsid = req.user.dataValues.TRSID;
+  
+  sqldb.sequelize.query("SELECT * FROM [aalbert].[AssetCategories] WHERE TRSID = " + trsid, {
       type: sqldb.sequelize.QueryTypes.SELECT
     })
     .then(assets => {
@@ -390,7 +401,9 @@ export function getAssetCategories(req, res) {
 }
 
 export function totalAssets(req, res) {
-  sqldb.sequelize.query("SELECT * FROM [aalbert].[NumRevenueVehicles] WHERE TRSID = " + 9013, {
+   var trsid = req.user.dataValues.TRSID;
+  
+  sqldb.sequelize.query("SELECT * FROM [aalbert].[NumRevenueVehicles] WHERE TRSID = " + trsid, {
       type: sqldb.sequelize.QueryTypes.SELECT
     })
     .then(assets => {
@@ -405,7 +418,9 @@ export function totalAssets(req, res) {
 }
 
 export function getAssetReplacementCost(req, res) {
-  sqldb.sequelize.query("SELECT * FROM [aalbert].[AssetCost] WHERE TRSID = " + 9013, {
+   var trsid = req.user.dataValues.TRSID;
+  
+  sqldb.sequelize.query("SELECT * FROM [aalbert].[AssetCost] WHERE TRSID = " + trsid, {
       type: sqldb.sequelize.QueryTypes.SELECT
     })
     .then(assets => {
@@ -421,8 +436,10 @@ export function getAssetReplacementCost(req, res) {
 
 export function getTargetSettingPAOUL(req, res) {
   console.log(req.user);
+   var trsid = req.user.dataValues.TRSID;
+  
   var queryString;
-    queryString = "SELECT * FROM [aalbert].[TargetSettingPAOULMaster] WHERE TRSID = " + 9013;
+    queryString = "SELECT * FROM [aalbert].[TargetSettingPAOULMaster] WHERE TRSID = " + trsid;
 
   sqldb.sequelize.query(queryString, {
       type: sqldb.sequelize.QueryTypes.SELECT

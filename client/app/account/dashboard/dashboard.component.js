@@ -7,10 +7,14 @@ import routes from './dashboard.routes';
 
 export class DashboardComponent {
   /*@ngInject*/
-  constructor($http, $state) {
+  // getCurrentUser: Function;
+
+  constructor($http, $state,Auth) {
     this.message = 'Hello';
     this.$http = $http;
     this.$state = $state;
+    this.getCurrentUser = Auth.getCurrentUserSync;
+    console.log(this.getCurrentUser());
   }
 
   $onInit() {
