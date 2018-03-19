@@ -188,8 +188,8 @@
                 <thead>
                     <tr>
                         <th>
-                            <button class="btn btn-primary" style="margin-bottom:0;" ng-show="numOfBulkAssets > 1" ng-click="unselectAllAssets()">Unselect All</button>
-                            <button class="btn btn-primary" style="margin-bottom:0;" ng-show="numOfBulkAssets < 1" ng-click="selectAll()">Select All</button>
+                            <button class="btn btn-primary" style="margin-bottom:0;" ng-show="numOfBulkAssets >= 2" ng-click="unselectAllAssets()">Unselect All</button>
+                            <button class="btn btn-primary" style="margin-bottom:0;" ng-show="numOfBulkAssets < 2" ng-click="selectAll()">Select All</button>
                             <!-- <input type="checkbox" ng-model="assets.checkbox" ng-change="selectBulkAssets(assets.checkbox)"> -->
 
                         </th>
