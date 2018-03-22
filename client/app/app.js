@@ -5,6 +5,7 @@ import angular from 'angular';
 import ngCookies from 'angular-cookies';
 import ngResource from 'angular-resource';
 import ngSanitize from 'angular-sanitize';
+import uiBootstrap from 'angular-ui-bootstrap';
 
 
 import uiRouter from 'angular-ui-router';
@@ -38,7 +39,7 @@ import util from '../components/util/util.module';
 
 import './app.scss';
 
-angular.module('rtciApp', [ngCookies, ngResource, ngSanitize, uiRouter, _Auth, account, admin,
+angular.module('rtciApp', [ngCookies, ngResource, ngSanitize,uiBootstrap, uiRouter, _Auth, account, admin,
         'validation.match', navbar, footer, main, feedback,about, contact, dashboard, inventory, myaccount,targets,ulb, reports, smartTable, constants, util
     ])
     .config(routeConfig)
