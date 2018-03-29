@@ -488,6 +488,67 @@ export function updatePassengerFacility(req, res) {
 
 }
 
+
+export function updateAdminMaintFacility(req, res) {
+  console.log(req.body.AssetUID);
+  console.log(req.body);
+
+
+  // create Request object
+  var request = new sql.Request(config.mssql);
+  request.input('AssetUID', sql.Int, req.body.AssetUID);
+  request.input('AgencyAssetUID', sql.NVarChar(50), req.body.AgencyAssetUID);
+  request.input('AssetDesc', sql.NVarChar(500), req.body.AssetDesc);
+  request.input('AgencyDetail', sql.NVarChar(500), req.body.AgencyDetail);
+  request.input('AssetType', sql.Numeric(18, 6), req.body.AssetType);
+  request.input('Quantity', sql.Float, req.body.Quantity);
+  request.input('UnitCost', sql.VarChar(20), req.body.UnitCost);
+  request.input('UnitType', sql.VarChar(100), req.body.UnitType);
+  request.input('AgencySoftCost', sql.Float, req.body.AgencySoftCost);
+  request.input('YRBuilt', sql.Int, req.body.YRBuilt);
+  request.input('AssetPhysAddress', sql.NVarChar(500), req.body.AssetPhysAddress);
+  request.input('AssetPhysCity', sql.NVarChar(500), req.body.AssetPhysCity);
+  request.input('AssetPhysState', sql.NVarChar(500), req.body.AssetPhysState);
+  request.input('AssetPhysZIP', sql.NVarChar(500), req.body.AssetPhysZIP);
+  request.input('Latitude', sql.NVarChar(500), req.body.Latitude);
+  request.input('Longitude', sql.NVarChar(500), req.body.Longitude);
+  request.input('AssetStatus', sql.VarChar(3), req.body.AssetStatus);
+  request.input('SquareFootage', sql.Numeric(18, 6), req.body.SquareFootage);
+  request.input('AgencyConditionRating', sql.Numeric(2, 1), parseFloat(req.body.AgencyConditionRating));
+  request.input('DateofLastCondAssessment', sql.Date, req.body.DateofLastCondAssessment);
+  request.input('AgencyCapitalResponsibility', sql.Int, req.body.AgencyCapitalResponsibility);
+  request.input('LastRenewalYR', sql.Int, req.body.LastRenewalYR);
+  request.input('LastRenewalType', sql.NVarChar(255), req.body.LastRenewalType);
+  request.input('HistoricPresrvFlag', sql.Bit, req.body.HistoricPresrvFlag);
+  request.input('PriorityStatus', sql.Int, req.body.PriorityStatus);
+  
+
+  // request.output('AssetUID', sql.Int)
+  request.execute('dbo.updateAdminMaintFacility', (err, result) => {
+    // ... error checks
+    if (err) {
+      console.log(err);
+      sql.close();
+    } else {
+      console.log(result);
+      // console.log(result.recordsets.length) // count of recordsets returned by the procedure
+      // console.log(result.recordsets[0].length) // count of rows contained in first recordset
+      // console.log(result.recordset) // first recordset from result.recordsets
+      // console.log(result.returnValue) // procedure return value
+      // console.log(result.output) // key/value collection of output values
+      // console.log(result.rowsAffected) // array of numbers, each number represents the number of rows affected by executed statemens
+      res.json(result);
+      sql.close();
+      // ...
+    }
+  })
+
+
+
+
+}
+
+
 /**
  * Visualizations for Dashboard
  */

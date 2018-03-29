@@ -1,6 +1,6 @@
 <div class="inventory-section container-fluid" style="margin-top:100px;" st-table="displayedCollection" st-safe-src="rowCollection">
   <h3 class="text-center" style="margin-bottom:5px;">Manage Inventory {{type}}</h3>
- 
+
   <div class="text-right">
     <button class="btn btn-warning" style="color:black;" data-toggle="modal" data-target="#bulkEditRevenueVehiclesModal" ng-show="numOfBulkAssets > 1">
       <i class="fa fa-edit"></i> &nbsp;Edit Assets ({{numOfBulkAssets}}) </button>
@@ -1595,8 +1595,8 @@
             <div class="form-group">
               <label class="col-sm-12 control-label" for="rvedit_AgencyAssetUID">Agency Asset ID</label>
               <div class="col-sm-12">
-                <input id="rvedit_AgencyAssetUID" name="rvedit_AgencyAssetUID" ng-model="inventoryCtrl.updateRevenueAsset.AgencyAssetUID" type="text"
-                  placeholder="" class="form-control input-md">
+                <input id="rvedit_AgencyAssetUID" name="rvedit_AgencyAssetUID" ng-model="inventoryCtrl.updateRevenueAsset.AgencyAssetUID"
+                  type="text" placeholder="" class="form-control input-md">
 
               </div>
             </div>
@@ -1616,7 +1616,9 @@
               <div class="col-sm-12">
                 <!-- <input id="rvedit_Manufacturer" name="rvedit_Manufacturer" ng-model="inventoryCtrl.updateRevenueAsset.Manufacturer" type="text"
                   placeholder="" class="form-control input-md"> -->
-                  <input id="rvedit_Manufacturer" name="rvedit_Manufacturer" type="text" ng-model="inventoryCtrl.updateRevenueAsset.Manufacturer" placeholder="Start Typing Manufacturer Name..." uib-typeahead="state as state for state in inventoryCtrl.manufacturerCodes | filter:$viewValue" class="form-control">
+                <input id="rvedit_Manufacturer" name="rvedit_Manufacturer" type="text" ng-model="inventoryCtrl.updateRevenueAsset.Manufacturer"
+                  placeholder="Start Typing Manufacturer Name..." uib-typeahead="state as state for state in inventoryCtrl.manufacturerCodes | filter:$viewValue"
+                  class="form-control">
 
               </div>
             </div>
@@ -1943,19 +1945,18 @@
               <div class="col-sm-12">
                 <!-- <input id="rvedit_PriorityStatus" name="rvedit_PriorityStatus" ng-model="inventoryCtrl.updateRevenueAsset.PriorityStatus"
                   type="text" placeholder="" class="form-control input-md"> -->
-                  <!-- <select id="rvedit_PriorityStatus" name="rvedit_PriorityStatus" class="form-control" ng-model="inventoryCtrl.updateRevenueAsset.PriorityStatus">
+                <!-- <select id="rvedit_PriorityStatus" name="rvedit_PriorityStatus" class="form-control" ng-model="inventoryCtrl.updateRevenueAsset.PriorityStatus">
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
                     <option value="4">Four</option>
                   </select> -->
-                  <div class="col-sm-12">
-                        <select class="form-control" ng-model="inventoryCtrl.updateRevenueAsset.PriorityStatus" 
-                        ng-options="i as i for i in inventoryCtrl.priorityStatus">
+                <div class="col-sm-12">
+                  <select class="form-control" ng-model="inventoryCtrl.updateRevenueAsset.PriorityStatus" ng-options="i as i for i in inventoryCtrl.priorityStatus">
                     <option></option>
-                </select>
-                   
-                  </div>
+                  </select>
+
+                </div>
               </div>
             </div>
 
@@ -1965,12 +1966,12 @@
               <div class="col-sm-12">
                 <div class="form-check">
                   <label for="rvedit_Checkboxes-0">
-                    <input type="checkbox" name="rvedit_Checkboxes-0" id="rvedit_Checkboxes-0"   ng-model="inventoryCtrl.updateRevenueAsset.ADAFlag"> ADA Vehicle
+                    <input type="checkbox" name="rvedit_Checkboxes-0" id="rvedit_Checkboxes-0" ng-model="inventoryCtrl.updateRevenueAsset.ADAFlag"> ADA Vehicle
                   </label>
                 </div>
                 <div class="form-check">
                   <label for="rvedit_Checkboxes-1">
-                    <input type="checkbox" name="rvedit_Checkboxes-1" id="rvedit_Checkboxes-1"  ng-model="inventoryCtrl.updateRevenueAsset.AdditionalModeSupport"> Supports Additional Modes
+                    <input type="checkbox" name="rvedit_Checkboxes-1" id="rvedit_Checkboxes-1" ng-model="inventoryCtrl.updateRevenueAsset.AdditionalModeSupport"> Supports Additional Modes
                   </label>
                 </div>
                 <div class="form-check">
@@ -2318,7 +2319,8 @@
               <label class="col-sm-12 control-label" for="nrvedit_Manufacturer">Manufacturer</label>
               <div class="col-sm-12">
                 <input id="nrvedit_Manufacturer" ng-model="inventoryCtrl.updateNonRevenueAsset.Manufacturer" name="nrvedit_Manufacturer"
-                  type="text" placeholder="Start Typing Manufacturer Name..." uib-typeahead="state as state for state in inventoryCtrl.manufacturerCodes | filter:$viewValue" class="form-control">
+                  type="text" placeholder="Start Typing Manufacturer Name..." uib-typeahead="state as state for state in inventoryCtrl.manufacturerCodes | filter:$viewValue"
+                  class="form-control">
 
               </div>
             </div>
@@ -2659,7 +2661,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" ng-click="inventoryCtrl.saveNonRevenueAsset('nonrevenueasset')"><i class="fa fa-spinner fa-spin  fa-fw" ng-if="inventoryCtrl.savingAssetSpinner"></i>&nbsp;Save changes</button>
+        <button type="button" class="btn btn-primary" ng-click="inventoryCtrl.saveNonRevenueAsset('nonrevenueasset')">
+          <i class="fa fa-spinner fa-spin  fa-fw" ng-if="inventoryCtrl.savingAssetSpinner"></i>&nbsp;Save changes</button>
       </div>
     </div>
   </div>
@@ -2966,11 +2969,16 @@
             <div class="form-group">
               <label class="col-sm-12 control-label" for="pfedit_HistoricPresrvFlag">Additional Info</label>
               <div class="col-sm-12">
-                <div class="checkbox">
-                  <label for="pfedit_HistoricPresrvFlag-0">
-                    <input type="checkbox" name="pfedit_HistoricPresrvFlag" id="pfedit_HistoricPresrvFlag-0" value=""> Subject to Historic Preservation
+                <div class="form-check">
+                  <label for="pfedit_HistoricPresrvFlag">
+                    <input type="checkbox" name="pfedit_HistoricPresrvFlag" id="pfedit_HistoricPresrvFlag" ng-model="inventoryCtrl.updatePassengerAsset.HistoricPresrvFlag"> ADA Vehicle
                   </label>
                 </div>
+                <!-- <div class="checkbox">
+                  <label for="pfedit_HistoricPresrvFlag-0">
+                    <input type="checkbox" name="pfedit_HistoricPresrvFlag" id="pfedit_HistoricPresrvFlag-0" value=""> 
+                  </label>
+                </div> -->
 
               </div>
             </div>
@@ -2982,12 +2990,12 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" ng-click="inventoryCtrl.savePassengerFacility('passengerfacilities')">
-                <i class="fa fa-spinner fa-spin  fa-fw" ng-if="inventoryCtrl.savingAssetSpinner"></i>Save changes</button>
-            </div>
+          <i class="fa fa-spinner fa-spin  fa-fw" ng-if="inventoryCtrl.savingAssetSpinner"></i>Save changes</button>
       </div>
     </div>
   </div>
 </div>
+
 
 
 <!-- Update Admin and Maintenance Modal -->
@@ -3240,7 +3248,7 @@
             <div class="form-group">
               <label class="col-sm-12 control-label" for="amfedit_YROfLastRenewal">Year of Last Renewal</label>
               <div class="col-sm-12">
-                <input id="amfedit_YROfLastRenewal" ng-model="inventoryCtrl.updateMAAsset.YROfLastRenewal" name="amfedit_YROfLastRenewal"
+                <input id="amfedit_YROfLastRenewal" ng-model="inventoryCtrl.updateMAAsset.LastRenewalYR" name="amfedit_YROfLastRenewal"
                   type="text" placeholder="YYYY" class="form-control input-md">
 
               </div>
@@ -3270,11 +3278,12 @@
             <div class="form-group">
               <label class="col-sm-12 control-label" for="amfedit_HistoricPresrvFlag">Additional Info</label>
               <div class="col-sm-12">
-                <div class="checkbox">
-                  <label for="amfedit_HistoricPresrvFlag-0">
-                    <input type="checkbox" name="amfedit_HistoricPresrvFlag" id="amfedit_HistoricPresrvFlag-0" value=""> Subject to Historic Preservation
-                  </label>
-                </div>
+                  <div class="form-check">
+                      <label for="amfedit_HistoricPresrvFlag">
+                        <input type="checkbox" name="amfedit_HistoricPresrvFlag" id="amfedit_HistoricPresrvFlag" ng-model="inventoryCtrl.updateMAAsset.HistoricPresrvFlag"> Subject to Historic Preservation
+                      </label>
+                    </div>
+              
 
               </div>
             </div>
@@ -3284,11 +3293,13 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" ng-click="inventoryCtrl.saveAdminMaintFacility('mandafacilities')">
+          <i class="fa fa-spinner fa-spin  fa-fw" ng-if="inventoryCtrl.savingAssetSpinner"></i>Save changes</button>
       </div>
     </div>
   </div>
 </div>
+
 
 <!-- Delete Modal -->
 <div class="modal fade" id="deleteAssetModal" tabindex="-1" role="dialog" aria-labelledby="deleteAssetLongTitle" aria-hidden="true">

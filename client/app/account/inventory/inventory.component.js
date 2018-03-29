@@ -149,7 +149,7 @@ export class InventoryComponent {
       $('#editpassengerFacilitiesModal').modal();
     } else if (this.$scope.category && this.$scope.category === 'mandafacilities') {
       this.updateMAAsset = asset;
-      $('#editAdditionalModeSupportinAndMaintenanceModal').modal();
+      $('#editadminAndMaintenanceModal').modal();
     } else if (this.$scope.category && this.$scope.category === 'revenuevehicles') {
       this.updateRevenueAsset = asset;
       console.log(this.updateRevenueAsset.PriorityStatus);
@@ -347,6 +347,60 @@ console.log(updateData.UnitType);
           this.$scope.updateTable('passengerfacilities');
 
           $('#editpassengerFacilitiesModal').modal('hide');
+          this.savingAssetSpinner = false;
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  saveAdminMaintFacility(category) {
+    // console.log(this.$scope);
+    this.savingAssetSpinner = true;
+    // console.log(this.updateRevenueAsset);
+    
+    console.log(this.updateMAAsset.AssetUID);
+  
+
+    var updateData = {
+     
+      AssetUID:this.updateMAAsset.AssetUID,
+      AssetDesc:this.updateMAAsset.AssetDesc,
+      AgencyDetail:this.updateMAAsset.AgencyDetail,
+      AssetStatus:this.updateMAAsset.AssetStatus,
+      AssetType:this.updateMAAsset.AssetType,
+      YRBuilt:this.updateMAAsset.YRBuilt,
+      Quantity:this.updateMAAsset.Quantity,
+      UnitType:this.updateMAAsset.UnitType,
+      UnitCost:this.updateMAAsset.UnitCost,
+      AgencySoftCost:this.updateMAAsset.AgencySoftCost,
+      AgencyAssetUID:this.updateMAAsset.AgencyAssetUID,
+      PriorityStatus:this.updateMAAsset.PriorityStatus,
+      LastRenewalYR: this.updateMAAsset.LastRenewalYR,
+      LastRenewalType: this.updateMAAsset.LastRenewalType,
+      HistoricPresrvFlag:this.updateMAAsset.HistoricPresrvFlag,
+      DateofLastCondAssessment:this.updateMAAsset.DateofLastCondAssessment,
+      AgencyConditionRating:this.updateMAAsset.AgencyConditionRating,
+      AgencyCapitalResponsibility:this.updateMAAsset.AgencyCapitalResponsibility,
+      SquareFootage:this.updateMAAsset.SquareFootage,
+      AssetPhysAddress:this.updateMAAsset.AssetPhysAddress,
+      AssetPhysCity:this.updateMAAsset.AssetPhysCity,
+      AssetPhysState:this.updateMAAsset.AssetPhysState,
+      AssetPhysZIP:this.updateMAAsset.AssetPhysZIP,
+      Latitude:this.updateMAAsset.Latitude,
+      Longitude:this.updateMAAsset.Longitude
+    }
+    console.log(updateData)
+    this.updateMAAsset.category = category;
+   
+    this.$http.put('/api/users/' + this.updateMAAsset.AssetUID + '/asset/adminmaintfacility', updateData)
+      .then(response => {
+        console.log(response);
+        if (response.data.returnValue === 0) {
+          this.$scope.updateTable('mandafacilities');
+
+          $('#editadminAndMaintenanceModal').modal('hide');
           this.savingAssetSpinner = false;
         }
       })
