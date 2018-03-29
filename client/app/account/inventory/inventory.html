@@ -1616,7 +1616,7 @@
               <div class="col-sm-12">
                 <!-- <input id="rvedit_Manufacturer" name="rvedit_Manufacturer" ng-model="inventoryCtrl.updateRevenueAsset.Manufacturer" type="text"
                   placeholder="" class="form-control input-md"> -->
-                  <input id="rvedit_Manufacturer" name="rvedit_Manufacturer" type="text" ng-model="inventoryCtrl.updateRevenueAsset.Manufacturer" placeholder="Start Typing Manufacturer Name..." uib-typeahead="state as state.NTDManfName for state in inventoryCtrl.manufacturerCodes | filter:{NTDManfName:$viewValue}" class="form-control">
+                  <input id="rvedit_Manufacturer" name="rvedit_Manufacturer" type="text" ng-model="inventoryCtrl.updateRevenueAsset.Manufacturer" placeholder="Start Typing Manufacturer Name..." uib-typeahead="state as state for state in inventoryCtrl.manufacturerCodes | filter:$viewValue" class="form-control">
 
               </div>
             </div>
@@ -2314,11 +2314,11 @@
             </div>
 
             <!-- Text input-->
-            <div class="form-group">
+            <div class="form-group typeahead-dropdown">
               <label class="col-sm-12 control-label" for="nrvedit_Manufacturer">Manufacturer</label>
               <div class="col-sm-12">
                 <input id="nrvedit_Manufacturer" ng-model="inventoryCtrl.updateNonRevenueAsset.Manufacturer" name="nrvedit_Manufacturer"
-                  type="text" placeholder="" class="form-control input-md">
+                  type="text" placeholder="Start Typing Manufacturer Name..." uib-typeahead="state as state for state in inventoryCtrl.manufacturerCodes | filter:$viewValue" class="form-control">
 
               </div>
             </div>
@@ -2492,6 +2492,7 @@
                   <option value="Entire Building, Structure, or Site">Entire Building, Structure, or Site</option>
 
                   <option value="Unit or Vehicle">Unit or Vehicle</option>
+                  <option value="Each">Each</option>
 
                   <option value="Track Feet">Track Feet</option>
 
@@ -2658,7 +2659,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" ng-click="inventoryCtrl.saveNonRevenueAsset('nonrevenueasset')"><i class="fa fa-spinner fa-spin  fa-fw" ng-if="inventoryCtrl.savingAssetSpinner"></i>&nbsp;Save changes</button>
       </div>
     </div>
   </div>
@@ -2935,7 +2936,7 @@
             <div class="form-group">
               <label class="col-sm-12 control-label" for="pfedit_YROfLastRenewal">Year of Last Renewal</label>
               <div class="col-sm-12">
-                <input id="pfedit_YROfLastRenewal" ng-model="inventoryCtrl.updatePassengerAsset.YROfLastRenewal" name="pfedit_YROfLastRenewal"
+                <input id="pfedit_YROfLastRenewal" ng-model="inventoryCtrl.updatePassengerAsset.LastRenewalYR" name="pfedit_YROfLastRenewal"
                   type="text" placeholder="YYYY" class="form-control input-md">
 
               </div>
@@ -2980,7 +2981,9 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" ng-click="inventoryCtrl.savePassengerFacility('passengerfacilities')">
+                <i class="fa fa-spinner fa-spin  fa-fw" ng-if="inventoryCtrl.savingAssetSpinner"></i>Save changes</button>
+            </div>
       </div>
     </div>
   </div>
