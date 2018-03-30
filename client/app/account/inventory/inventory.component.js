@@ -449,12 +449,163 @@ export class InventoryComponent {
     // this.addRevenueAsset.category = category;
     // this.updateAsset = {};
 
-    this.$http.post('/api/users/' + this.addRevenueAsset.AssetUID + '/asset/create/revenue', addData)
+    this.$http.post('/api/users/asset/create/revenue', addData)
       .then(response => {
         console.log(response);
         if (response.data.returnValue === 0) {
           this.$scope.updateTable('revenuevehicles');
           this.addRevenueAsset = {};
+
+          $('#createAssetModal').modal('hide');
+          this.savingAssetSpinner = false;
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  createNonRevenueVehicle() {
+   
+    this.savingAssetSpinner = true;
+   
+    var addData = {
+
+      ModeCode: this.addNonRevenueAsset.ModeCode,
+      NTDModeCode: this.addNonRevenueAsset.NTDModeCode,
+      AssetDesc: this.addNonRevenueAsset.AssetDesc,
+      AgencyDetail: this.addNonRevenueAsset.AgencyDetail,
+      AssetStatus: this.addNonRevenueAsset.AssetStatus,
+      AssetType: this.addNonRevenueAsset.AssetType,
+      YRBuilt: this.addNonRevenueAsset.YRBuilt,
+      YRInService: this.addNonRevenueAsset.YRInService,
+      AgencyUsefulLife: this.addNonRevenueAsset.AgencyUsefulLife,
+      Quantity: this.addNonRevenueAsset.Quantity,
+      UnitType: this.addNonRevenueAsset.UnitType,
+      UnitCost: this.addNonRevenueAsset.UnitCost,
+      AgencySoftCost: this.addNonRevenueAsset.AgencySoftCost,
+      AgencyAssetUID: this.addNonRevenueAsset.AgencyAssetUID,
+      PriorityStatus: this.addNonRevenueAsset.PriorityStatus,
+      Manufacturer: this.addNonRevenueAsset.Manufacturer,
+      ModelNumber: this.addNonRevenueAsset.ModelNumber,
+      FuelType: this.addNonRevenueAsset.FuelType,
+      AgencyCapitalResponsibility: this.addNonRevenueAsset.AgencyCapitalResponsibility,
+      DelayReplaceAge: this.addNonRevenueAsset.DelayReplaceAge,
+      LastRenewalYR: this.addNonRevenueAsset.LastRenewalYR,
+      LastRenewalType: this.addNonRevenueAsset.LastRenewalType,
+    }
+    console.log(addData)
+   
+    this.$http.post('/api/users/asset/create/nonrevenue', addData)
+      .then(response => {
+        console.log(response);
+        if (response.data.returnValue === 0) {
+          this.$scope.updateTable('nonrevenuevehicles');
+          this.addNonRevenueAsset = {};
+
+          $('#createAssetModal').modal('hide');
+          this.savingAssetSpinner = false;
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  createPassengerFacility() {
+   
+    this.savingAssetSpinner = true;
+   console.log(this.addPassengerAsset);
+    var addData = {
+
+      ModeCode: this.addPassengerAsset.ModeCode,
+      NTDModeCode: this.addPassengerAsset.NTDModeCode,
+      AssetDesc: this.addPassengerAsset.AssetDesc,
+      AgencyDetail: this.addPassengerAsset.AgencyDetail,
+      AssetStatus: this.addPassengerAsset.AssetStatus,
+      AssetType: this.addPassengerAsset.AssetType,
+      YRBuilt: this.addPassengerAsset.YRBuilt,
+      Quantity: this.addPassengerAsset.Quantity,
+      UnitType: this.addPassengerAsset.UnitType,
+      UnitCost: this.addPassengerAsset.UnitCost,
+      AgencySoftCost: this.addPassengerAsset.AgencySoftCost,
+      AgencyAssetUID: this.addPassengerAsset.AgencyAssetUID,
+      PriorityStatus: this.addPassengerAsset.PriorityStatus,
+      LastRenewalYR: this.addPassengerAsset.LastRenewalYR,
+      LastRenewalType: this.addPassengerAsset.LastRenewalType,
+      HistoricPresrvFlag: this.addPassengerAsset.HistoricPresrvFlag,
+      DateofLastCondAssessment: this.addPassengerAsset.DateofLastCondAssessment,
+      AgencyConditionRating: this.addPassengerAsset.AgencyConditionRating,
+      AgencyCapitalResponsibility: this.addPassengerAsset.AgencyCapitalResponsibility,
+      SquareFootage: this.addPassengerAsset.SquareFootage,
+      AssetPhysAddress: this.addPassengerAsset.AssetPhysAddress,
+      AssetPhysCity: this.addPassengerAsset.AssetPhysCity,
+      AssetPhysState: this.addPassengerAsset.AssetPhysState,
+      AssetPhysZIP: this.addPassengerAsset.AssetPhysZIP,
+      Latitude: this.addPassengerAsset.Latitude,
+      Longitude: this.addPassengerAsset.Longitude
+    }
+    console.log(addData)
+   
+    this.$http.post('/api/users/asset/create/passengerfacility', addData)
+      .then(response => {
+        console.log(response);
+        if (response.data.returnValue === 0) {
+          this.$scope.updateTable('passengerfacilities');
+          this.$scope.type = ': Passenger Facilites';
+          this.addPassengerAsset = {};
+
+          $('#createAssetModal').modal('hide');
+          this.savingAssetSpinner = false;
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  createAdminMaintFacility() {
+   
+    this.savingAssetSpinner = true;
+   console.log(this.addPassengerAsset);
+    var addData = {
+
+      ModeCode: this.addMAFacility.ModeCode,
+      NTDModeCode: this.addMAFacility.NTDModeCode,
+      AssetDesc: this.addMAFacility.AssetDesc,
+      AgencyDetail: this.addMAFacility.AgencyDetail,
+      AssetStatus: this.addMAFacility.AssetStatus,
+      AssetType: this.addMAFacility.AssetType,
+      YRBuilt: this.addMAFacility.YRBuilt,
+      Quantity: this.addMAFacility.Quantity,
+      UnitType: this.addMAFacility.UnitType,
+      UnitCost: this.addMAFacility.UnitCost,
+      AgencySoftCost: this.addMAFacility.AgencySoftCost,
+      AgencyAssetUID: this.addMAFacility.AgencyAssetUID,
+      PriorityStatus: this.addMAFacility.PriorityStatus,
+      LastRenewalYR: this.addMAFacility.LastRenewalYR,
+      LastRenewalType: this.addMAFacility.LastRenewalType,
+      HistoricPresrvFlag: this.addMAFacility.HistoricPresrvFlag,
+      DateofLastCondAssessment: this.addMAFacility.DateofLastCondAssessment,
+      AgencyConditionRating: this.addMAFacility.AgencyConditionRating,
+      AgencyCapitalResponsibility: this.addMAFacility.AgencyCapitalResponsibility,
+      SquareFootage: this.addMAFacility.SquareFootage,
+      AssetPhysAddress: this.addMAFacility.AssetPhysAddress,
+      AssetPhysCity: this.addMAFacility.AssetPhysCity,
+      AssetPhysState: this.addMAFacility.AssetPhysState,
+      AssetPhysZIP: this.addMAFacility.AssetPhysZIP,
+      Latitude: this.addMAFacility.Latitude,
+      Longitude: this.addMAFacility.Longitude
+    }
+    console.log(addData)
+   
+    this.$http.post('/api/users/asset/create/adminmaintfacility', addData)
+      .then(response => {
+        console.log(response);
+        if (response.data.returnValue === 0) {
+          this.$scope.updateTable('mandafacilities');
+          this.$scope.type = ': M&A Facilities';
+          this.addPassengerAsset = {};
 
           $('#createAssetModal').modal('hide');
           this.savingAssetSpinner = false;

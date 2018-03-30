@@ -689,7 +689,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="nrvadd_AgencyAssetUID">Agency Asset ID</label>
                         <div class="col-sm-12">
-                          <input id="nrvadd_AgencyAssetUID" name="nrvadd_AgencyAssetUID" type="text" placeholder="" class="form-control input-md">
+                          <input id="nrvadd_AgencyAssetUID" name="nrvadd_AgencyAssetUID" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addNonRevenueAsset.AgencyAssetUID">
 
                         </div>
                       </div>
@@ -698,7 +698,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="nrvadd_Manufacturer">Manufacturer</label>
                         <div class="col-sm-12">
-                          <input id="nrvadd_Manufacturer" name="nrvadd_Manufacturer" type="text" placeholder="" class="form-control input-md">
+                          <input id="nrvadd_Manufacturer" name="nrvadd_Manufacturer" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addNonRevenueAsset.Manufacturer">
 
                         </div>
                       </div>
@@ -707,7 +707,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="nrvadd_ModelNumber">Model</label>
                         <div class="col-sm-12">
-                          <input id="nrvadd_ModelNumber" name="nrvadd_ModelNumber" type="text" placeholder="" class="form-control input-md">
+                          <input id="nrvadd_ModelNumber" name="nrvadd_ModelNumber" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addNonRevenueAsset.ModelNumber">
 
                         </div>
                       </div>
@@ -716,7 +716,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="nrvadd_AssetDesc">Description</label>
                         <div class="col-sm-12">
-                          <input id="nrvadd_AssetDesc" name="nrvadd_AssetDesc" type="text" placeholder="" class="form-control input-md">
+                          <input id="nrvadd_AssetDesc" name="nrvadd_AssetDesc" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addNonRevenueAsset.AssetDesc">
 
                         </div>
                       </div>
@@ -725,7 +725,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="nrvadd_AgencyDetail">Details</label>
                         <div class="col-sm-12">
-                          <input id="nrvadd_AgencyDetail" name="nrvadd_AgencyDetail" type="text" placeholder="" class="form-control input-md">
+                          <input id="nrvadd_AgencyDetail" name="nrvadd_AgencyDetail" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addNonRevenueAsset.AgencyDetail">
 
                         </div>
                       </div>
@@ -734,7 +734,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="nrvadd_AssetType">Asset Type</label>
                         <div class="col-sm-12">
-                          <input id="nrvadd_AssetType" name="nrvadd_AssetType" type="text" placeholder="" class="form-control input-md">
+                          <input id="nrvadd_AssetType" name="nrvadd_AssetType" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addNonRevenueAsset.AssetType">
 
                         </div>
                       </div>
@@ -743,7 +743,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="nrvadd_AssetStatus">Asset Status</label>
                         <div class="col-sm-12">
-                          <select id="nrvadd_AssetStatus" name="nrvadd_AssetStatus" class="form-control">
+                          <select id="nrvadd_AssetStatus" name="nrvadd_AssetStatus" class="form-control" ng-model="inventoryCtrl.addNonRevenueAsset.AssetStatus">
 
                             <option value="CMT">Committed</option>
 
@@ -767,7 +767,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="nrvadd_ModeCode">Mode Code</label>
                         <div class="col-sm-12">
-                          <select id="nrvadd_ModeCode" name="nrvadd_ModeCode" class="form-control">
+                          <select id="nrvadd_ModeCode" name="nrvadd_ModeCode" class="form-control" ng-model="inventoryCtrl.addNonRevenueAsset.ModeCode">
 
                             <option value="All">All Modes</option>
 
@@ -811,7 +811,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="nrvadd_NTDModeCode">NTD Mode Code</label>
                         <div class="col-sm-12">
-                          <select id="nrvadd_NTDModeCode" name="nrvadd_NTDModeCode" class="form-control">
+                          <select id="nrvadd_NTDModeCode" name="nrvadd_NTDModeCode" class="form-control" ng-model="inventoryCtrl.addNonRevenueAsset.NTDModeCode">
 
                             <option value="CB">Commuter Bus</option>
 
@@ -853,7 +853,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="nrvadd_Quantity">Quantity</label>
                         <div class="col-sm-4">
-                          <input id="nrvadd_Quantity" name="nrvadd_Quantity" type="text" placeholder="" class="form-control input-sm">
+                          <input id="nrvadd_Quantity" name="nrvadd_Quantity" type="text" placeholder="" class="form-control input-sm" ng-model="inventoryCtrl.addNonRevenueAsset.Quantity">
 
                         </div>
                       </div>
@@ -862,7 +862,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="nrvadd_UnitType">Quantity Unit Type</label>
                         <div class="col-sm-12">
-                          <select id="nrvadd_UnitType" name="nrvadd_UnitType" class="form-control">
+                          <select id="nrvadd_UnitType" name="nrvadd_UnitType" class="form-control" ng-model="inventoryCtrl.addNonRevenueAsset.UnitType">
 
                             <option value="Entire Building, Structure, or Site">Entire Building, Structure, or Site</option>
 
@@ -886,7 +886,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="nrvadd_UnitCost">Cost Per Unit</label>
                         <div class="col-sm-12">
-                          <input id="nrvadd_UnitCost" name="nrvadd_UnitCost" type="text" placeholder="" class="form-control input-md">
+                          <input id="nrvadd_UnitCost" name="nrvadd_UnitCost" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addNonRevenueAsset.UnitCost">
 
                         </div>
                       </div>
@@ -895,7 +895,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="nrvadd_AgencySoftCost">Additional Soft Cost %</label>
                         <div class="col-sm-12">
-                          <input id="nrvadd_AgencySoftCost" name="nrvadd_AgencySoftCost" type="text" placeholder="" class="form-control input-md">
+                          <input id="nrvadd_AgencySoftCost" name="nrvadd_AgencySoftCost" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addNonRevenueAsset.AgencySoftCost">
 
                         </div>
                       </div>
@@ -904,7 +904,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="nrvadd_FuelType">Fuel Type</label>
                         <div class="col-sm-12">
-                          <select id="nrvadd_FuelType" name="nrvadd_FuelType" class="form-control">
+                          <select id="nrvadd_FuelType" name="nrvadd_FuelType" class="form-control" ng-model="inventoryCtrl.addNonRevenueAsset.FuelType">
 
                             <option value="BD">Biodiesel</option>
 
@@ -950,7 +950,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="nrvadd_YRBuilt">Year Built</label>
                         <div class="col-sm-12">
-                          <input id="nrvadd_YRBuilt" name="nrvadd_YRBuilt" type="text" placeholder="YYYY" class="form-control input-md">
+                          <input id="nrvadd_YRBuilt" name="nrvadd_YRBuilt" type="text" placeholder="YYYY" class="form-control input-md" ng-model="inventoryCtrl.addNonRevenueAsset.YRBuilt">
 
                         </div>
                       </div>
@@ -959,7 +959,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="nrvadd_YRInService">Year In Service</label>
                         <div class="col-sm-12">
-                          <input id="nrvadd_YRInService" name="nrvadd_YRInService" type="text" placeholder="YYYY" class="form-control input-md">
+                          <input id="nrvadd_YRInService" name="nrvadd_YRInService" type="text" placeholder="YYYY" class="form-control input-md" ng-model="inventoryCtrl.addNonRevenueAsset.YRInService">
 
                         </div>
                       </div>
@@ -969,7 +969,7 @@
                         <label class="col-sm-12 control-label" for="nrvadd_AgencyUsefulLife">Agency-Specified Useful Life</label>
                         <div class="col-sm-12">
                           <input id="nrvadd_AgencyUsefulLife" name="nrvadd_AgencyUsefulLife" type="text" placeholder="" class="form-control input-md"
-                            required="true">
+                            required="true" ng-model="inventoryCtrl.addNonRevenueAsset.AgencyUsefulLife">
 
                         </div>
                       </div>
@@ -978,7 +978,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="nrvadd_DelayReplaceAge">Delay of Replacement Age (Years)</label>
                         <div class="col-sm-12">
-                          <input id="nrvadd_DelayReplaceAge" name="nrvadd_DelayReplaceAge" type="text" placeholder="" class="form-control input-md">
+                          <input id="nrvadd_DelayReplaceAge" name="nrvadd_DelayReplaceAge" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addNonRevenueAsset.DelayReplaceAge">
 
                         </div>
                       </div>
@@ -987,7 +987,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="nrvadd_AgencyCapitalResponsibility">Percent Agency Capital Responsibility</label>
                         <div class="col-sm-12">
-                          <input id="nrvadd_AgencyCapitalResponsibility" name="nrvadd_AgencyCapitalResponsibility" type="text" placeholder="" class="form-control input-md">
+                          <input id="nrvadd_AgencyCapitalResponsibility" name="nrvadd_AgencyCapitalResponsibility" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addNonRevenueAsset.AgencyCapitalResponsibility">
 
                         </div>
                       </div>
@@ -996,7 +996,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="nrvadd_LastRenewalYR">Year of Last Renewal</label>
                         <div class="col-sm-12">
-                          <input id="nrvadd_LastRenewalYR" name="nrvadd_LastRenewalYR" type="text" placeholder="YYYY" class="form-control input-md">
+                          <input id="nrvadd_LastRenewalYR" name="nrvadd_LastRenewalYR" type="text" placeholder="YYYY" class="form-control input-md" ng-model="inventoryCtrl.addNonRevenueAsset.LastRenewalYR">
 
                         </div>
                       </div>
@@ -1005,7 +1005,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="nrvadd_LastRenewalType">Type of Last Renewal</label>
                         <div class="col-sm-12">
-                          <input id="nrvadd_LastRenewalType" name="nrvadd_LastRenewalType" type="text" placeholder="" class="form-control input-md">
+                          <input id="nrvadd_LastRenewalType" name="nrvadd_LastRenewalType" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addNonRevenueAsset.LastRenewalType">
 
                         </div>
                       </div>
@@ -1014,11 +1014,13 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="nrvadd_PriorityStatus">Priority Status</label>
                         <div class="col-sm-12">
-                          <input id="nrvadd_PriorityStatus" name="nrvadd_PriorityStatus" type="text" placeholder="" class="form-control input-md">
+                          <input id="nrvadd_PriorityStatus" name="nrvadd_PriorityStatus" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addNonRevenueAsset.PriorityStatus">
 
                         </div>
                       </div>
-
+                      <button type="button" class="btn btn-primary" ng-click="inventoryCtrl.createNonRevenueVehicle()">
+                          <i class="fa fa-spinner fa-spin  fa-fw" ng-if="inventoryCtrl.savingAssetSpinner"></i>Save changes
+                        </button>
                     </fieldset>
                   </form>
                 </div>
@@ -1033,7 +1035,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="pfadd_AgencyAssetUID">Agency Asset ID</label>
                         <div class="col-sm-12">
-                          <input id="pfadd_AgencyAssetUID" name="pfadd_AgencyAssetUID" type="text" placeholder="" class="form-control input-md">
+                          <input id="pfadd_AgencyAssetUID" name="pfadd_AgencyAssetUID" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addPassengerAsset.AgencyAssetUID">
 
                         </div>
                       </div>
@@ -1042,7 +1044,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="pfadd_AssetDesc">Description</label>
                         <div class="col-sm-12">
-                          <input id="pfadd_AssetDesc" name="pfadd_AssetDesc" type="text" placeholder="" class="form-control input-md">
+                          <input id="pfadd_AssetDesc" name="pfadd_AssetDesc" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addPassengerAsset.AssetDesc">
 
                         </div>
                       </div>
@@ -1051,7 +1053,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="pfadd_AgencyDetail">Details</label>
                         <div class="col-sm-12">
-                          <input id="pfadd_AgencyDetail" name="pfadd_AgencyDetail" type="text" placeholder="" class="form-control input-md">
+                          <input id="pfadd_AgencyDetail" name="pfadd_AgencyDetail" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addPassengerAsset.AgencyDetail">
 
                         </div>
                       </div>
@@ -1060,7 +1062,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="pfadd_AssetType">Asset Type</label>
                         <div class="col-sm-12">
-                          <input id="pfadd_AssetType" name="pfadd_AssetType" type="text" placeholder="" class="form-control input-md">
+                          <input id="pfadd_AssetType" name="pfadd_AssetType" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addPassengerAsset.AssetType">
 
                         </div>
                       </div>
@@ -1069,7 +1071,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="pfadd_AssetStatus">Asset Status</label>
                         <div class="col-sm-12">
-                          <select id="pfadd_AssetStatus" name="pfadd_AssetStatus" class="form-control">
+                          <select id="pfadd_AssetStatus" name="pfadd_AssetStatus" class="form-control" ng-model="inventoryCtrl.addPassengerAsset.AssetStatus">
 
                             <option value="CMT">Committed</option>
 
@@ -1093,7 +1095,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="pfadd_Quantity">Quantity</label>
                         <div class="col-sm-4">
-                          <input id="pfadd_Quantity" name="pfadd_Quantity" type="text" placeholder="" class="form-control input-sm">
+                          <input id="pfadd_Quantity" name="pfadd_Quantity" type="text" placeholder="" class="form-control input-sm" ng-model="inventoryCtrl.addPassengerAsset.Quantity">
 
                         </div>
                       </div>
@@ -1102,7 +1104,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="pfadd_UnitType">Quantity Unit Type</label>
                         <div class="col-sm-12">
-                          <select id="pfadd_UnitType" name="pfadd_UnitType" class="form-control">
+                          <select id="pfadd_UnitType" name="pfadd_UnitType" class="form-control" ng-model="inventoryCtrl.addPassengerAsset.UnitType">
 
                             <option value="Entire Building, Structure, or Site">Entire Building, Structure, or Site</option>
 
@@ -1126,7 +1128,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="pfadd_SquareFootage">Square Footage</label>
                         <div class="col-sm-12">
-                          <input id="pfadd_SquareFootage" name="pfadd_SquareFootage" type="text" placeholder="" class="form-control input-md">
+                          <input id="pfadd_SquareFootage" name="pfadd_SquareFootage" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addPassengerAsset.SquareFootage">
 
                         </div>
                       </div>
@@ -1135,8 +1137,43 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="pfadd_ModeCode">Mode Code</label>
                         <div class="col-sm-12">
-                          <input id="pfadd_ModeCode" name="pfadd_ModeCode" type="text" placeholder="" class="form-control input-md">
+                          <select id="pfadd_ModeCode" name="pfadd_ModeCode" class="form-control" ng-model="inventoryCtrl.addPassengerAsset.ModeCode">
 
+                              <option value="All">All Modes</option>
+  
+                              <option value="BRT">Bus Rapid Transit</option>
+  
+                              <option value="CC">Cable Car</option>
+  
+                              <option value="CR">Commuter Rail</option>
+  
+                              <option value="DR">Demand Response</option>
+  
+                              <option value="FB">Ferry Boat</option>
+  
+                              <option value="FC">Fare Collection</option>
+  
+                              <option value="HR">Heavy Rail</option>
+  
+                              <option value="JT">Jitney</option>
+  
+                              <option value="LR">Light Rail</option>
+  
+                              <option value="MB">Motor Bus</option>
+  
+                              <option value="MO">Monorail/ATG</option>
+  
+                              <option value="OR">Other</option>
+  
+                              <option value="SY">Systemwide Assets</option>
+  
+                              <option value="TB">Trolleybus</option>
+  
+                              <option value="TR">Aerial Tramway</option>
+  
+                              <option value="VP">Vanpool</option>
+  
+                            </select>
                         </div>
                       </div>
 
@@ -1144,8 +1181,41 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="pfadd_NTDModeCode">NTD Mode Code</label>
                         <div class="col-sm-12">
-                          <input id="pfadd_NTDModeCode" name="pfadd_NTDModeCode" type="text" placeholder="" class="form-control input-md">
+                          <select id="pfadd_NTDModeCode" name="pfadd_NTDModeCode" class="form-control" ng-model="inventoryCtrl.addPassengerAsset.NTDModeCode">
 
+                              <option value="CB">Commuter Bus</option>
+  
+                              <option value="CC">Cable Car</option>
+  
+                              <option value="CR">Commuter Rail</option>
+  
+                              <option value="DR">Demand Response</option>
+  
+                              <option value="DT">Demand Response (Taxi)</option>
+  
+                              <option value="HR">Heavy Rail</option>
+  
+                              <option value="JT">Jitney</option>
+  
+                              <option value="LR">Light Rail</option>
+  
+                              <option value="MB">Bus</option>
+  
+                              <option value="PB">Publico</option>
+  
+                              <option value="RB">Bus Rapid Transit</option>
+  
+                              <option value="SR">Streetcar Rail</option>
+  
+                              <option value="TB">Trolleybus</option>
+  
+                              <option value="TR">Aerial Tramway</option>
+  
+                              <option value="VP">Vanpool</option>
+  
+                              <option value="YR">Hybrid Rail</option>
+  
+                            </select>
                         </div>
                       </div>
 
@@ -1153,7 +1223,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="pfadd_AssetPhysAddress">Street Address</label>
                         <div class="col-sm-12">
-                          <input id="pfadd_AssetPhysAddress" name="pfadd_AssetPhysAddress" type="text" placeholder="" class="form-control input-md">
+                          <input id="pfadd_AssetPhysAddress" name="pfadd_AssetPhysAddress" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addPassengerAsset.AssetPhysAddress">
 
                         </div>
                       </div>
@@ -1162,7 +1232,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="pfadd_AssetPhysCity">City</label>
                         <div class="col-sm-12">
-                          <input id="pfadd_AssetPhysCity" name="pfadd_AssetPhysCity" type="text" placeholder="" class="form-control input-md">
+                          <input id="pfadd_AssetPhysCity" name="pfadd_AssetPhysCity" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addPassengerAsset.AssetPhysCity">
 
                         </div>
                       </div>
@@ -1171,7 +1241,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="pfadd_AssetPhysState">State</label>
                         <div class="col-sm-12">
-                          <input id="pfadd_AssetPhysState" name="pfadd_AssetPhysState" type="text" placeholder="Two letters, e.g. &quot;CA&quot;" class="form-control input-md">
+                          <input id="pfadd_AssetPhysState" name="pfadd_AssetPhysState" type="text" placeholder="Two letters, e.g. &quot;CA&quot;" class="form-control input-md" ng-model="inventoryCtrl.addPassengerAsset.AssetPhysState">
 
                         </div>
                       </div>
@@ -1180,7 +1250,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="pfadd_AssetPhysZIP">ZIP Code</label>
                         <div class="col-sm-12">
-                          <input id="pfadd_AssetPhysZIP" name="pfadd_AssetPhysZIP" type="text" placeholder="e.g. &quot;90210&quot;" class="form-control input-md">
+                          <input id="pfadd_AssetPhysZIP" name="pfadd_AssetPhysZIP" type="text" placeholder="e.g. &quot;90210&quot;" class="form-control input-md" ng-model="inventoryCtrl.addPassengerAsset.AssetPhysZIP">
 
                         </div>
                       </div>
@@ -1189,7 +1259,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="pfadd_Latitude">Latitude</label>
                         <div class="col-sm-12">
-                          <input id="pfadd_Latitude" name="pfadd_Latitude" type="text" placeholder="" class="form-control input-md">
+                          <input id="pfadd_Latitude" name="pfadd_Latitude" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addPassengerAsset.Latitude">
 
                         </div>
                       </div>
@@ -1198,7 +1268,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="pfadd_Longitude">Longitude</label>
                         <div class="col-sm-12">
-                          <input id="pfadd_Longitude" name="pfadd_Longitude" type="text" placeholder="" class="form-control input-md">
+                          <input id="pfadd_Longitude" name="pfadd_Longitude" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addPassengerAsset.Longitude">
 
                         </div>
                       </div>
@@ -1207,7 +1277,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="pfadd_UnitCost">Cost Per Unit</label>
                         <div class="col-sm-12">
-                          <input id="pfadd_UnitCost" name="pfadd_UnitCost" type="text" placeholder="" class="form-control input-md">
+                          <input id="pfadd_UnitCost" name="pfadd_UnitCost" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addPassengerAsset.UnitCost">
 
                         </div>
                       </div>
@@ -1216,7 +1286,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="pfadd_AgencySoftCost">Additional Soft Cost %</label>
                         <div class="col-sm-12">
-                          <input id="pfadd_AgencySoftCost" name="pfadd_AgencySoftCost" type="text" placeholder="" class="form-control input-md">
+                          <input id="pfadd_AgencySoftCost" name="pfadd_AgencySoftCost" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addPassengerAsset.AgencySoftCost">
 
                         </div>
                       </div>
@@ -1225,7 +1295,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="pfadd_YRBuilt">Year Built</label>
                         <div class="col-sm-12">
-                          <input id="pfadd_YRBuilt" name="pfadd_YRBuilt" type="text" placeholder="YYYY" class="form-control input-md">
+                          <input id="pfadd_YRBuilt" name="pfadd_YRBuilt" type="text" placeholder="YYYY" class="form-control input-md" ng-model="inventoryCtrl.addPassengerAsset.YRBuilt">
 
                         </div>
                       </div>
@@ -1234,7 +1304,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="pfadd_AgencyConditionRating">Condition Rating</label>
                         <div class="col-sm-12">
-                          <input id="pfadd_AgencyConditionRating" name="pfadd_AgencyConditionRating" type="text" placeholder="" class="form-control input-md">
+                          <input id="pfadd_AgencyConditionRating" name="pfadd_AgencyConditionRating" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addPassengerAsset.AgencyConditionRating">
 
                         </div>
                       </div>
@@ -1243,7 +1313,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="pfadd_DateofLastCondAssessment">Date of Last Condition Assessment</label>
                         <div class="col-sm-12">
-                          <input id="pfadd_DateofLastCondAssessment" name="pfadd_DateofLastCondAssessment" type="text" placeholder="MM/DD/YYYY" class="form-control input-md">
+                          <input id="pfadd_DateofLastCondAssessment" name="pfadd_DateofLastCondAssessment" type="text" placeholder="MM/DD/YYYY" class="form-control input-md" ng-model="inventoryCtrl.addPassengerAsset.DateofLastCondAssessment">
 
                         </div>
                       </div>
@@ -1252,7 +1322,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="pfadd_AgencyCapitalResponsibility">Percent Agency Capital Responsibility</label>
                         <div class="col-sm-12">
-                          <input id="pfadd_AgencyCapitalResponsibility" name="pfadd_AgencyCapitalResponsibility" type="text" placeholder="" class="form-control input-md">
+                          <input id="pfadd_AgencyCapitalResponsibility" name="pfadd_AgencyCapitalResponsibility" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addPassengerAsset.AgencyCapitalResponsibility">
 
                         </div>
                       </div>
@@ -1261,7 +1331,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="pfadd_YROfLastRenewal">Year of Last Renewal</label>
                         <div class="col-sm-12">
-                          <input id="pfadd_YROfLastRenewal" name="pfadd_YROfLastRenewal" type="text" placeholder="YYYY" class="form-control input-md">
+                          <input id="pfadd_YROfLastRenewal" name="pfadd_YROfLastRenewal" type="text" placeholder="YYYY" class="form-control input-md" ng-model="inventoryCtrl.addPassengerAsset.LastRenewalYR">
 
                         </div>
                       </div>
@@ -1270,7 +1340,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="pfadd_LastRenewalType">Type of Last Renewal</label>
                         <div class="col-sm-12">
-                          <input id="pfadd_LastRenewalType" name="pfadd_LastRenewalType" type="text" placeholder="" class="form-control input-md">
+                          <input id="pfadd_LastRenewalType" name="pfadd_LastRenewalType" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addPassengerAsset.LastRenewalType">
 
                         </div>
                       </div>
@@ -1279,7 +1349,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="pfadd_PriorityStatus">Priority Status</label>
                         <div class="col-sm-12">
-                          <input id="pfadd_PriorityStatus" name="pfadd_PriorityStatus" type="text" placeholder="" class="form-control input-md">
+                          <input id="pfadd_PriorityStatus" name="pfadd_PriorityStatus" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addPassengerAsset.PriorityStatus">
 
                         </div>
                       </div>
@@ -1288,15 +1358,17 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="pfadd_HistoricPresrvFlag">Additional Info</label>
                         <div class="col-sm-12">
-                          <div class="checkbox">
-                            <label for="pfadd_HistoricPresrvFlag-0">
-                              <input type="checkbox" name="pfadd_HistoricPresrvFlag" id="pfadd_HistoricPresrvFlag-0" value=""> Subject to Historic Preservation
+                          <div class="form-check">
+                            <label for="pfadd_HistoricPresrvFlag">
+                              <input type="checkbox" name="pfadd_HistoricPresrvFlag" id="pfadd_HistoricPresrvFlag" ng-model="inventoryCtrl.addPassengerAsset.HistoricPresrvFlag"> Subject to Historic Preservation
                             </label>
                           </div>
 
                         </div>
                       </div>
-
+                      <button type="button" class="btn btn-primary" ng-click="inventoryCtrl.createPassengerFacility()">
+                          <i class="fa fa-spinner fa-spin  fa-fw" ng-if="inventoryCtrl.savingAssetSpinner"></i>Save changes
+                        </button>
                     </fieldset>
                   </form>
                 </div>
@@ -1311,7 +1383,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="amfadd_AgencyAssetUID">Agency Asset ID</label>
                         <div class="col-sm-12">
-                          <input id="amfadd_AgencyAssetUID" name="amfadd_AgencyAssetUID" type="text" placeholder="" class="form-control input-md">
+                          <input id="amfadd_AgencyAssetUID" name="amfadd_AgencyAssetUID" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addMAFacility.AgencyAssetUID">
 
                         </div>
                       </div>
@@ -1320,7 +1392,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="amfadd_AssetDesc">Description</label>
                         <div class="col-sm-12">
-                          <input id="amfadd_AssetDesc" name="amfadd_AssetDesc" type="text" placeholder="" class="form-control input-md">
+                          <input id="amfadd_AssetDesc" name="amfadd_AssetDesc" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addMAFacility.AssetDesc">
 
                         </div>
                       </div>
@@ -1329,7 +1401,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="amfadd_AgencyDetail">Details</label>
                         <div class="col-sm-12">
-                          <input id="amfadd_AgencyDetail" name="amfadd_AgencyDetail" type="text" placeholder="" class="form-control input-md">
+                          <input id="amfadd_AgencyDetail" name="amfadd_AgencyDetail" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addMAFacility.AgencyDetail">
 
                         </div>
                       </div>
@@ -1338,7 +1410,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="amfadd_AssetType">Asset Type</label>
                         <div class="col-sm-12">
-                          <input id="amfadd_AssetType" name="amfadd_AssetType" type="text" placeholder="" class="form-control input-md">
+                          <input id="amfadd_AssetType" name="amfadd_AssetType" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addMAFacility.AssetType">
 
                         </div>
                       </div>
@@ -1347,7 +1419,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="amfadd_AssetStatus">Asset Status</label>
                         <div class="col-sm-12">
-                          <select id="amfadd_AssetStatus" name="amfadd_AssetStatus" class="form-control">
+                          <select id="amfadd_AssetStatus" name="amfadd_AssetStatus" class="form-control" ng-model="inventoryCtrl.addMAFacility.AssetStatus">
 
                             <option value="CMT">Committed</option>
 
@@ -1371,7 +1443,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="amfadd_Quantity">Quantity</label>
                         <div class="col-sm-12">
-                          <input id="amfadd_Quantity" name="amfadd_Quantity" type="text" placeholder="" class="form-control input-sm">
+                          <input id="amfadd_Quantity" name="amfadd_Quantity" type="text" placeholder="" class="form-control input-sm" ng-model="inventoryCtrl.addMAFacility.Quantity">
 
                         </div>
                       </div>
@@ -1380,7 +1452,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="amfadd_UnitType">Quantity Unit Type</label>
                         <div class="col-sm-12">
-                          <select id="amfadd_UnitType" name="amfadd_UnitType" class="form-control">
+                          <select id="amfadd_UnitType" name="amfadd_UnitType" class="form-control" ng-model="inventoryCtrl.addMAFacility.UnitType">
 
                             <option value="Entire Building, Structure, or Site">Entire Building, Structure, or Site</option>
 
@@ -1404,7 +1476,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="amfadd_SquareFootage">Square Footage</label>
                         <div class="col-sm-12">
-                          <input id="amfadd_SquareFootage" name="amfadd_SquareFootage" type="text" placeholder="" class="form-control input-md">
+                          <input id="amfadd_SquareFootage" name="amfadd_SquareFootage" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addMAFacility.SquareFootage">
 
                         </div>
                       </div>
@@ -1413,7 +1485,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="amfadd_AssetPhysAddress">Street Address</label>
                         <div class="col-sm-12">
-                          <input id="amfadd_AssetPhysAddress" name="amfadd_AssetPhysAddress" type="text" placeholder="" class="form-control input-md">
+                          <input id="amfadd_AssetPhysAddress" name="amfadd_AssetPhysAddress" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addMAFacility.AssetPhysAddress">
 
                         </div>
                       </div>
@@ -1422,7 +1494,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="amfadd_AssetPhysCity">City</label>
                         <div class="col-sm-12">
-                          <input id="amfadd_AssetPhysCity" name="amfadd_AssetPhysCity" type="text" placeholder="" class="form-control input-md">
+                          <input id="amfadd_AssetPhysCity" name="amfadd_AssetPhysCity" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addMAFacility.AssetPhysCity">
 
                         </div>
                       </div>
@@ -1432,7 +1504,7 @@
                         <label class="col-sm-12 control-label" for="amfadd_AssetPhysState">State</label>
                         <div class="col-sm-12">
                           <input id="amfadd_AssetPhysState" name="amfadd_AssetPhysState" type="text" placeholder="Two letters, e.g. &quot;CA&quot;"
-                            class="form-control input-md">
+                            class="form-control input-md" ng-model="inventoryCtrl.addMAFacility.AssetPhysState">
 
                         </div>
                       </div>
@@ -1441,7 +1513,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="amfadd_AssetPhysZIP">ZIP Code</label>
                         <div class="col-sm-12">
-                          <input id="amfadd_AssetPhysZIP" name="amfadd_AssetPhysZIP" type="text" placeholder="e.g. &quot;90210&quot;" class="form-control input-md">
+                          <input id="amfadd_AssetPhysZIP" name="amfadd_AssetPhysZIP" type="text" placeholder="e.g. &quot;90210&quot;" class="form-control input-md" ng-model="inventoryCtrl.addMAFacility.AssetPhysZIP">
 
                         </div>
                       </div>
@@ -1450,7 +1522,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="amfadd_Latitude">Latitude</label>
                         <div class="col-sm-12">
-                          <input id="amfadd_Latitude" name="amfadd_Latitude" type="text" placeholder="" class="form-control input-md">
+                          <input id="amfadd_Latitude" name="amfadd_Latitude" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addMAFacility.Latitude">
 
                         </div>
                       </div>
@@ -1459,7 +1531,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="amfadd_Longitude">Longitude</label>
                         <div class="col-sm-12">
-                          <input id="amfadd_Longitude" name="amfadd_Longitude" type="text" placeholder="" class="form-control input-md">
+                          <input id="amfadd_Longitude" name="amfadd_Longitude" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addMAFacility.Longitude">
 
                         </div>
                       </div>
@@ -1468,7 +1540,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="amfadd_UnitCost">Cost Per Unit</label>
                         <div class="col-sm-12">
-                          <input id="amfadd_UnitCost" name="amfadd_UnitCost" type="text" placeholder="" class="form-control input-md">
+                          <input id="amfadd_UnitCost" name="amfadd_UnitCost" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addMAFacility.UnitCost">
 
                         </div>
                       </div>
@@ -1477,7 +1549,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="amfadd_AgencySoftCost">Additional Soft Cost %</label>
                         <div class="col-sm-12">
-                          <input id="amfadd_AgencySoftCost" name="amfadd_AgencySoftCost" type="text" placeholder="" class="form-control input-md">
+                          <input id="amfadd_AgencySoftCost" name="amfadd_AgencySoftCost" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addMAFacility.AgencySoftCost">
 
                         </div>
                       </div>
@@ -1486,7 +1558,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="amfadd_YRBuilt">Year Built</label>
                         <div class="col-sm-12">
-                          <input id="amfadd_YRBuilt" name="amfadd_YRBuilt" type="text" placeholder="YYYY" class="form-control input-md">
+                          <input id="amfadd_YRBuilt" name="amfadd_YRBuilt" type="text" placeholder="YYYY" class="form-control input-md" ng-model="inventoryCtrl.addMAFacility.YRBuilt">
 
                         </div>
                       </div>
@@ -1495,7 +1567,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="amfadd_AgencyConditionRating">Condition Rating</label>
                         <div class="col-sm-12">
-                          <input id="amfadd_AgencyConditionRating" name="amfadd_AgencyConditionRating" type="text" placeholder="" class="form-control input-md">
+                          <input id="amfadd_AgencyConditionRating" name="amfadd_AgencyConditionRating" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addMAFacility.AgencyConditionRating">
 
                         </div>
                       </div>
@@ -1504,7 +1576,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="amfadd_DateofLastCondAssessment">Date of Last Condition Assessment</label>
                         <div class="col-sm-12">
-                          <input id="amfadd_DateofLastCondAssessment" name="amfadd_DateofLastCondAssessment" type="text" placeholder="MM/DD/YYYY" class="form-control input-md">
+                          <input id="amfadd_DateofLastCondAssessment" name="amfadd_DateofLastCondAssessment" type="text" placeholder="MM/DD/YYYY" class="form-control input-md" ng-model="inventoryCtrl.addMAFacility.DateofLastCondAssessment">
 
                         </div>
                       </div>
@@ -1513,7 +1585,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="amfadd_AgencyCapitalResponsibility">Percent Agency Capital Responsibility</label>
                         <div class="col-sm-12">
-                          <input id="amfadd_AgencyCapitalResponsibility" name="amfadd_AgencyCapitalResponsibility" type="text" placeholder="" class="form-control input-md">
+                          <input id="amfadd_AgencyCapitalResponsibility" name="amfadd_AgencyCapitalResponsibility" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addMAFacility.AgencyCapitalResponsibility">
 
                         </div>
                       </div>
@@ -1522,7 +1594,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="amfadd_YROfLastRenewal">Year of Last Renewal</label>
                         <div class="col-sm-12">
-                          <input id="amfadd_YROfLastRenewal" name="amfadd_YROfLastRenewal" type="text" placeholder="YYYY" class="form-control input-md">
+                          <input id="amfadd_YROfLastRenewal" name="amfadd_YROfLastRenewal" type="text" placeholder="YYYY" class="form-control input-md" ng-model="inventoryCtrl.addMAFacility.LastRenewalYR">
 
                         </div>
                       </div>
@@ -1531,7 +1603,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="amfadd_LastRenewalType">Type of Last Renewal</label>
                         <div class="col-sm-12">
-                          <input id="amfadd_LastRenewalType" name="amfadd_LastRenewalType" type="text" placeholder="" class="form-control input-md">
+                          <input id="amfadd_LastRenewalType" name="amfadd_LastRenewalType" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addMAFacility.LastRenewalType">
 
                         </div>
                       </div>
@@ -1540,7 +1612,7 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="amfadd_PriorityStatus">Priority Status</label>
                         <div class="col-sm-12">
-                          <input id="amfadd_PriorityStatus" name="amfadd_PriorityStatus" type="text" placeholder="" class="form-control input-md">
+                          <input id="amfadd_PriorityStatus" name="amfadd_PriorityStatus" type="text" placeholder="" class="form-control input-md" ng-model="inventoryCtrl.addMAFacility.PriorityStatus">
 
                         </div>
                       </div>
@@ -1549,15 +1621,17 @@
                       <div class="form-group">
                         <label class="col-sm-12 control-label" for="amfadd_HistoricPresrvFlag">Additional Info</label>
                         <div class="col-sm-12">
-                          <div class="checkbox">
-                            <label for="amfadd_HistoricPresrvFlag-0">
-                              <input type="checkbox" name="amfadd_HistoricPresrvFlag" id="amfadd_HistoricPresrvFlag-0" value=""> Subject to Historic Preservation
+                          <div class="form-check">
+                            <label for="amfadd_HistoricPresrvFlag">
+                              <input type="checkbox" name="amfadd_HistoricPresrvFlag" id="amfadd_HistoricPresrvFlag" ng-model="inventoryCtrl.addMAFacility.HistoricPresrvFlag"> Subject to Historic Preservation
                             </label>
                           </div>
 
                         </div>
                       </div>
-
+                      <button type="button" class="btn btn-primary" ng-click="inventoryCtrl.createAdminMaintFacility()">
+                          <i class="fa fa-spinner fa-spin  fa-fw" ng-if="inventoryCtrl.savingAssetSpinner"></i>Save changes
+                        </button>
                     </fieldset>
                   </form>
                 </div>

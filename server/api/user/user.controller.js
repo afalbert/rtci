@@ -549,7 +549,8 @@ export function updateAdminMaintFacility(req, res) {
 }
 
 export function createRevenueVehicle(req, res) {
-  
+  console.log(req.user);
+  var trsid = req.user.dataValues.TRSID;
   // create Request object
   var request = new sql.Request(config.mssql);
   request.input('ModeCode', sql.NVarChar(3), req.body.ModeCode);
@@ -579,6 +580,7 @@ export function createRevenueVehicle(req, res) {
   request.input('LastRenewalYR', sql.Int, req.body.LastRenewalYR);
   request.input('LastRenewalType', sql.NVarChar(255), req.body.LastRenewalType);
   request.input('PercentContingencyFleet', sql.Int, req.body.PercentContingencyFleet);
+  request.input('TRSID', sql.NVarChar(5), trsid);
   
 
   // request.output('AssetUID', sql.Int)
@@ -609,8 +611,9 @@ export function createRevenueVehicle(req, res) {
 export function createNonRevenueVehicle(req, res) {
   console.log(req.body.AssetUID);
   console.log(req.body);
+  var trsid = req.user.dataValues.TRSID;
 
-
+  var request = new sql.Request(config.mssql);
   // create Request object
   request.input('ModeCode', sql.NVarChar(3), req.body.ModeCode);
   request.input('NTDModeCode', sql.NChar(2), req.body.NTDModeCode);
@@ -634,6 +637,8 @@ export function createNonRevenueVehicle(req, res) {
   request.input('LastRenewalYR', sql.Int, req.body.LastRenewalYR);
   request.input('LastRenewalType', sql.Int, req.body.LastRenewalType);
   request.input('AgencyCapitalResponsibility', sql.Int, req.body.AgencyCapitalResponsibility);
+  request.input('TRSID', sql.NVarChar(5), trsid);
+
   
 
   // request.output('AssetUID', sql.Int)
@@ -664,15 +669,17 @@ export function createNonRevenueVehicle(req, res) {
 export function createPassengerFacility(req, res) {
   console.log(req.body.AssetUID);
   console.log(req.body);
-
+  var trsid = req.user.dataValues.TRSID;
 
   // create Request object
   var request = new sql.Request(config.mssql);
-  request.input('AssetUID', sql.Int, req.body.AssetUID);
+  
   request.input('AgencyAssetUID', sql.NVarChar(50), req.body.AgencyAssetUID);
   request.input('AssetDesc', sql.NVarChar(500), req.body.AssetDesc);
   request.input('AgencyDetail', sql.NVarChar(500), req.body.AgencyDetail);
   request.input('AssetType', sql.Numeric(18, 6), req.body.AssetType);
+  request.input('ModeCode', sql.NVarChar(3), req.body.ModeCode);
+  request.input('NTDModeCode', sql.NChar(2), req.body.NTDModeCode);
   request.input('Quantity', sql.Float, req.body.Quantity);
   request.input('UnitCost', sql.VarChar(20), req.body.UnitCost);
   request.input('UnitType', sql.VarChar(100), req.body.UnitType);
@@ -684,19 +691,20 @@ export function createPassengerFacility(req, res) {
   request.input('AssetPhysZIP', sql.NVarChar(500), req.body.AssetPhysZIP);
   request.input('Latitude', sql.NVarChar(500), req.body.Latitude);
   request.input('Longitude', sql.NVarChar(500), req.body.Longitude);
-  request.input('AssetStatus', sql.VarChar(3), req.body.AssetStatus);
   request.input('SquareFootage', sql.Numeric(18, 6), req.body.SquareFootage);
   request.input('AgencyConditionRating', sql.Numeric(2, 1), parseFloat(req.body.AgencyConditionRating));
   request.input('DateofLastCondAssessment', sql.Date, req.body.DateofLastCondAssessment);
   request.input('AgencyCapitalResponsibility', sql.Int, req.body.AgencyCapitalResponsibility);
+  request.input('AssetStatus', sql.VarChar(3), req.body.AssetStatus);
   request.input('LastRenewalYR', sql.Int, req.body.LastRenewalYR);
   request.input('LastRenewalType', sql.NVarChar(255), req.body.LastRenewalType);
   request.input('HistoricPresrvFlag', sql.Bit, req.body.HistoricPresrvFlag);
   request.input('PriorityStatus', sql.Int, req.body.PriorityStatus);
+  request.input('TRSID', sql.NVarChar(5), trsid);
   
 
   // request.output('AssetUID', sql.Int)
-  request.execute('dbo.updateAdminMaintFacility', (err, result) => {
+  request.execute('dbo.addPassFacility', (err, result) => {
     // ... error checks
     if (err) {
       console.log(err);
@@ -723,11 +731,11 @@ export function createPassengerFacility(req, res) {
 export function createAdminMaintFacility(req, res) {
   console.log(req.body.AssetUID);
   console.log(req.body);
-
+  console.log(req.user);
+  var trsid = req.user.dataValues.TRSID;
 
   // create Request object
   var request = new sql.Request(config.mssql);
-  request.input('AssetUID', sql.Int, req.body.AssetUID);
   request.input('AgencyAssetUID', sql.NVarChar(50), req.body.AgencyAssetUID);
   request.input('AssetDesc', sql.NVarChar(500), req.body.AssetDesc);
   request.input('AgencyDetail', sql.NVarChar(500), req.body.AgencyDetail);
@@ -752,10 +760,11 @@ export function createAdminMaintFacility(req, res) {
   request.input('LastRenewalType', sql.NVarChar(255), req.body.LastRenewalType);
   request.input('HistoricPresrvFlag', sql.Bit, req.body.HistoricPresrvFlag);
   request.input('PriorityStatus', sql.Int, req.body.PriorityStatus);
+  request.input('TRSID', sql.NVarChar(5), trsid);
   
 
   // request.output('AssetUID', sql.Int)
-  request.execute('dbo.updateAdminMaintFacility', (err, result) => {
+  request.execute('dbo.addAdminMaintFacility', (err, result) => {
     // ... error checks
     if (err) {
       console.log(err);

@@ -1,6 +1,8 @@
 'use strict';
 
-import { Router } from 'express';
+import {
+  Router
+} from 'express';
 import * as controller from './user.controller';
 import * as auth from '../../auth/auth.service';
 
@@ -25,10 +27,10 @@ router.put('/:id/asset/adminmaintfacility', auth.isAuthenticated(), controller.u
 router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 router.put('/:id/account', auth.isAuthenticated(), controller.changeAccountInfo);
 router.get('/:id', auth.isAuthenticated(), controller.show);
-router.post('/:id/asset/create/revenue', controller.createRevenueVehicle);
-router.post('/:id/asset/create/nonrevenue', controller.createNonRevenueVehicle);
-router.post('/:id/asset/create/passengerfacility', controller.createPassengerFacility);
-router.post('/:id/asset/create/adminmaintfacility', controller.createAdminMaintFacility);
-router.post('/', controller.create);
+router.post('/asset/create/revenue', auth.isAuthenticated(), controller.createRevenueVehicle);
+router.post('/asset/create/nonrevenue', auth.isAuthenticated(), controller.createNonRevenueVehicle);
+router.post('/asset/create/passengerfacility', auth.isAuthenticated(), controller.createPassengerFacility);
+router.post('/asset/create/adminmaintfacility', auth.isAuthenticated(), controller.createAdminMaintFacility);
+router.post('/', auth.isAuthenticated(), controller.create);
 
 module.exports = router;
