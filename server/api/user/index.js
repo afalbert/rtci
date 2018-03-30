@@ -25,6 +25,10 @@ router.put('/:id/asset/adminmaintfacility', auth.isAuthenticated(), controller.u
 router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 router.put('/:id/account', auth.isAuthenticated(), controller.changeAccountInfo);
 router.get('/:id', auth.isAuthenticated(), controller.show);
+router.post('/:id/asset/create/revenue', controller.createRevenueVehicle);
+router.post('/:id/asset/create/nonrevenue', controller.createNonRevenueVehicle);
+router.post('/:id/asset/create/passengerfacility', controller.createPassengerFacility);
+router.post('/:id/asset/create/adminmaintfacility', controller.createAdminMaintFacility);
 router.post('/', controller.create);
 
 module.exports = router;
