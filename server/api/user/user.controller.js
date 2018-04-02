@@ -731,7 +731,7 @@ export function createPassengerFacility(req, res) {
 export function createAdminMaintFacility(req, res) {
   console.log(req.body.AssetUID);
   console.log(req.body);
-  console.log(req.user);
+  // console.log(req.user);
   var trsid = req.user.dataValues.TRSID;
 
   // create Request object

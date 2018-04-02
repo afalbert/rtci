@@ -598,7 +598,7 @@ export class InventoryComponent {
       Longitude: this.addMAFacility.Longitude
     }
     console.log(addData)
-   
+   console.log('about to run the procedure');
     this.$http.post('/api/users/asset/create/adminmaintfacility', addData)
       .then(response => {
         console.log(response);
