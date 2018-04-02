@@ -177,13 +177,13 @@ export function getTRSIDCategoryAssets(req, res) {
   console.log(category);
   var query;
   if (category === 'nonrevenuevehicles') {
-    query = "SELECT * FROM [aalbert].[NonRevenueVehicleInventory] WHERE TRSID = " + trsid;
+    query = "SELECT * FROM [aalbert].[NonRevenueVehicleInventory] WHERE TRSID = " + trsid + " ORDER BY LastUpdated DESC";
   } else if (category === 'mandafacilities') {
-    query = "SELECT * FROM [aalbert].[MandAFacilitiesInventory] WHERE TRSID = " + trsid;
+    query = "SELECT * FROM [aalbert].[MandAFacilitiesInventory] WHERE TRSID = " + trsid + " ORDER BY LastUpdated DESC";
   } else if (category === 'passengerfacilities') {
-    query = "SELECT * FROM [aalbert].[PassengerFacilitiesInventory] WHERE TRSID = " + trsid;
+    query = "SELECT * FROM [aalbert].[PassengerFacilitiesInventory] WHERE TRSID = " + trsid + " ORDER BY LastUpdated DESC";
   } else if (category === 'revenuevehicles') {
-    query = "SELECT * FROM [aalbert].[RevenueVehicleInventory] WHERE TRSID = " + trsid;
+    query = "SELECT * FROM [aalbert].[RevenueVehicleInventory] WHERE TRSID = " + trsid + " ORDER BY LastUpdated DESC";
   }
 
   console.log(query);
