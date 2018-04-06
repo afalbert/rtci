@@ -48,6 +48,10 @@ export class InventoryComponent {
                 $scope.type = ': Revenue Vehicles';
             } else if (category === 'nonrevenuevehicles') {
                 $scope.type = ': Non Revenue Vehicles';
+            } else if (category === 'infrastructure') {
+                $scope.type = ': Infrastructure';
+            } else if (category === 'systems') {
+                $scope.type = ': Systems';
             }
             // $scope.type = ': ' + category;
 
@@ -157,6 +161,12 @@ export class InventoryComponent {
             console.log(this.updateRevenueAsset.PriorityStatus);
             $('#editRevenueVehiclesModal').modal();
         } else if (this.$scope.category && this.$scope.category === 'nonrevenuevehicles') {
+            this.updateNonRevenueAsset = asset;
+            $('#editnonRevenueVehiclesModal').modal();
+        } else if (this.$scope.category && this.$scope.category === 'infrastructure') {
+            this.editInfrastructure = asset;
+            $('#editInfrastructureModal').modal();
+        } else if (this.$scope.category && this.$scope.category === 'systems') {
             this.updateNonRevenueAsset = asset;
             $('#editnonRevenueVehiclesModal').modal();
         }
@@ -403,6 +413,60 @@ export class InventoryComponent {
                     this.$scope.updateTable('mandafacilities');
 
                     $('#editadminAndMaintenanceModal').modal('hide');
+                    this.savingAssetSpinner = false;
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+
+    saveInfrastructure(category) {
+        console.log('saving infrastructure');
+        this.savingAssetSpinner = true;
+        // console.log(this.updateRevenueAsset);
+
+        console.log(this.editInfrastructure);
+
+
+        var updateData = {
+
+            AssetUID: this.editInfrastructure.AssetUID,
+            AgencyAssetUID: this.editInfrastructure.AgencyAssetUID,
+            AssetDesc: this.editInfrastructure.AssetDesc,
+            AgencyDetail: this.editInfrastructure.AgencyDetail,
+            AssetType: this.editInfrastructure.AssetType,
+            ModeCode: this.editInfrastructure.ModeCode,
+            NTDModeCode: this.editInfrastructure.NTDModeCode,
+            Quantity: this.editInfrastructure.Quantity,
+            UnitType: this.editInfrastructure.UnitType,
+            UnitCost: this.editInfrastructure.UnitCost,
+            AgencySoftCost: this.editInfrastructure.AgencySoftCost,
+            YRBuilt: this.editInfrastructure.YRBuilt,
+            YRInService: this.editInfrastructure.YRInService,
+            AgencyUsefulLife: this.editInfrastructure.AgencyUsefulLife,
+            DelayReplaceAge: this.editInfrastructure.DelayReplaceAge,
+            Latitude: this.editInfrastructure.Latitude,
+            Longitude: this.editInfrastructure.Longitude,
+            AssetStatus: this.editInfrastructure.AssetStatus,
+            AgencyCapitalResponsibility: this.editInfrastructure.AgencyCapitalResponsibility,
+            PriorityStatus: this.editInfrastructure.PriorityStatus,
+            LineDivision: this.editInfrastructure.LineDivision,
+            BranchGarage: this.editInfrastructure.BranchGarage,
+            SegmentRoute: this.editInfrastructure.SegmentRoute,
+            LocLinearStart: this.editInfrastructure.LocLinearStart,
+            LocLinearEnd: this.editInfrastructure.LocLinearEnd
+        };
+        console.log(updateData);
+        this.editInfrastructure.category = category;
+
+        this.$http.put('/api/users/' + this.editInfrastructure.AssetUID + '/asset/infrastructure', updateData)
+            .then(response => {
+                console.log(response);
+                if (response.data.returnValue === 0) {
+                    this.$scope.updateTable('infrastructure');
+
+                    $('#editInfrastructureModal').modal('hide');
                     this.savingAssetSpinner = false;
                 }
             })

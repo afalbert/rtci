@@ -1,0 +1,265 @@
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Edit Infrastructure</legend>
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infedit_AgencyAssetUID">Agency Asset ID</label>
+   <div class="col-sm-6">
+     <input id="infedit_AgencyAssetUID" name="infedit_AgencyAssetUID" ng-model="inventoryCtrl.editInfrastructure.AgencyAssetUID" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infedit_AssetDesc">Description</label>
+   <div class="col-sm-6">
+     <input id="infedit_AssetDesc" name="infedit_AssetDesc" ng-model="inventoryCtrl.editInfrastructure.AssetDesc" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infedit_AgencyDetail">Detail</label>
+   <div class="col-sm-6">
+     <input id="infedit_AgencyDetail" name="infedit_AgencyDetail" ng-model="inventoryCtrl.editInfrastructure.AgencyDetail" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infedit_AssetType">Asset Type</label>
+   <div class="col-sm-6">
+     <input id="infedit_AssetType" name="infedit_AssetType" ng-model="inventoryCtrl.editInfrastructure.AssetType" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infedit_ModeCode">Mode Code</label>
+   <div class="col-sm-6">
+     <input id="infedit_ModeCode" name="infedit_ModeCode" ng-model="inventoryCtrl.editInfrastructure.ModeCode" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infedit_NTDModeCode">NTD Mode Code</label>
+   <div class="col-sm-6">
+     <input id="infedit_NTDModeCode" name="infedit_NTDModeCode" ng-model="inventoryCtrl.editInfrastructure.NTDModeCode" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infedit_Quantity">Quantity</label>
+   <div class="col-sm-6">
+     <input id="infedit_Quantity" name="infedit_Quantity" ng-model="inventoryCtrl.editInfrastructure.Quantity" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+ <!-- Select Basic -->
+ <div class="form-group">
+   <label class="col-md-4 control-label" for="infedit_UnitType">Quantity Unit Type</label>
+   <div class="col-md-5">
+     <select id="infedit_UnitType" name="infedit_UnitType" ng-model="inventoryCtrl.editInfrastructure.UnitType" class="form-control">
+
+       <option value="Entire Building, Structure, or Site">Entire Building, Structure, or Site</option>
+
+       <option value="Unit or Vehicle">Unit or Vehicle</option>
+
+       <option value="Track Feet">Track Feet</option>
+
+       <option value="Linear Feet">Linear Feet</option>
+
+       <option value="Set">Set</option>
+
+       <option value="Parking Space">Parking Space</option>
+
+       <option value="Square Feet">Square Feet</option>
+
+     </select>
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infedit_UnitCost">Cost Per Unit</label>
+   <div class="col-sm-6">
+     <input id="infedit_UnitCost" name="infedit_UnitCost" ng-model="inventoryCtrl.editInfrastructure.UnitCost" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infedit_AgencySoftCost">Additional Soft Cost</label>
+   <div class="col-sm-6">
+     <input id="infedit_AgencySoftCost" name="infedit_AgencySoftCost" ng-model="inventoryCtrl.editInfrastructure.AgencySoftCost" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infedit_YRBuilt">Year Built</label>
+   <div class="col-sm-6">
+     <input id="infedit_YRBuilt" name="infedit_YRBuilt" ng-model="inventoryCtrl.editInfrastructure.YRBuilt" type="text" placeholder="YYYY" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infedit_YRInService">Year In Service</label>
+   <div class="col-sm-6">
+     <input id="infedit_YRInService" name="infedit_YRInService" ng-model="inventoryCtrl.editInfrastructure.YRInService" type="text" placeholder="YYYY" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infedit_AgencyUsefulLife">Agency-Specified Useful Life</label>
+   <div class="col-sm-6">
+     <input id="infedit_AgencyUsefulLife" name="infedit_AgencyUsefulLife" ng-model="inventoryCtrl.editInfrastructure.AgencyUsefulLife" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infedit_DelayReplaceAge">Delay of Replacement Age (Years)</label>
+   <div class="col-sm-6">
+     <input id="infedit_DelayReplaceAge" name="infedit_DelayReplaceAge" ng-model="inventoryCtrl.editInfrastructure.DelayReplaceAge" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infedit_Latitude">Latitude</label>
+   <div class="col-sm-6">
+     <input id="infedit_Latitude" name="infedit_Latitude" ng-model="inventoryCtrl.editInfrastructure.Latitude" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infedit_Longitude">Longitude</label>
+   <div class="col-sm-6">
+     <input id="infedit_Longitude" name="infedit_Longitude" ng-model="inventoryCtrl.editInfrastructure.Longitude" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+ <div class="form-group">
+   <label class="col-md-4 control-label" for="infedit_AssetStatus">Asset Status</label>
+   <div class="col-md-5">
+     <select id="infedit_AssetStatus" name="infedit_AssetStatus" class="form-control">
+
+       <option value="CMT">Committed</option>
+
+       <option value="EXP">Expansion</option>
+
+       <option value="EXT">Existing</option>
+
+       <option value="OUT">Inactive</option>
+
+       <option value="PLN">Long Range Planned</option>
+
+       <option value="RES">Reserve</option>
+
+       <option value="RET">Retired</option>
+
+     </select>
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infedit_AgencyCapitalResponsibility">Percent Agency Capital Responsibility</label>
+   <div class="col-sm-6">
+     <input id="infedit_AgencyCapitalResponsibility" name="infedit_AgencyCapitalResponsibility" ng-model="inventoryCtrl.editInfrastructure.AgencyCapitalResponsibility" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infedit_PriorityStatus">Priority Status</label>
+   <div class="col-sm-6">
+     <select id="infedit_UnitType" name="infedit_UnitType" ng-model="inventoryCtrl.editInfrastructure.PriorityStatus" class="form-control">
+
+       <option value="1">1</option>
+
+       <option value="2">2</option>
+
+       <option value="3">3</option>
+
+       <option value="4">4</option>
+
+     </select>
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infedit_LineDivision">Line/Division</label>
+   <div class="col-sm-6">
+     <input id="infedit_LineDivision" name="infedit_LineDivision" ng-model="inventoryCtrl.editInfrastructure.LineDivision" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infedit_BranchGarage">Branch/Garage</label>
+   <div class="col-sm-6">
+     <input id="infedit_BranchGarage" name="infedit_BranchGarage" ng-model="inventoryCtrl.editInfrastructure.BranchGarage" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infedit_SegmentRoute">Segment Route</label>
+   <div class="col-sm-6">
+     <input id="infedit_SegmentRoute" name="infedit_SegmentRoute" ng-model="inventoryCtrl.editInfrastructure.SegmentRoute" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infedit_LocLinearStart">Location Linear Start</label>
+   <div class="col-sm-6">
+     <input id="infedit_LocLinearStart" name="infedit_LocLinearStart" ng-model="inventoryCtrl.editInfrastructure.LocLinearStart" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infedit_LocLinearEnd">Location Linear End</label>
+   <div class="col-sm-6">
+     <input id="infedit_LocLinearEnd" name="infedit_LocLinearEnd" ng-model="inventoryCtrl.editInfrastructure.LocLinearEnd" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+</fieldset>
+</form>

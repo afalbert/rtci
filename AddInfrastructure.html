@@ -1,0 +1,265 @@
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Add Passenger Facilities</legend>
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infadd_AgencyAssetUID">Agency Asset ID</label>
+   <div class="col-sm-6">
+     <input id="infadd_AgencyAssetUID" name="infadd_AgencyAssetUID" ng-model="inventoryCtrl.addInfrastructure.AgencyAssetUID" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infadd_AssetDesc">Description</label>
+   <div class="col-sm-6">
+     <input id="infadd_AssetDesc" name="infadd_AssetDesc" ng-model="inventoryCtrl.addInfrastructure.AssetDesc" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infadd_AgencyDetail">Detail</label>
+   <div class="col-sm-6">
+     <input id="infadd_AgencyDetail" name="infadd_AgencyDetail" ng-model="inventoryCtrl.addInfrastructure.AgencyDetail" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infadd_AssetType">Asset Type</label>
+   <div class="col-sm-6">
+     <input id="infadd_AssetType" name="infadd_AssetType" ng-model="inventoryCtrl.addInfrastructure.AssetType" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infadd_ModeCode">Mode Code</label>
+   <div class="col-sm-6">
+     <input id="infadd_ModeCode" name="infadd_ModeCode" ng-model="inventoryCtrl.addInfrastructure.ModeCode" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infadd_NTDModeCode">NTD Mode Code</label>
+   <div class="col-sm-6">
+     <input id="infadd_NTDModeCode" name="infadd_NTDModeCode" ng-model="inventoryCtrl.addInfrastructure.NTDModeCode" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infadd_Quantity">Quantity</label>
+   <div class="col-sm-6">
+     <input id="infadd_Quantity" name="infadd_Quantity" ng-model="inventoryCtrl.addInfrastructure.Quantity" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+ <!-- Select Basic -->
+ <div class="form-group">
+   <label class="col-md-4 control-label" for="infadd_UnitType">Quantity Unit Type</label>
+   <div class="col-md-5">
+     <select id="infadd_UnitType" name="infadd_UnitType" ng-model="inventoryCtrl.addInfrastructure.UnitType" class="form-control">
+
+       <option value="Entire Building, Structure, or Site">Entire Building, Structure, or Site</option>
+
+       <option value="Unit or Vehicle">Unit or Vehicle</option>
+
+       <option value="Track Feet">Track Feet</option>
+
+       <option value="Linear Feet">Linear Feet</option>
+
+       <option value="Set">Set</option>
+
+       <option value="Parking Space">Parking Space</option>
+
+       <option value="Square Feet">Square Feet</option>
+
+     </select>
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infadd_UnitCost">Cost Per Unit</label>
+   <div class="col-sm-6">
+     <input id="infadd_UnitCost" name="infadd_UnitCost" ng-model="inventoryCtrl.addInfrastructure.UnitCost" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infadd_AgencySoftCost">Additional Soft Cost</label>
+   <div class="col-sm-6">
+     <input id="infadd_AgencySoftCost" name="infadd_AgencySoftCost" ng-model="inventoryCtrl.addInfrastructure.AgencySoftCost" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infadd_YRBuilt">Year Built</label>
+   <div class="col-sm-6">
+     <input id="infadd_YRBuilt" name="infadd_YRBuilt" ng-model="inventoryCtrl.addInfrastructure.YRBuilt" type="text" placeholder="YYYY" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infadd_YRInService">Year In Service</label>
+   <div class="col-sm-6">
+     <input id="infadd_YRInService" name="infadd_YRInService" ng-model="inventoryCtrl.addInfrastructure.YRInService" type="text" placeholder="YYYY" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infadd_AgencyUsefulLife">Agency-Specified Useful Life</label>
+   <div class="col-sm-6">
+     <input id="infadd_AgencyUsefulLife" name="infadd_AgencyUsefulLife" ng-model="inventoryCtrl.addInfrastructure.AgencyUsefulLife" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infadd_DelayReplaceAge">Delay of Replacement Age (Years)</label>
+   <div class="col-sm-6">
+     <input id="infadd_DelayReplaceAge" name="infadd_DelayReplaceAge" ng-model="inventoryCtrl.addInfrastructure.DelayReplaceAge" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infadd_Latitude">Latitude</label>
+   <div class="col-sm-6">
+     <input id="infadd_Latitude" name="infadd_Latitude" ng-model="inventoryCtrl.addInfrastructure.Latitude" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infadd_Longitude">Longitude</label>
+   <div class="col-sm-6">
+     <input id="infadd_Longitude" name="infadd_Longitude" ng-model="inventoryCtrl.addInfrastructure.Longitude" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+ <div class="form-group">
+   <label class="col-md-4 control-label" for="infadd_AssetStatus">Asset Status</label>
+   <div class="col-md-5">
+     <select id="infadd_AssetStatus" name="infadd_AssetStatus" class="form-control">
+
+       <option value="CMT">Committed</option>
+
+       <option value="EXP">Expansion</option>
+
+       <option value="EXT">Existing</option>
+
+       <option value="OUT">Inactive</option>
+
+       <option value="PLN">Long Range Planned</option>
+
+       <option value="RES">Reserve</option>
+
+       <option value="RET">Retired</option>
+
+     </select>
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infadd_AgencyCapitalResponsibility">Percent Agency Capital Responsibility</label>
+   <div class="col-sm-6">
+     <input id="infadd_AgencyCapitalResponsibility" name="infadd_AgencyCapitalResponsibility" ng-model="inventoryCtrl.addInfrastructure.AgencyCapitalResponsibility" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infadd_PriorityStatus">Priority Status</label>
+   <div class="col-sm-6">
+     <select id="infadd_UnitType" name="infadd_UnitType" ng-model="inventoryCtrl.addInfrastructure.PriorityStatus" class="form-control">
+
+       <option value="1">1</option>
+
+       <option value="2">2</option>
+
+       <option value="3">3</option>
+
+       <option value="4">4</option>
+
+     </select>
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infadd_LineDivision">Line/Division</label>
+   <div class="col-sm-6">
+     <input id="infadd_LineDivision" name="infadd_LineDivision" ng-model="inventoryCtrl.addInfrastructure.LineDivision" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infadd_BranchGarage">Branch/Garage</label>
+   <div class="col-sm-6">
+     <input id="infadd_BranchGarage" name="infadd_BranchGarage" ng-model="inventoryCtrl.addInfrastructure.BranchGarage" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infadd_SegmentRoute">Segment Route</label>
+   <div class="col-sm-6">
+     <input id="infadd_SegmentRoute" name="infadd_SegmentRoute" ng-model="inventoryCtrl.addInfrastructure.SegmentRoute" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infadd_LocLinearStart">Location Linear Start</label>
+   <div class="col-sm-6">
+     <input id="infadd_LocLinearStart" name="infadd_LocLinearStart" ng-model="inventoryCtrl.addInfrastructure.LocLinearStart" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="infadd_LocLinearEnd">Location Linear End</label>
+   <div class="col-sm-6">
+     <input id="infadd_LocLinearEnd" name="infadd_LocLinearEnd" ng-model="inventoryCtrl.addInfrastructure.LocLinearEnd" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+</fieldset>
+</form>

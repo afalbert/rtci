@@ -1,0 +1,244 @@
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Add Systems</legend>
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="sysadd_AgencyAssetUID">Agency Asset ID</label>
+   <div class="col-sm-6">
+     <input id="sysadd_AgencyAssetUID" name="sysadd_AgencyAssetUID" ng-model="inventoryCtrl.addSystems.AgencyAssetUID" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="sysadd_AssetDesc">Description</label>
+   <div class="col-sm-6">
+     <input id="sysadd_AssetDesc" name="sysadd_AssetDesc" ng-model="inventoryCtrl.addSystems.AssetDesc" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="sysadd_AgencyDetail">Detail</label>
+   <div class="col-sm-6">
+     <input id="sysadd_AgencyDetail" name="sysadd_AgencyDetail" ng-model="inventoryCtrl.addSystems.AgencyDetail" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="sysadd_AssetType">Asset Type</label>
+   <div class="col-sm-6">
+     <input id="sysadd_AssetType" name="sysadd_AssetType" ng-model="inventoryCtrl.addSystems.AssetType" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="sysadd_ModeCode">Mode Code</label>
+   <div class="col-sm-6">
+     <input id="sysadd_ModeCode" name="sysadd_ModeCode" ng-model="inventoryCtrl.addSystems.ModeCode" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="sysadd_NTDModeCode">NTD Mode Code</label>
+   <div class="col-sm-6">
+     <input id="sysadd_NTDModeCode" name="sysadd_NTDModeCode" ng-model="inventoryCtrl.addSystems.NTDModeCode" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="sysadd_Quantity">Quantity</label>
+   <div class="col-sm-6">
+     <input id="sysadd_Quantity" name="sysadd_Quantity" ng-model="inventoryCtrl.addSystems.Quantity" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="sysadd_UnitType">Quantity Unit Type</label>
+   <div class="col-sm-6">
+     <select id="sysadd_UnitType" name="sysadd_UnitType" ng-model="inventoryCtrl.addSystems.UnitType" class="form-control">
+       <option value="Entire Building, Structure, or Site">Entire Building, Structure, or Site</option>
+
+       <option value="Unit or Vehicle">Unit or Vehicle</option>
+
+       <option value="Track Feet">Track Feet</option>
+
+       <option value="Linear Feet">Linear Feet</option>
+
+       <option value="Set">Set</option>
+
+       <option value="Parking Space">Parking Space</option>
+
+       <option value="Square Feet">Square Feet</option>
+     </select>
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="sysadd_UnitCost">Cost Per Unit</label>
+   <div class="col-sm-6">
+     <input id="sysadd_UnitCost" name="sysadd_UnitCost" ng-model="inventoryCtrl.addSystems.UnitCost" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="sysadd_AgencySoftCost">Additional Soft Cost</label>
+   <div class="col-sm-6">
+     <input id="sysadd_AgencySoftCost" name="sysadd_AgencySoftCost" ng-model="inventoryCtrl.addSystems.AgencySoftCost" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="sysadd_YRBuilt">Year Built</label>
+   <div class="col-sm-6">
+     <input id="sysadd_YRBuilt" name="sysadd_YRBuilt" ng-model="inventoryCtrl.addSystems.YRBuilt" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="sysadd_YRInService">Year In Service</label>
+   <div class="col-sm-6">
+     <input id="sysadd_YRInService" name="sysadd_YRInService" ng-model="inventoryCtrl.addSystems.YRInService" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="sysadd_AgencyUsefulLife">Agency-Specified Useful Life</label>
+   <div class="col-sm-6">
+     <input id="sysadd_AgencyUsefulLife" name="sysadd_AgencyUsefulLife" ng-model="inventoryCtrl.addSystems.AgencyUsefulLife" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="sysadd_DelayReplaceAge">Delay of Replacement Age (Years)</label>
+   <div class="col-sm-6">
+     <input id="sysadd_DelayReplaceAge" name="sysadd_DelayReplaceAge" ng-model="inventoryCtrl.addSystems.DelayReplaceAge" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="sysadd_AssetPhysAddress">Street Address</label>
+   <div class="col-sm-6">
+     <input id="sysadd_AssetPhysAddress" name="sysadd_AssetPhysAddress" ng-model="inventoryCtrl.addSystems.AssetPhysAddress" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="sysadd_AssetPhysCity">City</label>
+   <div class="col-sm-6">
+     <input id="sysadd_AssetPhysCity" name="sysadd_AssetPhysCity" ng-model="inventoryCtrl.addSystems.AssetPhysCity" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="sysadd_AssetPhysState">State</label>
+   <div class="col-sm-6">
+     <input id="sysadd_AssetPhysState" name="sysadd_AssetPhysState" ng-model="inventoryCtrl.addSystems.AssetPhysState" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="sysadd_AssetPhysZIP">ZIP</label>
+   <div class="col-sm-6">
+     <input id="sysadd_AssetPhysZIP" name="sysadd_AssetPhysZIP" ng-model="inventoryCtrl.addSystems.AssetPhysZIP" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="sysadd_Latitude">Latitude</label>
+   <div class="col-sm-6">
+     <input id="sysadd_Latitude" name="sysadd_Latitude" ng-model="inventoryCtrl.addSystems.Latitude" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="sysadd_Longitude">Longitude</label>
+   <div class="col-sm-6">
+     <input id="sysadd_Longitude" name="sysadd_Longitude" ng-model="inventoryCtrl.addSystems.Longitude" type="text" placeholder="" class="form-control input-md">
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="sysadd_AssetStatus">Asset Status</label>
+   <div class="col-sm-6">
+     <select id="sysadd_AssetStatus" name="sysadd_AssetStatus" class="form-control">
+
+       <option value="CMT">Committed</option>
+
+       <option value="EXP">Expansion</option>
+
+       <option value="EXT">Existing</option>
+
+       <option value="OUT">Inactive</option>
+
+       <option value="PLN">Long Range Planned</option>
+
+       <option value="RES">Reserve</option>
+
+       <option value="RET">Retired</option>
+
+     </select>
+
+   </div>
+ </div>
+
+
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="sysadd_PriorityStatus">Priority Status</label>
+   <div class="col-sm-6">
+     <select id="sysadd_PriorityStatus" name="sysadd_PriorityStatus" ng-model="inventoryCtrl.addSystems.PriorityStatus" type="text" placeholder="" class="form-control">
+
+       <option value="1">1</option>
+
+       <option value="2">2</option>
+
+       <option value="3">3</option>
+
+       <option value="4">4</option>
+
+     </select>
+
+   </div>
+ </div>
+
+</fieldset>
+</form>

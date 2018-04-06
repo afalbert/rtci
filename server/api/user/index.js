@@ -1,7 +1,7 @@
 'use strict';
 
 import {
-  Router
+    Router
 } from 'express';
 import * as controller from './user.controller';
 import * as auth from '../../auth/auth.service';
@@ -24,6 +24,7 @@ router.put('/:id/asset', auth.isAuthenticated(), controller.updateAsset);
 router.put('/:id/asset/nonrevenue', auth.isAuthenticated(), controller.updateNonRevenueVehicle)
 router.put('/:id/asset/passengerfacility', auth.isAuthenticated(), controller.updatePassengerFacility);
 router.put('/:id/asset/adminmaintfacility', auth.isAuthenticated(), controller.updateAdminMaintFacility);
+router.put('/:id/asset/infrastructure', auth.isAuthenticated(), controller.updateInfrastructure);
 router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 router.put('/:id/account', auth.isAuthenticated(), controller.changeAccountInfo);
 router.get('/:id', auth.isAuthenticated(), controller.show);
