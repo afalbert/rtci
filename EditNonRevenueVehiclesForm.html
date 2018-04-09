@@ -1,0 +1,341 @@
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Edit Non-Revenue Vehicle</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="nrvedit_AgencyAssetUID">Agency Asset ID</label>
+  <div class="col-sm-6">
+    <input id="nrvedit_AgencyAssetUID" name="nrvedit_AgencyAssetUID" type="text" placeholder="" class="form-control input-md">
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="nrvedit_Manufacturer">Manufacturer</label>
+  <div class="col-sm-6">
+    <input id="nrvedit_Manufacturer" name="nrvedit_Manufacturer" type="text" placeholder="" class="form-control input-md">
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="nrvedit_ModelNumber">Model</label>
+  <div class="col-sm-6">
+    <input id="nrvedit_ModelNumber" name="nrvedit_ModelNumber" type="text" placeholder="" class="form-control input-md">
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="nrvedit_AssetDesc">Description</label>
+  <div class="col-sm-6">
+    <input id="nrvedit_AssetDesc" name="nrvedit_AssetDesc" type="text" placeholder="" class="form-control input-md">
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="nrvedit_AgencyDetail">Details</label>
+  <div class="col-sm-6">
+    <input id="nrvedit_AgencyDetail" name="nrvedit_AgencyDetail" type="text" placeholder="" class="form-control input-md">
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="nrvedit_AssetType">Asset Type</label>
+  <div class="col-sm-6">
+    <input id="nrvedit_AssetType" name="nrvedit_AssetType" type="text" placeholder="" class="form-control input-md">
+
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="nrvedit_AssetStatus">Asset Status</label>
+  <div class="col-md-5">
+    <select id="nrvedit_AssetStatus" name="nrvedit_AssetStatus" class="form-control">
+
+      <option value="CMT">Committed</option>
+
+      <option value="EXP">Expansion</option>
+
+      <option value="EXT">Existing</option>
+
+      <option value="OUT">Inactive</option>
+
+      <option value="PLN">Long Range Planned</option>
+
+      <option value="RES">Reserve</option>
+
+      <option value="RET">Retired</option>
+
+    </select>
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="nrvedit_ModeCode">Mode Code</label>
+  <div class="col-md-5">
+    <select id="nrvedit_ModeCode" name="nrvedit_ModeCode" class="form-control">
+
+      <option value="All">All Modes</option>
+
+      <option value="BRT">Bus Rapid Transit</option>
+
+      <option value="CC">Cable Car</option>
+
+      <option value="CR">Commuter Rail</option>
+
+      <option value="DR">Demand Response</option>
+
+      <option value="FB">Ferry Boat</option>
+
+      <option value="FC">Fare Collection</option>
+
+      <option value="HR">Heavy Rail</option>
+
+      <option value="JT">Jitney</option>
+
+      <option value="LR">Light Rail</option>
+
+      <option value="MB">Motor Bus</option>
+
+      <option value="MO">Monorail/ATG</option>
+
+      <option value="OR">Other</option>
+
+      <option value="SY">Systemwide Assets</option>
+
+      <option value="TB">Trolleybus</option>
+
+      <option value="TR">Aerial Tramway</option>
+
+      <option value="VP">Vanpool</option>
+
+    </select>
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="nrvedit_NTDModeCode">NTD Mode Code</label>
+  <div class="col-md-5">
+    <select id="nrvedit_NTDModeCode" name="nrvedit_NTDModeCode" class="form-control">
+
+      <option value="CB">Commuter Bus</option>
+
+      <option value="CC">Cable Car</option>
+
+      <option value="CR">Commuter Rail</option>
+
+      <option value="DR">Demand Response</option>
+
+      <option value="DT">Demand Response (Taxi)</option>
+
+      <option value="HR">Heavy Rail</option>
+
+      <option value="JT">Jitney</option>
+
+      <option value="LR">Light Rail</option>
+
+      <option value="MB">Bus</option>
+
+      <option value="PB">Publico</option>
+
+      <option value="RB">Bus Rapid Transit</option>
+
+      <option value="SR">Streetcar Rail</option>
+
+      <option value="TB">Trolleybus</option>
+
+      <option value="TR">Aerial Tramway</option>
+
+      <option value="VP">Vanpool</option>
+
+      <option value="YR">Hybrid Rail</option>
+
+    </select>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="nrvedit_Quantity">Quantity</label>
+  <div class="col-sm-4">
+    <input id="nrvedit_Quantity" name="nrvedit_Quantity" type="text" placeholder="" class="form-control input-sm">
+
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="nrvedit_UnitType">Quantity Unit Type</label>
+  <div class="col-md-5">
+    <select id="nrvedit_UnitType" name="nrvedit_UnitType" class="form-control">
+
+      <option value="Entire Building, Structure, or Site">Entire Building, Structure, or Site</option>
+
+      <option value="Unit or Vehicle">Unit or Vehicle</option>
+
+      <option value="Track Feet">Track Feet</option>
+
+      <option value="Linear Feet">Linear Feet</option>
+
+      <option value="Set">Set</option>
+
+      <option value="Parking Space">Parking Space</option>
+
+      <option value="Square Feet">Square Feet</option>
+
+    </select>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="nrvedit_UnitCost">Cost Per Unit</label>
+  <div class="col-sm-6">
+    <input id="nrvedit_UnitCost" name="nrvedit_UnitCost" type="text" placeholder="" class="form-control input-md">
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="nrvedit_AgencySoftCost">Additional Soft Cost %</label>
+  <div class="col-sm-6">
+    <input id="nrvedit_AgencySoftCost" name="nrvedit_AgencySoftCost" type="text" placeholder="" class="form-control input-md">
+
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="nrvedit_FuelType">Fuel Type</label>
+  <div class="col-md-5">
+    <select id="nrvedit_FuelType" name="nrvedit_FuelType" class="form-control">
+
+      <option value="BD">Biodiesel</option>
+
+      <option value="BF">Bunker Fuel</option>
+
+      <option value="CN">Compressed Natural Gas</option>
+
+      <option value="DF">Diesel</option>
+
+      <option value="DU">Dual Fuel (Not Hybrid)</option>
+
+      <option value="EB">Internal Battery</option>
+
+      <option value="EP">Electric (External)</option>
+
+      <option value="ET">Ethanol</option>
+
+      <option value="GA">Gasoline</option>
+
+      <option value="GR">Grain Additive [INACTIVE CODE]</option>
+
+      <option value="HD">Diesel Hybrid</option>
+
+      <option value="HG">Gasoline Hybrid</option>
+
+      <option value="HY">Hydrogen</option>
+
+      <option value="KE">Kerosene</option>
+
+      <option value="LN">Liquefied Natural Gas</option>
+
+      <option value="LP">Liquefied Petroleum Gas</option>
+
+      <option value="MT">Methanol</option>
+
+      <option value="OR">Other (Not Listed)</option>
+
+    </select>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="nrvedit_YRBuilt">Year Built</label>
+  <div class="col-sm-6">
+    <input id="nrvedit_YRBuilt" name="nrvedit_YRBuilt" type="text" placeholder="YYYY" class="form-control input-md">
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="nrvedit_YRInService">Year In Service</label>
+  <div class="col-sm-6">
+    <input id="nrvedit_YRInService" name="nrvedit_YRInService" type="text" placeholder="YYYY" class="form-control input-md">
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="nrvedit_AgencyUsefulLife">Agency-Specified Useful Life</label>
+  <div class="col-sm-6">
+    <input id="nrvedit_AgencyUsefulLife" name="nrvedit_AgencyUsefulLife" type="text" placeholder="" class="form-control input-md" required="true">
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="nrvedit_DelayReplaceAge">Delay of Replacement Age (Years)</label>
+  <div class="col-sm-6">
+    <input id="nrvedit_DelayReplaceAge" name="nrvedit_DelayReplaceAge" type="text" placeholder="" class="form-control input-md">
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="nrvedit_AgencyCapitalResponsibility">Percent Agency Capital Responsibility</label>
+  <div class="col-sm-6">
+    <input id="nrvedit_AgencyCapitalResponsibility" name="nrvedit_AgencyCapitalResponsibility" type="text" placeholder="" class="form-control input-md">
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="nrvedit_LastRenewalYR">Year of Last Renewal</label>
+  <div class="col-sm-6">
+    <input id="nrvedit_LastRenewalYR" name="nrvedit_LastRenewalYR" type="text" placeholder="YYYY" class="form-control input-md">
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="nrvedit_LastRenewalType">Type of Last Renewal</label>
+  <div class="col-sm-6">
+    <input id="nrvedit_LastRenewalType" name="nrvedit_LastRenewalType" type="text" placeholder="" class="form-control input-md">
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="nrvedit_PriorityStatus">Priority Status</label>
+  <div class="col-sm-6">
+    <input id="nrvedit_PriorityStatus" name="nrvedit_PriorityStatus" type="text" placeholder="" class="form-control input-md">
+
+  </div>
+</div>
+
+</fieldset>
+</form>

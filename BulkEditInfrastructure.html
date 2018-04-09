@@ -1,176 +1,149 @@
 <form class="form-horizontal">
-<fieldset>
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>Bulk Edit Infrastructure</legend>
 
-<!-- Form Name -->
-<legend>Bulk Edit Infrastructure</legend>
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="infbulkedit_Quantity">Quantity</label>
+            <div class="col-sm-12">
+                <input id="infbulkedit_Quantity" name="infbulkedit_Quantity" ng-model="inventoryCtrl.BulkEditInfrastructure.Quantity" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
 
+        <!-- Select Basic -->
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="infbulkedit_UnitType">Quantity Unit Type</label>
+            <div class="col-sm-12">
+                <select id="infbulkedit_UnitType" name="infbulkedit_UnitType" ng-model="inventoryCtrl.BulkEditInfrastructure.UnitType" class="form-control">
+                    <option value="Entire Building, Structure, or Site">Entire Building, Structure, or Site</option>
+                    <option value="Unit or Vehicle">Unit or Vehicle</option>
+                    <option value="Track Feet">Track Feet</option>
+                    <option value="Linear Feet">Linear Feet</option>
+                    <option value="Set">Set</option>
+                    <option value="Parking Space">Parking Space</option>
+                    <option value="Square Feet">Square Feet</option>
+
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="infbulkedit_UnitCost">Cost Per Unit</label>
+            <div class="col-sm-12">
+                <input id="infbulkedit_UnitCost" name="infbulkedit_UnitCost" ng-model="inventoryCtrl.BulkEditInfrastructure.UnitCost" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="infbulkedit_AgencySoftCost">Additional Soft Cost</label>
+            <div class="col-sm-12">
+                <input id="infbulkedit_AgencySoftCost" name="infbulkedit_AgencySoftCost" ng-model="inventoryCtrl.BulkEditInfrastructure.AgencySoftCost" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="infbulkedit_AgencyUsefulLife">Agency-Specified Useful Life</label>
+            <div class="col-sm-12">
+                <input id="infbulkedit_AgencyUsefulLife" name="infbulkedit_AgencyUsefulLife" ng-model="inventoryCtrl.BulkEditInfrastructure.AgencyUsefulLife" type="text" placeholder="" class="form-control input-md">
 
-<div class="form-group">
-  <label class="col-sm-4 control-label" for="infbulkedit_Quantity">Quantity</label>
-   <div class="col-sm-6">
-     <input id="infbulkedit_Quantity" name="infbulkedit_Quantity" ng-model="inventoryCtrl.BulkEditInfrastructure.Quantity" type="text" placeholder="" class="form-control input-md">
+            </div>
+        </div>
 
-   </div>
- </div>
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="infbulkedit_DelayReplaceAge">Delay of Replacement Age (Years)</label>
+            <div class="col-sm-12">
+                <input id="infbulkedit_DelayReplaceAge" name="infbulkedit_DelayReplaceAge" ng-model="inventoryCtrl.BulkEditInfrastructure.DelayReplaceAge" type="text" placeholder="" class="form-control input-md">
 
+            </div>
+        </div>
 
- <!-- Select Basic -->
- <div class="form-group">
-   <label class="col-md-4 control-label" for="infbulkedit_UnitType">Quantity Unit Type</label>
-   <div class="col-md-5">
-     <select id="infbulkedit_UnitType" name="infbulkedit_UnitType" ng-model="inventoryCtrl.BulkEditInfrastructure.UnitType" class="form-control">
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="infbulkedit_AssetStatus">Asset Status</label>
+            <div class="col-sm-12">
+                <select id="infbulkedit_AssetStatus" name="infbulkedit_AssetStatus" class="form-control">
 
-       <option value="Entire Building, Structure, or Site">Entire Building, Structure, or Site</option>
+                    <option value="CMT">Committed</option>
 
-       <option value="Unit or Vehicle">Unit or Vehicle</option>
+                    <option value="EXP">Expansion</option>
 
-       <option value="Track Feet">Track Feet</option>
+                    <option value="EXT">Existing</option>
 
-       <option value="Linear Feet">Linear Feet</option>
+                    <option value="OUT">Inactive</option>
 
-       <option value="Set">Set</option>
+                    <option value="PLN">Long Range Planned</option>
 
-       <option value="Parking Space">Parking Space</option>
+                    <option value="RES">Reserve</option>
 
-       <option value="Square Feet">Square Feet</option>
+                    <option value="RET">Retired</option>
 
-     </select>
-   </div>
- </div>
+                </select>
+            </div>
+        </div>
 
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="infbulkedit_AgencyCapitalResponsibility">Percent Agency Capital Responsibility</label>
+            <div class="col-sm-12">
+                <input id="infbulkedit_AgencyCapitalResponsibility" name="infbulkedit_AgencyCapitalResponsibility" ng-model="inventoryCtrl.BulkEditInfrastructure.AgencyCapitalResponsibility" type="text" placeholder="" class="form-control input-md">
 
-<div class="form-group">
-  <label class="col-sm-4 control-label" for="infbulkedit_UnitCost">Cost Per Unit</label>
-   <div class="col-sm-6">
-     <input id="infbulkedit_UnitCost" name="infbulkedit_UnitCost" ng-model="inventoryCtrl.BulkEditInfrastructure.UnitCost" type="text" placeholder="" class="form-control input-md">
+            </div>
+        </div>
 
-   </div>
- </div>
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="infbulkedit_PriorityStatus">Priority Status</label>
+            <div class="col-sm-12">
+                <select id="infbulkedit_PriorityStatus" name="infbulkedit_PriorityStatus" ng-model="inventoryCtrl.BulkEditInfrastructure.PriorityStatus" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
 
+            </div>
+        </div>
 
-<div class="form-group">
-  <label class="col-sm-4 control-label" for="infbulkedit_AgencySoftCost">Additional Soft Cost</label>
-   <div class="col-sm-6">
-     <input id="infbulkedit_AgencySoftCost" name="infbulkedit_AgencySoftCost" ng-model="inventoryCtrl.BulkEditInfrastructure.AgencySoftCost" type="text" placeholder="" class="form-control input-md">
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="infbulkedit_LineDivision">Line/Division</label>
+            <div class="col-sm-12">
+                <input id="infbulkedit_LineDivision" name="infbulkedit_LineDivision" ng-model="inventoryCtrl.BulkEditInfrastructure.LineDivision" type="text" placeholder="" class="form-control input-md">
 
-   </div>
- </div>
+            </div>
+        </div>
 
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="infbulkedit_BranchGarage">Branch/Garage</label>
+            <div class="col-sm-12">
+                <input id="infbulkedit_BranchGarage" name="infbulkedit_BranchGarage" ng-model="inventoryCtrl.BulkEditInfrastructure.BranchGarage" type="text" placeholder="" class="form-control input-md">
 
-<div class="form-group">
-  <label class="col-sm-4 control-label" for="infbulkedit_AgencyUsefulLife">Agency-Specified Useful Life</label>
-   <div class="col-sm-6">
-     <input id="infbulkedit_AgencyUsefulLife" name="infbulkedit_AgencyUsefulLife" ng-model="inventoryCtrl.BulkEditInfrastructure.AgencyUsefulLife" type="text" placeholder="" class="form-control input-md">
+            </div>
+        </div>
 
-   </div>
- </div>
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="infbulkedit_SegmentRoute">Segment Route</label>
+            <div class="col-sm-12">
+                <input id="infbulkedit_SegmentRoute" name="infbulkedit_SegmentRoute" ng-model="inventoryCtrl.BulkEditInfrastructure.SegmentRoute" type="text" placeholder="" class="form-control input-md">
 
+            </div>
+        </div>
 
-<div class="form-group">
-  <label class="col-sm-4 control-label" for="infbulkedit_DelayReplaceAge">Delay of Replacement Age (Years)</label>
-   <div class="col-sm-6">
-     <input id="infbulkedit_DelayReplaceAge" name="infbulkedit_DelayReplaceAge" ng-model="inventoryCtrl.BulkEditInfrastructure.DelayReplaceAge" type="text" placeholder="" class="form-control input-md">
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="infbulkedit_LocLinearStart">Location Linear Start</label>
+            <div class="col-sm-12">
+                <input id="infbulkedit_LocLinearStart" name="infbulkedit_LocLinearStart" ng-model="inventoryCtrl.BulkEditInfrastructure.LocLinearStart" type="text" placeholder="" class="form-control input-md">
 
-   </div>
- </div>
+            </div>
+        </div>
 
+        <div class="form-group">
+            <label class="col-sm-12 control-label" for="infbulkedit_LocLinearEnd">Location Linear End</label>
+            <div class="col-sm-12">
+                <input id="infbulkedit_LocLinearEnd" name="infbulkedit_LocLinearEnd" ng-model="inventoryCtrl.BulkEditInfrastructure.LocLinearEnd" type="text" placeholder="" class="form-control input-md">
 
- <div class="form-group">
-   <label class="col-md-4 control-label" for="infbulkedit_AssetStatus">Asset Status</label>
-   <div class="col-md-5">
-     <select id="infbulkedit_AssetStatus" name="infbulkedit_AssetStatus" class="form-control">
+            </div>
+        </div>
 
-       <option value="CMT">Committed</option>
-
-       <option value="EXP">Expansion</option>
-
-       <option value="EXT">Existing</option>
-
-       <option value="OUT">Inactive</option>
-
-       <option value="PLN">Long Range Planned</option>
-
-       <option value="RES">Reserve</option>
-
-       <option value="RET">Retired</option>
-
-     </select>
-   </div>
- </div>
-
-
-<div class="form-group">
-  <label class="col-sm-4 control-label" for="infbulkedit_AgencyCapitalResponsibility">Percent Agency Capital Responsibility</label>
-   <div class="col-sm-6">
-     <input id="infbulkedit_AgencyCapitalResponsibility" name="infbulkedit_AgencyCapitalResponsibility" ng-model="inventoryCtrl.BulkEditInfrastructure.AgencyCapitalResponsibility" type="text" placeholder="" class="form-control input-md">
-
-   </div>
- </div>
-
-
-<div class="form-group">
-  <label class="col-sm-4 control-label" for="infbulkedit_PriorityStatus">Priority Status</label>
-   <div class="col-sm-6">
-     <select id="infbulkedit_UnitType" name="infbulkedit_UnitType" ng-model="inventoryCtrl.BulkEditInfrastructure.PriorityStatus" class="form-control">
-
-       <option value="1">1</option>
-
-       <option value="2">2</option>
-
-       <option value="3">3</option>
-
-       <option value="4">4</option>
-
-     </select>
-
-   </div>
- </div>
-
-
-<div class="form-group">
-  <label class="col-sm-4 control-label" for="infbulkedit_LineDivision">Line/Division</label>
-   <div class="col-sm-6">
-     <input id="infbulkedit_LineDivision" name="infbulkedit_LineDivision" ng-model="inventoryCtrl.BulkEditInfrastructure.LineDivision" type="text" placeholder="" class="form-control input-md">
-
-   </div>
- </div>
-
-
-<div class="form-group">
-  <label class="col-sm-4 control-label" for="infbulkedit_BranchGarage">Branch/Garage</label>
-   <div class="col-sm-6">
-     <input id="infbulkedit_BranchGarage" name="infbulkedit_BranchGarage" ng-model="inventoryCtrl.BulkEditInfrastructure.BranchGarage" type="text" placeholder="" class="form-control input-md">
-
-   </div>
- </div>
-
-
-<div class="form-group">
-  <label class="col-sm-4 control-label" for="infbulkedit_SegmentRoute">Segment Route</label>
-   <div class="col-sm-6">
-     <input id="infbulkedit_SegmentRoute" name="infbulkedit_SegmentRoute" ng-model="inventoryCtrl.BulkEditInfrastructure.SegmentRoute" type="text" placeholder="" class="form-control input-md">
-
-   </div>
- </div>
-
-
-<div class="form-group">
-  <label class="col-sm-4 control-label" for="infbulkedit_LocLinearStart">Location Linear Start</label>
-   <div class="col-sm-6">
-     <input id="infbulkedit_LocLinearStart" name="infbulkedit_LocLinearStart" ng-model="inventoryCtrl.BulkEditInfrastructure.LocLinearStart" type="text" placeholder="" class="form-control input-md">
-
-   </div>
- </div>
-
-
-<div class="form-group">
-  <label class="col-sm-4 control-label" for="infbulkedit_LocLinearEnd">Location Linear End</label>
-   <div class="col-sm-6">
-     <input id="infbulkedit_LocLinearEnd" name="infbulkedit_LocLinearEnd" ng-model="inventoryCtrl.BulkEditInfrastructure.LocLinearEnd" type="text" placeholder="" class="form-control input-md">
-
-   </div>
- </div>
-
-
-</fieldset>
+    </fieldset>
 </form>

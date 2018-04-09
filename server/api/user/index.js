@@ -20,11 +20,12 @@ router.get('/getAssets', auth.isAuthenticated(), controller.getTRSIDAssets);
 router.get('/getAssets/Total', auth.isAuthenticated(), controller.getAssetsTotalCount);
 router.delete('/:id', auth.hasRole('admin'), controller.destroy);
 router.get('/me', auth.isAuthenticated(), controller.me);
-router.put('/:id/asset', auth.isAuthenticated(), controller.updateAsset);
-router.put('/:id/asset/nonrevenue', auth.isAuthenticated(), controller.updateNonRevenueVehicle)
-router.put('/:id/asset/passengerfacility', auth.isAuthenticated(), controller.updatePassengerFacility);
-router.put('/:id/asset/adminmaintfacility', auth.isAuthenticated(), controller.updateAdminMaintFacility);
-router.put('/:id/asset/infrastructure', auth.isAuthenticated(), controller.updateInfrastructure);
+router.put('/:type/asset', auth.isAuthenticated(), controller.updateAsset);
+router.put('/:type/asset/nonrevenue', auth.isAuthenticated(), controller.updateNonRevenueVehicle)
+router.put('/:type/asset/passengerfacility', auth.isAuthenticated(), controller.updatePassengerFacility);
+router.put('/:type/asset/adminmaintfacility', auth.isAuthenticated(), controller.updateAdminMaintFacility);
+router.put('/:type/asset/infrastructure', auth.isAuthenticated(), controller.updateInfrastructure);
+router.put('/:type/asset/system', auth.isAuthenticated(), controller.updateSystem);
 router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 router.put('/:id/account', auth.isAuthenticated(), controller.changeAccountInfo);
 router.get('/:id', auth.isAuthenticated(), controller.show);
@@ -32,6 +33,8 @@ router.post('/asset/create/revenue', auth.isAuthenticated(), controller.createRe
 router.post('/asset/create/nonrevenue', auth.isAuthenticated(), controller.createNonRevenueVehicle);
 router.post('/asset/create/passengerfacility', auth.isAuthenticated(), controller.createPassengerFacility);
 router.post('/asset/create/adminmaintfacility', auth.isAuthenticated(), controller.createAdminMaintFacility);
+router.post('/asset/create/infrastructure', auth.isAuthenticated(), controller.createInfrastructure);
+router.post('/asset/create/system', auth.isAuthenticated(), controller.createSystem);
 router.post('/', auth.isAuthenticated(), controller.create);
 
 module.exports = router;

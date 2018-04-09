@@ -172,18 +172,19 @@ export function getTRSIDAssets(req, res) {
 
 export function getTRSIDCategoryAssets(req, res) {
     var category = req.params.category;
+    console.log(req.user.dataValues.TRSID);
     var trsid = req.user.dataValues.TRSID;
 
     console.log(category);
     var query;
     if (category === 'nonrevenuevehicles') {
-        query = "SELECT * FROM [aalbert].[NonRevenueVehicleInventory] WHERE TRSID = " + trsid;
+        query = "SELECT * FROM [aalbert].[NonRevenueVehicleInventory] WHERE TRSID = " + trsid + " ORDER BY LastUpdated DESC";
     } else if (category === 'mandafacilities') {
-        query = "SELECT * FROM [aalbert].[MandAFacilitiesInventory] WHERE TRSID = " + trsid;
+        query = "SELECT * FROM [aalbert].[MandAFacilitiesInventory] WHERE TRSID = " + trsid + " ORDER BY LastUpdated DESC";
     } else if (category === 'passengerfacilities') {
-        query = "SELECT * FROM [aalbert].[PassengerFacilitiesInventory] WHERE TRSID = " + trsid;
+        query = "SELECT * FROM [aalbert].[PassengerFacilitiesInventory] WHERE TRSID = " + trsid + " ORDER BY LastUpdated DESC";
     } else if (category === 'revenuevehicles') {
-        query = "SELECT * FROM [aalbert].[RevenueVehicleInventory] WHERE TRSID = " + trsid;
+        query = "SELECT * FROM [aalbert].[RevenueVehicleInventory] WHERE TRSID = " + trsid + " ORDER BY LastUpdated DESC";
     } else if (category === 'infrastructure') {
         query = "SELECT * FROM [aalbert].[viewInfrastructure] WHERE TRSID = " + trsid;
     } else if (category === 'systems') {
@@ -304,7 +305,7 @@ export function changeAccountInfo(req, res) {
 export function updateAsset(req, res) {
     console.log(req.body);
 
-
+    console.log(req.params.type);
     // // connect to your database
     console.log('additonal  support', req.body.AdditionalModeSupport);
     console.log('historic flag', req.body.HistoricPresrvFlag);
@@ -312,60 +313,134 @@ export function updateAsset(req, res) {
 
     // create Request object
     var request = new sql.Request(config.mssql);
-    request.input('AssetUID', sql.Int, req.body.AssetUID);
-    request.input('ModeCode', sql.NVarChar(3), req.body.ModeCode);
-    request.input('NTDModeCode', sql.NChar(2), req.body.NTDModeCode);
-    request.input('AssetDesc', sql.NVarChar(500), req.body.AssetDesc);
-    request.input('AgencyDetail', sql.NVarChar(500), req.body.AgencyDetail);
-    request.input('AssetStatus', sql.VarChar(3), req.body.AssetStatus);
-    request.input('AssetType', sql.Numeric(18, 6), req.body.AssetType);
-    request.input('YRBuilt', sql.Int, req.body.YRBuilt);
-    request.input('YRInService', sql.Date, req.body.YRInService);
-    request.input('AgencyUsefulLife', sql.Int, req.body.AgencyUsefulLife);
-    request.input('Quantity', sql.Float, req.body.Quantity);
-    request.input('UnitCost', sql.VarChar(20), req.body.UnitCost);
-    request.input('AgencySoftCost', sql.Float, req.body.AgencySoftCost);
-    request.input('AgencyAssetUID', sql.NVarChar(50), req.body.AgencyAssetUID);
-    request.input('PriorityStatus', sql.Int, req.body.PriorityStatus);
-    request.input('HistoricPresrvFlag', sql.Bit, req.body.HistoricPresrvFlag);
-    request.input('AdditionalModeSupport', sql.Bit, req.body.AdditionalModeSupport);
-    request.input('ADAFlag', sql.Bit, req.body.ADAFlag);
-    request.input('RVID', sql.NVarChar(255), req.body.RVID);
-    request.input('Manufacturer', sql.NVarChar(50), req.body.Manufacturer);
-    request.input('ManufacturerCode', sql.NChar(3), req.body.ManufacturerCode);
-    request.input('ModelNumber', sql.NVarChar(50), req.body.ModelNumber);
-    request.input('FuelType', sql.NVarChar(3), req.body.FuelType);
-    request.input('CapacitySeated', sql.Char(2), req.body.CapacitySeated);
-    request.input('CapacityStanding', sql.Int, req.body.CapacityStanding);
-    request.input('DelayReplaceAge', sql.Int, req.body.DelayReplaceAge);
-    request.input('LastRenewalYR', sql.Int, req.body.LastRenewalYR);
-    request.input('LastRenewalType', sql.Int, req.body.LastRenewalType);
-    request.input('PercentContingencyFleet', sql.Int, req.body.PercentContingencyFleet);
 
 
-    // request.output('AssetUID', sql.Int)
-    request.execute('dbo.updateRevenueVehicles', (err, result) => {
-        // ... error checks
-        if (err) {
-            console.log(err);
-            sql.close();
-        } else {
+    var exit;
+
+    if (req.params.type === 'single') {
+        console.log('updating single record');
+        console.log(req.body.AssetUID);
+
+        request.input('ModeCode', sql.NVarChar(3), req.body.ModeCode);
+        request.input('NTDModeCode', sql.NChar(2), req.body.NTDModeCode);
+        request.input('AssetDesc', sql.NVarChar(500), req.body.AssetDesc);
+        request.input('AgencyDetail', sql.NVarChar(500), req.body.AgencyDetail);
+        request.input('YRBuilt', sql.Int, req.body.YRBuilt);
+        request.input('YRInService', sql.Date, req.body.YRInService);
+        request.input('AssetType', sql.Numeric(18, 6), req.body.AssetType);
+        request.input('AgencyAssetUID', sql.NVarChar(50), req.body.AgencyAssetUID);
+        request.input('RVID', sql.NVarChar(255), req.body.RVID);
+        request.input('Manufacturer', sql.NVarChar(50), req.body.Manufacturer);
+        request.input('ManufacturerCode', sql.NChar(3), req.body.ManufacturerCode);
+        request.input('ModelNumber', sql.NVarChar(50), req.body.ModelNumber);
+        request.input('FuelType', sql.NVarChar(3), req.body.FuelType);
+        request.input('AssetStatus', sql.VarChar(3), req.body.AssetStatus);
+        request.input('AgencyUsefulLife', sql.Int, req.body.AgencyUsefulLife);
+        request.input('Quantity', sql.Float, req.body.Quantity);
+        request.input('UnitCost', sql.VarChar(20), req.body.UnitCost);
+        request.input('AgencySoftCost', sql.Float, req.body.AgencySoftCost);
+        request.input('PriorityStatus', sql.Int, req.body.PriorityStatus);
+        request.input('HistoricPresrvFlag', sql.Bit, req.body.HistoricPresrvFlag);
+        request.input('AdditionalModeSupport', sql.Bit, req.body.AdditionalModeSupport);
+        request.input('ADAFlag', sql.Bit, req.body.ADAFlag);
+        request.input('CapacitySeated', sql.Char(2), req.body.CapacitySeated);
+        request.input('CapacityStanding', sql.Int, req.body.CapacityStanding);
+        request.input('DelayReplaceAge', sql.Int, req.body.DelayReplaceAge);
+        request.input('LastRenewalYR', sql.Int, req.body.LastRenewalYR);
+        request.input('LastRenewalType', sql.Int, req.body.LastRenewalType);
+        request.input('PercentContingencyFleet', sql.Int, req.body.PercentContingencyFleet);
+        request.input('AssetUID', sql.Int, req.body.AssetUID);
+
+        request.execute('dbo.updateRevenueVehicles', (err, result) => {
+            // ... error checks
+            if (err) {
+                console.log(err);
+                sql.close();
+            }
             console.log(result);
-            // console.log(result.recordsets.length) // count of recordsets returned by the procedure
-            // console.log(result.recordsets[0].length) // count of rows contained in first recordset
-            // console.log(result.recordset) // first recordset from result.recordsets
-            // console.log(result.returnValue) // procedure return value
-            // console.log(result.output) // key/value collection of output values
-            // console.log(result.rowsAffected) // array of numbers, each number represents the number of rows affected by executed statemens
+
             res.json(result);
             sql.close();
-            // ...
+
+
+        });
+
+    } else if (req.params.type === 'bulk') {
+        var items = req.body.AssetUID;
+        var ids = req.body.AssetUID;
+        var counter = items.length - 1;
+
+        for (var index = 0; index < items.length; index++) {
+            request = new sql.Request(config.mssql);
+
+            request.input('ModeCode', sql.NVarChar(3), req.body.ModeCode);
+            request.input('NTDModeCode', sql.NChar(2), req.body.NTDModeCode);
+            request.input('AssetStatus', sql.VarChar(3), req.body.AssetStatus);
+            request.input('AgencyUsefulLife', sql.Int, req.body.AgencyUsefulLife);
+            request.input('Quantity', sql.Float, req.body.Quantity);
+            request.input('UnitCost', sql.VarChar(20), req.body.UnitCost);
+            request.input('AgencySoftCost', sql.Float, req.body.AgencySoftCost);
+            request.input('PriorityStatus', sql.Int, req.body.PriorityStatus);
+            request.input('HistoricPresrvFlag', sql.Bit, req.body.HistoricPresrvFlag);
+            request.input('AdditionalModeSupport', sql.Bit, req.body.AdditionalModeSupport);
+            request.input('ADAFlag', sql.Bit, req.body.ADAFlag);
+            request.input('CapacitySeated', sql.Char(2), req.body.CapacitySeated);
+            request.input('CapacityStanding', sql.Int, req.body.CapacityStanding);
+            request.input('DelayReplaceAge', sql.Int, req.body.DelayReplaceAge);
+            request.input('LastRenewalYR', sql.Int, req.body.LastRenewalYR);
+            request.input('LastRenewalType', sql.Int, req.body.LastRenewalType);
+            request.input('PercentContingencyFleet', sql.Int, req.body.PercentContingencyFleet);
+
+            request.input('AssetUID', sql.Int, items[index]);
+            console.log(request.parameters.AssetUID);
+
+
+            request.execute('dbo.updateRevenueVehicles', (err, result) => {
+                // ... error checks
+                if (err) {
+                    console.log(err);
+                    sql.close();
+                }
+                // console.log(result);
+
+                counter = counter - 1;
+                console.log(counter);
+                if (counter === 0) {
+                    res.json(result);
+                    sql.close();
+                }
+
+
+                // ...
+
+            });
+
         }
-    })
+
+    }
 
 
 
 
+    // // request.output('AssetUID', sql.Int)
+    // request.execute('dbo.updateRevenueVehicles', (err, result) => {
+    //     // ... error checks
+    //     if (err) {
+    //         console.log(err);
+    //         sql.close();
+    //     } else {
+    //         console.log(result);
+    //         // console.log(result.recordsets.length) // count of recordsets returned by the procedure
+    //         // console.log(result.recordsets[0].length) // count of rows contained in first recordset
+    //         // console.log(result.recordset) // first recordset from result.recordsets
+    //         // console.log(result.returnValue) // procedure return value
+    //         // console.log(result.output) // key/value collection of output values
+    //         // console.log(result.rowsAffected) // array of numbers, each number represents the number of rows affected by executed statemens
+    //         res.json(result);
+    //         sql.close();
+    //         // ...
+    //     }
+    // });
 }
 
 /**
@@ -376,56 +451,102 @@ export function updateNonRevenueVehicle(req, res) {
     console.log(req.body.UnitType);
     console.log(req.body);
 
+    var request;
+
+    if (req.params.type === 'single') {
+        request = new sql.Request(config.mssql);
+        request.input('AssetUID', sql.Int, req.body.AssetUID);
+        request.input('ModeCode', sql.NVarChar(3), req.body.ModeCode);
+        request.input('NTDModeCode', sql.NChar(2), req.body.NTDModeCode);
+        request.input('AssetDesc', sql.NVarChar(500), req.body.AssetDesc);
+        request.input('AgencyDetail', sql.NVarChar(500), req.body.AgencyDetail);
+        request.input('AssetStatus', sql.VarChar(3), req.body.AssetStatus);
+        request.input('AssetType', sql.Numeric(18, 6), req.body.AssetType);
+        request.input('YRBuilt', sql.Int, req.body.YRBuilt);
+        request.input('YRInService', sql.Date, req.body.YRInService);
+        request.input('AgencyUsefulLife', sql.Int, req.body.AgencyUsefulLife);
+        request.input('Quantity', sql.Float, req.body.Quantity);
+        request.input('UnitCost', sql.VarChar(20), req.body.UnitCost);
+        request.input('UnitType', sql.VarChar(100), req.body.UnitType);
+        request.input('AgencySoftCost', sql.Float, req.body.AgencySoftCost);
+        request.input('AgencyAssetUID', sql.NVarChar(50), req.body.AgencyAssetUID);
+        request.input('PriorityStatus', sql.Int, req.body.PriorityStatus);
+        // request.input('ManufacturerCode', sql.NChar(3), req.body.ManufacturerCode);
+        request.input('Manufacturer', sql.NChar(50), req.body.Manufacturer);
+        request.input('ModelNumber', sql.NVarChar(50), req.body.ModelNumber);
+        request.input('FuelType', sql.NVarChar(3), req.body.FuelType);
+        request.input('DelayReplaceAge', sql.Int, req.body.DelayReplaceAge);
+        request.input('LastRenewalYR', sql.Int, req.body.LastRenewalYR);
+        request.input('LastRenewalType', sql.Int, req.body.LastRenewalType);
+        request.input('AgencyCapitalResponsibility', sql.Int, req.body.AgencyCapitalResponsibility);
 
 
-    // create Request object
-    var request = new sql.Request(config.mssql);
-    request.input('AssetUID', sql.Int, req.body.AssetUID);
-    request.input('ModeCode', sql.NVarChar(3), req.body.ModeCode);
-    request.input('NTDModeCode', sql.NChar(2), req.body.NTDModeCode);
-    request.input('AssetDesc', sql.NVarChar(500), req.body.AssetDesc);
-    request.input('AgencyDetail', sql.NVarChar(500), req.body.AgencyDetail);
-    request.input('AssetStatus', sql.VarChar(3), req.body.AssetStatus);
-    request.input('AssetType', sql.Numeric(18, 6), req.body.AssetType);
-    request.input('YRBuilt', sql.Int, req.body.YRBuilt);
-    request.input('YRInService', sql.Date, req.body.YRInService);
-    request.input('AgencyUsefulLife', sql.Int, req.body.AgencyUsefulLife);
-    request.input('Quantity', sql.Float, req.body.Quantity);
-    request.input('UnitCost', sql.VarChar(20), req.body.UnitCost);
-    request.input('UnitType', sql.VarChar(100), req.body.UnitType);
-    request.input('AgencySoftCost', sql.Float, req.body.AgencySoftCost);
-    request.input('AgencyAssetUID', sql.NVarChar(50), req.body.AgencyAssetUID);
-    request.input('PriorityStatus', sql.Int, req.body.PriorityStatus);
-    // request.input('ManufacturerCode', sql.NChar(3), req.body.ManufacturerCode);
-    request.input('Manufacturer', sql.NChar(50), req.body.Manufacturer);
-    request.input('ModelNumber', sql.NVarChar(50), req.body.ModelNumber);
-    request.input('FuelType', sql.NVarChar(3), req.body.FuelType);
-    request.input('DelayReplaceAge', sql.Int, req.body.DelayReplaceAge);
-    request.input('LastRenewalYR', sql.Int, req.body.LastRenewalYR);
-    request.input('LastRenewalType', sql.Int, req.body.LastRenewalType);
-    request.input('AgencyCapitalResponsibility', sql.Int, req.body.AgencyCapitalResponsibility);
+        // request.output('AssetUID', sql.Int)
+        request.execute('dbo.updateNonRevenueVehicle', (err, result) => {
+            // ... error checks
+            if (err) {
+                console.log(err);
+                sql.close();
+            } else {
+                console.log(result);
+                res.json(result);
+                sql.close();
+                // ...
+            }
+        });
+    } else if (req.params.type === 'bulk') {
+        var items = req.body.AssetUID;
+        var ids = req.body.AssetUID;
+        var counter = items.length - 1;
+
+        for (var index = 0; index < items.length; index++) {
+            request = new sql.Request(config.mssql);
+
+            request.input('ModeCode', sql.NVarChar(3), req.body.ModeCode);
+            request.input('NTDModeCode', sql.NChar(2), req.body.NTDModeCode);
+            request.input('AssetStatus', sql.VarChar(3), req.body.AssetStatus);
+            request.input('AgencyUsefulLife', sql.Int, req.body.AgencyUsefulLife);
+            request.input('Quantity', sql.Float, req.body.Quantity);
+            request.input('UnitCost', sql.VarChar(20), req.body.UnitCost);
+            request.input('AgencySoftCost', sql.Float, req.body.AgencySoftCost);
+            request.input('PriorityStatus', sql.Int, req.body.PriorityStatus);
+            request.input('HistoricPresrvFlag', sql.Bit, req.body.HistoricPresrvFlag);
+            request.input('AdditionalModeSupport', sql.Bit, req.body.AdditionalModeSupport);
+            request.input('ADAFlag', sql.Bit, req.body.ADAFlag);
+            request.input('CapacitySeated', sql.Char(2), req.body.CapacitySeated);
+            request.input('CapacityStanding', sql.Int, req.body.CapacityStanding);
+            request.input('DelayReplaceAge', sql.Int, req.body.DelayReplaceAge);
+            request.input('LastRenewalYR', sql.Int, req.body.LastRenewalYR);
+            request.input('LastRenewalType', sql.Int, req.body.LastRenewalType);
+            request.input('PercentContingencyFleet', sql.Int, req.body.PercentContingencyFleet);
+
+            request.input('AssetUID', sql.Int, items[index]);
+            console.log(request.parameters.AssetUID);
 
 
-    // request.output('AssetUID', sql.Int)
-    request.execute('dbo.updateNonRevenueVehicle', (err, result) => {
-        // ... error checks
-        if (err) {
-            console.log(err);
-            sql.close();
-        } else {
-            console.log(result);
-            // console.log(result.recordsets.length) // count of recordsets returned by the procedure
-            // console.log(result.recordsets[0].length) // count of rows contained in first recordset
-            // console.log(result.recordset) // first recordset from result.recordsets
-            // console.log(result.returnValue) // procedure return value
-            // console.log(result.output) // key/value collection of output values
-            // console.log(result.rowsAffected) // array of numbers, each number represents the number of rows affected by executed statemens
-            res.json(result);
-            sql.close();
-            // ...
+            request.execute('dbo.updateNonRevenueVehicle', (err, result) => {
+                // ... error checks
+                if (err) {
+                    console.log(err);
+                    sql.close();
+                }
+                // console.log(result);
+
+                counter = counter - 1;
+                console.log(counter);
+                if (counter === 0) {
+                    res.json(result);
+                    sql.close();
+                }
+
+
+                // ...
+
+            });
+
         }
-    })
 
+    }
 
 
 
@@ -434,58 +555,115 @@ export function updateNonRevenueVehicle(req, res) {
 export function updatePassengerFacility(req, res) {
     console.log(req.body.AssetUID);
     console.log(req.body);
+    var request;
+
+    if (req.params.type === 'single') {
+        // create Request object
+        request = new sql.Request(config.mssql);
+        request.input('AssetUID', sql.Int, req.body.AssetUID);
+        request.input('AgencyAssetUID', sql.NVarChar(50), req.body.AgencyAssetUID);
+        request.input('AssetDesc', sql.NVarChar(500), req.body.AssetDesc);
+        request.input('AgencyDetail', sql.NVarChar(500), req.body.AgencyDetail);
+        request.input('AssetType', sql.Numeric(18, 6), req.body.AssetType);
+        request.input('ModeCode', sql.NVarChar(3), req.body.ModeCode);
+        request.input('NTDModeCode', sql.NChar(2), req.body.NTDModeCode);
+        request.input('Quantity', sql.Float, req.body.Quantity);
+        request.input('UnitCost', sql.VarChar(20), req.body.UnitCost);
+        request.input('UnitType', sql.VarChar(100), req.body.UnitType);
+        request.input('AgencySoftCost', sql.Float, req.body.AgencySoftCost);
+        request.input('YRBuilt', sql.Int, req.body.YRBuilt);
+        request.input('AssetPhysAddress', sql.NVarChar(500), req.body.AssetPhysAddress);
+        request.input('AssetPhysCity', sql.NVarChar(500), req.body.AssetPhysCity);
+        request.input('AssetPhysState', sql.NVarChar(500), req.body.AssetPhysState);
+        request.input('AssetPhysZIP', sql.NVarChar(500), req.body.AssetPhysZIP);
+        request.input('Latitude', sql.NVarChar(500), req.body.Latitude);
+        request.input('Longitude', sql.NVarChar(500), req.body.Longitude);
+        request.input('SquareFootage', sql.Numeric(18, 6), req.body.SquareFootage);
+        request.input('AgencyConditionRating', sql.Numeric(2, 1), parseFloat(req.body.AgencyConditionRating));
+        request.input('DateofLastCondAssessment', sql.Date, req.body.DateofLastCondAssessment);
+        request.input('AgencyCapitalResponsibility', sql.Int, req.body.AgencyCapitalResponsibility);
+        request.input('AssetStatus', sql.VarChar(3), req.body.AssetStatus);
+        request.input('LastRenewalYR', sql.Int, req.body.LastRenewalYR);
+        request.input('LastRenewalType', sql.NVarChar(255), req.body.LastRenewalType);
+        request.input('HistoricPresrvFlag', sql.Bit, req.body.HistoricPresrvFlag);
+        request.input('PriorityStatus', sql.Int, req.body.PriorityStatus);
 
 
-    // create Request object
-    var request = new sql.Request(config.mssql);
-    request.input('AssetUID', sql.Int, req.body.AssetUID);
-    request.input('AgencyAssetUID', sql.NVarChar(50), req.body.AgencyAssetUID);
-    request.input('AssetDesc', sql.NVarChar(500), req.body.AssetDesc);
-    request.input('AgencyDetail', sql.NVarChar(500), req.body.AgencyDetail);
-    request.input('AssetType', sql.Numeric(18, 6), req.body.AssetType);
-    request.input('ModeCode', sql.NVarChar(3), req.body.ModeCode);
-    request.input('NTDModeCode', sql.NChar(2), req.body.NTDModeCode);
-    request.input('Quantity', sql.Float, req.body.Quantity);
-    request.input('UnitCost', sql.VarChar(20), req.body.UnitCost);
-    request.input('UnitType', sql.VarChar(100), req.body.UnitType);
-    request.input('AgencySoftCost', sql.Float, req.body.AgencySoftCost);
-    request.input('YRBuilt', sql.Int, req.body.YRBuilt);
-    request.input('AssetPhysAddress', sql.NVarChar(500), req.body.AssetPhysAddress);
-    request.input('AssetPhysCity', sql.NVarChar(500), req.body.AssetPhysCity);
-    request.input('AssetPhysState', sql.NVarChar(500), req.body.AssetPhysState);
-    request.input('AssetPhysZIP', sql.NVarChar(500), req.body.AssetPhysZIP);
-    request.input('Latitude', sql.NVarChar(500), req.body.Latitude);
-    request.input('Longitude', sql.NVarChar(500), req.body.Longitude);
-    request.input('SquareFootage', sql.Numeric(18, 6), req.body.SquareFootage);
-    request.input('AgencyConditionRating', sql.Numeric(2, 1), parseFloat(req.body.AgencyConditionRating));
-    request.input('DateofLastCondAssessment', sql.Date, req.body.DateofLastCondAssessment);
-    request.input('AgencyCapitalResponsibility', sql.Int, req.body.AgencyCapitalResponsibility);
-    request.input('AssetStatus', sql.VarChar(3), req.body.AssetStatus);
-    request.input('LastRenewalYR', sql.Int, req.body.LastRenewalYR);
-    request.input('LastRenewalType', sql.NVarChar(255), req.body.LastRenewalType);
-    request.input('HistoricPresrvFlag', sql.Bit, req.body.HistoricPresrvFlag);
-    request.input('PriorityStatus', sql.Int, req.body.PriorityStatus);
+        // request.output('AssetUID', sql.Int)
+        request.execute('dbo.updatePassFacility', (err, result) => {
+            // ... error checks
+            if (err) {
+                console.log(err);
+                sql.close();
+            } else {
+                console.log(result);
+                // console.log(result.recordsets.length) // count of recordsets returned by the procedure
+                // console.log(result.recordsets[0].length) // count of rows contained in first recordset
+                // console.log(result.recordset) // first recordset from result.recordsets
+                // console.log(result.returnValue) // procedure return value
+                // console.log(result.output) // key/value collection of output values
+                // console.log(result.rowsAffected) // array of numbers, each number represents the number of rows affected by executed statemens
+                res.json(result);
+                sql.close();
+                // ...
+            }
+        });
+    } else if (req.params.type === 'bulk') {
+        var items = req.body.AssetUID;
+        var ids = req.body.AssetUID;
+        var counter = items.length - 1;
+
+        for (var index = 0; index < items.length; index++) {
+            request = new sql.Request(config.mssql);
+            request.input('ModeCode', sql.NVarChar(3), req.body.ModeCode);
+            request.input('NTDModeCode', sql.NChar(2), req.body.NTDModeCode);
+            request.input('Quantity', sql.Float, req.body.Quantity);
+            request.input('UnitType', sql.VarChar(100), req.body.UnitType);
+            request.input('AgencySoftCost', sql.Float, req.body.AgencySoftCost);
+            request.input('AssetPhysAddress', sql.NVarChar(500), req.body.AssetPhysAddress);
+            request.input('AssetPhysCity', sql.NVarChar(500), req.body.AssetPhysCity);
+            request.input('AssetPhysState', sql.NVarChar(500), req.body.AssetPhysState);
+            request.input('AssetPhysZIP', sql.NVarChar(500), req.body.AssetPhysZIP);
+            request.input('Latitude', sql.NVarChar(500), req.body.Latitude);
+            request.input('Longitude', sql.NVarChar(500), req.body.Longitude);
+            request.input('SquareFootage', sql.Numeric(18, 6), req.body.SquareFootage);
+            request.input('AgencyConditionRating', sql.Numeric(2, 1), parseFloat(req.body.AgencyConditionRating));
+            request.input('DateofLastCondAssessment', sql.Date, req.body.DateofLastCondAssessment);
+            request.input('AgencyCapitalResponsibility', sql.Int, req.body.AgencyCapitalResponsibility);
+            request.input('AssetStatus', sql.VarChar(3), req.body.AssetStatus);
+            request.input('LastRenewalYR', sql.Int, req.body.LastRenewalYR);
+            request.input('LastRenewalType', sql.NVarChar(255), req.body.LastRenewalType);
+            request.input('HistoricPresrvFlag', sql.Bit, req.body.HistoricPresrvFlag);
+            request.input('PriorityStatus', sql.Int, req.body.PriorityStatus);
+
+            request.input('AssetUID', sql.Int, items[index]);
+            console.log(request.parameters.AssetUID);
 
 
-    // request.output('AssetUID', sql.Int)
-    request.execute('dbo.updatePassFacility', (err, result) => {
-        // ... error checks
-        if (err) {
-            console.log(err);
-            sql.close();
-        } else {
-            console.log(result);
-            // console.log(result.recordsets.length) // count of recordsets returned by the procedure
-            // console.log(result.recordsets[0].length) // count of rows contained in first recordset
-            // console.log(result.recordset) // first recordset from result.recordsets
-            // console.log(result.returnValue) // procedure return value
-            // console.log(result.output) // key/value collection of output values
-            // console.log(result.rowsAffected) // array of numbers, each number represents the number of rows affected by executed statemens
-            res.json(result);
-            sql.close();
-            // ...
+            request.execute('dbo.updatePassFacility', (err, result) => {
+                // ... error checks
+                if (err) {
+                    console.log(err);
+                    sql.close();
+                }
+                // console.log(result);
+
+                counter = counter - 1;
+                console.log(counter);
+                if (counter === 0) {
+                    res.json(result);
+                    sql.close();
+                }
+
+
+                // ...
+
+            });
+
         }
-    })
+    }
+
+
 
 
 
@@ -496,116 +674,307 @@ export function updatePassengerFacility(req, res) {
 export function updateAdminMaintFacility(req, res) {
     console.log(req.body.AssetUID);
     console.log(req.body);
+    var request;
+
+    if (req.params.type === 'single') {
+        request = new sql.Request(config.mssql);
+        request.input('AssetUID', sql.Int, req.body.AssetUID);
+        request.input('AgencyAssetUID', sql.NVarChar(50), req.body.AgencyAssetUID);
+        request.input('AssetDesc', sql.NVarChar(500), req.body.AssetDesc);
+        request.input('AgencyDetail', sql.NVarChar(500), req.body.AgencyDetail);
+        request.input('AssetType', sql.Numeric(18, 6), req.body.AssetType);
+        request.input('Quantity', sql.Float, req.body.Quantity);
+        request.input('UnitCost', sql.VarChar(20), req.body.UnitCost);
+        request.input('UnitType', sql.VarChar(100), req.body.UnitType);
+        request.input('AgencySoftCost', sql.Float, req.body.AgencySoftCost);
+        request.input('YRBuilt', sql.Int, req.body.YRBuilt);
+        request.input('AssetPhysAddress', sql.NVarChar(500), req.body.AssetPhysAddress);
+        request.input('AssetPhysCity', sql.NVarChar(500), req.body.AssetPhysCity);
+        request.input('AssetPhysState', sql.NVarChar(500), req.body.AssetPhysState);
+        request.input('AssetPhysZIP', sql.NVarChar(500), req.body.AssetPhysZIP);
+        request.input('Latitude', sql.NVarChar(500), req.body.Latitude);
+        request.input('Longitude', sql.NVarChar(500), req.body.Longitude);
+        request.input('AssetStatus', sql.VarChar(3), req.body.AssetStatus);
+        request.input('SquareFootage', sql.Numeric(18, 6), req.body.SquareFootage);
+        request.input('AgencyConditionRating', sql.Numeric(2, 1), parseFloat(req.body.AgencyConditionRating));
+        request.input('DateofLastCondAssessment', sql.Date, req.body.DateofLastCondAssessment);
+        request.input('AgencyCapitalResponsibility', sql.Int, req.body.AgencyCapitalResponsibility);
+        request.input('LastRenewalYR', sql.Int, req.body.LastRenewalYR);
+        request.input('LastRenewalType', sql.NVarChar(255), req.body.LastRenewalType);
+        request.input('HistoricPresrvFlag', sql.Bit, req.body.HistoricPresrvFlag);
+        request.input('PriorityStatus', sql.Int, req.body.PriorityStatus);
 
 
-    // create Request object
-    var request = new sql.Request(config.mssql);
-    request.input('AssetUID', sql.Int, req.body.AssetUID);
-    request.input('AgencyAssetUID', sql.NVarChar(50), req.body.AgencyAssetUID);
-    request.input('AssetDesc', sql.NVarChar(500), req.body.AssetDesc);
-    request.input('AgencyDetail', sql.NVarChar(500), req.body.AgencyDetail);
-    request.input('AssetType', sql.Numeric(18, 6), req.body.AssetType);
-    request.input('Quantity', sql.Float, req.body.Quantity);
-    request.input('UnitCost', sql.VarChar(20), req.body.UnitCost);
-    request.input('UnitType', sql.VarChar(100), req.body.UnitType);
-    request.input('AgencySoftCost', sql.Float, req.body.AgencySoftCost);
-    request.input('YRBuilt', sql.Int, req.body.YRBuilt);
-    request.input('AssetPhysAddress', sql.NVarChar(500), req.body.AssetPhysAddress);
-    request.input('AssetPhysCity', sql.NVarChar(500), req.body.AssetPhysCity);
-    request.input('AssetPhysState', sql.NVarChar(500), req.body.AssetPhysState);
-    request.input('AssetPhysZIP', sql.NVarChar(500), req.body.AssetPhysZIP);
-    request.input('Latitude', sql.NVarChar(500), req.body.Latitude);
-    request.input('Longitude', sql.NVarChar(500), req.body.Longitude);
-    request.input('AssetStatus', sql.VarChar(3), req.body.AssetStatus);
-    request.input('SquareFootage', sql.Numeric(18, 6), req.body.SquareFootage);
-    request.input('AgencyConditionRating', sql.Numeric(2, 1), parseFloat(req.body.AgencyConditionRating));
-    request.input('DateofLastCondAssessment', sql.Date, req.body.DateofLastCondAssessment);
-    request.input('AgencyCapitalResponsibility', sql.Int, req.body.AgencyCapitalResponsibility);
-    request.input('LastRenewalYR', sql.Int, req.body.LastRenewalYR);
-    request.input('LastRenewalType', sql.NVarChar(255), req.body.LastRenewalType);
-    request.input('HistoricPresrvFlag', sql.Bit, req.body.HistoricPresrvFlag);
-    request.input('PriorityStatus', sql.Int, req.body.PriorityStatus);
+        // request.output('AssetUID', sql.Int)
+        request.execute('dbo.updateAdminMaintFacility', (err, result) => {
+            // ... error checks
+            if (err) {
+                console.log(err);
+                sql.close();
+            } else {
+                console.log(result);
+                res.json(result);
+                sql.close();
+                // ...
+            }
+        });
+
+    } else if (req.params.type === 'bulk') {
+        var items = req.body.AssetUID;
+        var ids = req.body.AssetUID;
+        var counter = items.length - 1;
+
+        for (var index = 0; index < items.length; index++) {
+            request = new sql.Request(config.mssql);
+            request.input('Quantity', sql.Float, req.body.Quantity);
+            request.input('UnitCost', sql.VarChar(20), req.body.UnitCost);
+            request.input('UnitType', sql.VarChar(100), req.body.UnitType);
+            request.input('AgencySoftCost', sql.Float, req.body.AgencySoftCost);
+            request.input('YRBuilt', sql.Int, req.body.YRBuilt);
+            request.input('AssetPhysAddress', sql.NVarChar(500), req.body.AssetPhysAddress);
+            request.input('AssetPhysCity', sql.NVarChar(500), req.body.AssetPhysCity);
+            request.input('AssetPhysState', sql.NVarChar(500), req.body.AssetPhysState);
+            request.input('AssetPhysZIP', sql.NVarChar(500), req.body.AssetPhysZIP);
+            request.input('Latitude', sql.NVarChar(500), req.body.Latitude);
+            request.input('Longitude', sql.NVarChar(500), req.body.Longitude);
+            request.input('AssetStatus', sql.VarChar(3), req.body.AssetStatus);
+            request.input('SquareFootage', sql.Numeric(18, 6), req.body.SquareFootage);
+            request.input('AgencyConditionRating', sql.Numeric(2, 1), parseFloat(req.body.AgencyConditionRating));
+            request.input('DateofLastCondAssessment', sql.Date, req.body.DateofLastCondAssessment);
+            request.input('AgencyCapitalResponsibility', sql.Int, req.body.AgencyCapitalResponsibility);
+            request.input('LastRenewalYR', sql.Int, req.body.LastRenewalYR);
+            request.input('LastRenewalType', sql.NVarChar(255), req.body.LastRenewalType);
+            request.input('HistoricPresrvFlag', sql.Bit, req.body.HistoricPresrvFlag);
+            request.input('PriorityStatus', sql.Int, req.body.PriorityStatus);
+
+            request.input('AssetUID', sql.Int, items[index]);
+            console.log(request.parameters.AssetUID);
 
 
-    // request.output('AssetUID', sql.Int)
-    request.execute('dbo.updateAdminMaintFacility', (err, result) => {
-        // ... error checks
-        if (err) {
-            console.log(err);
-            sql.close();
-        } else {
-            console.log(result);
-            // console.log(result.recordsets.length) // count of recordsets returned by the procedure
-            // console.log(result.recordsets[0].length) // count of rows contained in first recordset
-            // console.log(result.recordset) // first recordset from result.recordsets
-            // console.log(result.returnValue) // procedure return value
-            // console.log(result.output) // key/value collection of output values
-            // console.log(result.rowsAffected) // array of numbers, each number represents the number of rows affected by executed statemens
-            res.json(result);
-            sql.close();
-            // ...
+            request.execute('dbo.updateAdminMaintFacility', (err, result) => {
+                // ... error checks
+                if (err) {
+                    console.log(err);
+                    sql.close();
+                }
+                // console.log(result);
+
+                counter = counter - 1;
+                console.log(counter);
+                if (counter === 0) {
+                    res.json(result);
+                    sql.close();
+                }
+
+
+                // ...
+
+            });
+
         }
-    })
-
-
-
+    }
 
 }
 
 export function updateInfrastructure(req, res) {
     console.log(req.body.AssetUID);
     console.log(req.body);
+    var request;
+
+    if (req.params.type === 'single') {
+        // create Request object
+        request = new sql.Request(config.mssql);
+        request.input('AssetUID', sql.Int, req.body.AssetUID);
+        request.input('AgencyAssetUID', sql.NVarChar(50), req.body.AgencyAssetUID);
+        request.input('AssetDesc', sql.NVarChar(500), req.body.AssetDesc);
+        request.input('AgencyDetail', sql.NVarChar(500), req.body.AgencyDetail);
+        request.input('AssetType', sql.Numeric(18, 6), req.body.AssetType);
+        request.input('ModeCode', sql.NVarChar(50), req.body.ModeCode);
+        request.input('NTDModeCode', sql.VarChar(20), req.body.NTDModeCode);
+        request.input('Quantity', sql.Float, req.body.Quantity);
+        request.input('UnitType', sql.VarChar(100), req.body.UnitType);
+        request.input('UnitCost', sql.Float, req.body.UnitCost);
+        request.input('AgencySoftCost', sql.Float, req.body.AgencySoftCost);
+        request.input('YRBuilt', sql.Int, req.body.YRBuilt);
+        request.input('YRInService', sql.Date, req.body.YRInService);
+        request.input('AgencyUsefulLife', sql.Int, req.body.AgencyUsefulLife);
+        request.input('DelayReplaceAge', sql.Int, req.body.DelayReplaceAge);
+        request.input('Latitude', sql.Numeric(15, 10), req.body.Latitude);
+        request.input('Longitude', sql.Numeric(15, 10), req.body.Longitude);
+        request.input('AssetStatus', sql.VarChar(3), req.body.AssetStatus);
+        request.input('AgencyCapitalResponsibility', sql.Int, req.body.AgencyCapitalResponsibility);
+        request.input('PriorityStatus', sql.Int, req.body.PriorityStatus);
+        request.input('LineDivision', sql.NVarChar(50), req.body.LineDivision);
+        request.input('BranchGarage', sql.NVarChar(50), req.body.BranchGarage);
+        request.input('SegmentRoute', sql.NVarChar(50), req.body.SegmentRoute);
+        request.input('LocLinearStart', sql.NVarChar(50), req.body.LocLinearStart);
+        request.input('LocLinearEnd', sql.NVarChar(50), req.body.LocLinearEnd);
 
 
-    // create Request object
-    var request = new sql.Request(config.mssql);
-    request.input('AssetUID', sql.Int, req.body.AssetUID);
-    request.input('AgencyAssetUID', sql.NVarChar(50), req.body.AgencyAssetUID);
-    request.input('AssetDesc', sql.NVarChar(500), req.body.AssetDesc);
-    request.input('AgencyDetail', sql.NVarChar(500), req.body.AgencyDetail);
-    request.input('AssetType', sql.Numeric(18, 6), req.body.AssetType);
-    request.input('ModeCode', sql.NVarChar(50), req.body.ModeCode);
-    request.input('NTDModeCode', sql.VarChar(20), req.body.NTDModeCode);
-    request.input('Quantity', sql.Float, req.body.Quantity);
-    request.input('UnitType', sql.VarChar(100), req.body.UnitType);
-    request.input('UnitCost', sql.Float, req.body.UnitCost);
-    request.input('AgencySoftCost', sql.Float, req.body.AgencySoftCost);
-    request.input('YRBuilt', sql.Int, req.body.YRBuilt);
-    request.input('YRInService', sql.Date, req.body.YRInService);
-    request.input('AgencyUsefulLife', sql.Int, req.body.AgencyUsefulLife);
-    request.input('DelayReplaceAge', sql.Int, req.body.DelayReplaceAge);
-    request.input('Latitude', sql.Numeric(15, 10), req.body.Latitude);
-    request.input('Longitude', sql.Numeric(15, 10), req.body.Longitude);
-    request.input('AssetStatus', sql.VarChar(3), req.body.AssetStatus);
-    request.input('AgencyCapitalResponsibility', sql.Int, req.body.AgencyCapitalResponsibility);
-    request.input('PriorityStatus', sql.Int, req.body.PriorityStatus);
-    request.input('LineDivision', sql.NVarChar(50), req.body.LineDivision);
-    request.input('BranchGarage', sql.NVarChar(50), req.body.BranchGarage);
-    request.input('SegmentRoute', sql.NVarChar(50), req.body.SegmentRoute);
-    request.input('LocLinearStart', sql.NVarChar(50), req.body.LocLinearStart);
-    request.input('LocLinearEnd', sql.NVarChar(50), req.body.LocLinearEnd);
+        // request.output('AssetUID', sql.Int)
+        request.execute('dbo.updateInfrastructure', (err, result) => {
+            // ... error checks
+            if (err) {
+                console.log(err);
+                sql.close();
+            } else {
+                console.log(result);
+                res.json(result);
+                sql.close();
+                // ...
+            }
+        });
+    } else if (req.params.type === 'bulk') {
+        var items = req.body.AssetUID;
+        var ids = req.body.AssetUID;
+        var counter = items.length - 1;
+
+        for (var index = 0; index < items.length; index++) {
+            request = new sql.Request(config.mssql);
+            request.input('Quantity', sql.Float, req.body.Quantity);
+            request.input('UnitType', sql.VarChar(100), req.body.UnitType);
+            request.input('UnitCost', sql.Float, req.body.UnitCost);
+            request.input('AgencySoftCost', sql.Float, req.body.AgencySoftCost);
+            request.input('AgencyUsefulLife', sql.Int, req.body.AgencyUsefulLife);
+            request.input('DelayReplaceAge', sql.Int, req.body.DelayReplaceAge);
+            request.input('AssetStatus', sql.VarChar(3), req.body.AssetStatus);
+            request.input('AgencyCapitalResponsibility', sql.Int, req.body.AgencyCapitalResponsibility);
+            request.input('PriorityStatus', sql.Int, req.body.PriorityStatus);
+            request.input('LineDivision', sql.NVarChar(50), req.body.LineDivision);
+            request.input('BranchGarage', sql.NVarChar(50), req.body.BranchGarage);
+            request.input('SegmentRoute', sql.NVarChar(50), req.body.SegmentRoute);
+            request.input('LocLinearStart', sql.NVarChar(50), req.body.LocLinearStart);
+            request.input('LocLinearEnd', sql.NVarChar(50), req.body.LocLinearEnd);
+
+            request.input('AssetUID', sql.Int, items[index]);
+            console.log(request.parameters.AssetUID);
 
 
-    // request.output('AssetUID', sql.Int)
-    request.execute('dbo.updateInfrastructure', (err, result) => {
-        // ... error checks
-        if (err) {
-            console.log(err);
-            sql.close();
-        } else {
-            console.log(result);
-            // console.log(result.recordsets.length) // count of recordsets returned by the procedure
-            // console.log(result.recordsets[0].length) // count of rows contained in first recordset
-            // console.log(result.recordset) // first recordset from result.recordsets
-            // console.log(result.returnValue) // procedure return value
-            // console.log(result.output) // key/value collection of output values
-            // console.log(result.rowsAffected) // array of numbers, each number represents the number of rows affected by executed statemens
-            res.json(result);
-            sql.close();
-            // ...
+            request.execute('dbo.updateInfrastructure', (err, result) => {
+                // ... error checks
+                if (err) {
+                    console.log(err);
+                    sql.close();
+                }
+                // console.log(result);
+
+                counter = counter - 1;
+                console.log(counter);
+                if (counter === 0) {
+                    res.json(result);
+                    sql.close();
+                }
+
+
+                // ...
+
+            });
+
         }
-    })
+    }
 
+
+
+}
+
+export function updateSystem(req, res) {
+    console.log(req.body.AssetUID);
+    console.log(req.body);
+
+    var request;
+
+    if (req.params.type === 'single') {
+        // create Request object
+        request = new sql.Request(config.mssql);
+        request.input('AssetUID', sql.Int, req.body.AssetUID);
+        request.input('AgencyAssetUID', sql.NVarChar(50), req.body.AgencyAssetUID);
+        request.input('AssetDesc', sql.NVarChar(500), req.body.AssetDesc);
+        request.input('AgencyDetail', sql.NVarChar(500), req.body.AgencyDetail);
+        request.input('AssetType', sql.Numeric(18, 6), req.body.AssetType);
+        request.input('ModeCode', sql.NVarChar(50), req.body.ModeCode);
+        request.input('NTDModeCode', sql.VarChar(20), req.body.NTDModeCode);
+        request.input('Quantity', sql.Float, req.body.Quantity);
+        request.input('UnitType', sql.VarChar(100), req.body.UnitType);
+        request.input('UnitCost', sql.Float, req.body.UnitCost);
+        request.input('AgencySoftCost', sql.Float, req.body.AgencySoftCost);
+        request.input('YRBuilt', sql.Int, req.body.YRBuilt);
+        request.input('YRInService', sql.Date, req.body.YRInService);
+        request.input('AgencyUsefulLife', sql.Int, req.body.AgencyUsefulLife);
+        request.input('DelayReplaceAge', sql.Int, req.body.DelayReplaceAge);
+        request.input('AssetPhysAddress', sql.NVarChar(50), req.body.AssetPhysAddress);
+        request.input('AssetPhysCity', sql.NVarChar(50), req.body.AssetPhysCity);
+        request.input('AssetPhysState', sql.NVarChar(50), req.body.AssetPhysState);
+        request.input('AssetPhysZIP', sql.NVarChar(50), req.body.AssetPhysZIP);
+        request.input('Latitude', sql.Numeric(15, 10), req.body.Latitude);
+        request.input('Longitude', sql.Numeric(15, 10), req.body.Longitude);
+        request.input('AssetStatus', sql.VarChar(3), req.body.AssetStatus);
+        request.input('PriorityStatus', sql.Int, req.body.PriorityStatus);
+
+
+
+
+        // request.output('AssetUID', sql.Int)
+        request.execute('dbo.updateSystems', (err, result) => {
+            // ... error checks
+            if (err) {
+                console.log(err);
+                sql.close();
+            } else {
+                console.log(result);
+                res.json(result);
+                sql.close();
+                // ...
+            }
+        });
+    } else if (req.params.type === 'bulk') {
+        var items = req.body.AssetUID;
+        var ids = req.body.AssetUID;
+        var counter = items.length - 1;
+
+        for (var index = 0; index < items.length; index++) {
+            request = new sql.Request(config.mssql);
+            request.input('Quantity', sql.Float, req.body.Quantity);
+            request.input('UnitType', sql.VarChar(100), req.body.UnitType);
+            request.input('UnitCost', sql.Float, req.body.UnitCost);
+            request.input('AgencySoftCost', sql.Float, req.body.AgencySoftCost);
+            request.input('YRInService', sql.Date, req.body.YRInService);
+            request.input('AgencyUsefulLife', sql.Int, req.body.AgencyUsefulLife);
+            request.input('DelayReplaceAge', sql.Int, req.body.DelayReplaceAge);
+            request.input('AssetPhysAddress', sql.NVarChar(50), req.body.AssetPhysAddress);
+            request.input('AssetPhysCity', sql.NVarChar(50), req.body.AssetPhysCity);
+            request.input('AssetPhysState', sql.NVarChar(50), req.body.AssetPhysState);
+            request.input('AssetPhysZIP', sql.NVarChar(50), req.body.AssetPhysZIP);
+            request.input('Latitude', sql.Numeric(15, 10), req.body.Latitude);
+            request.input('Longitude', sql.Numeric(15, 10), req.body.Longitude);
+            request.input('AssetStatus', sql.VarChar(3), req.body.AssetStatus);
+            request.input('PriorityStatus', sql.Int, req.body.PriorityStatus);
+
+            request.input('AssetUID', sql.Int, items[index]);
+            console.log(request.parameters.AssetUID);
+
+
+            request.execute('dbo.updateSystems', (err, result) => {
+                // ... error checks
+                if (err) {
+                    console.log(err);
+                    sql.close();
+                }
+                // console.log(result);
+
+                counter = counter - 1;
+                console.log(counter);
+                if (counter === 0) {
+                    res.json(result);
+                    sql.close();
+                }
+
+
+                // ...
+
+            });
+
+        }
+    }
 
 
 
@@ -828,6 +1197,124 @@ export function createAdminMaintFacility(req, res) {
 
     // request.output('AssetUID', sql.Int)
     request.execute('dbo.addAdminMaintFacility', (err, result) => {
+        // ... error checks
+        if (err) {
+            console.log(err);
+            sql.close();
+        } else {
+            console.log(result);
+            // console.log(result.recordsets.length) // count of recordsets returned by the procedure
+            // console.log(result.recordsets[0].length) // count of rows contained in first recordset
+            // console.log(result.recordset) // first recordset from result.recordsets
+            // console.log(result.returnValue) // procedure return value
+            // console.log(result.output) // key/value collection of output values
+            // console.log(result.rowsAffected) // array of numbers, each number represents the number of rows affected by executed statemens
+            res.json(result);
+            sql.close();
+            // ...
+        }
+    })
+
+
+
+
+}
+
+export function createInfrastructure(req, res) {
+    console.log(req.body.AssetUID);
+    console.log(req.body);
+    var trsid = req.user.dataValues.TRSID;
+
+    // create Request object
+    var request = new sql.Request(config.mssql);
+
+    request.input('AgencyAssetUID', sql.NVarChar(50), req.body.AgencyAssetUID);
+    request.input('AssetDesc', sql.NVarChar(500), req.body.AssetDesc);
+    request.input('AgencyDetail', sql.NVarChar(500), req.body.AgencyDetail);
+    request.input('AssetType', sql.Numeric(18, 6), req.body.AssetType);
+    request.input('ModeCode', sql.NVarChar(50), req.body.ModeCode);
+    request.input('NTDModeCode', sql.VarChar(20), req.body.NTDModeCode);
+    request.input('Quantity', sql.Float, req.body.Quantity);
+    request.input('UnitType', sql.VarChar(100), req.body.UnitType);
+    request.input('UnitCost', sql.Float, req.body.UnitCost);
+    request.input('AgencySoftCost', sql.Float, req.body.AgencySoftCost);
+    request.input('YRBuilt', sql.Int, req.body.YRBuilt);
+    request.input('YRInService', sql.Date, req.body.YRInService);
+    request.input('AgencyUsefulLife', sql.Int, req.body.AgencyUsefulLife);
+    request.input('DelayReplaceAge', sql.Int, req.body.DelayReplaceAge);
+    request.input('Latitude', sql.Numeric(15, 10), req.body.Latitude);
+    request.input('Longitude', sql.Numeric(15, 10), req.body.Longitude);
+    request.input('AssetStatus', sql.VarChar(3), req.body.AssetStatus);
+    request.input('AgencyCapitalResponsibility', sql.Int, req.body.AgencyCapitalResponsibility);
+    request.input('PriorityStatus', sql.Int, req.body.PriorityStatus);
+    request.input('LineDivision', sql.NVarChar(50), req.body.LineDivision);
+    request.input('BranchGarage', sql.NVarChar(50), req.body.BranchGarage);
+    request.input('SegmentRoute', sql.NVarChar(50), req.body.SegmentRoute);
+    request.input('LocLinearStart', sql.NVarChar(50), req.body.LocLinearStart);
+    request.input('LocLinearEnd', sql.NVarChar(50), req.body.LocLinearEnd);
+    request.input('TRSID', sql.NVarChar(5), trsid);
+
+
+    // request.output('AssetUID', sql.Int)
+    request.execute('dbo.addInfrastructure', (err, result) => {
+        // ... error checks
+        if (err) {
+            console.log(err);
+            sql.close();
+        } else {
+            console.log(result);
+            // console.log(result.recordsets.length) // count of recordsets returned by the procedure
+            // console.log(result.recordsets[0].length) // count of rows contained in first recordset
+            // console.log(result.recordset) // first recordset from result.recordsets
+            // console.log(result.returnValue) // procedure return value
+            // console.log(result.output) // key/value collection of output values
+            // console.log(result.rowsAffected) // array of numbers, each number represents the number of rows affected by executed statemens
+            res.json(result);
+            sql.close();
+            // ...
+        }
+    })
+
+
+
+
+}
+
+export function createSystem(req, res) {
+    console.log(req.body.AssetUID);
+    console.log(req.body);
+    var trsid = req.user.dataValues.TRSID;
+
+    // create Request object
+    var request = new sql.Request(config.mssql);
+
+    request.input('AgencyAssetUID', sql.NVarChar(50), req.body.AgencyAssetUID);
+    request.input('AssetDesc', sql.NVarChar(500), req.body.AssetDesc);
+    request.input('AgencyDetail', sql.NVarChar(500), req.body.AgencyDetail);
+    request.input('AssetType', sql.Numeric(18, 6), req.body.AssetType);
+    request.input('ModeCode', sql.NVarChar(50), req.body.ModeCode);
+    request.input('NTDModeCode', sql.VarChar(20), req.body.NTDModeCode);
+    request.input('Quantity', sql.Float, req.body.Quantity);
+    request.input('UnitType', sql.VarChar(100), req.body.UnitType);
+    request.input('UnitCost', sql.Float, req.body.UnitCost);
+    request.input('AgencySoftCost', sql.Float, req.body.AgencySoftCost);
+    request.input('YRBuilt', sql.Int, req.body.YRBuilt);
+    request.input('YRInService', sql.Date, req.body.YRInService);
+    request.input('AgencyUsefulLife', sql.Int, req.body.AgencyUsefulLife);
+    request.input('DelayReplaceAge', sql.Int, req.body.DelayReplaceAge);
+    request.input('AssetPhysAddress', sql.NVarChar(50), req.body.AssetPhysAddress);
+    request.input('AssetPhysCity', sql.NVarChar(50), req.body.AssetPhysCity);
+    request.input('AssetPhysState', sql.NVarChar(50), req.body.AssetPhysState);
+    request.input('AssetPhysZIP', sql.NVarChar(50), req.body.AssetPhysZIP);
+    request.input('Latitude', sql.Numeric(15, 10), req.body.Latitude);
+    request.input('Longitude', sql.Numeric(15, 10), req.body.Longitude);
+    request.input('AssetStatus', sql.VarChar(3), req.body.AssetStatus);
+    request.input('PriorityStatus', sql.Int, req.body.PriorityStatus);
+    request.input('TRSID', sql.NVarChar(5), trsid);
+
+
+    // request.output('AssetUID', sql.Int)
+    request.execute('dbo.addSystems', (err, result) => {
         // ... error checks
         if (err) {
             console.log(err);
